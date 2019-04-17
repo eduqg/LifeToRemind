@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= nav_bar brand: "LTR", brand_link: root_url do %>
+      <%= menu_group do %>
+        <%= menu_item "Nova Missao", root_url %>
+      <% end %>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
