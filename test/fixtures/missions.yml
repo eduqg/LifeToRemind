@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purpose_of_life: MyString
+  who_am_i: MyText
+  why_exist: MyString
+
+two:
+  purpose_of_life: MyString
+  who_am_i: MyText
+  why_exist: MyString
