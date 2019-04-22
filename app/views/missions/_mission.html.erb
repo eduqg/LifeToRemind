@@ -2,6 +2,8 @@
   <td><%= mission.purpose_of_life %></td>
   <td><%= mission.who_am_i %></td>
   <td><%= mission.why_exist %></td>
+  <td><%= mission.created_at.strftime("%d/%m/%Y") %></td>
+
   <td><%= link_to "Editar", edit_mission_path(mission),
           class:"btn btn-default"
           %></td>
