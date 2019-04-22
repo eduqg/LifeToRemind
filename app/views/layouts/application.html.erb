@@ -10,9 +10,9 @@
   </head>
 
   <body>
-    <%= nav_bar brand: "LTR", brand_link: root_url do %>
+    <%= nav_bar brand: "LTR", brand_link: root_url, responsive: true do %>
       <%= menu_group do %>
-        <%= menu_item "Nova Missao", root_url %>
+        <%= menu_item "Nova Missao", new_mission_path %>
       <% end %>
     <% end %>
     <div class="container">
