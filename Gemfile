@@ -8,6 +8,8 @@ gem 'rails', '~> 5.2.1'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-5-x' # For 5.x
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
