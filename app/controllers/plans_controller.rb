@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  helper_method :update_selected_mission
 
   # GET /plans
   # GET /plans.json
@@ -49,6 +50,11 @@ class PlansController < ApplicationController
         format.json { render json: @plan.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update_selected_mission
+    plan_to_update = Plan.first
+    plan_to_update.update_attribute(:selected_mission, params[:format])
   end
 
   # DELETE /plans/1
