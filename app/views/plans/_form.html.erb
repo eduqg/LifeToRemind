@@ -1,37 +1,57 @@
+<% plan.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+
 <%= form_with(model: plan, local: true) do |form| %>
   <% if plan.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
 
       <ul>
-      <% plan.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% plan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :life_objective %>
-    <%= form.text_area :life_objective %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Objetivo de Vida" %>
+        <%= form.text_area :life_objective, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :selected_mission %>
-    <%= form.number_field :selected_mission %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :selected_mission %>
+        <%= form.number_field :selected_mission, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :selected_vision %>
-    <%= form.number_field :selected_vision %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :selected_vision %>
+        <%= form.number_field :selected_vision, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :critical_success_factors_selected %>
-    <%= form.number_field :critical_success_factors_selected %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :critical_success_factors_selected %>
+        <%= form.number_field :critical_success_factors_selected, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Criar", class: "btn btn-primary" %>
 <% end %>

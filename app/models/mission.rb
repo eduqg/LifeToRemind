@@ -1,5 +1,5 @@
 class Mission < ApplicationRecord
-  def index
+  belongs_to :plan
 
-  end
+  validates :why_exist, :purpose_of_life, :who_am_i, presence: true
 end

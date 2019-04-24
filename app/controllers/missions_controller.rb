@@ -23,6 +23,7 @@ class MissionsController < ApplicationController
 
   def create
     @mission = Mission.new mission_params
+    @mission.plan_id = "1"
 
     if @mission.save
       flash[:notice] = "Missão criada com sucesso"
@@ -40,7 +41,7 @@ class MissionsController < ApplicationController
   private
 
   def mission_params
-    mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist)
+    mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :plan_id)
   end
 
   def set_mission
