@@ -4,7 +4,7 @@
   <td><%= mission.why_exist %></td>
   <td><%= mission.created_at.strftime("%d/%m/%Y") %></td>
 
-  <td><%= link_to "Selecionar", plans_update_selected_mission_path(mission.id),
+  <td><%= link_to "Selecionar", missions_update_selected_mission_path(mission.id),
                   class:"btn btn-primary"
           %></td>
   <td><%= link_to "Editar", edit_mission_path(mission),

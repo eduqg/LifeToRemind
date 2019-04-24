@@ -29,7 +29,7 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
+        format.html { redirect_to @plan, notice: "Plano criado com sucesso!" }
         format.json { render :show, status: :created, location: @plan }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class PlansController < ApplicationController
   def update
     respond_to do |format|
       if @plan.update(plan_params)
-        format.html { redirect_to @plan, notice: 'Plan was successfully updated.' }
+        format.html { redirect_to @plan, notice: "Plano atualizado com sucesso!"}
         format.json { render :show, status: :ok, location: @plan }
       else
         format.html { render :edit }
@@ -52,17 +52,13 @@ class PlansController < ApplicationController
     end
   end
 
-  def update_selected_mission
-    plan_to_update = Plan.first
-    plan_to_update.update_attribute(:selected_mission, params[:format])
-  end
-
   # DELETE /plans/1
   # DELETE /plans/1.json
   def destroy
     @plan.destroy
     respond_to do |format|
-      format.html { redirect_to plans_url, notice: 'Plan was successfully destroyed.' }
+      flash[:info] = "Plano excluido"
+      format.html { redirect_to plans_url }
       format.json { head :no_content }
     end
   end

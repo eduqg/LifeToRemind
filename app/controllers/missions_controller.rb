@@ -21,6 +21,16 @@ class MissionsController < ApplicationController
     end
   end
 
+  def update_selected_mission
+    if (plan_to_update = Plan.first)
+      plan_to_update.update_attribute(:selected_mission, params[:format])
+      flash[:notice] = "Missão selecionada foi atualizada com sucesso!"
+      redirect_back(fallback_location: missions_path)
+    else
+      flash[:notice] = "Missão selecionada não pode ser atualizada"
+    end
+  end
+
   def create
     @mission = Mission.new mission_params
     @mission.plan_id = "1"
@@ -35,7 +45,8 @@ class MissionsController < ApplicationController
 
   def destroy
     @mission.destroy
-    redirect_to root_url
+    flash[:info] = "Missão excluida"
+    redirect_to missions_url
   end
 
   private

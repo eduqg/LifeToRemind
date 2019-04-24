@@ -4,6 +4,12 @@
   </div>
 <% end %>
 
+<% if flash[:info] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:info] %>
+  </div>
+<% end %>
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
