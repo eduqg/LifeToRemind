@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Life objective:</strong>
+  <%= @plan.life_objective %>
+</p>
+
+<p>
+  <strong>Selected mission:</strong>
+  <%= @plan.selected_mission %>
+</p>
+
+<p>
+  <strong>Selected vision:</strong>
+  <%= @plan.selected_vision %>
+</p>
+
+<p>
+  <strong>Critical success factors selected:</strong>
+  <%= @plan.critical_success_factors_selected %>
+</p>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>

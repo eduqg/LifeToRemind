@@ -1,0 +1,37 @@
+<%= form_with(model: plan, local: true) do |form| %>
+  <% if plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :life_objective %>
+    <%= form.text_area :life_objective %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selected_mission %>
+    <%= form.number_field :selected_mission %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selected_vision %>
+    <%= form.number_field :selected_vision %>
+  </div>
+
+  <div class="field">
+    <%= form.label :critical_success_factors_selected %>
+    <%= form.number_field :critical_success_factors_selected %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

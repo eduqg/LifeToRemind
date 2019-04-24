@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  life_objective: MyText
+  selected_mission: 1
+  selected_vision: 1
+  critical_success_factors_selected: 1
+
+two:
+  life_objective: MyText
+  selected_mission: 1
+  selected_vision: 1
+  critical_success_factors_selected: 1
