@@ -10,6 +10,10 @@ gem 'twitter-bootstrap-rails'
 
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-5-x' # For 5.x
 
+gem 'devise', '~>4.5.0'
+
+gem 'cancancan', '~>2.3.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ltr</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Ltr</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= nav_bar brand: "LTR", brand_link: root_url, responsive: true do %>
-      <%= menu_group do %>
-        <%= menu_item "Planos", plans_path %>
-        <%= menu_item "Missoes", missions_path %>
-      <% end %>
+<body>
+<%= nav_bar brand: "LTR", brand_link: root_url, responsive: true do %>
+  <%= menu_group do %>
+    <%= menu_item "Planos", plans_path %>
+    <%= menu_item "Missoes", missions_path %>
+
+  <% end %>
+  <%= menu_group pull: :right do %>
+    <% if current_user %>
+      <%= menu_item "Olá #{current_user.email}" %>
+      <%= menu_item "Sair", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= menu_item "Entrar", new_user_session_path %>
+      <%= menu_item "Cadastrar", new_user_registration_path %>
     <% end %>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+  <% end %>
+<% end %>
+
+<div class="container">
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:info] %>
+    <div class="alert alert-info" role="alert"><%= flash[:info] %></div>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  <%= yield %>
+</div>
+</body>
 </html>
+
+
