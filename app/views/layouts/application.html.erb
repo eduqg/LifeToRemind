@@ -18,7 +18,7 @@
   <% end %>
   <%= menu_group pull: :right do %>
     <% if current_user %>
-      <%= menu_item "Olá #{current_user.email}" %>
+      <%= menu_item "Olá #{current_user.email}", edit_user_registration_path %>
       <%= menu_item "Sair", destroy_user_session_path, :method => :delete %>
     <% else %>
       <%= menu_item "Entrar", new_user_session_path %>

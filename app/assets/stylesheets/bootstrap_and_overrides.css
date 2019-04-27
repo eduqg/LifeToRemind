@@ -27,6 +27,9 @@
     transition: all 0.12s linear 0s !important;
     font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+.btn-margin-bottom {
+    margin-bottom: 0.8em;
+}
 .btn-cons {
     margin-right: 5px;
     min-width: 120px;
