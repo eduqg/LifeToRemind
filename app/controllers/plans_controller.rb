@@ -52,6 +52,16 @@ class PlansController < ApplicationController
     end
   end
 
+  def update_selected_plan
+    if (user_to_update = current_user)
+      user_to_update.update_attribute(:selected_plan, params[:format])
+      flash[:notice] = "Plano selecionada foi atualizada com sucesso!"
+      redirect_back(fallback_location: plans_path)
+    else
+      flash[:notice] = "Plano selecionada não pode ser atualizado"
+    end
+  end
+
   # DELETE /plans/1
   # DELETE /plans/1.json
   def destroy

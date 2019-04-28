@@ -17,6 +17,9 @@
         <td><%= plan.selected_vision %></td>
         <td><%= plan.critical_success_factors_selected %></td>
         <td><%= plan.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to "Selecionar", plans_update_selected_plan_path(plan.id),
+                        class:"btn btn-primary"
+        %></td>
         <td><%= link_to "Editar", edit_plan_path(plan), class:"btn btn-default"  %></td>
         <td><%= link_to "Remover", plan, method: :delete, class:"btn btn-danger", data: { confirm: "Tem certeza que deseja remover o plano #{plan.id}?" } %></td>
       </tr>

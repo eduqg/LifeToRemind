@@ -28,7 +28,7 @@ class MissionsController < ApplicationController
   end
 
   def update_selected_mission
-    if (plan_to_update = Plan.first)
+    if (plan_to_update = current_plan)
       plan_to_update.update_attribute(:selected_mission, params[:format])
       flash[:notice] = "Missão selecionada foi atualizada com sucesso!"
       redirect_back(fallback_location: missions_path)
@@ -43,7 +43,7 @@ class MissionsController < ApplicationController
 
     if @mission.save
       flash[:notice] = "Missão criada com sucesso"
-      redirect_to root_url
+      redirect_to missions_path
     else
       render :new
     end 
