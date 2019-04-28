@@ -7,6 +7,11 @@ class PlansController < ApplicationController
     @plans = current_user.plans
   end
 
+  def myplan
+    @current_plan = Plan.find(id = current_user.selected_plan)
+    @my_mission = Mission.find(id = current_plan.selected_mission)
+  end
+
   # GET /plans/1
   # GET /plans/1.json
   def show
