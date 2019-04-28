@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
+  def current_plan
+    return unless current_user[:selected_plan]
+    @current_plan ||= Plan.find(id = current_user[:selected_plan])
+  end
+
   protected
 
   def configure_permitted_parameters

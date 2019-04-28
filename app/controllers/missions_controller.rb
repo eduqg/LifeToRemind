@@ -1,7 +1,13 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:edit, :update, :destroy]
+
   def index
-    @missions = Mission.all
+    if current_plan
+      @missions = current_plan.missions
+    else
+      flash[:info] = "É necessário selecionar um plano primeiro"
+      redirect_to plans_path
+    end
   end
 
   def new
@@ -33,7 +39,7 @@ class MissionsController < ApplicationController
 
   def create
     @mission = Mission.new mission_params
-    @mission.plan_id = "1"
+    @mission.plan_id = current_user.selected_plan
 
     if @mission.save
       flash[:notice] = "Missão criada com sucesso"

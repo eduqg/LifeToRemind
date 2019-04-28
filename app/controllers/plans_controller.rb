@@ -1,6 +1,5 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
-  helper_method :update_selected_mission
 
   # GET /plans
   # GET /plans.json
@@ -26,6 +25,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
+    @plan.user_id = current_user.id
 
     respond_to do |format|
       if @plan.save
@@ -71,6 +71,6 @@ class PlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:life_objective, :selected_mission, :selected_vision, :critical_success_factors_selected)
+      params.require(:plan).permit(:life_objective, :selected_mission, :selected_vision, :critical_success_factors_selected, :user_id)
     end
 end
