@@ -1,24 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Life objective:</strong>
-  <%= @plan.life_objective %>
-</p>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="form-group">
+      <strong>Objetivo de vida</strong>
+      <hr/>
+      <%= @plan.life_objective %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Selected mission:</strong>
-  <%= @plan.selected_mission %>
-</p>
 
-<p>
-  <strong>Selected vision:</strong>
-  <%= @plan.selected_vision %>
-</p>
+<%= link_to "Editar", edit_plan_path(@plan), class:"btn btn-btn-primary" %>
+<%= link_to "Voltar", plans_path, class:"btn btn-btn-default" %>
 
-<p>
-  <strong>Critical success factors selected:</strong>
-  <%= @plan.critical_success_factors_selected %>
-</p>
 
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'Back', plans_path %>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="form-group">
+      <strong>Selected mission:</strong>
+      <%= @plan.selected_mission %>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-8">
+    <div class="form-group">
+      <strong>Selected vision:</strong>
+      <%= @plan.selected_vision %>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-sm-8">
+    <div class="form-group">
+      <strong>Critical success factors selected:</strong>
+      <%= @plan.critical_success_factors_selected %>
+    </div>
+  </div>
+</div>
