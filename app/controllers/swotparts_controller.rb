@@ -38,7 +38,7 @@ class SwotpartsController < ApplicationController
   end
 
   def create_swot_swotpart
-    @swotpart = Swotpart.new(plan_id: current_plan.id, name: params[:name])
+    @swotpart = Swotpart.new(plan_id: current_plan.id, name: params[:name], partname: params[:partname])
 
     if @swotpart.save
       flash[:notice] = "Força adicionada"
@@ -82,6 +82,6 @@ class SwotpartsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def swotpart_params
-    params.require(:swotpart).permit(:plan_id, :name)
+    params.require(:swotpart).permit(:plan_id, :name, :partname)
   end
 end

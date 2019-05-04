@@ -9,9 +9,18 @@ class PlansController < ApplicationController
 
 
   def myplan
-    @current_plan = Plan.find(id = current_user.selected_plan)
-    @my_mission = Mission.find(id = current_plan.selected_mission)
-    @swotparts = Swotpart.all
+    if current_plan
+      @current_plan = Plan.find(id = current_user.selected_plan)
+      @my_mission = Mission.find(id = current_plan.selected_mission)
+      @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
+      @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
+      @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
+      @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+    else
+      flash[:info] = "É necessário selecionar um plano primeiro"
+      redirect_to myplan_path
+    end
+
   end
 
   # GET /plans/1
