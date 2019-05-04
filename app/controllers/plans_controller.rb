@@ -11,7 +11,7 @@ class PlansController < ApplicationController
   def myplan
     @current_plan = Plan.find(id = current_user.selected_plan)
     @my_mission = Mission.find(id = current_plan.selected_mission)
-    @strengths = Strength.all
+    @swotparts = Swotpart.all
   end
 
   # GET /plans/1

@@ -1,4 +1,4 @@
-<%= form_tag strengths_create_swot_strength_path do %>
+<%= form_tag swotparts_create_swot_swotpart_path do %>
   <div class="row">
     <div class="col-xs-2">
       <div class="row">
@@ -13,12 +13,12 @@
   </div>
 <% end %>
 <div class="container">
-  <% @strengths.each do |strength| %>
+  <% @swotparts.each do |swotpart| %>
     <div class="col-xs-2">
       <div class="row">
-        <%= strength.name.truncate(15) %></p>
-        <%= link_to "Editar", edit_strength_path(strength), :class => "btn btn-primary" %>
-        <%= link_to "X", strength, method: :delete, :class => "btn btn-danger" %>
+        <%= swotpart.name.truncate(15) %></p>
+        <%= link_to "Editar", edit_swotpart_path(swotpart), :class => "btn btn-primary" %>
+        <%= link_to "X", swotpart, method: :delete, :class => "btn btn-danger" %>
       </div>
     </div>
   <% end %>

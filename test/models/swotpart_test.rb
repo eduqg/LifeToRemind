@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StrengthTest < ActiveSupport::TestCase
+class SwotpartTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

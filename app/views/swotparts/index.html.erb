@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>swotparts</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Plan</th>
+    <th>Name</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @swotparts.each do |swotpart| %>
+    <tr>
+      <td><%= swotpart.plan %></td>
+      <td><%= swotpart.name %></td>
+      <td><%= link_to 'Show', swotpart %></td>
+      <td><%= link_to 'Edit', edit_swotpart_path(swotpart) %></td>
+      <td><%= link_to 'Destroy', swotpart, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New swotpart', new_swotpart_path %>

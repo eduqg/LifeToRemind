@@ -1,10 +1,10 @@
-<%= form_with(model: strength, local: true) do |form| %>
-  <% if strength.errors.any? %>
+<%= form_with(model: swotpart, local: true) do |form| %>
+  <% if swotpart.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(strength.errors.count, "error") %> prohibited this strength from being saved:</h2>
+      <h2><%= pluralize(swotpart.errors.count, "error") %> prohibited this swotpart from being saved:</h2>
 
       <ul>
-      <% strength.errors.full_messages.each do |message| %>
+      <% swotpart.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
