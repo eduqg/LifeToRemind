@@ -1,0 +1,25 @@
+<%= form_tag strengths_create_swot_strength_path do %>
+  <div class="row">
+    <div class="col-xs-2">
+      <div class="row">
+        <%= text_field_tag :name, "", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="row">
+        <%= submit_tag "+Força", class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="container">
+  <% @strengths.each do |strength| %>
+    <div class="col-xs-2">
+      <div class="row">
+        <%= strength.name.truncate(15) %></p>
+        <%= link_to "Editar", edit_strength_path(strength), :class => "btn btn-primary" %>
+        <%= link_to "X", strength, method: :delete, :class => "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>

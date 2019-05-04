@@ -1,0 +1,27 @@
+<%= form_with(model: strength, local: true) do |form| %>
+  <% if strength.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(strength.errors.count, "error") %> prohibited this strength from being saved:</h2>
+
+      <ul>
+      <% strength.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :plan_id %>
+    <%= form.text_field :plan_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

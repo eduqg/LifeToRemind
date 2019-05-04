@@ -46,7 +46,7 @@ class MissionsController < ApplicationController
       redirect_to missions_path
     else
       render :new
-    end 
+    end
   end
 
   def destroy
