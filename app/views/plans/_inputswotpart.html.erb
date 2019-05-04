@@ -1,0 +1,15 @@
+<%= form_tag swotparts_create_swot_swotpart_path do %>
+  <%= hidden_field_tag :partname, tipo_do_swotpart %>
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="row">
+        <%= text_field_tag :name, nil, placeholder: "Digite uma #{swot_type}", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="row">
+        <%= submit_tag texto_da_acao, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,18 +1,5 @@
-<%= form_tag swotparts_create_swot_swotpart_path do %>
-  <%= hidden_field_tag :partname, "strength" %>
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="row">
-        <%= text_field_tag :name, "", class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-xs-2">
-      <div class="row">
-        <%= submit_tag "+Força", class: "btn btn-success" %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "strength", texto_da_acao: "+Força", swot_type: "Força" } %>
+
 <div class="container">
   <% @strengths.each do |strength| %>
     <div class="col-xs-2">
@@ -25,21 +12,8 @@
   <% end %>
 </div>
 
-<%= form_tag swotparts_create_swot_swotpart_path do %>
-  <%= hidden_field_tag :partname, "weak" %>
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="row">
-        <%= text_field_tag :name, "", class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-xs-2">
-      <div class="row">
-        <%= submit_tag "+Fraqueza", class: "btn btn-success" %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "weak", texto_da_acao: "+Fraqueza", swot_type: "Fraqueza" } %>
+
 <div class="container">
   <% @weaks.each do |weak| %>
     <div class="col-xs-2">
@@ -47,6 +21,34 @@
         <%= weak.name.truncate(15) %></p>
         <%= link_to "Editar", edit_swotpart_path(weak), :class => "btn btn-primary" %>
         <%= link_to "X", weak, method: :delete, :class => "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "opportunity", texto_da_acao: "+Oportunidade", swot_type: "Oportunidade" } %>
+
+<div class="container">
+  <% @opportunities.each do |opportunity| %>
+    <div class="col-xs-2">
+      <div class="row">
+        <%= opportunity.name.truncate(15) %></p>
+        <%= link_to "Editar", edit_swotpart_path(opportunity), :class => "btn btn-primary" %>
+        <%= link_to "X", opportunity, method: :delete, :class => "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "threat", texto_da_acao: "+Ameaça", swot_type: "Ameaça" } %>
+
+<div class="container">
+  <% @threats.each do |threat| %>
+    <div class="col-xs-2">
+      <div class="row">
+        <%= threat.name.truncate(15) %></p>
+        <%= link_to "Editar", edit_swotpart_path(threat), :class => "btn btn-primary" %>
+        <%= link_to "X", threat, method: :delete, :class => "btn btn-danger" %>
       </div>
     </div>
   <% end %>
