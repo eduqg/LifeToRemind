@@ -1,0 +1,56 @@
+AllCops:
+  RSpec:
+    Patterns:
+    - _test.rb
+    - "(?:^|/)test/"
+
+    RSpec/FactoryBot:
+      Patterns:
+      - test/factories/**/*.rb
+
+  Exclude:
+  - 'db/**/*'
+  - 'config/**/*'
+  - 'script/**/*'
+
+Metrics/CyclomaticComplexity:
+  Max: 5
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 100
+
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be an Integer or
+  # a Float.
+  Max: 15
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SingleLineMethods:
+  Enabled: false
+
+Style/SpaceInsideBrackets:
+  Enabled: false
+
+Style/UnneededInterpolation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
