@@ -12,6 +12,8 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-5-x' # For 5.x
 
 gem 'devise', '~>4.5.0'
 
+gem 'jquery-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
