@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :swotparts
   resources :plans
   resources :missions, only: [:index, :new, :create, :destroy, :edit, :update]
-  root to: "plans#index"
+  root to: "home#index"
 end
