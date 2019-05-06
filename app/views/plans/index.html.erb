@@ -1,5 +1,6 @@
-<table class="table table-bordered table-hover">
-  <thead>
+<div class="container">
+  <table class="table table-bordered table-hover">
+    <thead>
     <tr>
       <td>Objetivo de vida</td>
       <td>Missão selecionada</td>
@@ -7,9 +8,9 @@
       <td>Fator Crítico de Sucesso selecionado</td>
       <td>Data</td>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @plans.each do |plan| %>
       <tr>
         <td><%= plan.life_objective %></td>
@@ -18,15 +19,16 @@
         <td><%= plan.critical_success_factors_selected %></td>
         <td><%= plan.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= link_to "Selecionar", plans_update_selected_plan_path(plan.id),
-                        class:"btn btn-primary"
+                        class: "btn btn-primary"
         %></td>
-        <td><%= link_to "Editar", edit_plan_path(plan), class:"btn btn-default"  %></td>
-        <td><%= link_to "Remover", plan, method: :delete, class:"btn btn-danger", data: { confirm: "Tem certeza que deseja remover o plano #{plan.id}?" } %></td>
+        <td><%= link_to "Editar", edit_plan_path(plan), class: "btn btn-default" %></td>
+        <td><%= link_to "Remover", plan, method: :delete, class: "btn btn-danger", data: {confirm: "Tem certeza que deseja remover o plano #{plan.id}?"} %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to "Novo plano", new_plan_path, class: "btn btn-primary" %>
+  <%= link_to "Novo plano", new_plan_path, class: "btn btn-primary" %>
+</div>
