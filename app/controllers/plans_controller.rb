@@ -18,7 +18,7 @@ class PlansController < ApplicationController
       @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
     else
       flash[:info] = "É necessário selecionar um plano primeiro"
-      redirect_to myplan_path
+      redirect_to plans_path
     end
 
   end
