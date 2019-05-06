@@ -1,55 +1,66 @@
-<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "strength", texto_da_acao: "+Força", swot_type: "Força" } %>
-
-<div class="container">
-  <% @strengths.each do |strength| %>
-    <div class="col-xs-2">
-      <div class="row">
-        <%= strength.name.truncate(15) %></p>
+<table class="table table-borderless">
+  <thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Fatores Positivos</th>
+    <th scope="col">Fatores Negativos</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Fatores Internos</th>
+    <td>
+      Forças
+      <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "strength", texto_da_acao: "+Força", swot_type: "Força"} %>
+      <% @strengths.each do |strength| %>
+        <p><%= strength.name.truncate(15) %></p>
         <%= link_to "Editar", edit_swotpart_path(strength), :class => "btn btn-primary" %>
         <%= link_to "X", strength, method: :delete, :class => "btn btn-danger" %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "weak", texto_da_acao: "+Fraqueza", swot_type: "Fraqueza" } %>
-
-<div class="container">
-  <% @weaks.each do |weak| %>
-    <div class="col-xs-2">
-      <div class="row">
-        <%= weak.name.truncate(15) %></p>
-        <%= link_to "Editar", edit_swotpart_path(weak), :class => "btn btn-primary" %>
-        <%= link_to "X", weak, method: :delete, :class => "btn btn-danger" %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "opportunity", texto_da_acao: "+Oportunidade", swot_type: "Oportunidade" } %>
-
-<div class="container">
-  <% @opportunities.each do |opportunity| %>
-    <div class="col-xs-2">
-      <div class="row">
-        <%= opportunity.name.truncate(15) %></p>
+      <% end %>
+    </td>
+    <td>
+      Fraquezas
+      <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "weak", texto_da_acao: "+Fraqueza", swot_type: "Fraqueza"} %>
+      <% @weaks.each do |weak| %>
+        <p><%= weak.name.truncate(15) %></p>
+        <p><%= link_to "Editar", edit_swotpart_path(weak), :class => "btn btn-primary" %>
+        <p><%= link_to "X", weak, method: :delete, :class => "btn btn-danger" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">Fatores Externos</th>
+    <td>
+      Oportunidades
+      <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "opportunity", texto_da_acao: "+Oportunidade", swot_type: "Oportunidade"} %>
+      <% @opportunities.each do |opportunity| %>
+        <p><%= opportunity.name.truncate(15) %></p>
         <%= link_to "Editar", edit_swotpart_path(opportunity), :class => "btn btn-primary" %>
         <%= link_to "X", opportunity, method: :delete, :class => "btn btn-danger" %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<%= render partial: "inputswotpart", locals: { tipo_do_swotpart: "threat", texto_da_acao: "+Ameaça", swot_type: "Ameaça" } %>
-
-<div class="container">
-  <% @threats.each do |threat| %>
-    <div class="col-xs-2">
-      <div class="row">
-        <%= threat.name.truncate(15) %></p>
+      <% end %>
+    </td>
+    <td>
+      Ameaças
+      <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "threat", texto_da_acao: "+Ameaça", swot_type: "Ameaça"} %>
+      <% @threats.each do |threat| %>
+        <p><%= threat.name.truncate(15) %></p>
         <%= link_to "Editar", edit_swotpart_path(threat), :class => "btn btn-primary" %>
         <%= link_to "X", threat, method: :delete, :class => "btn btn-danger" %>
-      </div>
-    </div>
-  <% end %>
-</div>
+      <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
