@@ -1,0 +1,30 @@
+<!-- start navigation -->
+<nav class="navbar navbar-default templatemo-nav" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+        <span class="icon icon-bar"></span>
+      </button>
+      <%= link_to "LTR", root_path, :class => "navbar-brand", method: "get" %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- href to #top, about, team, service, portifolio, contact -->
+        <li><a href="#top">HOME</a></li>
+        <li><a href="#about">SOBRE</a></li>
+        <li><a href="#service">SERVIÇOS</a></li>
+        </li>
+        <% if current_user %>
+          <li><%= link_to "Olá #{current_user.name}", edit_user_registration_path, method: "get" %></li>
+          <li><%= link_to "Sair", destroy_user_session_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to "ENTRAR", new_user_session_path, method: "get" %></li>
+          <li><%= link_to "CADASTRAR", new_user_registration_path, method: "get" %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- end navigation -->
