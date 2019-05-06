@@ -1,51 +1,60 @@
-<h2>Cadastrar</h2>
-<hr/>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+      <span class="login100-form-title p-b-55">Cadastro</span>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+        <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-  <%= devise_error_messages! %>
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
+          <%= form.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email", class: "input100" %>
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-envelope"></span>
+						</span>
+        </div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= form.label "E-mail" %><br />
-        <%= form.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Name is required">
+          <%= form.text_field :name, placeholder: "Nome", autocomplete: "name", class: "input100" %>
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-user"></span>
+						</span>
+        </div>
+
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+          <%= form.password_field :password, placeholder: "Senha (mínimo 6 caracteres)", autocomplete: "new-password", class: "input100" %>
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+          <%= form.password_field :password_confirmation, placeholder: "Insira novamente a senha", autocomplete: "new-password", class: "input100" %>
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+        </div>
+
+        <%= form.hidden_field :selected_mission, value: "0" %>
+
+        <div class="container-login100-form-btn p-t-25">
+          <%= form.submit "Cadastrar", class: "login100-form-btn" %>
+        </div>
+      <% end %>
+
+      <div class="text-center w-full p-t-115">
+						<span class="txt1">
+							Já tem uma conta?
+						</span>
+        <%= link_to "Entrar", new_user_session_path, method: "get", class: "txt1 bo1 hov1" %>
       </div>
+
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= form.label "Nome" %><br />
-        <%= form.text_field :name, class:"form-control" %>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= form.label "Senha" %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= form.password_field :password, autocomplete: "new-password", class:"form-control" %>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= form.label "Insira novamente a senha" %><br />
-        <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <%= form.hidden_field :selected_mission, value: "0" %>
-
-  <%= form.submit "Cadastrar", class:"btn btn-primary btn-margin-bottom" %>
-<% end %>
-
-<%= render "devise/shared/links" %>

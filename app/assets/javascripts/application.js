@@ -19,4 +19,5 @@
 //= require theme/typed
 //= require theme/wow.min
 //= require theme/custom
+//= require login/mainlogin.js
 //= require_tree .
