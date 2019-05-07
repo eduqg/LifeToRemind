@@ -1,34 +1,32 @@
 <div class="container">
-  <table class="table table-bordered table-hover">
-    <thead>
-    <tr>
-      <td>Objetivo de vida</td>
-      <td>Missão selecionada</td>
-      <td>Visão selecionada</td>
-      <td>Fator Crítico de Sucesso selecionado</td>
-      <td>Data</td>
-    </tr>
-    </thead>
-
-    <tbody>
+  <div class="row">
     <% @plans.each do |plan| %>
-      <tr>
-        <td><%= plan.life_objective %></td>
-        <td><%= plan.selected_mission %></td>
-        <td><%= plan.selected_vision %></td>
-        <td><%= plan.critical_success_factors_selected %></td>
-        <td><%= plan.created_at.strftime("%d/%m/%Y") %></td>
-        <td><%= link_to "Selecionar", plans_update_selected_plan_path(plan.id),
-                        class: "btn btn-primary"
-        %></td>
-        <td><%= link_to "Editar", edit_plan_path(plan), class: "btn btn-default" %></td>
-        <td><%= link_to "Remover", plan, method: :delete, class: "btn btn-danger", data: {confirm: "Tem certeza que deseja remover o plano #{plan.id}?"} %></td>
-      </tr>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-header">Plano <%= plan.id %></h5>
+            <div class="padding-all">
+              <p class="card-text"><%= plan.life_objective.truncate(30) %></p>
+              <%= link_to "Selecionar",
+                          plans_update_selected_plan_path(plan.id),
+                          class: "btn btn-primary" %>
+              <%= link_to "Editar",
+                          edit_plan_path(plan),
+                          class: "btn btn-default" %>
+              <%= link_to "Remover",
+                          plan,
+                          method: :delete,
+                          class: "btn btn-danger",
+                          data: {confirm: "Tem certeza que deseja remover o plano #{plan.id}?"} %>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-success"><%= plan.created_at.strftime("%d/%m/%Y") %></div>
+        </div>
+      </div>
     <% end %>
-    </tbody>
-  </table>
-
+  </div>
   <br>
 
   <%= link_to "Novo plano", new_plan_path, class: "btn btn-primary" %>
 </div>
+

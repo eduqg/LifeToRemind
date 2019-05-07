@@ -1,17 +1,8 @@
 <div class="container">
-  <table class="table table-bordered table-hover">
-    <thead>
-    <tr>
-      <td>Propósito de vida</td>
-      <td>Quem sou eu</td>
-      <td>Por que existo</td>
-      <td>Data</td>
-    </tr>
-    </thead>
-    <tbody>
+  <div class="row">
     <%= render @missions %>
-    </tbody>
-  </table>
-
+  </div>
   <%= link_to "Nova Missão", new_mission_path, class: "btn btn-primary" %>
+
 </div>
+
