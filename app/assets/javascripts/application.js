@@ -13,11 +13,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require theme/jquery
-//= require theme/bootstrap.min
-//= require theme/jquery.singlePageNav.min
-//= require theme/typed
-//= require theme/wow.min
-//= require theme/custom
+//= require theme/jquery.js
+//= require theme/bootstrap.min.js
+//= require theme/jquery.singlePageNav.min.js
+//= require theme/typed.js
+//= require theme/wow.min.js
+//= require theme/custom.js
 //= require login/mainlogin.js
 //= require_tree .
