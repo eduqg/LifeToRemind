@@ -1,4 +1,5 @@
-<table class="table table-borderless">
+<table class="table table-borderless table-hover">
+  <caption class="hidden">Matriz SWOT</caption>
   <thead>
   <tr>
     <th scope="col"></th>
@@ -9,7 +10,7 @@
   <tbody>
   <tr>
     <th scope="row">Fatores Internos</th>
-    <td>
+    <td class="background-blue-light">
       Forças
       <hr/>
       <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "strength", texto_da_acao: "+Força", swot_type: "Força"} %>
@@ -19,7 +20,7 @@
         <%= link_to "X", strength, method: :delete, :class => "btn btn-danger" %>
       <% end %>
     </td>
-    <td>
+    <td class="background-red-light">
       Fraquezas
       <hr/>
       <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "weak", texto_da_acao: "+Fraqueza", swot_type: "Fraqueza"} %>
@@ -32,7 +33,7 @@
   </tr>
   <tr>
     <th scope="row">Fatores Externos</th>
-    <td>
+    <td class="background-green-light">
       Oportunidades
       <hr/>
       <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "opportunity", texto_da_acao: "+Oportunidade", swot_type: "Oportunidade"} %>
@@ -42,7 +43,7 @@
         <%= link_to "X", opportunity, method: :delete, :class => "btn btn-danger" %>
       <% end %>
     </td>
-    <td>
+    <td class="background-orange-light">
       Ameaças
       <hr/>
       <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "threat", texto_da_acao: "+Ameaça", swot_type: "Ameaça"} %>
