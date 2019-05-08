@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "plans/swotedit", to: "plans#swotedit"
   post "swotparts/create_swot_swotpart", to: "swotparts#create_swot_swotpart"
   get "swot", to:"plans#swot"
   get "myplan", to: "plans#myplan"

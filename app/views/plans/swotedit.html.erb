@@ -13,18 +13,24 @@
     <td class="background-blue-light">
       Forças
       <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "strength", texto_da_acao: "+Força", swot_type: "Força"} %>
       <% @strengths.each do |strength| %>
         <div class="card-swot">
           <strong><%= strength.name %></strong>
+          <%= link_to "Editar", edit_swotpart_path(strength), :class => "btn btn-primary" %>
+          <%= link_to "X", strength, method: :delete, :class => "btn btn-danger" %>
         </div>
       <% end %>
     </td>
     <td class="background-red-light">
       Fraquezas
       <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "weak", texto_da_acao: "+Fraqueza", swot_type: "Fraqueza"} %>
       <% @weaks.each do |weak| %>
         <div class="card-swot">
           <strong><%= weak.name %></strong>
+          <%= link_to "Editar", edit_swotpart_path(weak), :class => "btn btn-primary" %>
+          <%= link_to "X", weak, method: :delete, :class => "btn btn-danger" %>
         </div>
       <% end %>
     </td>
@@ -34,18 +40,24 @@
     <td class="background-green-light">
       Oportunidades
       <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "opportunity", texto_da_acao: "+Oportunidade", swot_type: "Oportunidade"} %>
       <% @opportunities.each do |opportunity| %>
         <div class="card-swot">
           <strong><%= opportunity.name %></strong>
+          <%= link_to "Editar", edit_swotpart_path(opportunity), :class => "btn btn-primary" %>
+          <%= link_to "X", opportunity, method: :delete, :class => "btn btn-danger" %>
         </div>
       <% end %>
     </td>
     <td class="background-orange-light">
       Ameaças
       <hr/>
+      <%= render partial: "inputswotpart", locals: {tipo_do_swotpart: "threat", texto_da_acao: "+Ameaça", swot_type: "Ameaça"} %>
       <% @threats.each do |threat| %>
         <div class="card-swot">
           <strong><%= threat.name %></strong>
+          <%= link_to "Editar", edit_swotpart_path(threat), :class => "btn btn-primary" %>
+          <%= link_to "X", threat, method: :delete, :class => "btn btn-danger" %>
         </div>
       <% end %>
     </td>

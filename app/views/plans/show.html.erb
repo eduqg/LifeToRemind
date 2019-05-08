@@ -13,35 +13,3 @@
 
 <%= link_to "Editar", edit_plan_path(@plan), class:"btn btn-btn-primary" %>
 <%= link_to "Voltar", plans_path, class:"btn btn-btn-default" %>
-
-
-<div class="row">
-  <div class="col-sm-8">
-    <div class="form-group">
-      <strong>Selected mission:</strong>
-      <%= @plan.selected_mission %>
-    </div>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-8">
-    <div class="form-group">
-      <strong>Selected vision:</strong>
-      <%= @plan.selected_vision %>
-    </div>
-
-  </div>
-
-</div>
-
-
-<div class="row">
-  <div class="col-sm-8">
-    <div class="form-group">
-      <strong>Critical success factors selected:</strong>
-      <%= @plan.critical_success_factors_selected %>
-    </div>
-  </div>
-</div>

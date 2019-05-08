@@ -27,6 +27,13 @@ class PlansController < ApplicationController
 
   end
 
+  def swotedit
+    @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
+    @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
+    @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
+    @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+  end
+
   # GET /plans/1
   # GET /plans/1.json
   def show

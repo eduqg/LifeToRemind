@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :plan_id %>
-    <%= form.text_field :plan_id %>
+    <%= form.text_field :plan_id, class:"form-control"%>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label "Descrição" %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <br/>
+
+  <%= form.submit "Atualizar", class: "btn btn-primary" %>
+
 <% end %>

@@ -2,11 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card-plan {
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  margin: 1em;
-  padding: 1em;
-  border-radius: 0.8em;
+.card-swot {
+  border: 1px solid rgb(189, 189, 189);
+  margin: 0.7em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-radius: 0.4em;
+  text-align: center;
+  background-color: rgba(105, 105, 105, 0.41);
+  -webkit-text-fill-color: #eeeeee;
 }
 
 .padding-all {

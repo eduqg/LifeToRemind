@@ -1,28 +1,42 @@
 <div class="container">
   <% if current_user.selected_plan %>
+
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-header">
+            <strong>Planejamento Estratégico Pessoal de <%= current_user.name %></strong><br/><br/>
+            Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %></h5>
+          <div class="padding-all">
+            <h3>Objetivo de vida</h3>
+            <%= "#{@current_plan.life_objective}" %>
+            <hr/>
+
+            <h3>Matriz SWOT</h3>
+            <p class="card-text"><%= render template: "plans/swot" %></p>
+            <%= link_to "Editar SWOT", plans_swotedit_path, method: "get", class: "btn btn-default" %>
+            <hr/>
+
+            <h3>Minha Missão</h3>
+            <div class="padding-all">
+              <h5><strong>Propósito de Vida</strong></h5>
+              <%= "#{@my_mission.purpose_of_life}" %>
+              <h5><strong>Quem sou eu</strong></h5>
+              <%= "#{@my_mission.who_am_i}" %>
+              <h5><strong>Porque existo</strong></h5>
+              <%= "#{@my_mission.why_exist}" %>
+            </div>
+            <%= link_to "Alterar Missão", missions_path, method: "get", class: "btn btn-default" %>
+            <hr/>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-default" %>
 
-    <h2>Matriz SWOT</h2>
-    <hr/>
-
-    <%= render template: "plans/swot" %>
-
-    <h3>Objetivo de vida</h3>
-    <hr/>
-    <%= "#{@current_plan.life_objective}" %>
-
-    <h3>Missão</h3>
-    <hr/>
-    <p>Propósito de Vida</p>
-    <%= "#{@my_mission.purpose_of_life}" %>
-    <p>Quem sou eu</p>
-    <%= "#{@my_mission.who_am_i}" %>
-    <p>Porque existo</p>
-    <%= "#{@my_mission.why_exist}" %>
-
-    <%= link_to "Alterar Missão", missions_path, method: "get", class: "btn btn-default" %>
   <% else %>
     <p>Parece que você ainda não criou um planejamento.</p>
     <%= link_to "Crie um novo plano", new_plan_path, method: "get", class: "btn btn-default" %>
-<% end %>
+  <% end %>
 </div>

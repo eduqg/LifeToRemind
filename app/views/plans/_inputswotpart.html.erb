@@ -1,5 +1,6 @@
 <%= form_tag swotparts_create_swot_swotpart_path do %>
   <%= hidden_field_tag :partname, tipo_do_swotpart %>
+
   <div class="input-group mb-3">
     <%= text_field_tag :name, nil, placeholder: "Digite uma #{swot_type}", class: "form-control" %>
     <div class="input-group-append">

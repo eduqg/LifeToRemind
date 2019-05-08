@@ -46,7 +46,7 @@ class SwotpartsController < ApplicationController
       flash[:info] = "Força não pode ser adicionada"
     end
 
-    redirect_to myplan_path
+    redirect_to plans_swotedit_path
   end
 
   # PATCH/PUT /swotparts/1
@@ -54,7 +54,7 @@ class SwotpartsController < ApplicationController
   def update
     respond_to do |format|
       if @swotpart.update(swotpart_params)
-        format.html {redirect_to @swotpart, notice: 'swotpart was successfully updated.'}
+        format.html {redirect_to plans_swotedit_path, notice: 'swotpart was successfully updated.'}
         format.json {render :show, status: :ok, location: @swotpart}
       else
         format.html {render :edit}
@@ -68,7 +68,7 @@ class SwotpartsController < ApplicationController
   def destroy
     @swotpart.destroy
     respond_to do |format|
-      format.html {redirect_to myplan_path, notice: "Força removida"}
+      format.html {redirect_to plans_swotedit_path, notice: "Força removida"}
       format.json {head :no_content}
     end
   end
