@@ -1,25 +1,28 @@
 <div class="container">
+  <% if current_user.selected_plan %>
+    <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-default" %>
 
-  <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-default" %>
+    <h2>Matriz SWOT</h2>
+    <hr/>
 
-  <h2>Matriz SWOT</h2>
-  <hr/>
+    <%= render template: "plans/swot" %>
 
-  <%= render template: "plans/swot" %>
+    <h3>Objetivo de vida</h3>
+    <hr/>
+    <%= "#{@current_plan.life_objective}" %>
 
-  <h3>Objetivo de vida</h3>
-  <hr/>
-  <%= "#{@current_plan.life_objective}" %>
+    <h3>Missão</h3>
+    <hr/>
+    <p>Propósito de Vida</p>
+    <%= "#{@my_mission.purpose_of_life}" %>
+    <p>Quem sou eu</p>
+    <%= "#{@my_mission.who_am_i}" %>
+    <p>Porque existo</p>
+    <%= "#{@my_mission.why_exist}" %>
 
-  <h3>Missão</h3>
-  <hr/>
-  <p>Propósito de Vida</p>
-  <%= "#{@my_mission.purpose_of_life}" %>
-  <p>Quem sou eu</p>
-  <%= "#{@my_mission.who_am_i}" %>
-  <p>Porque existo</p>
-  <%= "#{@my_mission.why_exist}" %>
-
-  <%= link_to "Alterar Missão", plans_path, method: "get", class: "btn btn-default" %>
-
+    <%= link_to "Alterar Missão", plans_path, method: "get", class: "btn btn-default" %>
+  <% else %>
+    <p>Parece que você ainda não criou um planejamento.</p>
+    <%= link_to "Crie um novo plano", new_plan_path, method: "get", class: "btn btn-default" %>
+<% end %>
 </div>

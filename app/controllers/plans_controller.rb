@@ -17,7 +17,6 @@ class PlansController < ApplicationController
       @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
       @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
     else
-      flash[:info] = "É necessário selecionar um plano primeiro"
       redirect_to plans_path
     end
 
