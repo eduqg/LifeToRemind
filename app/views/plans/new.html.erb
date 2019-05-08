@@ -1,3 +1,22 @@
-<%= render 'form', plan: @plan %>
+<div class="container">
+  <p>
+  <div class="card">
+    <div class="card-footer bg-transparent border-success" data-toggle="collapse" data-target="#minha-missao" role="button" aria-expanded="true" aria-controls="minha-missao">Exemplo</div>
+  </div>
+  </p>
+  <div class="collapse" id="minha-missao" aria-expanded="false" aria-controls="minha-missao">
+    <div class="card card-body padding-all">
+      <h5 class="card-title">Objetivo de Vida</h5>
+      <p class="card-text">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+        squid. Nihil anim keffiyeh
+        helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
+    </div>
+  </div>
 
-<%= link_to 'Voltar', plans_path, class:"btn btn-default" %>
+
+  <%= render 'form', plan: @plan %>
+
+  <%= link_to 'Voltar', plans_path, class: "btn btn-default" %>
+
+</div>
+

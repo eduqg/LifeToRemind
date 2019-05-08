@@ -16,32 +16,11 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= form.label :selected_mission %>
-        <%= form.number_field :selected_mission, class: "form-control" %>
-      </div>
-    </div>
-  </div>
+  <%= form.hidden_field :selected_mission, value: nil %>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= form.label :selected_vision %>
-        <%= form.number_field :selected_vision, class: "form-control" %>
-      </div>
-    </div>
-  </div>
+  <%= form.hidden_field :selected_vision, value: nil %>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= form.label :critical_success_factors_selected %>
-        <%= form.number_field :critical_success_factors_selected, class: "form-control" %>
-      </div>
-    </div>
-  </div>
+  <%= form.hidden_field :critical_success_factors_selected, value: nil %>
 
   <%= form.submit "Criar", class: "btn btn-primary" %>
 <% end %>

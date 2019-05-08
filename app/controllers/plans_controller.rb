@@ -10,8 +10,13 @@ class PlansController < ApplicationController
 
   def myplan
     if current_plan
-      @current_plan = Plan.find(id = current_user.selected_plan)
-      @my_mission = Mission.find(id = current_plan.selected_mission)
+      @current_plan = Plan.find(current_user.selected_plan)
+      if current_plan.selected_mission
+        @my_mission = Mission.find(current_plan.selected_mission)
+      else
+        flash[:notice] = "Crie e selecione uma missão"
+        redirect_to missions_path
+      end
       @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
       @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
       @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
