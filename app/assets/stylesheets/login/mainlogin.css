@@ -7,37 +7,37 @@
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('/assets/Poppins-Regular.ttf');
+  src: assets_url('/assets/Poppins-Regular.ttf');
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('/assets/Poppins-Bold.ttf');
+  src: assets_url('/assets/Poppins-Bold.ttf');
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url('/assets/Poppins-Medium.ttf');
+  src: assets_url('/assets/Poppins-Medium.ttf');
 }
 
 @font-face {
   font-family: Raleway-Regular;
-  src: url('/assets/Raleway-Regular.ttf');
+  src: assets_url('/assets/Raleway-Regular.ttf');
 }
 
 @font-face {
   font-family: Raleway-Black;
-  src: url('/assets/Raleway-Black.ttf');
+  src: assets_url('/assets/Raleway-Black.ttf');
 }
 
 @font-face {
   font-family: Raleway-SemiBold;
-  src: url('/assets/Raleway-SemiBold.ttf');
+  src: assets_url('/assets/Raleway-SemiBold.ttf');
 }
 
 @font-face {
   font-family: Raleway-Bold;
-  src: url('/assets/Raleway-Bold.ttf');
+  src: assets_url('/assets/Raleway-Bold.ttf');
 }
 
 
