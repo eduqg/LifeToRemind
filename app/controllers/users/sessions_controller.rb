@@ -6,6 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     @disable_footer = true
+    @disable_nav = true
     super
   end
 

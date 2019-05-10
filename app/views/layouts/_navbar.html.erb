@@ -11,6 +11,8 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "INÍCIO", inicio_path, method: "get" %></li>
+
         <li><%= link_to "MEU PLANEJAMENTO", myplan_path, method: "get" %></li>
 
         <% if current_user %>

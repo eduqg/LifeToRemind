@@ -34,6 +34,10 @@ class PlansController < ApplicationController
     @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
   end
 
+  def inicio
+
+  end
+
   # GET /plans/1
   # GET /plans/1.json
   def show

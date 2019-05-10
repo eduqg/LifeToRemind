@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @disable_footer = true
+    @disable_nav = true
     super
   end
 
