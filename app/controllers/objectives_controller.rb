@@ -19,11 +19,13 @@ class ObjectivesController < ApplicationController
 
   # GET /objectives/new
   def new
+    @spheres = Sphere.all
     @objective = Objective.new
   end
 
   # GET /objectives/1/edit
   def edit
+    @spheres = Sphere.all
   end
 
   # POST /objectives
@@ -76,6 +78,6 @@ class ObjectivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def objective_params
-      params.require(:objective).permit(:name, :concluded, :plan_id)
+      params.require(:objective).permit(:name, :concluded, :plan_id, :sphere_id)
     end
 end

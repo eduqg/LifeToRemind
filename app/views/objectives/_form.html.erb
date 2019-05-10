@@ -20,6 +20,15 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= form.label "Âmbito" %>
+        <%= form.collection_select :sphere_id, @spheres, :id, :name, {}, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
   <%= form.submit "Criar", class:"btn btn-primary" %>
 
 <% end %>
