@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :objectives
   get "inicio", to:"plans#inicio"
   get "plans/swotedit", to: "plans#swotedit"
   post "swotparts/create_swot_swotpart", to: "swotparts#create_swot_swotpart"
