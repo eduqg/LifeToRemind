@@ -3,6 +3,16 @@ Awesome Template
 http://www.templatemo.com/preview/templatemo_450_awesome
 */
 
+@font-face {
+    font-family: Poppins-Regular;
+    src: assets_url('/assets/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: fontawesome-webfont;
+    src: assets_url('/assets/fontawesome-webfont.ttf');
+}
+
 body
 	{
  		background: #fcfcfc;
@@ -204,7 +214,7 @@ header .social-icon li a
 /* start home */
 #home
 	{
-		background: url('/assets/home-bg.jpg') no-repeat;
+		background: image-url('home-bg.jpg') no-repeat;
 		background-size: cover;
 		padding-top: 160px;
 		padding-bottom: 100px;
