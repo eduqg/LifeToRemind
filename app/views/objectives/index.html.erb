@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h3>Objetivos Estratégicos</h3>
 
-<h1>Objectives</h1>
+  <% @objectives.each do |objective| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Concluded</th>
-      <th>Plan</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @objectives.each do |objective| %>
-      <tr>
-        <td><%= objective.name %></td>
-        <td><%= objective.concluded %></td>
-        <td><%= objective.plan %></td>
-        <td><%= link_to 'Show', objective %></td>
-        <td><%= link_to 'Edit', edit_objective_path(objective) %></td>
-        <td><%= link_to 'Destroy', objective, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Objective', new_objective_path %>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-header">Objetivo Estratégico</h5>
+          <div class="padding-all">
+            <h5 class="card-title"><%= objective.name %></h5>
+            <hr/>
+            <%= link_to "Editar",
+                        edit_objective_path(objective),
+                        class: "btn btn-default" %>
+            <%= link_to "Remover", objective,
+                        method: :delete,
+                        class: "btn btn-danger",
+                        data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{objective.name}"} %>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-success"><%= objective.created_at.strftime("%d/%m/%Y") %></div>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to "Criar Objetivo", new_objective_path, class: "btn btn-primary" %>
+</div>

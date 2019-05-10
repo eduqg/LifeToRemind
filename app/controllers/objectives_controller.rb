@@ -4,7 +4,12 @@ class ObjectivesController < ApplicationController
   # GET /objectives
   # GET /objectives.json
   def index
-    @objectives = Objective.all
+    if current_plan
+      @objectives = current_plan.objectives
+    else
+      flash[:info] = "É necessário selecionar um plano primeiro"
+      redirect_to plans_path
+    end
   end
 
   # GET /objectives/1
@@ -25,10 +30,12 @@ class ObjectivesController < ApplicationController
   # POST /objectives.json
   def create
     @objective = Objective.new(objective_params)
+    @objective.concluded = false
+    @objective.plan_id = current_plan.id
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to @objective, notice: 'Objective was successfully created.' }
+        format.html { redirect_to objectives_path, notice: 'Objective was successfully created.' }
         format.json { render :show, status: :created, location: @objective }
       else
         format.html { render :new }
@@ -42,7 +49,7 @@ class ObjectivesController < ApplicationController
   def update
     respond_to do |format|
       if @objective.update(objective_params)
-        format.html { redirect_to @objective, notice: 'Objective was successfully updated.' }
+        format.html { redirect_to objectives_path, notice: 'Objective was successfully updated.' }
         format.json { render :show, status: :ok, location: @objective }
       else
         format.html { render :edit }

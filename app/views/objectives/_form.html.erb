@@ -11,22 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Nome do seu objetivo estratégico" %>
+        <%= form.text_field :name, class:"form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :concluded %>
-    <%= form.check_box :concluded %>
-  </div>
+  <%= form.submit "Criar", class:"btn btn-primary" %>
 
-  <div class="field">
-    <%= form.label :plan_id %>
-    <%= form.text_field :plan_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
