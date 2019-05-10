@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spheres
   resources :objectives
   get "inicio", to:"plans#inicio"
   get "plans/swotedit", to: "plans#swotedit"

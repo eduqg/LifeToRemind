@@ -1,0 +1,22 @@
+<%= form_with(model: sphere, local: true) do |form| %>
+  <% if sphere.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sphere.errors.count, "error") %> prohibited this sphere from being saved:</h2>
+
+      <ul>
+      <% sphere.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
