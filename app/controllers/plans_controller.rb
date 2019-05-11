@@ -21,6 +21,8 @@ class PlansController < ApplicationController
       @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
       @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
       @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+
+      @objectives = current_plan.objectives
     else
       redirect_to plans_path
     end

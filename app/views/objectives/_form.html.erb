@@ -4,9 +4,9 @@
       <h2><%= pluralize(objective.errors.count, "error") %> prohibited this objective from being saved:</h2>
 
       <ul>
-      <% objective.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% objective.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <div class="col-sm-8">
       <div class="form-group">
         <%= form.label "Nome do seu objetivo estratégico" %>
-        <%= form.text_field :name, class:"form-control" %>
+        <%= form.text_field :name, class: "form-control" %>
       </div>
     </div>
   </div>
@@ -24,11 +24,13 @@
     <div class="col-sm-3">
       <div class="form-group">
         <%= form.label "Âmbito" %>
-        <%= form.collection_select :sphere_id, @spheres, :id, :name, {}, class:"form-control" %>
+        <%= form.collection_select :sphere_id, @spheres, :id, :name, {}, class: "form-control" %>
+        <%= link_to "Criar Âmbito", new_sphere_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
 
-  <%= form.submit "Criar", class:"btn btn-primary" %>
+  <%= form.submit "Criar Objetivo Estratégico", class: "btn btn-primary" %>
 
 <% end %>
+

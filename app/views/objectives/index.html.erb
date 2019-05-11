@@ -1,34 +1,25 @@
 <div class="container">
-  <h3>Objetivos Estratégicos</h3>
-
-  <div class="row">
-
     <% @objectives.each do |objective| %>
+    <div class="row">
 
-      <div class="col-sm-6">
+      <div class="col-border m-r-100">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-header"><strong>Objetivo Estratégico</strong></h5>
+            <h5 class="card-header"><strong>Objetivo Estratégico <%= objective.sphere.name %></strong></h5>
 
-            <h5 class="card-header">Âmbito <%= objective.sphere.name %></h5>
             <div class="padding-all">
               <h5 class="card-title"><%= objective.name %></h5>
               <hr/>
-              <%= link_to "Editar",
-                          edit_objective_path(objective),
-                          class: "btn btn-default" %>
-              <%= link_to "Remover", objective,
-                          method: :delete,
-                          class: "btn btn-danger",
-                          data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{objective.name}"} %>
-            </div>
+              * Progresso
+              </div>
           </div>
           <div class="card-footer bg-transparent border-success"><%= objective.created_at.strftime("%d/%m/%Y") %></div>
         </div>
       </div>
-    <% end %>
-  </div>
+      </div>
+
+  <% end %>
   <div class="row">
-    <%= link_to "Criar Objetivo", new_objective_path, class: "btn btn-primary" %>
+    <%= link_to "Editar Objetivos Estratégicos", editobjectives_path, class: "btn btn-primary" %>
   </div>
 </div>

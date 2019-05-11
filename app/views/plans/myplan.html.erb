@@ -14,7 +14,7 @@
 
             <h3>Matriz SWOT</h3>
             <p class="card-text"><%= render template: "plans/swot" %></p>
-            <%= link_to "Editar SWOT", plans_swotedit_path, method: "get", class: "btn btn-default" %>
+            <%= link_to "Editar SWOT", plans_swotedit_path, method: "get", class: "btn btn-primary" %>
             <hr/>
 
             <h3>Minha Missão</h3>
@@ -26,14 +26,20 @@
               <h5><strong>Porque existo</strong></h5>
               <%= "#{@my_mission.why_exist}" %>
             </div>
-            <%= link_to "Alterar Missão", missions_path, method: "get", class: "btn btn-default" %>
+            <%= link_to "Editar Missão", missions_path, method: "get", class: "btn btn-primary" %>
             <hr/>
+
+            <h3>Objetivos Estratégicos</h3>
+            <%= render template: "objectives/index" %>
+
+            <hr/>
+
           </div>
         </div>
       </div>
     </div>
 
-    <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-default" %>
+    <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-primary" %>
 
   <% else %>
     <p>Parece que você ainda não criou um planejamento.</p>

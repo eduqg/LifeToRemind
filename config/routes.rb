@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :spheres
   resources :objectives
+
+  get "editobjectives", to: "objectives#editobjectives"
   get "inicio", to:"plans#inicio"
   get "plans/swotedit", to: "plans#swotedit"
   post "swotparts/create_swot_swotpart", to: "swotparts#create_swot_swotpart"
