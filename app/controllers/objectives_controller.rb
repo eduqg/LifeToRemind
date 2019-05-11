@@ -19,8 +19,8 @@ class ObjectivesController < ApplicationController
 
   # GET /objectives/new
   def new
-    @spheres = Sphere.all
     @objective = Objective.new
+    @spheres = Sphere.all
   end
 
   # GET /objectives/1/edit

@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @sphere.name %>
 </p>
 
-<%= link_to 'Edit', edit_sphere_path(@sphere) %> |
-<%= link_to 'Back', spheres_path %>
+<%= link_to "Editar", edit_sphere_path(@sphere), class:"btn btn-primary" %> |
+<%= link_to "Voltar", spheres_path, class:"btn btn-default"  %>

@@ -1,22 +1,19 @@
+<% @sphere.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+
 <%= form_with(model: sphere, local: true) do |form| %>
-  <% if sphere.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sphere.errors.count, "error") %> prohibited this sphere from being saved:</h2>
 
-      <ul>
-      <% sphere.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Nome" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Criar", class: "btn btn-primary" %>
 <% end %>
