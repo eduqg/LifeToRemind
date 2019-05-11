@@ -197,7 +197,7 @@ header .social-icon li a
 	}
 
 .navbar-default .navbar-nav > li > a.current { 
-	color: #28A7E9; 
+	color: #28A7E9;
 }
 .templatemo-nav {
 	border-radius: 0;	
@@ -212,6 +212,7 @@ header .social-icon li a
 /* end navigation */
 
 /* start home */
+
 #home
 	{
 		background: image-url('home-bg.jpg') no-repeat;
@@ -225,10 +226,11 @@ header .social-icon li a
 		font-weight: 300;
 		font-size: 70px;
 		padding-bottom: 10px;
+        text-shadow: 0 0 1  px #fff;
 	}
 #home h1 span
 	{
-		color: #28a7e9;
+		color: #3794FC;
 		font-weight: bold;
 	}
 #home .btn

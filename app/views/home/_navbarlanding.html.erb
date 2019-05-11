@@ -7,7 +7,9 @@
         <span class="icon icon-bar"></span>
         <span class="icon icon-bar"></span>
       </button>
-      <%= link_to "LTR", root_path, :class => "navbar-brand", method: "get" %>
+      <%= link_to root_path, method: "get" do %>
+        <%= image_tag "/assets/ltr.svg", class: "resize-navbrand p-t-10" %>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
