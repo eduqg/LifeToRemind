@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_190109) do
+ActiveRecord::Schema.define(version: 2019_05_11_170741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
+    t.float "progress"
+    t.bigint "objective_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["objective_id"], name: "index_goals_on_objective_id"
+  end
 
   create_table "missions", force: :cascade do |t|
     t.string "purpose_of_life"
@@ -74,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_190109) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "goals", "objectives"
   add_foreign_key "objectives", "plans"
   add_foreign_key "plans", "users"
   add_foreign_key "swotparts", "plans"

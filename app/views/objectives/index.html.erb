@@ -10,8 +10,8 @@
             <div class="padding-all">
               <h5 class="card-title"><%= objective.name %></h5>
               <hr/>
-              * Progresso
-              </div>
+              <%= render partial: "goals/goal", :collection => objective.goals %>
+            </div>
           </div>
           <div class="card-footer bg-transparent border-success"><%= objective.created_at.strftime("%d/%m/%Y") %></div>
         </div>

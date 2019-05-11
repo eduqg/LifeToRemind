@@ -10,8 +10,14 @@
             <div class="padding-all">
               <h5 class="card-title"><%= objective.name %></h5>
               <hr/>
+
+              <h5 class="card-title"><strong>Metas</strong></h5>
+              <hr/>
+
+              <%= render partial: "goals/editgoal", :collection => objective.goals %>
+
               <%= link_to "Adicionar Meta",
-                          edit_objective_path(objective),
+                          new_goal_path(objective_id: objective.id),
                           class: "btn btn-primary" %>
               <%= link_to "Editar",
                           edit_objective_path(objective),
