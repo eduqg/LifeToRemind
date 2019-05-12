@@ -30,13 +30,17 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.progress = 0
 
+
+
     respond_to do |format|
       if @goal.save
         format.html { redirect_to editobjectives_path, notice: "Meta criada com sucesso" }
         format.json { render :show, status: :created, location: @goal }
       else
-        format.html { render :new }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
+        # TODO flash message with error
+        format.html { redirect_to action: "new", objective_id: params[:goal][:objective_id] }
+        # format.html { render "goals/new", :locals => { :objective_id => params[:goal][:objective_id] } }
+        # format.json { render json: @goal.errors, status: :unprocessable_entity }
       end
     end
   end
