@@ -5,4 +5,5 @@ class Plan < ApplicationRecord
   has_many :objectives, dependent: :destroy
 
   validates :life_objective, presence: true
+  validates :life_objective, length: {minimum: 4, maximum: 30}
 end
