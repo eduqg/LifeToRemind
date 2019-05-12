@@ -19,13 +19,13 @@ class ObjectivesController < ApplicationController
 
   # GET /objectives/new
   def new
+    @spheres = current_user.spheres
     @objective = Objective.new
-    @spheres = Sphere.all
   end
 
   # GET /objectives/1/edit
   def edit
-    @spheres = Sphere.all
+    @spheres = current_user.spheres
   end
 
   # POST /objectives
@@ -37,10 +37,12 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to objectives_path, notice: 'Objective was successfully created.' }
+        format.html { redirect_to objectives_path, notice: "Objetivo foi salvo com sucesso" }
         format.json { render :show, status: :created, location: @objective }
       else
-        format.html { render :new }
+        # Without @spheres, will render new_objective without spheres on collection_field
+        @spheres = current_user.spheres
+        format.html { render :new, :collection => @spheres }
         format.json { render json: @objective.errors, status: :unprocessable_entity }
       end
     end
@@ -51,7 +53,7 @@ class ObjectivesController < ApplicationController
   def update
     respond_to do |format|
       if @objective.update(objective_params)
-        format.html { redirect_to objectives_path, notice: 'Objective was successfully updated.' }
+        format.html { redirect_to objectives_path, notice: "Objetivo foi atualizado com sucesso" }
         format.json { render :show, status: :ok, location: @objective }
       else
         format.html { render :edit }
@@ -69,7 +71,7 @@ class ObjectivesController < ApplicationController
   def destroy
     @objective.destroy
     respond_to do |format|
-      format.html { redirect_to objectives_url, notice: 'Objective was successfully destroyed.' }
+      format.html { redirect_to objectives_url, notice: "Objetivo Estratégico foi excluído" }
       format.json { head :no_content }
     end
   end

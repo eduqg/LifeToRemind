@@ -62,7 +62,7 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to plans_path, notice: "Plano criado com sucesso!" }
+        format.html { redirect_to plans_path, notice: "Plano criado com sucesso" }
         format.json { render :show, status: :created, location: @plan }
       else
         format.html { render :new }
@@ -76,7 +76,7 @@ class PlansController < ApplicationController
   def update
     respond_to do |format|
       if @plan.update(plan_params)
-        format.html { redirect_to plans_path, notice: "Plano atualizado com sucesso!"}
+        format.html { redirect_to plans_path, notice: "Plano atualizado com sucesso"}
         format.json { render :show, status: :ok, location: @plan }
       else
         format.html { render :edit }
@@ -88,7 +88,7 @@ class PlansController < ApplicationController
   def update_selected_plan
     if (user_to_update = current_user)
       user_to_update.update_attribute(:selected_plan, params[:format])
-      flash[:notice] = "Plano selecionada foi atualizada com sucesso!"
+      flash[:notice] = "Plano selecionada foi atualizada com sucesso"
       redirect_back(fallback_location: plans_path)
     else
       flash[:notice] = "Plano selecionada não pode ser atualizado"
@@ -100,7 +100,7 @@ class PlansController < ApplicationController
   def destroy
     @plan.destroy
     respond_to do |format|
-      flash[:info] = "Plano excluido"
+      flash[:info] = "Plano foi excluído"
       format.html { redirect_to plans_url }
       format.json { head :no_content }
     end

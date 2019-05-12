@@ -28,7 +28,7 @@ class SwotpartsController < ApplicationController
 
     respond_to do |format|
       if @swotpart.save
-        format.html {redirect_to @swotpart, notice: 'swotpart was successfully created.'}
+        format.html {redirect_to @swotpart, notice: "Característica da SWOT criada com sucesso"}
         format.json {render :show, status: :created, location: @swotpart}
       else
         format.html {render :new}
@@ -54,7 +54,7 @@ class SwotpartsController < ApplicationController
   def update
     respond_to do |format|
       if @swotpart.update(swotpart_params)
-        format.html {redirect_to plans_swotedit_path, notice: 'swotpart was successfully updated.'}
+        format.html {redirect_to plans_swotedit_path, notice: "Característica da SWOT atualizada com sucesso"}
         format.json {render :show, status: :ok, location: @swotpart}
       else
         format.html {render :edit}
