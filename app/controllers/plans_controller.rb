@@ -114,6 +114,6 @@ class PlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:life_objective, :selected_mission, :selected_vision, :critical_success_factors_selected, :user_id)
+      params.require(:plan).permit(:name, :selected_mission, :selected_vision, :critical_success_factors_selected, :user_id)
     end
 end

@@ -7,7 +7,7 @@
           <h5 class="card-header">
             <strong>Planejamento Estratégico Pessoal de <%= current_user.name %></strong><br/><br/>
             Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %> <br/><br/>
-            Nome do Plano: <%= "#{@current_plan.life_objective}" %>
+            Nome do Plano: <%= "#{@current_plan.name}" %>
           </h5>
           <div class="padding-all">
             <h3>Matriz SWOT <%= link_to "", plans_swotedit_path, method: "get", class: "btn btn-primary lnr lnr-pencil" %></h3>

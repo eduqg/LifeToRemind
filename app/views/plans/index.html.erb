@@ -6,7 +6,7 @@
           <div class="card-body">
             <h5 class="card-header">Plano <%= plan.id %></h5>
             <div class="padding-all">
-              <p class="card-text"><%= plan.life_objective.truncate(30) %></p>
+              <p class="card-text"><%= plan.name.truncate(30) %></p>
               <%= link_to "Selecionar",
                           plans_update_selected_plan_path(plan.id),
                           class: "btn btn-primary" %>

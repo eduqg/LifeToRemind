@@ -4,6 +4,6 @@ class Plan < ApplicationRecord
   has_many :swotparts, dependent: :destroy
   has_many :objectives, dependent: :destroy
 
-  validates :life_objective, presence: true
-  validates :life_objective, length: {minimum: 4, maximum: 30}
+  validates :name, presence: true
+  validates :name, length: {minimum: 4, maximum: 30}
 end
