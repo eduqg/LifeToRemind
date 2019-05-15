@@ -28,6 +28,11 @@ class ActivitiesController < ApplicationController
   def edit
   end
 
+  def checked
+    Activity.where(id: params[:activity_ids]).update_all(checked: true)
+    redirect_to editobjectives_path
+  end
+
   # POST /activities
   # POST /activities.json
   def create

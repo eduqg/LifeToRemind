@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :activities
+  resources :activities do
+    collection do
+      put :checked
+    end
+  end
   resources :goals
   resources :spheres
   resources :objectives

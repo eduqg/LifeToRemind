@@ -2,30 +2,37 @@
 
 <h1>Activities</h1>
 
-<table>
-  <thead>
+<%= form_tag checked_activities_path, method: :put do %>
+
+  <table>
+    <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Checked</th>
       <th>Goal</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @activities.each do |activity| %>
       <tr>
+        <td><%= check_box_tag "activity_ids[]", activity.id %></td>
         <td><%= activity.title %></td>
         <td><%= activity.checked %></td>
         <td><%= activity.goal.name %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
+  <%= submit_tag "Marcar como feito" %>
+
+<% end %>
 <br>
 
 <%= link_to 'New Activity', new_activity_path(goal_id: params[:goal_id]) %>
