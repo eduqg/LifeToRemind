@@ -20,4 +20,6 @@
 //= require theme/wow.min.js
 //= require theme/custom.js
 //= require login/mainlogin.js
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .

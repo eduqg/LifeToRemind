@@ -1,3 +1,5 @@
 <div class="container">
   <h3>Início</h3>
 </div>
+
+<%= pie_chart [["Forças", @strengths.count], ["Fraquezas",  @weaks.count], ["Oportunidades",  @opportunities.count], ["Ameaças", @threats.count ]] %>

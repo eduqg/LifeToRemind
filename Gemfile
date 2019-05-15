@@ -16,6 +16,8 @@ gem 'jquery-rails'
 
 gem 'popper', '~> 0.5.0'
 
+gem 'chartkick'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
