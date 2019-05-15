@@ -1,0 +1,30 @@
+<h3>Editar multiplas atividades</h3>
+
+<%= form_tag update_multiple_activities_path, method: :put do %>
+  <% @activities.each do |activity| %>
+    <% p "555555555555" %>
+    <% activity %>
+    <%= fields_for "activities[]", activity do |form| %>
+      <% activity.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
+      <%= hidden_field_tag "activity_ids[]","#{activity.id}" %>
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+
+      <div class="field">
+        <%= form.label :checked %>
+        <%= form.check_box :checked %>
+      </div>
+
+      <%= form.hidden_field :goal_id, value: activity.goal_id %>
+
+    <% end %>
+    <hr/>
+  <% end %>
+  <%= submit_tag "Atualizar" %>
+<% end %>

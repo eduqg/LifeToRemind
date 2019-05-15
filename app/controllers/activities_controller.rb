@@ -29,7 +29,13 @@ class ActivitiesController < ApplicationController
   end
 
   def checked
+    Activity.where.not(id: params[:activity_ids]).update_all(checked: false)
     Activity.where(id: params[:activity_ids]).update_all(checked: true)
+    redirect_to editobjectives_path
+  end
+
+  def uncheck
+    Activity.where(:checkbox => true).update_all(:checkbox => false)
     redirect_to editobjectives_path
   end
 
