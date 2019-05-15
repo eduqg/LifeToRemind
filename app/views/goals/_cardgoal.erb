@@ -3,12 +3,12 @@
     <div class="card">
       <div class="card-body">
         <div class="padding-all">
-          <h5 class="card-title">Nome da meta: <%= cardgoal.name %> | <%= cardgoal.progress %>% Concluído
-            <%= link_to "Atividades", activities_path(goal_id: cardgoal.id), class: "btn btn-primary" %>
-            <%= link_to "+ Atividade", new_activity_path(goal_id: cardgoal.id), class: "btn btn-success" %>
-            <%= link_to "Editar", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class: "btn btn-default" %>
-            <%= link_to "Remover", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class: "btn btn-danger" %>
-          </h5>
+          <h4 class="card-header">Meta: <%= cardgoal.name %>
+            <%= link_to " Editar", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class: "lnr lnr-pencil btn btn-default" %>
+            <%= link_to " Remover", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class: "lnr lnr-circle-minus btn btn-danger" %>
+
+          </h4>
+          <h5 class="card-title"><%= cardgoal.progress %>% Concluído</h5>
           <h5>Atividades a completar</h5>
           <hr/>
           <% cardgoal.activities.each do |activity| %>
@@ -16,7 +16,10 @@
               <p><%= activity.title %></p>
             <% end %>
           <% end %>
-
+          <h5 class="card-title">Nome da meta: <%= cardgoal.name %> | <%= cardgoal.progress %>% Concluído
+            <%= link_to " Atividade", new_activity_path(goal_id: cardgoal.id), class: "lnr lnr-plus-circle btn btn-primary" %>
+            <%= link_to " Ver atividades", activities_path(goal_id: cardgoal.id), class: "lnr lnr-list btn btn-success" %>
+          </h5>
         </div>
       </div>
     </div>
