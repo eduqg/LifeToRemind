@@ -14,7 +14,7 @@
               <h5 class="card-title"><strong>Metas</strong></h5>
               <hr/>
 
-              <%= render partial: "goals/editgoal", :collection => objective.goals %>
+              <%= render partial: "goals/cardgoal", :collection => objective.goals %>
 
               <%= link_to "Adicionar Meta",
                           new_goal_path(objective_id: objective.id),

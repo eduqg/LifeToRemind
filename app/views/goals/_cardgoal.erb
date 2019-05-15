@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-border">
+    <div class="card">
+      <div class="card-body">
+        <div class="padding-all">
+          <h5 class="card-title">Nome da meta: <%= cardgoal.name %> | <%= cardgoal.progress %>% Concluído
+            <%= link_to "Editar", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class:"btn btn-default" %>
+            <%= link_to "Remover", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class:"btn btn-danger" %>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
