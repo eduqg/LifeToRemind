@@ -4,6 +4,8 @@
       <div class="card-body">
         <div class="padding-all">
           <h5 class="card-title">Nome da meta: <%= cardgoal.name %> | <%= cardgoal.progress %>% Concluído
+            <%= link_to "Atividades", activities_path(goal_id: cardgoal.id), class:"btn btn-primary" %>
+            <%= link_to "+ Atividade", new_activity_path(goal_id: cardgoal.id), class:"btn btn-success" %>
             <%= link_to "Editar", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class:"btn btn-default" %>
             <%= link_to "Remover", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class:"btn btn-danger" %>
           </h5>
