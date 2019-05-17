@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <% if @plans.empty? %>
+      <%= render "plans/welcome" %>
+    <% end %>
     <% @plans.each do |plan| %>
       <div class="col-sm-6">
         <div class="card">
