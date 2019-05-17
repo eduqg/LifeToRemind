@@ -21,6 +21,10 @@ body {
   overflow-x: hidden; /* prevent horizontal scrollbar from appearing */
 }
 
+.color-white {
+  color: #ffffff;
+}
+
 a {
   color: #47C6F8;
 }
@@ -330,11 +334,11 @@ header .social-icon li a {
 }
 
 #service .col-md-4:hover {
-  background: #505050;
+  background: #1C4C63;
 }
 
 #service .active {
-  background: #505050;
+  background: #28a7e9;
   padding: 40px;
 }
 
@@ -350,7 +354,7 @@ header .social-icon li a {
 }
 
 #service h4 {
-  color: #28a7e9;
+  color: #fff;
   font-weight: 600;
   padding-top: 10px;
   padding-bottom: 14px;
@@ -417,12 +421,12 @@ header .social-icon li a {
 
 /* start contact */
 #contact {
-  background: #202020;
+  background: rgb(28, 76, 99);
 }
 
 #contact .form-control {
   background: transparent;
-  border: 1px solid #28a7e9;
+  border: 1px solid rgba(242, 242, 242, 0.91);
   border-radius: 2px;
   box-shadow: none;
   color: #fff;
@@ -432,6 +436,7 @@ header .social-icon li a {
 
 #contact label {
   font-weight: 500;
+  color: rgba(242, 242, 242, 0.91);
 }
 
 #contact input {

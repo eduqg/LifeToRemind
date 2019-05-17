@@ -18,6 +18,8 @@
         <li><a href="#about">SOBRE</a></li>
         <li><a href="#service">SERVIÇOS</a></li>
         </li>
+        <li><%= link_to "STATUS", inicio_path, method: "get" %></li>
+
         <li><%= link_to "MEU PLANEJAMENTO", myplan_path, method: "get" %></li>
         <% if current_user %>
           <li><%= link_to "Olá #{current_user.name}", edit_user_registration_path, method: "get" %></li>
