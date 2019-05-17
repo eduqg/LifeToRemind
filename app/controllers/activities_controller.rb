@@ -43,6 +43,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    @activity.checked = false
 
     respond_to do |format|
       if @activity.save

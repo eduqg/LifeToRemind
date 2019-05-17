@@ -4,7 +4,7 @@ class SpheresController < ApplicationController
   # GET /spheres
   # GET /spheres.json
   def index
-    @spheres = Sphere.all
+    @spheres = current_user.spheres
   end
 
   # GET /spheres/1
