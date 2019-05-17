@@ -1,24 +1,57 @@
-# README
+# LifeToRemind
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto LifeToRemind.
 
-Things you may want to cover:
+## Ferramentas e Ambiente
 
-* Ruby version
+* Ubuntu 16.04.5 LTS 64-bit
+* RVM 1.29.4
+* Ruby 2.5.1p57
+* Rails 5.2.1
+* MySQL 5.7.23-0ubuntu0.16.04.1
 
-* System dependencies
+## Instalação e Execução
 
-* Configuration
+Em um terminal, clone o repositório.
 
-* Database creation
+```console
+$ git clone https://github.com/eduqg/ltr
+```
 
-* Database initialization
+Abra a pasta do projeto.
+```console
+$ cd ltr
+```
 
-* How to run the test suite
+[Instale o Ruby Version Manager (RVM)](https://github.com/rvm/ubuntu_rvm) para a configuração da aplicação.
 
-* Services (job queues, cache servers, search engines, etc.)
+Execute os comandos para configurar a versão correta para o projeto.
 
-* Deployment instructions
+```console
+$ rvm install 2.5
+$ gem install rails -v 5.2.0
+$ bundle install
+```
 
-* ...
+[Instale o Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres) para o banco de dados da aplicação.
+
+Faça as migrações necessárias.
+
+```console
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed
+```
+
+Execute o projeto.
+
+```console
+$ rails s
+```
+
+Abra o navegador em [localhost:3000](http://localhost:3000)
+
+Para executar os testes da aplicação.
+```console
+$ rake spec
+```
