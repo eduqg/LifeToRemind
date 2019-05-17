@@ -4,19 +4,19 @@ http://www.templatemo.com/preview/templatemo_450_awesome
 */
 
 @font-face {
-  font-family: Poppins-Regular;
-  src: assets_url('/assets/Poppins-Regular.ttf');
+  font-family: Raleway-Regular;
+  src: assets_url('Raleway-Regular.ttf');
 }
 
 @font-face {
-  font-family: fontawesome-webfont;
-  src: assets_url('/assets/fontawesome-webfont.ttf');
+  font-family: Raleway-Black;
+  src: assets_url('Raleway-Black.ttf');
 }
 
 body {
   background: #fcfcfc;
   color: #000000;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway-Black', Raleway-Black;
   font-weight: 300;
   overflow-x: hidden; /* prevent horizontal scrollbar from appearing */
 }
