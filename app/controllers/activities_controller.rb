@@ -5,11 +5,10 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     if params[:goal_id].present?
-      @activities = Activity.where(goal_id: params[:goal_id])
+      @activities = Activity.where(goal_id: params[:goal_id]).order(created_at: :asc)
       @goal_id = params[:goal_id]
     else
-      flash[:info] = "Todas atividades"
-      @activities = Activity.all
+      flash[:info] = "Selecionar a partir de uma meta para visualizar as atividades"
     end
 
   end
@@ -27,12 +26,8 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
-  end
-
-  def checked
-    Goal.find(params[:goal_id]).activities.where.not(id: params[:activity_ids]).update_all(checked: false)
-    Activity.where(id: params[:activity_ids]).update_all(checked: true)
-    redirect_to editobjectives_path
+    # Another way to set goal_id
+    @goal_id = Activity.find(params[:id]).goal_id
   end
 
   # POST /activities
@@ -60,7 +55,7 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to activities_path(goal_id: @activity.goal_id), notice: 'Activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity }
       else
-        format.html { render :edit }
+        format.html { render :edit, locals: {goal_id: @activity.goal_id} }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
@@ -69,14 +64,30 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
+    goal_id = @activity.goal_id
     @activity.destroy
+    update_goal_completion(goal_id)
     respond_to do |format|
       format.html { redirect_to editobjectives_path, notice: 'Activity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  def checked
+    Goal.find(params[:goal_id]).activities.where.not(id: params[:activity_ids]).update_all(checked: false)
+    Activity.where(id: params[:activity_ids]).update_all(checked: true)
+    update_goal_completion(params[:goal_id])
+    redirect_to editobjectives_path
+  end
+
   private
+
+  def update_goal_completion(goal_id)
+    all_goals = Activity.where(goal_id: goal_id).count
+    checked_goals = Activity.where(goal_id: goal_id).where(checked: true).count
+    Goal.find(goal_id).update_attribute(:progress, ((checked_goals.to_f / all_goals.to_f)*100).round(2) )
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
       @activity = Activity.find(params[:id])
