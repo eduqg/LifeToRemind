@@ -59,6 +59,10 @@ class GoalsController < ApplicationController
     end
   end
 
+  def update_completion
+
+  end
+
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy

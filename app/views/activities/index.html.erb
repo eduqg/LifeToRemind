@@ -18,6 +18,7 @@
     <tbody>
     <% @activities.each do |activity| %>
       <tr>
+        <%= hidden_field_tag "goal_id", @goal_id  %>
         <td><%= check_box_tag "activity_ids[]", activity.id, activity.checked %></td>
         <td><%= activity.title %></td>
         <td><%= activity.checked %></td>
