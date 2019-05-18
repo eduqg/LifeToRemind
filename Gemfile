@@ -18,6 +18,8 @@ gem 'popper', '~> 0.5.0'
 
 gem 'chartkick'
 
+gem 'simplecov', require: false, group: :test
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
