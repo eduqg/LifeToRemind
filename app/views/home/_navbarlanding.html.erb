@@ -16,9 +16,6 @@
         <!-- href to #top, about, team, service, portifolio, contact -->
         <li><a href="#top">HOME</a></li>
         <li><a href="#about">SOBRE</a></li>
-        <li><a href="#service">SERVIÇOS</a></li>
-        </li>
-        <li><%= link_to "STATUS", inicio_path, method: "get" %></li>
 
         <li><%= link_to "MEU PLANEJAMENTO", myplan_path, method: "get" %></li>
         <% if current_user %>
@@ -26,7 +23,7 @@
           <li><%= link_to "Sair", destroy_user_session_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "ENTRAR", new_user_session_path, method: "get" %></li>
-          <li><%= link_to "CADASTRAR", new_user_registration_path, method: "get" %></a></li>
+          <li><%= link_to "CADASTRAR", new_user_registration_path, method: "get" %></li>
         <% end %>
       </ul>
     </div>

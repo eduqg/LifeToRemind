@@ -7,15 +7,11 @@ class PlansController < ApplicationController
     @plans = current_user.plans
   end
 
-
   def myplan
     if current_plan
       @current_plan = Plan.find(current_user.selected_plan)
       if current_plan.selected_mission
         @my_mission = Mission.find(current_plan.selected_mission)
-      else
-        flash[:notice] = "Crie e selecione uma missão"
-        redirect_to missions_path
       end
       @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
       @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
@@ -92,9 +88,10 @@ class PlansController < ApplicationController
     if (user_to_update = current_user)
       user_to_update.update_attribute(:selected_plan, params[:format])
       flash[:notice] = "Plano selecionada foi atualizada com sucesso"
-      redirect_back(fallback_location: plans_path)
+      redirect_to myplan_path
     else
       flash[:notice] = "Plano selecionada não pode ser atualizado"
+      redirect_back(fallback_location: plans_path)
     end
   end
 

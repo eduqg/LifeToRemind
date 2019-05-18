@@ -10,25 +10,39 @@
             Nome do Plano: <%= "#{@current_plan.name}" %>
           </h5>
           <div class="padding-all">
-            <h3>Matriz SWOT <%= link_to "", plans_swotedit_path, method: "get", class: "btn btn-primary lnr lnr-pencil" %></h3>
+            <h3>Matriz
+              SWOT <%= link_to "", plans_swotedit_path, method: "get", class: "btn btn-success lnr lnr-pencil" %></h3>
             <p class="card-text"><%= render template: "plans/swot" %></p>
             <hr/>
 
-            <h3>Minha Missão <%= link_to "", missions_path, method: "get", class: "btn btn-primary lnr lnr-pencil" %></h3>
+            <h3>Minha
+              Missão <%= link_to "", missions_path, method: "get", class: "btn btn-success lnr lnr-pencil" %></h3>
             <div class="padding-all">
-              <h5><strong>Propósito de Vida</strong></h5>
-              <%= "#{@my_mission.purpose_of_life}" %>
-              <h5><strong>Quem sou eu</strong></h5>
-              <%= "#{@my_mission.who_am_i}" %>
-              <h5><strong>Porque existo</strong></h5>
-              <%= "#{@my_mission.why_exist}" %>
+              <% if @current_plan.selected_mission %>
+                <h5><strong>Propósito de Vida</strong></h5>
+                <%= "#{@my_mission.purpose_of_life}" %>
+                <h5><strong>Quem sou eu</strong></h5>
+                <%= "#{@my_mission.who_am_i}" %>
+                <h5><strong>Porque existo</strong></h5>
+                <%= "#{@my_mission.why_exist}" %>
+              <% else %>
+                <h5>
+                  Parece que você ainda não criou uma missão
+                  <%= link_to " Criar", new_mission_path, class: "btn btn-primary lnr lnr-plus-circle" %></h3>
+                </h5>
+              <% end %>
             </div>
-
             <hr/>
 
-            <h3>Objetivos Estratégicos <%= link_to "", editobjectives_path, class: "btn btn-primary lnr lnr-pencil" %></h3>
-            <%= render template: "objectives/index" %>
+            <h3>Objetivos
+              Estratégicos <%= link_to "", editobjectives_path, class: "btn btn-success lnr lnr-pencil" %></h3>
 
+            <% if !@current_plan.objectives.nil? %>
+              <%= render template: "objectives/index" %>
+            <% else %>
+              Crie seu primeiro Objetivo Estratégico Pessoal
+              <%= link_to " Criar", new_objective_path, class: "btn btn-primary lnr lnr-plus-circle" %></h3>
+            <% end %>
             <hr/>
 
           </div>

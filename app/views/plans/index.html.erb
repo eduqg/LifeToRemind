@@ -2,30 +2,90 @@
   <div class="row">
     <% if @plans.empty? %>
       <%= render "plans/welcome" %>
+    <% else %>
+      <% if current_user.selected_plan.nil? %>
+        <div class="body-tutorial">
+          <figure class="card-tutorial card-tutorial--water">
+            <figcaption class="card-tutorial__caption">
+              <h3 class="card-tutorial__type h3-tutorial card__type">
+                PLANOS
+              </h3>
+              <h4 class="card-tutorial__abilities h4-tutorial p-t-10 p-b-10">
+                Selecione um plano
+              </h4>
+
+            </figcaption>
+          </figure>
+        </div>
+      <% end %>
     <% end %>
-    <% @plans.each do |plan| %>
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-header">Plano <%= plan.id %></h5>
-            <div class="padding-all">
-              <p class="card-text"><%= plan.name.truncate(30) %></p>
+
+    <% @plans.each_with_index do |plan, i| %>
+
+      <% if (i % 2 == 0) %>
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="#"><%= current_user.name %></a></li>
+              <li class="date"><%= plan.created_at.strftime("%d de %B de %Y") %>></li>
+              <!--<li class="tags">
+                <ul>
+                  <li><a href="#">Learn</a></li>
+                  <li><a href="#">Code</a></li>
+                  <li><a href="#">HTML</a></li>
+                  <li><a href="#">CSS</a></li>
+                </ul>
+              </li>-->
+            </ul>
+          </div>
+          <div class="description">
+            <h1><%= plan.name %></h1>
+            <p>Plano <%= i + 1 %></p>
+            <p>
               <%= link_to "Selecionar",
                           plans_update_selected_plan_path(plan.id),
                           class: "btn btn-primary" %>
-              <%= link_to "Editar",
+              <%= link_to "",
                           edit_plan_path(plan),
-                          class: "btn btn-default" %>
-              <%= link_to "Remover",
+                          class: "lnr lnr-pencil btn btn-default" %>
+              <%= link_to "",
                           plan,
                           method: :delete,
-                          class: "btn btn-danger",
-                          data: {confirm: "Tem certeza que deseja remover o plano #{plan.id}?"} %>
-            </div>
+                          class: "lnr lnr-circle-minus btn btn-danger",
+                          data: {confirm: "Tem certeza que deseja remover o plano #{plan.name}?"} %>
+            </p>
           </div>
-          <div class="card-footer bg-transparent border-success"><%= plan.created_at.strftime("%d/%m/%Y") %></div>
         </div>
-      </div>
+      <% else %>
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="#"><%= current_user.name %></a></li>
+              <li class="date"><%= plan.created_at.strftime("%d de %B de %Y") %>></li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1><%= plan.name %></h1>
+            <p>Plano <%= i + 1 %></p>
+            <p>
+              <%= link_to "Selecionar",
+                          plans_update_selected_plan_path(plan.id),
+                          class: "btn btn-primary" %>
+              <%= link_to "",
+                          edit_plan_path(plan),
+                          class: "lnr lnr-pencil btn btn-default" %>
+              <%= link_to "",
+                          plan,
+                          method: :delete,
+                          class: "lnr lnr-circle-minus btn btn-danger",
+                          data: {confirm: "Tem certeza que deseja remover o plano #{plan.name}?"} %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+
     <% end %>
   </div>
   <br>
