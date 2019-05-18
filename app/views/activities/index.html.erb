@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Activities</h1>
@@ -18,7 +19,6 @@
     <tbody>
     <% @activities.each do |activity| %>
       <tr>
-        <%= hidden_field_tag "goal_id", @goal_id  %>
         <td><%= check_box_tag "activity_ids[]", activity.id, activity.checked %></td>
         <td><%= activity.title %></td>
         <td><%= activity.checked %></td>
@@ -27,6 +27,7 @@
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
+      <%= hidden_field_tag "goal_id", @goal_id  %>
     <% end %>
     </tbody>
   </table>
@@ -37,3 +38,5 @@
 <br>
 
 <%= link_to 'New Activity', new_activity_path(goal_id: params[:goal_id]) %>
+
+</div>
