@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PlansController, type: :controller do
-  let(:user) { FactoryBot.create(:user) }
-  let(:plan) { FactoryBot.create(:plan) }
+  let!(:plan) {FactoryBot.create(:plan)}
+  let!(:user) {User.find(plan.user_id)}
 
   before :each do
     sign_in user
@@ -21,4 +21,6 @@ RSpec.describe PlansController, type: :controller do
       expect(response).to be_success
     end
   end
+
+
 end
