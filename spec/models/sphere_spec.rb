@@ -4,17 +4,17 @@ RSpec.describe Sphere, type: :model do
   let!(:user) {FactoryBot.create(:user)}
 
   context "Validation tests" do
-    it "Plan name with more than 30 characters" do
+    it "Sphere name with more than 30 characters" do
       sphere_test = Sphere.new(name: "ReallybignameReallybignameReallybignameReallybigname", user_id: user.id).save
       expect(sphere_test).to eq(false)
     end
 
-    it "Plan name with less than 4 characters" do
+    it "Sphere name with less than 4 characters" do
       sphere_test = Sphere.new(name: "Rea", user_id: user.id).save
       expect(sphere_test).to eq(false)
     end
 
-    it "Requires user_id" do
+    it "Requires plan_id" do
       sphere_test = Sphere.new(name: "ReallyNotNormalName").save
       expect(sphere_test).to eq(false)
     end
