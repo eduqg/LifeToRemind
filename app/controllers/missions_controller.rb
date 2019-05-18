@@ -50,18 +50,24 @@ class MissionsController < ApplicationController
   end
 
   def destroy
-    @mission.destroy
-    flash[:info] = "Missão foi excluída"
-    redirect_to missions_url
-  end
+    if @mission.id == current_plan.selected_mission
+      # Unset selected mission
+      current_plan.update_attribute(:selected_mission, nil)
+    end
 
-  private
+  @mission.destroy
+  flash[:info] = "Missão foi excluída"
+  redirect_to missions_url
+end
 
-  def mission_params
-    mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :plan_id)
-  end
+private
 
-  def set_mission
-    @mission = Mission.find(params[:id])
-  end
+def mission_params
+  mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :plan_id)
+end
+
+def set_mission
+  @mission = Mission.find(params[:id])
+end
+
 end
