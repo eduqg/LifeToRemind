@@ -1,5 +1,21 @@
-<div class="container">
-  <h3>Início</h3>
-</div>
-
-<%= pie_chart [["Forças", @strengths.count], ["Fraquezas",  @weaks.count], ["Oportunidades",  @opportunities.count], ["Ameaças", @threats.count ]] %>
+<section id="status-swot" class="p-t-30">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>Status</span> dos meus plano</h2>
+      </div>
+      <div class="col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+        <div class="media p-b-20">
+          <div class="media-heading-wrapper">
+            <h3 class="media-heading">
+              <div class="text-center">
+                Análise Ambiental<br/>Matriz SWOT ​Pessoal
+              </div>
+            </h3>
+          </div>
+        </div>
+        <%= pie_chart [["Forças", @strengths.count], ["Fraquezas", @weaks.count], ["Oportunidades", @opportunities.count], ["Ameaças", @threats.count]] %>
+      </div>
+    </div>
+  </div>
+</section>
