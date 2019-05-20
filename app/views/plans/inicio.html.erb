@@ -1,21 +1,80 @@
-<section id="status-swot" class="p-t-30">
+<div class="row p-t-80">
+  <div class="col-md-12">
+    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>Status do meu planejamento</span></h2>
+  </div>
+</div>
+
+<% chartColors = [
+    ['rgba(255, 0, 0, 0.71)'],
+    ['rgba(255, 255, 0, 0.71)'],
+    ['rgba(0, 168, 0, 0.71)']
+]
+%>
+
+<section id="progress">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>Status</span> dos meus plano</h2>
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">Progresso dos
+          <span>Objetivos Estratégicos </span></h2>
       </div>
-      <div class="col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
-        <div class="media p-b-20">
-          <div class="media-heading-wrapper">
-            <h3 class="media-heading">
-              <div class="text-center">
-                Análise Ambiental<br/>Matriz SWOT ​Pessoal
+      <!-- TODO Complexity -->
+      <% @spheres.each do |sphere| %>
+        <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
+          <div style="height: 500px">
+
+            <div class="media">
+              <div class="media-heading-wrapper">
+                <h3 class="media-heading"><%= sphere.name %></h3>
               </div>
-            </h3>
+              <div class="media-body">
+                <% sphere.objectives.each do |objective| %>
+                  <% objective.goals.each_with_index do |go, i| %>
+                    <%= go.name %>
+                    <% if go.progress < 30 %>
+                      <% bar_color = chartColors[0]%>
+                    <% elsif go.progress > 31 and go.progress < 60 %>
+                      <% bar_color = chartColors[1]%>
+                    <% else %>
+                      <% bar_color = chartColors[2]%>
+                    <% end %>
+                    <% goal_data1 = [
+                        ["", go.progress],
+                    ] %>
+                    <%= bar_chart goal_data1, suffix: "%", label: "Porcentagem concluída", colors: bar_color, min: 0, max: 100, height: "100px" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
-        <%= pie_chart [["Forças", @strengths.count], ["Fraquezas", @weaks.count], ["Oportunidades", @opportunities.count], ["Ameaças", @threats.count]] %>
+      <% end %>
+
+
+    </div>
+  </div>
+</section>
+
+
+<section id="status-swot" class="p-b-100">
+  <div class="row">
+    <div class="col-xs-12 wow fadeInDown" data-wow-offset="50" data-wow-delay="0.9s">
+      <div class="media p-b-20">
+        <div class="media-heading-wrapper">
+          <h3 class="media-heading">
+            <div class="text-center color-ltr">
+              <span>Análise Ambiental</span><br/>Matriz SWOT Pessoal
+            </div>
+          </h3>
+        </div>
       </div>
+      <% swot_data = [
+          ["Forças", @strengths.count],
+          ["Fraquezas", @weaks.count],
+          ["Oportunidades", @opportunities.count],
+          ["Ameaças", @threats.count]
+      ] %>
+      <%= pie_chart swot_data, donut: true %>
     </div>
   </div>
 </section>
