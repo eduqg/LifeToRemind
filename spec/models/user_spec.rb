@@ -20,7 +20,4 @@ RSpec.describe User, type: :model do
     end
 
   end
-  context "scope tests" do
-
-  end
 end
