@@ -49,13 +49,23 @@ RSpec.describe PlansController, type: :controller do
       expect(assigns(:plan)).to be_a(Plan)
       expect(assigns(:plan)).to be_persisted
     end
+
     it "not create a Plan" do
       expect {
         post :create, params: { plan: invalid_attributes }
       }.to change(Plan, :count).by(0)
     end
 
+    it "redirects to new plan if invalid attributes" do
+      post :create, params: { plan: invalid_attributes }
+      assert_template :new
+      # Works too: expect(response).to render_template("new")
+    end
 
+    it "redirects to index after create plan" do
+      post :create, params: { plan: valid_attributes }
+      expect(response).to redirect_to(plans_path)
+    end
   end
 
   context "GET #update" do
@@ -63,7 +73,6 @@ RSpec.describe PlansController, type: :controller do
       plan_to_update = Plan.create! valid_attributes
       put :update, params: { id: plan_to_update.to_param, plan:  { name: "Plano atualizado"}}
       plan_to_update.reload
-
       expect(plan_to_update.name).to match("Plano atualizado")
     end
 
@@ -71,8 +80,34 @@ RSpec.describe PlansController, type: :controller do
       plan_to_update = Plan.create! valid_attributes
       put :update, params: { id: plan_to_update.to_param, plan:  { name: "A"}}
       plan_to_update.reload
-
       expect(plan_to_update.name).not_to match("A")
+    end
+
+    it "redirects to edit update if invalid attributes" do
+      plan_to_update = Plan.create! valid_attributes
+      put :update, params: { id: plan_to_update.to_param, plan:  { name: "Pla"}}
+      assert_template :edit
+      # Works too: expect(response).to render_template("new")
+    end
+
+    it "redirects to index after update plan" do
+      plan_to_update = Plan.create! valid_attributes
+      put :update, params: { id: plan_to_update.to_param, plan:  { name: "Plano atualizado"}}
+      expect(response).to redirect_to(plans_path)
+    end
+  end
+
+  context "DELETE #destroy" do
+    it "destroy the requested plan" do
+      plan_to_destroy = Plan.create! valid_attributes
+      expect {
+        delete :destroy, params: { id: plan_to_destroy.id }
+      }.to change(Plan, :count).by(-1)
+    end
+    it "redirects to index after update plan" do
+      plan_to_update = Plan.create! valid_attributes
+      delete :destroy, params: { id: plan_to_update.to_param }
+      expect(response).to redirect_to(plans_path)
     end
   end
 
