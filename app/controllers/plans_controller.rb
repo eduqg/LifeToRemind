@@ -41,6 +41,13 @@ class PlansController < ApplicationController
     @objectives = current_plan.objectives
     @spheres = current_user.spheres
 
+
+    @chartColors = [
+        ['rgba(255, 0, 0, 0.71)'],
+        ['rgba(255, 255, 0, 0.71)'],
+        ['rgba(0, 168, 0, 0.71)']
+    ]
+
   end
 
   # GET /plans/1
@@ -65,11 +72,11 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to plans_path, notice: "Plano criado com sucesso" }
-        format.json { render :show, status: :created, location: @plan }
+        format.html {redirect_to plans_path, notice: "Plano criado com sucesso"}
+        format.json {render :show, status: :created, location: @plan}
       else
-        format.html { render :new }
-        format.json { render json: @plan.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @plan.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -79,11 +86,11 @@ class PlansController < ApplicationController
   def update
     respond_to do |format|
       if @plan.update(plan_params)
-        format.html { redirect_to plans_path, notice: "Plano atualizado com sucesso"}
-        format.json { render :show, status: :ok, location: @plan }
+        format.html {redirect_to plans_path, notice: "Plano atualizado com sucesso"}
+        format.json {render :show, status: :ok, location: @plan}
       else
-        format.html { render :edit }
-        format.json { render json: @plan.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @plan.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -105,19 +112,20 @@ class PlansController < ApplicationController
     @plan.destroy
     respond_to do |format|
       flash[:info] = "Plano foi excluído"
-      format.html { redirect_to plans_url }
-      format.json { head :no_content }
+      format.html {redirect_to plans_url}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_plan
-      @plan = Plan.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def plan_params
-      params.require(:plan).permit(:name, :selected_mission, :selected_vision, :critical_success_factors_selected, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_plan
+    @plan = Plan.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def plan_params
+    params.require(:plan).permit(:name, :selected_mission, :selected_vision, :critical_success_factors_selected, :user_id)
+  end
 end

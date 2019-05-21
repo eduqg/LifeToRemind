@@ -4,13 +4,6 @@
   </div>
 </div>
 
-<% chartColors = [
-    ['rgba(255, 0, 0, 0.71)'],
-    ['rgba(255, 255, 0, 0.71)'],
-    ['rgba(0, 168, 0, 0.71)']
-]
-%>
-
 <section id="progress">
   <div class="container">
     <div class="row">
@@ -22,21 +15,21 @@
       <% @spheres.each do |sphere| %>
         <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
           <div style="height: 500px">
-
             <div class="media">
               <div class="media-heading-wrapper">
                 <h3 class="media-heading"><%= sphere.name %></h3>
               </div>
               <div class="media-body">
                 <% sphere.objectives.each do |objective| %>
+                  <% if objective.goals.empty? %><%= "Adicione uma meta" %><% end %>
                   <% objective.goals.each_with_index do |go, i| %>
                     <%= go.name %>
                     <% if go.progress < 30 %>
-                      <% bar_color = chartColors[0]%>
+                      <% bar_color = @chartColors[0] %>
                     <% elsif go.progress > 31 and go.progress < 60 %>
-                      <% bar_color = chartColors[1]%>
+                      <% bar_color = @chartColors[1] %>
                     <% else %>
-                      <% bar_color = chartColors[2]%>
+                      <% bar_color = @chartColors[2] %>
                     <% end %>
                     <% goal_data1 = [
                         ["", go.progress],
@@ -54,7 +47,6 @@
     </div>
   </div>
 </section>
-
 
 <section id="status-swot" class="p-b-100">
   <div class="row">
