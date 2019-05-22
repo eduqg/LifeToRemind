@@ -11,9 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.text_field :plan_id, class:"form-control"%>
-  </div>
+  <%= form.hidden_field :plan_id, value: @plan_id %>
 
   <div class="field">
     <%= form.label "Descrição" %>

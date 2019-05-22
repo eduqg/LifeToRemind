@@ -4,7 +4,7 @@ class SwotpartsController < ApplicationController
   # GET /swotparts
   # GET /swotparts.json
   def index
-    @swotparts = Swotpart.all
+    @swotparts = current_plan.swotparts
   end
 
   # GET /swotparts/1
@@ -19,25 +19,12 @@ class SwotpartsController < ApplicationController
 
   # GET /swotparts/1/edit
   def edit
+    @plan_id = current_plan.id
   end
 
   # POST /swotparts
   # POST /swotparts.json
   def create
-    @swotpart = Swotpart.new(swotpart_params)
-
-    respond_to do |format|
-      if @swotpart.save
-        format.html {redirect_to @swotpart, notice: "Característica da SWOT criada com sucesso"}
-        format.json {render :show, status: :created, location: @swotpart}
-      else
-        format.html {render :new}
-        format.json {render json: @swotpart.errors, status: :unprocessable_entity}
-      end
-    end
-  end
-
-  def create_swot_swotpart
     @swotpart = Swotpart.new(plan_id: current_plan.id, name: params[:name], partname: params[:partname])
 
     if @swotpart.save
@@ -49,6 +36,7 @@ class SwotpartsController < ApplicationController
     redirect_to plans_swotedit_path
   end
 
+
   # PATCH/PUT /swotparts/1
   # PATCH/PUT /swotparts/1.json
   def update
@@ -57,6 +45,7 @@ class SwotpartsController < ApplicationController
         format.html {redirect_to plans_swotedit_path, notice: "Característica da SWOT atualizada com sucesso"}
         format.json {render :show, status: :ok, location: @swotpart}
       else
+        @plan_id = current_plan.id
         format.html {render :edit}
         format.json {render json: @swotpart.errors, status: :unprocessable_entity}
       end
