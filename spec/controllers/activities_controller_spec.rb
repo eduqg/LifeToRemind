@@ -23,14 +23,14 @@ RSpec.describe ActivitiesController, type: :controller do
   context "GET #index" do
     it "return index success response" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
   context "GET #show" do
     it "returns show success response" do
       get :show, params: {id: activity.to_param}
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
