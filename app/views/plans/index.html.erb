@@ -44,7 +44,7 @@
             <p>Plano <%= i + 1 %></p>
             <p>
               <%= link_to "Selecionar",
-                          plans_update_selected_plan_path(plan.id),
+                          plans_update_selected_plan_path(plan_id: plan.id), method: :put,
                           class: "btn btn-primary" %>
               <%= link_to "",
                           edit_plan_path(plan),
@@ -71,7 +71,7 @@
             <p>Plano <%= i + 1 %></p>
             <p>
               <%= link_to "Selecionar",
-                          plans_update_selected_plan_path(plan.id),
+                          plans_update_selected_plan_path(plan_id: plan.id), method: :put,
                           class: "btn btn-primary" %>
               <%= link_to "",
                           edit_plan_path(plan),

@@ -110,5 +110,13 @@ RSpec.describe PlansController, type: :controller do
       expect(response).to redirect_to(plans_path)
     end
   end
-
+  context "PUT #update_selected_plan" do
+    it "should update selected plan on user" do
+      user.selected_plan = nil
+      user.save
+      put :update_selected_plan, params: {plan_id: plan.id}
+      user.reload
+      expect(user.selected_plan).to eq(plan.id)
+    end
+  end
 end
