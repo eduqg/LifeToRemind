@@ -37,7 +37,7 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to objectives_path, notice: "Objetivo foi salvo com sucesso" }
+        format.html { redirect_to editobjectives_path, notice: "Objetivo foi salvo com sucesso" }
         format.json { render :show, status: :created, location: @objective }
       else
         # Without @spheres, will render new_objective without spheres on collection_field
@@ -53,7 +53,7 @@ class ObjectivesController < ApplicationController
   def update
     respond_to do |format|
       if @objective.update(objective_params)
-        format.html { redirect_to objectives_path, notice: "Objetivo foi atualizado com sucesso" }
+        format.html { redirect_to editobjectives_path, notice: "Objetivo foi atualizado com sucesso" }
         format.json { render :show, status: :ok, location: @objective }
       else
         format.html { render :edit }
