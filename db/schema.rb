@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_131349) do
+ActiveRecord::Schema.define(version: 2019_05_22_200149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2019_05_15_131349) do
     t.string "why_exist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "plan_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_missions_on_user_id"
   end
 
   create_table "objectives", force: :cascade do |t|

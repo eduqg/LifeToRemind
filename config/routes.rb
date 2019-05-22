@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get "editobjectives", to: "objectives#editobjectives"
   get "inicio", to:"plans#inicio"
   get "plans/swotedit", to: "plans#swotedit"
-  post "swotparts/create_swot_swotpart", to: "swotparts#create_swot_swotpart"
   get "swot", to:"plans#swot"
   get "myplan", to: "plans#myplan"
   get "plans/update_selected_plan", to: "plans#update_selected_plan"

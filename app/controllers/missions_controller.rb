@@ -2,8 +2,8 @@ class MissionsController < ApplicationController
   before_action :set_mission, only: [:edit, :update, :destroy]
 
   def index
-    if current_plan
-      @missions = current_plan.missions
+    if current_user
+      @missions = current_user.missions
     else
       flash[:info] = "É necessário selecionar um plano primeiro"
       redirect_to plans_path
@@ -39,7 +39,7 @@ class MissionsController < ApplicationController
 
   def create
     @mission = Mission.new mission_params
-    @mission.plan_id = current_user.selected_plan
+    @mission.user_id = current_user.id
 
     if @mission.save
       flash[:notice] = "Missão criada com sucesso"
@@ -63,7 +63,7 @@ end
 private
 
 def mission_params
-  mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :plan_id)
+  mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :user_id)
 end
 
 def set_mission
