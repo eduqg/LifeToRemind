@@ -28,7 +28,7 @@ class SpheresController < ApplicationController
     @sphere.user_id = current_user.id
     respond_to do |format|
       if @sphere.save
-        format.html { redirect_to new_objective_path, notice: "Âmbito foi criado com sucesso" }
+        format.html { redirect_to myplan_path, notice: "Âmbito foi criado com sucesso" }
         format.json { render :show, status: :created, location: @sphere }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SpheresController < ApplicationController
   def update
     respond_to do |format|
       if @sphere.update(sphere_params)
-        format.html { redirect_to new_objective_path, notice: "Âmbito foi atualizado com sucesso" }
+        format.html { redirect_to myplan_path, notice: "Âmbito foi atualizado com sucesso" }
         format.json { render :show, status: :ok, location: @sphere }
       else
         format.html { render :edit }
@@ -56,9 +56,13 @@ class SpheresController < ApplicationController
   def destroy
     @sphere.destroy
     respond_to do |format|
-      format.html { redirect_to new_objective_path, notice: "Âmbito foi excluído com sucesso" }
+      format.html { redirect_to myplan_path, notice: "Âmbito foi excluído com sucesso" }
       format.json { head :no_content }
     end
+  end
+
+  def sphereobjectives
+    @objectives = Objective.where(sphere_id: params[:sphere_id])
   end
 
   private

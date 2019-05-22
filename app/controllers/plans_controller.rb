@@ -19,6 +19,7 @@ class PlansController < ApplicationController
       @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
 
       @objectives = current_plan.objectives
+      @spheres = current_user.spheres
     else
       redirect_to plans_path
     end

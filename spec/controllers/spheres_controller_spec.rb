@@ -65,7 +65,7 @@ RSpec.describe SpheresController, type: :controller do
 
     it "redirects to index after create sphere" do
       post :create, params: {sphere: valid_attributes}
-      expect(response).to redirect_to(new_objective_path)
+      expect(response).to redirect_to(myplan_path)
     end
   end
 
@@ -93,7 +93,7 @@ RSpec.describe SpheresController, type: :controller do
     it "redirects to spheres after update sphere" do
       sphere_to_update = Sphere.create! valid_attributes
       put :update, params: {id: sphere_to_update.to_param, sphere: {name: "Âmbito atualizado"}}
-      expect(response).to redirect_to(new_objective_path)
+      expect(response).to redirect_to(myplan_path)
     end
   end
 
@@ -107,7 +107,7 @@ RSpec.describe SpheresController, type: :controller do
     it "redirects to spheres after update sphere" do
       sphere_to_destroy = Sphere.create! valid_attributes
       delete :destroy, params: {id: sphere_to_destroy.to_param}
-      expect(response).to redirect_to(new_objective_path)
+      expect(response).to redirect_to(myplan_path)
     end
   end
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :spheres
   resources :objectives
 
+  get "sphereobjectives", to: "spheres#sphereobjectives"
   get "editobjectives", to: "objectives#editobjectives"
   get "inicio", to:"plans#inicio"
   get "plans/swotedit", to: "plans#swotedit"

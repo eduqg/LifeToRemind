@@ -34,6 +34,19 @@
             </div>
             <hr/>
 
+            <h3>Âmbitos <%= link_to "", spheres_path, class: "btn btn-success lnr lnr-pencil" %></h3>
+
+            <% if !current_user.spheres.nil? %>
+              <div class="row">
+                <%= render partial: "spheres/spheres", collection: @spheres %>
+              </div>
+            <% else %>
+              Crie um âmbito de vida para seus objetivos
+              <%= link_to " Criar", new_sphere_path, class: "btn btn-primary lnr lnr-plus-circle" %></h3>
+            <% end %>
+
+            <hr/>
+
             <h3>Objetivos
               Estratégicos <%= link_to "", editobjectives_path, class: "btn btn-success lnr lnr-pencil" %></h3>
 

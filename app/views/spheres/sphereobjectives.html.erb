@@ -1,0 +1,16 @@
+<div class="container">
+    <% @objectives.each do |objective| %>
+      <div class="col-border m-r-100">
+        <div class="card">
+          <div class="card-body">
+            <div class="padding-all">
+              <h5 class="card-title">Objetivo: <%= objective.name %></h5>
+              <hr/>
+              <%= render partial: "goals/goal", :collection => objective.goals %>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-success"><%= objective.created_at.strftime("%d/%m/%Y") %></div>
+        </div>
+      </div>
+    <% end %>
+</div>
