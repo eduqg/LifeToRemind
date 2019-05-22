@@ -50,6 +50,7 @@ class GoalsController < ApplicationController
         format.html { redirect_to editobjectives_path, notice: "Meta atualizada com sucesso" }
         format.json { render :show, status: :ok, location: @goal }
       else
+        @objective_id = params[:goal][:objective_id]
         format.html { render :edit }
         format.json { render json: @goal.errors, status: :unprocessable_entity }
       end
