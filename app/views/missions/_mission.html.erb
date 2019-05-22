@@ -10,7 +10,7 @@
         <h5 class="card-title">Porque existo</h5>
         <p class="card-text"><%= mission.why_exist %></p>
         <%= link_to "Selecionar",
-                    missions_update_selected_mission_path(mission.id),
+                    missions_update_selected_mission_path(mission_id: mission.id), method: :put,
                     class:"btn btn-primary" %>
         <%= link_to "Editar",
                     edit_mission_path(mission),

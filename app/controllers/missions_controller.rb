@@ -2,12 +2,7 @@ class MissionsController < ApplicationController
   before_action :set_mission, only: [:edit, :update, :destroy]
 
   def index
-    if current_user
-      @missions = current_user.missions
-    else
-      flash[:info] = "É necessário selecionar um plano primeiro"
-      redirect_to plans_path
-    end
+    @missions = current_user.missions
   end
 
   def new
@@ -21,7 +16,7 @@ class MissionsController < ApplicationController
   def update
     if @mission.update mission_params
       flash[:notice] = "Missão atualizada com sucesso!"
-      redirect_to root_url
+      redirect_to missions_url
     else
       render :edit
     end
@@ -29,11 +24,11 @@ class MissionsController < ApplicationController
 
   def update_selected_mission
     if (plan_to_update = current_plan)
-      plan_to_update.update_attribute(:selected_mission, params[:format])
+      plan_to_update.update_attribute(:selected_mission, params[:mission_id])
       flash[:notice] = "Missão selecionada foi atualizada com sucesso"
       redirect_back(fallback_location: missions_path)
     else
-      flash[:notice] = "Missão selecionada não pode ser atualizada"
+      flash[:info] = "Missão selecionada não pode ser atualizada"
     end
   end
 
@@ -55,19 +50,19 @@ class MissionsController < ApplicationController
       current_plan.update_attribute(:selected_mission, nil)
     end
 
-  @mission.destroy
-  flash[:info] = "Missão foi excluída"
-  redirect_to missions_url
-end
+    @mission.destroy
+    flash[:info] = "Missão foi excluída"
+    redirect_to missions_url
+  end
 
-private
+  private
 
-def mission_params
-  mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :user_id)
-end
+  def mission_params
+    mission = params.require(:mission).permit(:purpose_of_life, :who_am_i, :why_exist, :user_id)
+  end
 
-def set_mission
-  @mission = Mission.find(params[:id])
-end
+  def set_mission
+    @mission = Mission.find(params[:id])
+  end
 
 end

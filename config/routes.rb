@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "swot", to:"plans#swot"
   get "myplan", to: "plans#myplan"
   get "plans/update_selected_plan", to: "plans#update_selected_plan"
-  get "missions/update_selected_mission", to: "missions#update_selected_mission"
+  put "missions/update_selected_mission", to: "missions#update_selected_mission"
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :swotparts
