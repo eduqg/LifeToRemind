@@ -15,32 +15,32 @@
             <p class="card-text"><%= render template: "plans/swot" %></p>
             <hr/>
 
-            <h3>Minha
-              Missão <%= link_to "", missions_path, method: "get", class: "btn btn-success lnr lnr-pencil" %></h3>
+            <h3>Minha Missão </h3>
             <div class="padding-all">
               <% if @current_plan.selected_mission %>
-                <div class="row">
-                  <div class="col-xs-4  p-t-10">
-                    <div class="offer offer-radius offer-warning">
-                      <div class="shape">
-                        <div class="shape-text">
+                <%= link_to missions_path do %>
+                  <div class="row">
+                    <div class="col-xs-4  p-t-10">
+                      <div class="offer offer-radius offer-warning">
+                        <div class="shape">
+                          <div class="shape-text">
+                          </div>
                         </div>
-                      </div>
-                      <div class="offer-content">
-                        <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
-                        <p><%= "#{@my_mission.purpose_of_life}" %></p>
-                        <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
-                        <p><%= "#{@my_mission.who_am_i}" %></p>
-                        <h3 class="lead color-dark m-b-5">Porque existo</h3>
-                        <p><%= "#{@my_mission.why_exist}" %></p>
-                        <p>
-                          Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
-                        </p>
+                        <div class="offer-content">
+                          <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
+                          <p><%= "#{@my_mission.purpose_of_life}" %></p>
+                          <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
+                          <p><%= "#{@my_mission.who_am_i}" %></p>
+                          <h3 class="lead color-dark m-b-5">Porque existo</h3>
+                          <p><%= "#{@my_mission.why_exist}" %></p>
+                          <p>
+                            Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
+                <% end %> %>
               <% else %>
                 <h5>
                   Parece que você ainda não criou uma missão
