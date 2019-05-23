@@ -1,22 +1,20 @@
-<div class="container">
-    <% @objectives.each do |objective| %>
-    <div class="row">
-
-      <div class="col-border m-r-100">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-header"><strong>Objetivo Estratégico <%= objective.sphere.name %></strong></h5>
-
-            <div class="padding-all">
-              <h5 class="card-title"><%= objective.name %></h5>
-              <hr/>
-              <%= render partial: "goals/goal", :collection => objective.goals %>
-            </div>
-          </div>
-          <div class="card-footer bg-transparent border-success"><%= objective.created_at.strftime("%d/%m/%Y") %></div>
+<div class="col-xs-12  p-t-10">
+  <% @objectives.each_with_index do |objective, i| %>
+    <div class="offer offer-radius offer-primary">
+      <div class="shape">
+        <div class="shape-text">
+          <%= i + 1 %>
         </div>
       </div>
+      <div class="offer-content">
+        <h3 class="lead color-dark">
+          <%= objective.name %><br/>
+          Criado em: <%= objective.created_at.strftime("%d/%m/%Y") %>
+        </h3>
+        <p>
+          <%= render partial: "goals/goal", :collection => objective.goals %>
+        </p>
       </div>
-
+    </div>
   <% end %>
 </div>
