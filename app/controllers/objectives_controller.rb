@@ -28,6 +28,10 @@ class ObjectivesController < ApplicationController
     @spheres = current_user.spheres
   end
 
+  def editobjective
+    @objective = Objective.find(params[:objective_id])
+  end
+
   # POST /objectives
   # POST /objectives.json
   def create
