@@ -1,0 +1,37 @@
+.dashed{
+  background: rgba(154, 154, 154, 0.22); border:1px solid rgba(128, 128, 128, 0.22); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+.dashed:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform:rotate scale(1.05);
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.dashed-content{
+  padding:10px 20px 10px;
+}
+
+.dashed-border {
+  border: 4px dashed #fff;
+  border-color: rgba(38, 38, 38, 0.07);
+  border-radius:7px;
+}
+
+.box-gray-dashed {
+  color: #808080;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 18px;
+  padding-top: 18px;
+  margin-bottom: 0px;
+}
