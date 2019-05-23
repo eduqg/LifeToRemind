@@ -1,6 +1,6 @@
 <div class="container">
   <% if current_user.selected_plan %>
-
+    <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-success" %>
     <div class="row">
       <div class="card">
         <div class="card-body">
@@ -15,18 +15,20 @@
             <p class="card-text"><%= render template: "plans/swot" %></p>
             <hr/>
 
-            <h3>Minha Missão </h3>
-            <div class="padding-all">
-              <% if @current_plan.selected_mission %>
-                <%= link_to missions_path do %>
-                  <div class="row">
-                    <div class="col-xs-5  p-t-10">
+            <div class="row">
+              <div class="padding-all">
+
+                <% if @my_mission %>
+                  <%= link_to missions_path do %>
+                    <div class="col-xs-4  p-t-10">
                       <div class="offer offer-radius offer-warning">
                         <div class="shape">
                           <div class="shape-text">
                           </div>
                         </div>
                         <div class="offer-content">
+                          <h3 class="color-dark">Minha Missão </h3>
+                          <hr/>
                           <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
                           <p><%= "#{@my_mission.purpose_of_life}" %></p>
                           <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
@@ -39,14 +41,60 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to missions_path do %>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-t-10">
+                      <div class="dashed dashed-border">
+                        <div class="dashed-content ">
+                          <h3 class="lead box-gray-dashed">
+                            <span class="lnr lnr-file-empty"> Selecionar Missão</span>
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <h5>
-                  Parece que você ainda não criou uma missão
-                  <%= link_to " Criar", new_mission_path, class: "btn btn-primary lnr lnr-plus-circle" %></h3>
-                </h5>
-              <% end %>
+
+                <% if @my_vision %>
+                  <%= link_to visions_path do %>
+                    <div class="col-xs-7  p-t-10">
+                      <div class="offer offer-radius offer-danger">
+                        <div class="shape">
+                          <div class="shape-text">
+                          </div>
+                        </div>
+                        <div class="offer-content">
+                          <h3 class="color-dark">Minha Visão </h3>
+                          <hr/>
+                          <h3 class="lead color-dark m-b-5">Para onde vou?</h3>
+                          <p><%= "#{@my_vision.where_im_going}" %></p>
+                          <h3 class="lead color-dark m-b-5">Onde quero chegar?</h3>
+                          <p><%= "#{@my_vision.where_arrive}" %></p>
+                          <h3 class="lead color-dark m-b-5">Como tornarei concreta a minha missão?</h3>
+                          <p><%= "#{@my_vision.how_complete_mission}" %></p>
+                          <p>
+                            Criado em: <%= @my_vision.created_at.strftime("%d/%m/%Y") %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to visions_path do %>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-t-10">
+                      <div class="dashed dashed-border">
+                        <div class="dashed-content ">
+                          <h3 class="lead box-gray-dashed">
+                            <span class="lnr lnr-file-empty"> Selecionar visão</span>
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+
+              </div>
             </div>
             <hr/>
 
@@ -101,9 +149,6 @@
         </div>
       </div>
     </div>
-
-    <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-primary" %>
-
   <% else %>
     <p>Parece que você ainda não criou um planejamento.</p>
     <%= link_to "Crie um novo plano", new_plan_path, method: "get", class: "btn btn-primary" %>

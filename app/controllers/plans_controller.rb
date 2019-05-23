@@ -11,7 +11,10 @@ class PlansController < ApplicationController
     if current_plan
       @current_plan = Plan.find(current_user.selected_plan)
       if current_plan.selected_mission
-        @my_mission = Mission.find(current_plan.selected_mission)
+        @my_mission = Mission.find(current_plan.selected_mission) rescue nil
+      end
+      if current_plan.selected_vision
+        @my_vision = Vision.find(current_plan.selected_vision) rescue nil
       end
       @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
       @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
@@ -105,6 +108,8 @@ class PlansController < ApplicationController
   # DELETE /plans/1
   # DELETE /plans/1.json
   def destroy
+    current_user.selected_plan = nil
+    current_user.save
     @plan.destroy
     respond_to do |format|
       flash[:info] = "Plano foi excluído"
