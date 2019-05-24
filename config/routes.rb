@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :values
   resources :visions, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :activities do
     collection do

@@ -98,6 +98,15 @@
             </div>
             <hr/>
 
+            <div class="row">
+              <div class="padding-all">
+                <h3>Meus valores</h3>
+                <%= render partial: "values/values", collection: @current_plan.values %>
+                <%= render partial: "values/form" %>
+              </div>
+            </div>
+            <hr/>
+
             <h3>Âmbitos</h3>
             <% if !current_user.spheres.nil? %>
               <div class="row">
