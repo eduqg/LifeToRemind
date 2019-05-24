@@ -51,7 +51,7 @@ class CsfsController < ApplicationController
       flash[:notice] = "Fator crítico de sucesso selecionado foi atualizada com sucesso"
       redirect_to myplan_path
     else
-      flash[:info] = "Fator crítico de sucesso selecionado não pode ser atualizada"
+      flash[:info] = "Fator crítico de sucesso selecionado não pode ser atualizado"
     end
   end
 
