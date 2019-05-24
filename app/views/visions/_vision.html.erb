@@ -10,7 +10,7 @@
         <h5 class="card-title">Como tornarei concreta a minha missão?</h5>
         <p class="card-text"><%= vision.how_complete_mission %></p>
         <%= link_to "Selecionar",
-                    visions_update_selected_vision_path(vision_id: vision.id), method: :get,
+                    visions_update_selected_vision_path(vision_id: vision.id), method: :put,
                     class:"btn btn-primary" %>
         <%= link_to "Editar",
                     edit_vision_path(vision),

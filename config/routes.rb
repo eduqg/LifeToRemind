@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "myplan", to: "plans#myplan"
   put "plans/update_selected_plan", to: "plans#update_selected_plan"
   put "missions/update_selected_mission", to: "missions#update_selected_mission"
-  get "visions/update_selected_vision", to: "visions#update_selected_vision"
+  put "visions/update_selected_vision", to: "visions#update_selected_vision"
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :swotparts
