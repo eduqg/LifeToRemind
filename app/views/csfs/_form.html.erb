@@ -1,37 +1,46 @@
-<%= form_with(model: csf, local: true) do |form| %>
-  <% if csf.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(csf.errors.count, "error") %> prohibited this csf from being saved:</h2>
+<% @csf.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
 
-      <ul>
-      <% csf.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @csf do |form| %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Que características me tornam único?" %>
+        <%= form.text_area :what_makes_me_unique, class:"form-control"  %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :what_makes_me_unique %>
-    <%= form.text_area :what_makes_me_unique %>
   </div>
 
-  <div class="field">
-    <%= form.label :best_attributes %>
-    <%= form.text_area :best_attributes %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Quais minhas melhores competências?" %>
+        <%= form.text_area :best_attributes, class:"form-control"  %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :essential_atributes %>
-    <%= form.text_area :essential_atributes %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Quais delas são essenciais para meus objetivos?" %>
+        <%= form.text_area :essential_atributes, class:"form-control"  %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :health_factors %>
-    <%= form.text_area :health_factors %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Quais fatores impactam no meu bem estar?" %>
+        <%= form.text_area :health_factors, class:"form-control"  %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit action_text, class: "btn btn-primary" %>
+
 <% end %>

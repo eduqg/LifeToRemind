@@ -26,7 +26,7 @@ class MissionsController < ApplicationController
     if (plan_to_update = current_plan)
       plan_to_update.update_attribute(:selected_mission, params[:mission_id])
       flash[:notice] = "Missão selecionada foi atualizada com sucesso"
-      redirect_back(fallback_location: missions_path)
+      redirect_to myplan_path
     else
       flash[:info] = "Missão selecionada não pode ser atualizada"
     end

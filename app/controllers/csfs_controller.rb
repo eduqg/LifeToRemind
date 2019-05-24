@@ -1,15 +1,10 @@
 class CsfsController < ApplicationController
-  before_action :set_csf, only: [:show, :edit, :update, :destroy]
+  before_action :set_csf, only: [:edit, :update, :destroy]
 
   # GET /csfs
   # GET /csfs.json
   def index
     @csfs = current_user.csfs
-  end
-
-  # GET /csfs/1
-  # GET /csfs/1.json
-  def show
   end
 
   # GET /csfs/new
@@ -29,8 +24,7 @@ class CsfsController < ApplicationController
 
     respond_to do |format|
       if @csf.save
-        format.html { redirect_to csfs_path, notice: 'Csf was successfully created.' }
-        format.json { render :show, status: :created, location: @csf }
+        format.html { redirect_to csfs_path, notice: "Fator crítico de sucesso criado" }
       else
         format.html { render :new }
         format.json { render json: @csf.errors, status: :unprocessable_entity }
@@ -43,8 +37,7 @@ class CsfsController < ApplicationController
   def update
     respond_to do |format|
       if @csf.update(csf_params)
-        format.html { redirect_to csfs_path, notice: 'Csf was successfully updated.' }
-        format.json { render :show, status: :ok, location: @csf }
+        format.html { redirect_to csfs_path, notice: "Fator crítico de sucesso atualizado" }
       else
         format.html { render :edit }
         format.json { render json: @csf.errors, status: :unprocessable_entity }
@@ -52,15 +45,25 @@ class CsfsController < ApplicationController
     end
   end
 
+  def update_selected_csf
+    if plan_to_update = current_plan
+      plan_to_update.update_attribute(:selected_csf, params[:csf_id])
+      flash[:notice] = "Fator crítico de sucesso selecionado foi atualizada com sucesso"
+      redirect_to myplan_path
+    else
+      flash[:info] = "Fator crítico de sucesso selecionado não pode ser atualizada"
+    end
+  end
+
   # DELETE /csfs/1
   # DELETE /csfs/1.json
   def destroy
     if @csf.id == current_plan.selected_csf
-      # Unset selected vision
+      # Unset selected critical success factor
       current_plan.update_attribute(:selected_csf, nil)
     end
     @csf.destroy
-    flash[:info] = "Visão foi excluída"
+    flash[:info] = "Fator crítico de sucesso foi excluído"
     redirect_to csfs_path
   end
 

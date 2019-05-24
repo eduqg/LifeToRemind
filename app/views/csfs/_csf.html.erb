@@ -1,0 +1,28 @@
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-header">Fator Crítico de Sucesso de <%=current_user.name %></h5>
+      <div class="padding-all">
+        <h5 class="card-title">Que características me tornam único?</h5>
+        <p class="card-text"><%= csf.what_makes_me_unique %></p>
+        <h5 class="card-title">Quais minhas melhores competências?</h5>
+        <p class="card-text"><%= csf.best_attributes %></p>
+        <h5 class="card-title">Quais delas são essenciais para meus objetivos?</h5>
+        <p class="card-text"><%= csf.essential_atributes %></p>
+        <h5 class="card-title">Quais fatores impactam no meu bem estar?</h5>
+        <p class="card-text"><%= csf.health_factors %></p>
+        <%= link_to "Selecionar",
+                    csfs_update_selected_csf_path(csf_id: csf.id), method: :put,
+                    class:"btn btn-primary" %>
+        <%= link_to "Editar",
+                    edit_csf_path(csf),
+                    class:"btn btn-default" %>
+        <%= link_to "Remover", csf,
+                    method: :delete,
+                    class:"btn btn-danger",
+                    data: {confirm: "Tem certeza que deseja remover essa visão? #{csf.what_makes_me_unique}" } %>
+      </div>
+    </div>
+    <div class="card-footer bg-transparent border-success"><%= csf.created_at.strftime("%d/%m/%Y") %></div>
+  </div>
+</div>

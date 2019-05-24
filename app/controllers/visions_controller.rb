@@ -46,10 +46,10 @@ class VisionsController < ApplicationController
   end
 
   def update_selected_vision
-    if (plan_to_update = current_plan)
+    if plan_to_update = current_plan
       plan_to_update.update_attribute(:selected_vision, params[:vision_id])
       flash[:notice] = "Visão selecionada foi atualizada com sucesso"
-      redirect_back(fallback_location: visions_path)
+      redirect_to myplan_path
     else
       flash[:info] = "Visão selecionada não pode ser atualizada"
     end

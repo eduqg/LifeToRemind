@@ -16,6 +16,9 @@ class PlansController < ApplicationController
       if current_plan.selected_vision
         @my_vision = Vision.find(current_plan.selected_vision) rescue nil
       end
+      if current_plan.selected_csf
+        @my_csf = Csf.find(current_plan.selected_csf) rescue nil
+      end
       @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
       @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
       @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)

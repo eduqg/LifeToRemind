@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  put "csfs/update_selected_csf", to: "csfs#update_selected_csf"
   resources :csfs
   resources :values
+  put "visions/update_selected_vision", to: "visions#update_selected_vision"
   resources :visions, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :activities do
     collection do
@@ -8,23 +10,26 @@ Rails.application.routes.draw do
     end
   end
   resources :goals
+
+  get "sphereobjectives", to: "spheres#sphereobjectives"
   resources :spheres
-  resources :objectives
 
   get "editobjective", to: "objectives#editobjective"
-  get "sphereobjectives", to: "spheres#sphereobjectives"
   get "editobjectives", to: "objectives#editobjectives"
-  get "inicio", to:"plans#inicio"
-  get "plans/swotedit", to: "plans#swotedit"
-  get "swot", to:"plans#swot"
-  get "myplan", to: "plans#myplan"
-  put "plans/update_selected_plan", to: "plans#update_selected_plan"
-  put "missions/update_selected_mission", to: "missions#update_selected_mission"
-  put "visions/update_selected_vision", to: "visions#update_selected_vision"
+  resources :objectives
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :swotparts
-  resources :plans
+
+  put "missions/update_selected_mission", to: "missions#update_selected_mission"
   resources :missions, only: [:index, :new, :create, :destroy, :edit, :update]
+
+  put "plans/update_selected_plan", to: "plans#update_selected_plan"
+  get "swot", to:"plans#swot"
+  get "myplan", to: "plans#myplan"
+  get "plans/swotedit", to: "plans#swotedit"
+  get "inicio", to:"plans#inicio"
+  resources :plans
+
   root to: "home#index"
 end
