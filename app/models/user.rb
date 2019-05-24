@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :spheres, dependent: :destroy
   has_many :missions, dependent: :destroy
   has_many :visions, dependent: :destroy
+  has_many :csfs, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true

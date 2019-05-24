@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Csfs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>What makes me unique</th>
+      <th>Best attributes</th>
+      <th>Essential atributes</th>
+      <th>Health factors</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @csfs.each do |csf| %>
+      <tr>
+        <td><%= csf.what_makes_me_unique %></td>
+        <td><%= csf.best_attributes %></td>
+        <td><%= csf.essential_atributes %></td>
+        <td><%= csf.health_factors %></td>
+        <td><%= csf.user %></td>
+        <td><%= link_to 'Show', csf %></td>
+        <td><%= link_to 'Edit', edit_csf_path(csf) %></td>
+        <td><%= link_to 'Destroy', csf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Csf', new_csf_path %>

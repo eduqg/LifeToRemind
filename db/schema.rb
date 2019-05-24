@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_004129) do
+ActiveRecord::Schema.define(version: 2019_05_24_154914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2019_05_24_004129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_activities_on_goal_id"
+  end
+
+  create_table "csfs", force: :cascade do |t|
+    t.text "what_makes_me_unique"
+    t.text "best_attributes"
+    t.text "essential_atributes"
+    t.text "health_factors"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_csfs_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -57,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_004129) do
     t.text "name"
     t.integer "selected_mission"
     t.integer "selected_vision"
-    t.integer "critical_success_factors_selected"
+    t.integer "selected_csf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -113,6 +124,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_004129) do
   end
 
   add_foreign_key "activities", "goals"
+  add_foreign_key "csfs", "users"
   add_foreign_key "goals", "objectives"
   add_foreign_key "objectives", "plans"
   add_foreign_key "plans", "users"

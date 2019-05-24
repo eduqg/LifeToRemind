@@ -1,0 +1,37 @@
+<%= form_with(model: csf, local: true) do |form| %>
+  <% if csf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(csf.errors.count, "error") %> prohibited this csf from being saved:</h2>
+
+      <ul>
+      <% csf.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :what_makes_me_unique %>
+    <%= form.text_area :what_makes_me_unique %>
+  </div>
+
+  <div class="field">
+    <%= form.label :best_attributes %>
+    <%= form.text_area :best_attributes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :essential_atributes %>
+    <%= form.text_area :essential_atributes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :health_factors %>
+    <%= form.text_area :health_factors %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

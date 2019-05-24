@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>What makes me unique:</strong>
+  <%= @csf.what_makes_me_unique %>
+</p>
+
+<p>
+  <strong>Best attributes:</strong>
+  <%= @csf.best_attributes %>
+</p>
+
+<p>
+  <strong>Essential atributes:</strong>
+  <%= @csf.essential_atributes %>
+</p>
+
+<p>
+  <strong>Health factors:</strong>
+  <%= @csf.health_factors %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @csf.user %>
+</p>
+
+<%= link_to 'Edit', edit_csf_path(@csf) %> |
+<%= link_to 'Back', csfs_path %>
