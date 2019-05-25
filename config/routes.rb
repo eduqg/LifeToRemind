@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roles
   put "csfs/update_selected_csf", to: "csfs#update_selected_csf"
   resources :csfs
   resources :values

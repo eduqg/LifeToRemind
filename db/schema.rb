@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_154914) do
+ActiveRecord::Schema.define(version: 2019_05_25_135923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 2019_05_24_154914) do
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_roles_on_plan_id"
+  end
+
   create_table "spheres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -128,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_154914) do
   add_foreign_key "goals", "objectives"
   add_foreign_key "objectives", "plans"
   add_foreign_key "plans", "users"
+  add_foreign_key "roles", "plans"
   add_foreign_key "swotparts", "plans"
   add_foreign_key "values", "plans"
   add_foreign_key "visions", "users"
