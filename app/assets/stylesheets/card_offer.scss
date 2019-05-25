@@ -53,7 +53,14 @@
 .offer-warning .shape{
   border-color: transparent #f0ad4e transparent transparent;
 }
-
+.offer-orange {	border-color: #f0a306; }
+.offer-orange .shape{
+  border-color: transparent #f0a306 transparent transparent;
+}
+.offer-paper {	border-color: #c9c9c9; }
+.offer-paper .shape{
+  border-color: transparent #c9c9c9 transparent transparent;
+}
 .shape-text{
   color:#fff; font-size:12px; font-weight:bold; position:relative; right:-40px; top:2px; white-space: nowrap;
   -ms-transform:rotate(30deg); /* IE 9 */

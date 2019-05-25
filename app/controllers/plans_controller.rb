@@ -27,6 +27,7 @@ class PlansController < ApplicationController
       @objectives = current_plan.objectives
       @spheres = current_user.spheres
       @value = Value.new
+      @role = Role.new
     else
       redirect_to plans_path
     end

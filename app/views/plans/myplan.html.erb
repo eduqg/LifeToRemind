@@ -145,9 +145,28 @@
 
             <div class="row">
               <div class="padding-all">
-                <h3>Meus valores</h3>
+                <h3>Meus Valores</h3>
                 <%= render partial: "values/values", collection: @current_plan.values %>
                 <%= render partial: "values/form" %>
+              </div>
+            </div>
+            <hr/>
+
+            <div class="row">
+              <div class="padding-all">
+                <h3>Meus Papéis</h3>
+                <div class="row p-t-20">
+                  <table>
+                    <tbody>
+                    <td width="100px" class="p-l-30">Papel chave</td>
+                    <td width="300px" class="p-l-60">Como me vejo no futuro</td>
+                    </tbody>
+                  </table>
+                  <%= render partial: "roles/roles", collection: @current_plan.roles %>
+                </div>
+                <div class="row">
+                  <%= render partial: "roles/form" %>
+                </div>
               </div>
             </div>
             <hr/>

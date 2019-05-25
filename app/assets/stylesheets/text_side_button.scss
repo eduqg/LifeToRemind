@@ -25,3 +25,50 @@
   outline: none;
   font-size: 1em;
 }
+
+.search-group-paper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  border: 1px solid #ccc;
+  font-family: Raleway-Black;
+  border-radius: 7px;
+  margin-left: 15px;
+  margin-right: 45px
+}
+
+.icon-paper {
+  padding: 1em;
+  background: #c9c9c9;
+  color: #262626;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+
+}
+
+.search-field-paper-name {
+  flex: 0.3;
+  width: 30%;
+  height: 40px;
+  padding: 0.8em 1em 0.7em;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.search-field-paper-description {
+  flex: 0.7;
+  width: 70%;
+  height: 40px;
+  padding: 0.8em 1em 0.7em;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  resize: none;
+  border-left: 1px solid #ccc;
+  margin-right: 10px;
+
+}

@@ -5,10 +5,10 @@
 <% end %>
 
 <%= form_for @role do |form| %>
-  <div class="search-group-1 m-t-33">
-    <%= form.text_field :name, class: "search-field-1" %>
-    <%= form.text_area :description, class: "search-field-1" %>
-    <%= button_tag class: "icon-1" do %>
+  <div class="search-group-paper m-t-20">
+    <%= form.text_field :name, placeholder:"Papel chave", class: "search-field-paper-name" %>
+    <%= form.text_area :description, placeholder:"Como me vejo no futuro nesse papel", class: "search-field-paper-description" %>
+    <%= button_tag class: "icon-paper" do %>
       <i class="lnr lnr-arrow-right"></i>
     <% end %>
   </div>

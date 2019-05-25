@@ -51,7 +51,7 @@ class RolesController < ApplicationController
   def destroy
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to roles_url, notice: "Papel foi excluído" }
+      format.html { redirect_to myplan_path, notice: "Papel foi excluído" }
       format.json { head :no_content }
     end
   end
