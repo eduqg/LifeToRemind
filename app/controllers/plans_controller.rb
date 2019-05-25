@@ -35,27 +35,35 @@ class PlansController < ApplicationController
   end
 
   def swotedit
-    @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
-    @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
-    @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
-    @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+    if current_plan
+      @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
+      @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
+      @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
+      @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+    else
+      redirect_to plans_path
+    end
   end
 
   def inicio
-    @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
-    @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
-    @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
-    @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+    if current_plan
+      @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
+      @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
+      @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
+      @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
 
-    @objectives = current_plan.objectives
-    @spheres = current_user.spheres
+      @objectives = current_plan.objectives
+      @spheres = current_user.spheres
 
 
-    @chartColors = [
-        ['rgba(255, 0, 0, 0.71)'],
-        ['rgba(255, 255, 0, 0.71)'],
-        ['rgba(0, 168, 0, 0.71)']
-    ]
+      @chartColors = [
+          ['rgba(255, 0, 0, 0.71)'],
+          ['rgba(255, 255, 0, 0.71)'],
+          ['rgba(0, 168, 0, 0.71)']
+      ]
+    else
+      redirect_to plans_path
+    end
 
   end
 
