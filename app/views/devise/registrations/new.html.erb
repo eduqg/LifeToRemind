@@ -3,7 +3,11 @@
     <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
       <span class="login100-form-title p-b-55">Cadastro</span>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-        <%= devise_error_messages! %>
+        <% resource.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= msg %>
+          </div>
+        <% end %>
 
         <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
           <%= form.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email", class: "input100" %>
@@ -23,7 +27,7 @@
 
 
         <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-          <%= form.password_field :password, placeholder: "Senha (mínimo 6 caracteres)", autocomplete: "new-password", class: "input100" %>
+          <%= form.password_field :password, placeholder: "Senha (mínimo 8 caracteres)", autocomplete: "new-password", class: "input100" %>
           <span class="focus-input100"></span>
           <span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>

@@ -3,7 +3,11 @@
   <hr/>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |form| %>
-    <%= devise_error_messages! %>
+    <% resource.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger" role="alert">
+        <%= msg %>
+      </div>
+    <% end %>
 
     <div class="row">
       <div class="col-sm-6">
