@@ -28,6 +28,19 @@ class PlansController < ApplicationController
       @spheres = current_user.spheres
       @value = Value.new
       @role = Role.new
+
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: "Planejamento de #{current_user.id}",
+                 page_size: "A4",
+                 template: "plans/myplan.html.erb",
+                 orientation: "Landscape",
+                 lowquality: true,
+                 zoom: 1,
+                 dpi: 75
+        end
+      end
     else
       redirect_to plans_path
     end
@@ -70,6 +83,21 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.json
   def show
+    @plan = current_plan
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Invoice No. #{@plan.id}",
+               page_size: 'A4',
+               template: "plans/show.html.erb",
+               layout: "pdf.html",
+               orientation: "Landscape",
+               lowquality: true,
+               zoom: 1,
+               dpi: 75
+      end
+    end
   end
 
   # GET /plans/new

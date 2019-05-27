@@ -1,6 +1,7 @@
 <div class="container">
   <% if current_user.selected_plan %>
     <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-success" %>
+    <%= link_to "Download PDF", myplan_path(id: @current_plan, format: :pdf) %>
     <div class="row">
       <div class="card">
         <div class="card-body">
