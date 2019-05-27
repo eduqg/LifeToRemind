@@ -9,21 +9,13 @@ class PlansController < ApplicationController
 
   def myplan
     if current_plan
-      @current_plan = Plan.find(current_user.selected_plan)
-      if current_plan.selected_mission
-        @my_mission = Mission.find(current_plan.selected_mission) rescue nil
-      end
-      if current_plan.selected_vision
-        @my_vision = Vision.find(current_plan.selected_vision) rescue nil
-      end
-      if current_plan.selected_csf
-        @my_csf = Csf.find(current_plan.selected_csf) rescue nil
-      end
-      @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
-      @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
-      @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
-      @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
-
+      @my_mission = Mission.find(current_plan.selected_mission) rescue nil
+      @my_vision = Vision.find(current_plan.selected_vision) rescue nil
+      @my_csf = Csf.find(current_plan.selected_csf) rescue nil
+      @strengths = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :strength)
+      @weaks = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :weak)
+      @opportunities = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :opportunity)
+      @threats = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :threat)
       @objectives = current_plan.objectives
       @spheres = current_user.spheres
       @value = Value.new
@@ -49,10 +41,10 @@ class PlansController < ApplicationController
 
   def swotedit
     if current_plan
-      @strengths = Swotpart.where(plan_id: current_plan.id).where(partname: :strength)
-      @weaks = Swotpart.where(plan_id: current_plan.id).where(partname: :weak)
-      @opportunities = Swotpart.where(plan_id: current_plan.id).where(partname: :opportunity)
-      @threats = Swotpart.where(plan_id: current_plan.id).where(partname: :threat)
+      @strengths = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :strength)
+      @weaks = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :weak)
+      @opportunities = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :opportunity)
+      @threats = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :threat)
     else
       redirect_to plans_path
     end
