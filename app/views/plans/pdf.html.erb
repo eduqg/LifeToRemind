@@ -83,8 +83,33 @@
     <!-- Objetivos Estratégicos -->
     <h3>Objetivos Estratégicos</h3>
     <% if !@current_plan.objectives.nil? %>
-      <div class="row">
-        <%= render template: "objectives/index" %>
+      <% @objectives.each do |objective| %>
+        <br/>
+        <h3 class="lead color-dark">
+          Objetivo: <%= objective.name %><br/>
+        </h3>
+        <h5>
+          <%= objective.created_at.strftime("%d/%m/%Y") %>
+        </h5>
+        <% objective.goals.each do |goal| %>
+          <div class="card">
+            <div class="card-body">
+              <div class="padding-all">
+                <h4 class="card-title">Meta: <%= goal.name %> -> <%= goal.progress %>% </h4>
+                <% goal.activities.each do |activity| %>
+                  <h4 class="card-body">
+                    - <%= activity.title %>
+                    <% if activity.checked %>
+                      -> Feito!
+                    <% end %>
+                  </h4>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
       </div>
     <% end %>
   <% end %>

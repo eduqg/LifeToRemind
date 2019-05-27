@@ -42,13 +42,20 @@ class PlansController < ApplicationController
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: "Planejamento de #{current_user.id}",
+          render pdf: "Planejamento de #{current_user.name}",
                  page_size: "A4",
                  template: "plans/pdf.html.erb",
                  orientation: "Landscape",
                  lowquality: true,
                  zoom: 1,
-                 dpi: 75
+                 dpi: 75,
+                 margin:  {   top:               35,
+                              bottom:            35,
+                              left:              35,
+                              right:             35 },
+                 disable_links:     true,
+                 disable_toc_links: true,
+                 disable_back_links:true
         end
       end
     else
