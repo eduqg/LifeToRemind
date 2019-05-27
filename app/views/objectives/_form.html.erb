@@ -4,8 +4,7 @@
   </div>
 <% end %>
 
-
-<%= form_with(model: objective, local: true) do |form| %>
+<%= form_for @objective do |form| %>
 
   <div class="row">
     <div class="col-sm-8">
@@ -25,7 +24,7 @@
     </div>
   </div>
 
-  <%= form.submit "Criar Objetivo Estratégico", class: "btn btn-primary" %>
+  <%= form.submit action_text, class: "btn btn-primary" %>
 
 <% end %>
 

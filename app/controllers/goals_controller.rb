@@ -32,7 +32,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to editobjectives_path, notice: "Meta criada com sucesso" }
+        format.html { redirect_to editobjective_path(objective_id: @goal.objective_id), notice: "Meta criada com sucesso" }
         format.json { render :show, status: :created, location: @goal }
       else
         @objective_id = params[:goal][:objective_id]
@@ -47,7 +47,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update(goal_params)
-        format.html { redirect_to editobjectives_path, notice: "Meta atualizada com sucesso" }
+        format.html { redirect_to editobjective_path(objective_id: @goal.objective_id), notice: "Meta atualizada com sucesso" }
         format.json { render :show, status: :ok, location: @goal }
       else
         @objective_id = params[:goal][:objective_id]
@@ -63,7 +63,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     respond_to do |format|
-      format.html { redirect_to editobjectives_path, notice: "Meta excluída com sucesso" }
+      format.html { redirect_to editobjective_path(objective_id: @goal.objective_id), notice: "Meta excluída com sucesso" }
       format.json { head :no_content }
     end
   end

@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Novo Objetivo</h1>
 
-  <%= render 'form', objective: @objective %>
+  <%= render partial: 'form', locals: {action_text: "Criar"}, objective: @objective %>
 
   <%= link_to 'Voltar', objectives_path, class: "btn btn-default" %>
 </div>

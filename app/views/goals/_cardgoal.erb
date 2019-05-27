@@ -3,23 +3,33 @@
     <div class="card">
       <div class="card-body">
         <div class="padding-all">
-          <h4 class="card-header">Meta: <%= cardgoal.name %>
-            <%= link_to " Editar", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class: "lnr lnr-pencil btn btn-default" %>
-            <%= link_to " Remover", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class: "lnr lnr-circle-minus btn btn-danger" %>
-
-          </h4>
-          <h5 class="card-title"><%= cardgoal.progress %>% Concluído</h5>
-          <h5>Atividades a completar</h5>
-          <hr/>
-          <% cardgoal.activities.each do |activity| %>
-            <% if !activity.checked %>
-              <p><%= activity.title %></p>
-            <% end %>
-          <% end %>
-          <h5 class="card-title">Nome da meta: <%= cardgoal.name %> | <%= cardgoal.progress %>% Concluído
-            <%= link_to " Atividade", new_activity_path(goal_id: cardgoal.id), class: "lnr lnr-plus-circle btn btn-primary" %>
-            <%= link_to " Ver atividades", activities_path(goal_id: cardgoal.id), class: "lnr lnr-list btn btn-success" %>
-          </h5>
+          <div class="goal-description">
+            <div class="goal-activities">
+              <h4 class="card-title">Nome da meta: <%= cardgoal.name %>
+                <%= link_to " ", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class: "lnr lnr-pencil btn btn-default" %>
+                <%= link_to " ", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class: "lnr lnr-circle-minus btn btn-danger" %>
+              </h4>
+              <span class="card-divider"></span>
+              <br/>
+              <h5 class="card-title">
+                Atividades
+                <%= link_to " ", new_activity_path(goal_id: cardgoal.id), class: "lnr lnr-plus-circle btn btn-primary" %>
+                <%= link_to " ", activities_path(goal_id: cardgoal.id), class: "lnr lnr-list btn btn-success" %>
+              </h5>
+              <% cardgoal.activities.each do |activity| %>
+                <% if !activity.checked %>
+                  <p><strong><%= activity.title %></strong></p>
+                <% else %>
+                  <p><span class="lnr lnr-checkmark-circle"></span><%= activity.title %></p>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="goal-progress">
+              <h5 class="card-title"><%= cardgoal.name %> </h5>
+              <% goal_data = [["", cardgoal.progress]] %>
+              <%= bar_chart goal_data, suffix: "%", label: "Porcentagem concluída", min: 0, max: 100, height: "70px", width: "100%" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

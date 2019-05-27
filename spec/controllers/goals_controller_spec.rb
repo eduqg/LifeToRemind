@@ -67,7 +67,7 @@ RSpec.describe GoalsController, type: :controller do
 
       it "redirects to index after create goal" do
         post :create, params: { goal: valid_attributes }
-        expect(response).to redirect_to(editobjectives_path)
+        expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
       end
     end
 
@@ -95,7 +95,7 @@ RSpec.describe GoalsController, type: :controller do
       it "redirects to editobjectives after update goal" do
         goal_to_update = Goal.create! valid_attributes
         put :update, params: { id: goal_to_update.to_param, goal:  { name: "Meta atualizada", objective_id: objective.id}}
-        expect(response).to redirect_to(editobjectives_path)
+        expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
       end
     end
 
@@ -109,7 +109,7 @@ RSpec.describe GoalsController, type: :controller do
       it "redirects to editobjectives after update goal" do
         goal_to_destroy = Goal.create! valid_attributes
         delete :destroy, params: { id: goal_to_destroy.to_param }
-        expect(response).to redirect_to(editobjectives_path)
+        expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
       end
     end
 

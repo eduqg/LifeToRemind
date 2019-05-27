@@ -1,37 +1,32 @@
 <div class="container">
-  <div class="row">
-      <div class="col-border m-r-100">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-header"><strong>Objetivo Estratégico</strong></h5>
+  <div class="col-xs-12  p-t-10">
+    <div class="offer offer-radius offer-info">
+      <span class="shape"></span>
+      <div class="offer-content">
+        <h3 class="lead color-dark">
+          Objetivo: <%= @objective.name %>
+          <%= link_to " ",
+                      edit_objective_path(@objective),
+                      class: "btn btn-default lnr lnr-pencil" %>
+          <%= link_to " ", @objective,
+                      method: :delete,
+                      class: "btn btn-danger lnr lnr-circle-minus",
+                      data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{@objective.name}"} %>
+        </h3>
+        <h6>Âmbito: <%= @objective.sphere.name %></h6>
+        <h6>Data: <%= @objective.created_at.strftime("%d/%m/%Y") %></h6>
+        <br/>
+        <span class="card-divider"></span>
+        <br/>
+        <h3 class="lead color-dark">Metas</h3>
 
-            <h5 class="card-header">Âmbito <%= @objective.sphere.name %></h5>
-            <div class="padding-all">
-              <h5 class="card-title"><%= @objective.name %></h5>
-              <hr/>
-
-              <h5 class="card-title"><strong>Metas</strong></h5>
-              <hr/>
-
-              <%= render partial: "goals/cardgoal", :collection => @objective.goals %>
-
-              <%= link_to "Adicionar Meta",
-                          new_goal_path(objective_id: @objective.id),
-                          class: "btn btn-primary" %>
-              <%= link_to "Editar",
-                          edit_objective_path(@objective),
-                          class: "btn btn-default" %>
-              <%= link_to "Remover", @objective,
-                          method: :delete,
-                          class: "btn btn-danger",
-                          data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{@objective.name}"} %>
-            </div>
-          </div>
-          <div class="card-footer bg-transparent border-success"><%= @objective.created_at.strftime("%d/%m/%Y") %></div>
+        <%= render partial: "goals/cardgoal", :collection => @objective.goals %>
+        <div class="padding-all">
+          <%= link_to "Adicionar Meta",
+                      new_goal_path(objective_id: @objective.id),
+                      class: "btn btn-primary" %>
         </div>
       </div>
-  </div>
-  <div class="row">
-    <%= link_to "Criar Objetivo Estratégico", new_objective_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>

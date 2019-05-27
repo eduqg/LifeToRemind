@@ -41,7 +41,7 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to editobjectives_path, notice: "Objetivo foi salvo com sucesso" }
+        format.html { redirect_to myplan_path, notice: "Objetivo foi salvo com sucesso" }
         format.json { render :show, status: :created, location: @objective }
       else
         # Without @spheres, will render new_objective without spheres on collection_field
@@ -57,7 +57,7 @@ class ObjectivesController < ApplicationController
   def update
     respond_to do |format|
       if @objective.update(objective_params)
-        format.html { redirect_to editobjectives_path, notice: "Objetivo foi atualizado com sucesso" }
+        format.html { redirect_to myplan_path, notice: "Objetivo foi atualizado com sucesso" }
         format.json { render :show, status: :ok, location: @objective }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class ObjectivesController < ApplicationController
   def destroy
     @objective.destroy
     respond_to do |format|
-      format.html { redirect_to objectives_url, notice: "Objetivo Estratégico foi excluído" }
+      format.html { redirect_to myplan_path, notice: "Objetivo Estratégico foi excluído" }
       format.json { head :no_content }
     end
   end

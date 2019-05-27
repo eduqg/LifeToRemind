@@ -1,3 +1,35 @@
 // Place all the styles related to the Objectives controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.goal-description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  font-family: Raleway-Black;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 30px
+}
+.goal-activities {
+  flex: 0.5;
+  border: none;
+  outline: none;
+}
+.goal-progress {
+  flex: 0.5;
+  border: none;
+  outline: none;
+  border-left: 1px solid #c9c9c9;
+  padding-left: 10px;
+}
+.card-divider {
+  content: "";
+  position: absolute;
+  height: 5px;
+  background: #28a4e9;
+  width: 35px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
