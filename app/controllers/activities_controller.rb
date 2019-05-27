@@ -35,13 +35,14 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.checked = false
-
+    goal = Goal.find(params[:activity][:goal_id])
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to activities_path(goal_id: @activity.goal_id), notice: "Atividade criada com sucesso" }
+        update_goal_completion(goal.id)
+        format.html { redirect_to editobjective_path(objective_id: goal.objective_id), notice: "Atividade criada com sucesso" }
         format.json { render :show, status: :created, location: @activity }
       else
-        @goal_id = params[:activity][:goal_id]
+        @goal_id = goal.id
         format.html { render :new }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
@@ -66,19 +67,21 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1.json
   def destroy
     goal_id = @activity.goal_id
+    goal = Goal.find(goal_id)
     @activity.destroy
     update_goal_completion(goal_id)
     respond_to do |format|
-      format.html { redirect_to editobjectives_path, notice: "Atividade foi excluída" }
+      format.html { redirect_to editobjective_path(objective_id: goal.objective_id), notice: "Atividade foi excluída" }
       format.json { head :no_content }
     end
   end
 
   def checked
-    Goal.find(params[:goal_id]).activities.where.not(id: params[:activity_ids]).update_all(checked: false)
+    goal = Goal.find(params[:goal_id])
+    goal.activities.where.not(id: params[:activity_ids]).update_all(checked: false)
     Activity.where(id: params[:activity_ids]).update_all(checked: true)
     update_goal_completion(params[:goal_id])
-    redirect_to editobjectives_path
+    redirect_to editobjective_path(objective_id: goal.objective_id)
   end
 
   private

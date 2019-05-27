@@ -66,9 +66,9 @@ RSpec.describe ActivitiesController, type: :controller do
       # Works too: expect(response).to render_template("new")
     end
 
-    it "redirects to index after create activity" do
+    it "redirects to objective after create activity" do
       post :create, params: { activity: valid_attributes }
-      expect(response).to redirect_to("/activities?goal_id=#{goal.id}")
+      expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
     end
   end
 
@@ -107,10 +107,10 @@ RSpec.describe ActivitiesController, type: :controller do
         delete :destroy, params: { id: activity_to_destroy.id }
       }.to change(Activity, :count).by(-1)
     end
-    it "redirects to index after update activity" do
+    it "redirects to objective after update activity" do
       activity_to_destroy = Activity.create! valid_attributes
       delete :destroy, params: { id: activity_to_destroy.to_param }
-      expect(response).to redirect_to(editobjectives_path)
+      expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
     end
   end
 

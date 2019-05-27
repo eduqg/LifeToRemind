@@ -14,14 +14,21 @@
               <h5 class="card-title">
                 Atividades
                 <%= link_to " ", new_activity_path(goal_id: cardgoal.id), class: "lnr lnr-plus-circle btn btn-primary" %>
-                <%= link_to " ", activities_path(goal_id: cardgoal.id), class: "lnr lnr-list btn btn-success" %>
               </h5>
-              <% cardgoal.activities.each do |activity| %>
-                <% if !activity.checked %>
-                  <p><strong><%= activity.title %></strong></p>
-                <% else %>
-                  <p><span class="lnr lnr-checkmark-circle"></span><%= activity.title %></p>
-                <% end %>
+              <%= form_tag checked_activities_path(goal_id: cardgoal.id), method: :put do %>
+                <table>
+                  <tbody>
+                  <% cardgoal.activities.each do |activity| %>
+                    <tr>
+                      <td><%= check_box_tag "activity_ids[]", activity.id, activity.checked %></td>
+                      <td><%= activity.title %></td>
+                      <td><%= link_to " ", activity, method: :delete, class:"btn btn-danger lnr lnr-circle-minus" %></td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+                <br/>
+                <%= submit_tag "Atualizar atividades", class:"btn btn-success" %>
               <% end %>
             </div>
             <div class="goal-progress">
