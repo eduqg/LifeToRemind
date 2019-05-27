@@ -20,13 +20,31 @@ class PlansController < ApplicationController
       @spheres = current_user.spheres
       @value = Value.new
       @role = Role.new
+    else
+      redirect_to plans_path
+    end
+  end
+
+  def pdf
+    if current_plan
+      @my_mission = Mission.find(current_plan.selected_mission) rescue nil
+      @my_vision = Vision.find(current_plan.selected_vision) rescue nil
+      @my_csf = Csf.find(current_plan.selected_csf) rescue nil
+      @strengths = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :strength)
+      @weaks = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :weak)
+      @opportunities = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :opportunity)
+      @threats = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :threat)
+      @objectives = current_plan.objectives
+      @spheres = current_user.spheres
+      @value = Value.new
+      @role = Role.new
 
       respond_to do |format|
         format.html
         format.pdf do
           render pdf: "Planejamento de #{current_user.id}",
                  page_size: "A4",
-                 template: "plans/myplan.html.erb",
+                 template: "plans/pdf.html.erb",
                  orientation: "Landscape",
                  lowquality: true,
                  zoom: 1,
@@ -36,7 +54,6 @@ class PlansController < ApplicationController
     else
       redirect_to plans_path
     end
-
   end
 
   def swotedit

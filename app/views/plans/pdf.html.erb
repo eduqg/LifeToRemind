@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <!-- "%= stylesheet_link_tag wicked_pdf_asset_base64("") %-->
+  <!-- %= javascript_include_tag wicked_pdf_asset_base64("") %-->
+</head>
+<body>
+<div class="container">
+  <% if current_user.selected_plan %>
+    <h2>Planejamento Estratégico Pessoal de <%= current_user.name %></h2>
+
+    <h3>Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %></h3>
+    <h3>Nome do Plano: <%= "#{@current_plan.name}" %></h3>
+    <hr/>
+
+    <!-- Análise Ambiental -->
+    <h3>Matriz SWOT</h3>
+    <p class="card-text"><%= render template: "plans/swot" %></p>
+    <hr/>
+
+    <!-- Mission -->
+    <% if @my_mission %>
+      <h3>Minha Missão </h3>
+      <h4>Propósito de Vida</h4>
+      <p><%= "#{@my_mission.purpose_of_life}" %></p>
+      <h4>Quem sou eu</h4>
+      <p><%= "#{@my_mission.who_am_i}" %></p>
+      <h4>Porque existo</h4>
+      <p><%= "#{@my_mission.why_exist}" %></p>
+    <% end %>
+
+    <hr/>
+    <!-- Vision -->
+    <% if @my_vision %>
+      <h3>Minha Visão </h3>
+      <h3>Para onde vou?</h3>
+      <p><%= "#{@my_vision.where_im_going}" %></p>
+      <h3>Onde quero chegar?</h3>
+      <p><%= "#{@my_vision.where_arrive}" %></p>
+      <h3>Como tornarei concreta a minha missão?</h3>
+      <p><%= "#{@my_vision.how_complete_mission}" %></p>
+
+    <% end %>
+    <hr/>
+    <!-- Fatores Críticos de Sucesso -->
+    <% if @my_csf %>
+      <h3>Meus Fatores Críticos de Sucesso </h3>
+      <h3>Que características me tornam único?</h3>
+      <p><%= "#{@my_csf.what_makes_me_unique}" %></p>
+      <h3>Quais minhas melhores competências?</h3>
+      <p><%= "#{@my_csf.best_attributes}" %></p>
+      <h3>Quais delas são essenciais para meus objetivos?</h3>
+      <p><%= "#{@my_csf.essential_atributes}" %></p>
+      <h3>Quais fatores impactam no meu bem estar?</h3>
+      <p><%= "#{@my_csf.health_factors}" %></p>
+    <% end %>
+    <hr/>
+    <!-- Valores -->
+    <h3>Meus Valores</h3>
+    <%= render partial: "values/values", collection: @current_plan.values %>
+    </div>
+    <hr/>
+    <!-- Papéis -->
+    <h3>Meus Papéis</h3>
+    <div class="row p-t-20">
+      <table>
+        <tbody>
+        <td width="100px" class="p-l-30">Papel chave</td>
+        <td width="300px" class="p-l-60">Como me vejo no futuro</td>
+        </tbody>
+      </table>
+      <%= render partial: "roles/roles", collection: @current_plan.roles %>
+    </div>
+
+    <hr/>
+    <!-- Âmbitos -->
+    <% if !current_user.spheres.nil? %>
+      <h3>Meus Fatores Críticos de Sucesso </h3>
+      <%= render partial: "spheres/spheres", collection: @spheres %>
+    <% end %>
+    <hr/>
+    <!-- Objetivos Estratégicos -->
+    <h3>Objetivos Estratégicos</h3>
+    <% if !@current_plan.objectives.nil? %>
+      <div class="row">
+        <%= render template: "objectives/index" %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+  </body>
+</html>
