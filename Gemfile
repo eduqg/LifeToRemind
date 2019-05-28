@@ -22,7 +22,7 @@ gem 'simplecov', require: false, group: :test
 
 gem 'wicked_pdf'
 
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'

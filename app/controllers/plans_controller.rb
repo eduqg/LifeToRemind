@@ -45,17 +45,20 @@ class PlansController < ApplicationController
           render pdf: "Planejamento de #{current_user.name}",
                  page_size: "A4",
                  template: "plans/pdf.html.erb",
-                 orientation: "Landscape",
+                 orientation: "Portrait",
+                 title: "Planejamento de #{current_user.name}",
+                 plans: "pdf.html.erb",
                  lowquality: true,
                  zoom: 1,
                  dpi: 75,
-                 margin:  {   top:               35,
-                              bottom:            35,
-                              left:              35,
-                              right:             35 },
+                 margin:  {   top:               20,
+                              bottom:            20,
+                              left:              20,
+                              right:             20 },
                  disable_links:     true,
                  disable_toc_links: true,
-                 disable_back_links:true
+                 disable_back_links:true,
+                 javascript_delay: 3000
         end
       end
     else

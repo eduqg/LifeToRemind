@@ -1,8 +1,8 @@
 <div class="container p-t-40">
   <% if current_user.selected_plan %>
     <div class="p-b-10" align="right">
-    <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-primary" %>
-      <%= link_to "Download PDF", plans_pdf_path(id: @current_plan, format: :pdf), class: "btn btn-success" %>
+      <%= link_to "Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), class: "btn btn-success" %>
+      <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-primary" %>
     </div>
     <div class="row">
       <div class="card">
@@ -20,7 +20,6 @@
 
             <div class="row">
               <div class="padding-all">
-
                 <% if @my_mission %>
                   <%= link_to missions_path do %>
                     <div class="col-xs-4  p-t-10">
