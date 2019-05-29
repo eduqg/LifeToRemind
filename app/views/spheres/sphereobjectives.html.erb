@@ -1,22 +1,24 @@
 <div class="container">
   <div class="col-xs-12  p-t-10">
     <% @objectives.each_with_index do |objective, i| %>
-      <div class="offer offer-radius offer-info">
-        <div class="shape">
-          <div class="shape-text">
-            <%= i + 1 %>
+      <%= link_to editobjective_path(objective_id: objective.id) do %>
+        <div class="offer offer-radius offer-info">
+          <div class="shape">
+            <div class="shape-text">
+              <%= i + 1 %>
+            </div>
+          </div>
+          <div class="offer-content">
+            <h3 class="lead color-dark">
+              <%= objective.name %><br/>
+              Criado em: <%= objective.created_at.strftime("%d/%m/%Y") %>
+            </h3>
+            <p>
+              <%= render partial: "goals/goal", :collection => objective.goals %>
+            </p>
           </div>
         </div>
-        <div class="offer-content">
-          <h3 class="lead color-dark">
-            <%= objective.name %><br/>
-            Criado em: <%= objective.created_at.strftime("%d/%m/%Y") %>
-          </h3>
-          <p>
-            <%= render partial: "goals/goal", :collection => objective.goals %>
-          </p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

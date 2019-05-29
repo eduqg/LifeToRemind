@@ -17,6 +17,8 @@ RSpec.describe ActivitiesController, type: :controller do
 
   before :each do
     sign_in user
+    user.selected_plan = plan.id
+    user.save
   end
 
 

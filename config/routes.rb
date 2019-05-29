@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :goals
 
+  get "spheres/update_sphere_completion", to: "spheres#update_sphere_completion"
   get "sphereobjectives", to: "spheres#sphereobjectives"
   resources :spheres
 
