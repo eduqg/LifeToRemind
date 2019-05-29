@@ -1,16 +1,16 @@
 <div class="container">
   <div class="col-xs-12  p-t-10">
-    <div class="offer offer-radius offer-info">
+    <div class="offer-without-hover offer-radius offer-info">
       <span class="shape"></span>
       <div class="offer-content">
         <h3 class="lead color-dark">
           Objetivo: <%= @objective.name %>
           <%= link_to " ",
                       edit_objective_path(@objective),
-                      class: "btn btn-default lnr lnr-pencil" %>
+                      class: "lnr lnr-pencil" %>
           <%= link_to " ", @objective,
                       method: :delete,
-                      class: "btn btn-danger lnr lnr-circle-minus",
+                      class: "lnr lnr-circle-minus",
                       data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{@objective.name}"} %>
         </h3>
         <h6>Âmbito: <%= @objective.sphere.name %></h6>
