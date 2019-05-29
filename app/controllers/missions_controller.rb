@@ -37,8 +37,9 @@ class MissionsController < ApplicationController
     @mission.user_id = current_user.id
 
     if @mission.save
-      flash[:notice] = "Missão criada com sucesso"
-      redirect_to missions_path
+      current_plan.update_attribute(:selected_mission, @mission.id)
+      flash[:notice] = "A Missão criada foi adicionada ao seu planejamento"
+      redirect_to new_vision_path
     else
       render :new
     end

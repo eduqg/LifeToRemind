@@ -58,7 +58,7 @@ RSpec.describe RolesController, type: :controller do
 
     it "redirects to index after create role" do
       post :create, params: {role: valid_attributes}
-      expect(response).to redirect_to(myplan_path)
+      expect(response).to redirect_to(new_role_path)
     end
   end
 

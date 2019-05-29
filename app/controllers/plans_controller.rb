@@ -136,7 +136,8 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html {redirect_to plans_path, notice: "Plano criado com sucesso"}
+        current_user.update_attribute(:selected_plan, @plan.id)
+        format.html {redirect_to plans_swotedit_path, notice: "Plano criado com sucesso"}
         format.json {render :show, status: :created, location: @plan}
       else
         format.html {render :new}

@@ -64,7 +64,7 @@ RSpec.describe PlansController, type: :controller do
 
     it "redirects to index after create plan" do
       post :create, params: { plan: valid_attributes }
-      expect(response).to redirect_to(plans_path)
+      expect(response).to redirect_to(plans_swotedit_path)
     end
   end
 

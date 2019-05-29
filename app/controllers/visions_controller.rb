@@ -24,7 +24,8 @@ class VisionsController < ApplicationController
 
     respond_to do |format|
       if @vision.save
-        format.html {redirect_to visions_path, notice: "Visão criada com sucesso"}
+        current_plan.update_attribute(:selected_vision, @vision.id)
+        format.html {redirect_to new_csf_path, notice: "A Visão criada foi adicionada ao seu planejamento"}
       else
         format.html {render :new}
         format.json {render json: @vision.errors, status: :unprocessable_entity}

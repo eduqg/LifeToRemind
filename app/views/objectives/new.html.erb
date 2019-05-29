@@ -1,7 +1,10 @@
 <div class="container">
-  <h1>Novo Objetivo</h1>
+  <h1>Novo Objetivo Estratégico</h1>
 
   <%= render partial: 'form', locals: {action_text: "Criar"}, objective: @objective %>
-
-  <%= link_to 'Voltar', objectives_path, class: "btn btn-default" %>
+  <br/>
+  <div class="justify-buttons">
+    <%= link_to " Voltar para Âmbitos", new_sphere_path, class: "btn btn-default lnr lnr-arrow-left" %>
+    <%= link_to " Ir para Meu Planejamento", myplan_path, class:"btn btn-primary lnr lnr-arrow-right align-right" %>
+  </div>
 </div>

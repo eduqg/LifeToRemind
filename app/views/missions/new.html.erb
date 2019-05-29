@@ -20,4 +20,9 @@
 
 
   <%= render partial: "form", locals: {texto_da_acao: "Criar"} %>
+  <br/>
+  <div class="justify-buttons">
+    <%= link_to " Voltar para Análise Ambiental", plans_swotedit_path, class: "btn btn-default lnr lnr-arrow-left" %>
+    <%= link_to " Continuar para Visão", new_vision_path, class:"btn btn-primary lnr lnr-arrow-right align-right" %>
+  </div>
 </div>

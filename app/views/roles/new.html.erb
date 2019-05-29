@@ -1,1 +1,11 @@
-<%= render "form", value: @role %>
+<div class="container">
+  <h3>Meus Papéis</h3>
+  <br/>
+  <%= render partial: "roles/roles", collection: @current_plan.roles %>
+  <%= render "form", value: @role %>
+  <br/>
+  <div class="justify-buttons">
+    <%= link_to " Voltar para Papéis", new_role_path, class: "btn btn-default lnr lnr-arrow-left" %>
+    <%= link_to " Continuar para Âmbitos", new_sphere_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
+  </div>
+</div>

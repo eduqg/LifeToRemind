@@ -66,7 +66,7 @@ RSpec.describe CsfsController, type: :controller do
 
     it "redirects to index after create csf" do
       post :create, params: {csf: valid_attributes}
-      expect(response).to redirect_to(csfs_path)
+      expect(response).to redirect_to(new_value_path)
     end
   end
 

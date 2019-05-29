@@ -65,7 +65,7 @@ RSpec.describe SpheresController, type: :controller do
 
     it "redirects to index after create sphere" do
       post :create, params: {sphere: valid_attributes}
-      expect(response).to redirect_to(myplan_path)
+      expect(response).to redirect_to(new_sphere_path)
     end
   end
 

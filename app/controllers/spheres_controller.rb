@@ -29,7 +29,7 @@ class SpheresController < ApplicationController
     @sphere.progress = 0
     respond_to do |format|
       if @sphere.save
-        format.html {redirect_to myplan_path, notice: "Âmbito foi criado com sucesso"}
+        format.html {redirect_to new_sphere_path, notice: "Âmbito foi criado com sucesso"}
         format.json {render :show, status: :created, location: @sphere}
       else
         format.html {render :new}

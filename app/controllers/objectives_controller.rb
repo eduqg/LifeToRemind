@@ -41,7 +41,7 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to myplan_path, notice: "Objetivo foi salvo com sucesso" }
+        format.html { redirect_to new_objective_path, notice: "Objetivo foi adicionado ao seu planejamento, adicone Metas e Atividades em Meu Planejamento" }
         format.json { render :show, status: :created, location: @objective }
       else
         # Without @spheres, will render new_objective without spheres on collection_field

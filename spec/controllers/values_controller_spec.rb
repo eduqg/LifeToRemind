@@ -58,7 +58,7 @@ RSpec.describe ValuesController, type: :controller do
 
     it "redirects to index after create value" do
       post :create, params: {value: valid_attributes}
-      expect(response).to redirect_to(myplan_path)
+      expect(response).to redirect_to(new_value_path)
     end
   end
 

@@ -9,14 +9,14 @@
           <h5 class="card-header">Âmbito</h5>
           <div class="padding-all">
             <h5 class="card-title"><%= sphere.name %></h5>
-            <%= link_to "Editar",
+            <%= link_to " ",
                         edit_sphere_path(sphere),
-                        class: "btn btn-primary" %>
-            <%= link_to "Remover",
+                        class: "btn btn-default lnr lnr-pencil" %>
+            <%= link_to " ",
                         sphere,
                         method: :delete,
                         data: {confirm: "Tem certeza que deseja remover o âmbito #{sphere.name}? Ao remover, tambem serão excluidos todos os objetivos estratégicos relacionados ao mesmo."},
-                        class: "btn btn-danger" %>
+                        class: "btn btn-danger lnr lnr-circle-minus" %>
           </div>
         </div>
       </div>

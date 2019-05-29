@@ -69,7 +69,7 @@ RSpec.describe ObjectivesController, type: :controller do
 
     it "redirects to index after create objective" do
       post :create, params: {objective: valid_attributes}
-      expect(response).to redirect_to(myplan_path)
+      expect(response).to redirect_to(new_objective_path)
     end
   end
 

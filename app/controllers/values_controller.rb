@@ -10,6 +10,7 @@ class ValuesController < ApplicationController
   # GET /values/new
   def new
     @value = Value.new
+    @current_plan = current_plan
   end
 
   # GET /values/1/edit
@@ -24,7 +25,7 @@ class ValuesController < ApplicationController
 
     respond_to do |format|
       if @value.save
-        format.html { redirect_to myplan_path, notice: "Valor foi criado com sucesso" }
+        format.html { redirect_to new_value_path, notice: "Valor foi criado com sucesso" }
       else
         format.html { render :new }
         format.json { render json: @value.errors, status: :unprocessable_entity }

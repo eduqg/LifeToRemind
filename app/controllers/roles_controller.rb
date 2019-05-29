@@ -10,6 +10,7 @@ class RolesController < ApplicationController
   # GET /roles/new
   def new
     @role = Role.new
+    @current_plan = current_plan
   end
 
   # GET /roles/1/edit
@@ -25,7 +26,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to myplan_path, notice: "Papel foi criado com sucesso" }
+        format.html { redirect_to new_role_path, notice: "Papel foi criado com sucesso" }
       else
         format.html { render :new }
         format.json { render json: @role.errors, status: :unprocessable_entity }
