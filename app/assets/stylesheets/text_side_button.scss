@@ -72,3 +72,35 @@
   margin-right: 10px;
 
 }
+
+.field-group-swot {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  font-family: Raleway-Black;
+  margin-left: 10px;
+  margin-right: 45px
+}
+.field-add-swot {
+  flex: 1;
+  width: 70%;
+  height: 45px;
+  padding: 0.8em 1em 0.7em;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  resize: none;
+  border-left: 1px solid #ccc;
+
+}
+.icon-add-swot {
+  padding: 0.8em;
+  background: #5cb85c;
+  border: 1px solid rgba(204, 204, 204, 0.35);
+  color: #f0f0f0;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+
+}

@@ -10,18 +10,16 @@
   <tbody>
   <tr>
     <th scope="row" width="12%">Fatores Internos</th>
-    <td class="background-blue-light">
-      Forças
-      <hr/>
+    <td class="background-blue-light" width="250px">
+      <p class="color-white p-b-10" align="center"><strong>Forças</strong></p>
       <% @strengths.each do |strength| %>
         <div class="card-swot">
           <strong><%= strength.name %></strong>
         </div>
       <% end %>
     </td>
-    <td class="background-red-light">
-      Fraquezas
-      <hr/>
+    <td class="background-red-light" width="250px">
+      <p class="color-white p-b-10" align="center"><strong>Fraquezas</strong></p>
       <% @weaks.each do |weak| %>
         <div class="card-swot">
           <strong><%= weak.name %></strong>
@@ -31,18 +29,16 @@
   </tr>
   <tr>
     <th scope="row">Fatores Externos</th>
-    <td class="background-green-light">
-      Oportunidades
-      <hr/>
+    <td class="background-green-light" width="250px">
+      <p class="color-white p-b-10" align="center"><strong>Oportunidades</strong></p>
       <% @opportunities.each do |opportunity| %>
         <div class="card-swot">
           <strong><%= opportunity.name %></strong>
         </div>
       <% end %>
     </td>
-    <td class="background-orange-light">
-      Ameaças
-      <hr/>
+    <td class="background-orange-light" width="250px">
+      <p class="color-white p-b-10" align="center"><strong>Ameaças</strong></p>
       <% @threats.each do |threat| %>
         <div class="card-swot">
           <strong><%= threat.name %></strong>

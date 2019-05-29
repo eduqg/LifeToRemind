@@ -138,3 +138,22 @@
 #content-wrap {
     padding-bottom: 2.5rem;    /* Footer height */
 }
+
+.align-left {
+  float: left;
+  clear:right;
+}
+.align-right {
+  float: right;
+  clear: left;
+
+}
+.align-right-2 {
+  margin-left: 50px;
+  float: right;
+  clear: left;
+
+}
+.clear-both {
+  clear: both;
+}
