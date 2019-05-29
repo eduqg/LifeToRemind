@@ -29,6 +29,13 @@
   line-height: 44px;
 }
 
+.color-ltr-myplan span{
+  color: #28a7e9;
+  font-weight: bold;
+  font-family: Raleway-Black;
+  line-height: 44px;
+}
+
 /* STYLES SPECIFIC TO FOOTER  */
 .footer {
     width: 100%;
@@ -146,7 +153,9 @@
 .align-right {
   float: right;
   clear: left;
-
+}
+.text-align-center {
+  text-align: center;
 }
 .align-right-2 {
   margin-left: 50px;

@@ -1,20 +1,22 @@
 <div class="container p-t-40">
   <% if current_user.selected_plan %>
     <div class="p-b-10" align="right">
-      <%= link_to "Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), class: "btn btn-success" %>
-      <%= link_to "Alterar Plano", plans_path, method: "get", class: "btn btn-primary" %>
+      <%= link_to " Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), class: "btn btn-success lnr lnr-file-add" %>
+      <%= link_to " Gerenciar Planos", plans_path, method: "get", class: "btn btn-primary lnr lnr-cog" %>
     </div>
     <div class="row">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-header">
-            <strong>Planejamento Estratégico Pessoal de <%= current_user.name %></strong><br/><br/>
+          <h5 class="p-b-20 text-align-center">
+            <div class="col-md-12 p-t-20 p-b-20">
+              <h3 class="color-ltr-myplan"><span>Planejamento Estratégico Pessoal de <%= current_user.name %></span></h3>
+            </div>
             Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %> <br/><br/>
             Nome do Plano: <%= "#{@current_plan.name}" %>
           </h5>
           <div class="padding-all">
-            <h3>Matriz
-              SWOT <%= link_to "", plans_swotedit_path, method: "get", class: "btn btn-success lnr lnr-pencil" %></h3>
+            <h3>Matriz SWOT <%= link_to "", plans_swotedit_path, method: "get", class: "btn btn-success lnr lnr-pencil align-right" %></h3>
+            <br/>
             <p class="card-text"><%= render template: "plans/swot" %></p>
             <hr/>
 
@@ -148,8 +150,13 @@
             <div class="row">
               <div class="padding-all">
                 <h3>Meus Valores</h3>
+
+                <div class="row">
                 <%= render partial: "values/values", collection: @current_plan.values %>
+                </div>
+                <div class="row p-l-20">
                 <%= render partial: "values/form" %>
+                </div>
               </div>
             </div>
             <hr/>

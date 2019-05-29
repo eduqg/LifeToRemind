@@ -18,7 +18,7 @@
         <li><%= link_to "MEU PLANEJAMENTO", myplan_path, method: "get" %></li>
 
         <% if current_user %>
-          <li><%= link_to "Olá #{current_user.name}", edit_user_registration_path, method: "get" %></li>
+          <li><%= link_to " Olá #{current_user.name}", edit_user_registration_path, method: "get", class:"lnr lnr-user" %></li>
           <li><%= link_to "Sair", destroy_user_session_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "ENTRAR", new_user_session_path, method: "get" %></li>
