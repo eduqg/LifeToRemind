@@ -1,5 +1,10 @@
-<h1>New Activity</h1>
+<div class="container">
 
-<%= render 'form', activity: @activity %>
+  <h3 class="p-b-20 p-t-20">Nova Atividade</h3>
 
-<%= link_to 'Back', activities_path %>
+  <%= render "form", activity: @activity %>
+
+  <div class="p-t-20">
+    <%= link_to "Voltar", activities_path, class: "btn btn-default" %>
+  </div>
+</div>

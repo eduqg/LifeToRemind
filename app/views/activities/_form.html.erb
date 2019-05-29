@@ -5,14 +5,16 @@
 <% end %>
 
 <%= form_with(model: activity, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= form.label "Título da atividade" %>
+        <%= form.text_field :title, class:"form-control" %>
+      </div>
+    </div>
   </div>
 
   <%= form.hidden_field :goal_id, value: @goal_id %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Criar", class: "btn btn-primary" %>
 <% end %>
