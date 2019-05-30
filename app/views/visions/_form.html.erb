@@ -9,7 +9,7 @@
     <div class="col-sm-8">
       <div class="form-group">
         <%= form.label "Para onde eu vou?" %>
-        <%= form.text_area :where_im_going, class:"form-control" %>
+        <%= form.text_area :where_im_going, autocomplete: "off", class:"form-control resize-none" %>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
     <div class="col-sm-8">
       <div class="form-group">
         <%= form.label "Onde quero chegar?" %>
-        <%= form.text_area :where_arrive, class:"form-control" %>
+        <%= form.text_area :where_arrive, autocomplete: "off", class:"form-control resize-none" %>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
     <div class="col-sm-8">
       <div class="form-group">
         <%= form.label "Como posso fazer para tornar concreta a minha missão?" %>
-        <%= form.text_area :how_complete_mission, class:"form-control" %>
+        <%= form.text_area :how_complete_mission, autocomplete: "off", class:"form-control resize-none" %>
       </div>
     </div>
   </div>

@@ -305,3 +305,8 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 coverage
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
+/public/assets

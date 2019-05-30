@@ -6,8 +6,8 @@
 
 <%= form_for @role do |form| %>
   <div class="search-group-paper m-t-20">
-    <%= form.text_field :name, placeholder:"Papel chave", class: "search-field-paper-name" %>
-    <%= form.text_area :description, placeholder:"Como me vejo no futuro nesse papel", class: "search-field-paper-description" %>
+    <%= form.text_field :name, autocomplete: "off",  placeholder:"Papel chave", class: "search-field-paper-name" %>
+    <%= form.text_area :description, autocomplete: "off",  placeholder:"Como me vejo no futuro nesse papel", class: "search-field-paper-description" %>
     <%= button_tag class: "icon-paper" do %>
       <i class="lnr lnr-arrow-right"></i>
     <% end %>
