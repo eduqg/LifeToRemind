@@ -1,5 +1,5 @@
 .wrap-collabsible {
-  margin-bottom: 1.2rem 0;
+  margin-bottom: 1.2rem;
 }
 
 
@@ -54,7 +54,7 @@
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-  max-height: 350px;
+  max-height: 700px;
 }
 
 .toggle:checked + .lbl-toggle {
@@ -71,9 +71,10 @@
 }
 
 .content-text {
-  font-family: Poppins-Regular;
   font-size: 16px;
   line-height: 1.7;
   color: #444444;
-  text-align: center;
+  text-align: justify;
+  padding-left: 20%;
+  padding-right: 30%;
 }

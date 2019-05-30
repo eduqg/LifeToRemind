@@ -1,4 +1,25 @@
 <div class="container">
+  <div class="wrap-collabsible p-t-60 p-b-20">
+    <input id="collapsible" class="toggle" type="checkbox" style="display: none" checked>
+    <label for="collapsible" class="lbl-toggle">Análise Ambiental</label>
+    <div class="collapsible-content">
+      <div class="content-inner">
+        <div class="content-text p-b-10">
+          O primeiro passo para ajudar na criação do seu planejamento estratégico pessoal é a sua
+          analise ambiental. Também conhecida como matriz SWOT, ela ajuda a caracterizar aspectos internos e externos pessoais.
+          <br/>
+          <br/>
+          A Matriz possui várias perspectivas. Aqui estão alguns exemplos que poderiam ser adicionados:
+          <br/>
+          <br/>
+          Um <strong>Fator Interno</strong> e <strong>Positivo</strong> para um jogador de basquete poderia ser sua habilidade em fazer cestas, portanto uma <strong>Força</strong>.
+          <br/>
+          Um <strong>Fator Externo</strong> e <strong>Negativo</strong> para uma estudante poderia ser algum excesso de ruído enquanto estuda, portanto uma <strong>Ameaça</strong>.
+          <br/>
+        </div>
+      </div>
+    </div>
+  </div>
   <h3 class="p-t-20 p-b-20">Análise Ambiental</h3>
   <table class="table table-borderless table-hover">
     <caption class="hidden">Análise Ambiental</caption>
@@ -78,7 +99,10 @@
   <br/>
   <div>
 
-    <%= link_to " Continuar para Missão", new_mission_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
+    <div class="justify-buttons">
+      <%= link_to " Voltar para Planos", new_plan_path, class: "btn btn-default lnr lnr-arrow-left" %>
+      <%= link_to " Continuar para Missão", new_mission_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
+    </div>
 
 
   </div>

@@ -8,15 +8,6 @@
   <div class="row">
     <div class="col-sm-8">
       <div class="form-group">
-        <%= form.label "Qual o meu propósito de vida?" %>
-        <%= form.text_field :purpose_of_life, class:"form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="form-group">
         <%= form.label "Quem sou eu?" %>
         <%= form.text_area :who_am_i, class:"form-control", rows: 4 %>
       </div>
@@ -26,8 +17,17 @@
   <div class="row">
     <div class="col-sm-8">
       <div class="form-group">
-        <%= form.label "Por que existo?" %>
+        <%= form.label "Por que eu existo?" %>
         <%= form.text_field :why_exist, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label "Qual o meu propósito de vida?" %>
+        <%= form.text_field :purpose_of_life, class:"form-control" %>
       </div>
     </div>
   </div>

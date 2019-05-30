@@ -1,11 +1,17 @@
 <div class="container">
 
   <div class="wrap-collabsible p-t-60 p-b-20">
-    <input id="collapsible" class="toggle" type="checkbox" style="display: none">
-    <label for="collapsible" class="lbl-toggle">EXEMPLOS</label>
+    <input id="collapsible" class="toggle" type="checkbox" style="display: none" checked>
+    <label for="collapsible" class="lbl-toggle">Planos</label>
     <div class="collapsible-content">
       <div class="content-inner">
         <div class="content-text p-b-10">
+          Seus planos são formas de representar suas características, perspectivas,
+          e também objetivos em diferentes âmbitos de vida.
+          Escolha um nome de sua preferência.
+          <br/>
+          <br/>
+
           Exemplos de nomes para um plano:
           <br/>
           <br/>
@@ -19,9 +25,8 @@
     </div>
   </div>
 
-
   <%= render "form", plan: @plan %>
   <br/>
-  <%= link_to " Continuar para Missão", new_mission_path, class:"btn btn-primary lnr lnr-arrow-right align-right" %>
+  <%= link_to " Continuar para Análise Ambiental", plans_swotedit_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
 </div>
 
