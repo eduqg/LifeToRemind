@@ -6,21 +6,6 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: Poppins-Regular;
-  src: assets_url('/assets/Poppins-Regular.ttf');
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: assets_url('/assets/Poppins-Bold.ttf');
-}
-
-@font-face {
-  font-family: Poppins-Medium;
-  src: assets_url('/assets/Poppins-Medium.ttf');
-}
-
-@font-face {
   font-family: Raleway-Regular;
   src: assets_url('/assets/Raleway-Regular.ttf');
 }
@@ -52,12 +37,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+    font-family: Raleway-Black;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Poppins-Regular;
+    font-family: Raleway-Black;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -83,7 +68,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Poppins-Regular;
+    font-family: Raleway-Black;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -352,7 +337,7 @@ iframe {
 
 .label-checkbox100::before {
   content: "\f00c";
-  font-family: FontAwesome;
+  font-family: Raleway-Black;
   font-size: 13px;
   color: transparent;
 
@@ -523,7 +508,7 @@ iframe {
 
 .alert-validate::after {
   content: "\f12a";
-  font-family: FontAwesome;
+  font-family: Raleway-Black;
   display: block;
   position: absolute;
   color: #c80000;
