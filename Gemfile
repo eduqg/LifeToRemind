@@ -22,8 +22,6 @@ gem 'simplecov', require: false, group: :test
 
 gem 'wicked_pdf'
 
-gem 'wkhtmltopdf-binary-edge'
-
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -71,6 +69,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
+  gem 'wkhtmltopdf-binary-edge'
 end
 
 group :test do
@@ -84,6 +83,10 @@ group :test do
   gem 'faker'
   gem 'rspec-rails', '3.8'
   gem 'rails-controller-testing'
+end
+
+group :production do
+  gem 'wkhtmltopdf-heroku', '2.12.5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
