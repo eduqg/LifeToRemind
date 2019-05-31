@@ -22,7 +22,6 @@ gem 'simplecov', require: false, group: :test
 
 gem 'wicked_pdf'
 
-gem 'wkhtmltopdf-binary-edge'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -61,6 +60,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.68.1', require: false
   gem 'rubocop-performance'
   gem 'rails-erd'
+  gem 'wkhtmltopdf-binary', '~> 0.12.4'
 end
 
 group :development do
