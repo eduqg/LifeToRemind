@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset='utf-8'/>
-  <%= wicked_pdf_stylesheet_link_tag ("card_offer") %>
-  <%= wicked_pdf_stylesheet_link_tag ("plans") %>
-  <%= wicked_pdf_stylesheet_link_tag ("application") %>
-  <%= wicked_pdf_stylesheet_link_tag ("objectives") %>
+  <%= stylesheet_link_tag wicked_pdf_asset_base64("card_offer.scss") %>
+  <%= stylesheet_link_tag wicked_pdf_asset_base64("plans.scss") %>
+  <%= stylesheet_link_tag wicked_pdf_asset_base64("application.scss") %>
+  <%= stylesheet_link_tag wicked_pdf_asset_base64("objectives.scss") %>
 </head>
 <body>
 <div class="container">
