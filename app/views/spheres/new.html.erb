@@ -1,10 +1,32 @@
 <div class="container">
-  <h3>Novo Âmbito</h3>
+
+  <div class="wrap-collabsible p-t-60 p-b-20">
+    <input id="collapsible" class="toggle" type="checkbox" style="display: none" checked>
+    <label for="collapsible" class="lbl-toggle">ÂMBITOS</label>
+    <div class="collapsible-content">
+      <div class="content-inner">
+        <div class="content-text p-b-10">
+          Os Âmbitos representam os círculos que irão envolver seus objetivos.
+          <br/>
+          <br/>
+          Exemplos de Âmbitos:
+          <br/>
+          <br/>
+          Profissional<br/>
+          Familiar<br/>
+          Financeiro<br/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Meus Âmbitos</h3>
   <% if !current_user.spheres.nil? %>
     <div class="row">
       <%= render partial: "spheres/spheres", collection: current_user.spheres %>
     </div>
   <% end %>
+  <br/>
   <%= render 'form', sphere: @sphere %>
 
   <br/>

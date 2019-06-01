@@ -5,15 +5,19 @@
     <div class="collapsible-content">
       <div class="content-inner">
         <div class="content-text p-b-10">
-          Valores os princípios éticos que norteiam uma pessoa.
+          Para atingir objetivos, cumprir sua missão, realizar seu sonho, é preciso
+          apoiar-se em comportamentos e atitudes.
+          Valores são os princípios que vão te acompanhar nesse caminho.
           <br/>
           <br/>
-          Exemplo de Valor:
+          Exemplo de Valores:
           <br/>
           <br/>
-          <strong></strong>
+          Honestidade
           <br/>
-
+          Honra
+          <br/>
+          Dedicação
         </div>
       </div>
     </div>
@@ -22,8 +26,13 @@
   <br/>
 
   <div class="row">
-    <%= render partial: "values/values", collection: @current_plan.values %>
-    <%= render "form", value: @value %>
+    <p>Quais valores irão me acompanhar por toda a minha carreira?</p>
+    <div class="row">
+      <%= render partial: "values/values", collection: @current_plan.values %>
+    </div>
+    <div class="row">
+      <%= render "form", value: @value %>
+    </div>
     <br/>
   </div>
   <div class="row">
