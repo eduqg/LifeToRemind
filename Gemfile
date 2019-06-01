@@ -22,6 +22,7 @@ gem 'simplecov', require: false, group: :test
 
 gem 'wicked_pdf'
 
+gem 'puma_worker_killer'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -71,6 +72,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
+  gem 'derailed'
 end
 
 group :test do
