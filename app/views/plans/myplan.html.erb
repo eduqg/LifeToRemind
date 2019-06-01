@@ -1,7 +1,7 @@
 <div class="container p-t-40">
   <% if current_user.selected_plan %>
     <div class="p-b-10" align="right">
-      <%= link_to " Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), data: { disable_with: " Arquivo sendo gerado..." }, class: "btn btn-success lnr lnr-file-add" %>
+      <%= link_to " Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), data: { disable_with: " Gerando arquivo..." }, class: "btn btn-success lnr lnr-file-add" %>
       <%= link_to " Gerenciar Planos", plans_path, method: "get", class: "btn btn-primary lnr lnr-cog" %>
     </div>
     <div class="row">
