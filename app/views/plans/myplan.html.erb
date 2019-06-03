@@ -163,9 +163,8 @@
                           <p><%= "#{@my_csf.essential_atributes}" %></p>
                           <h3 class="lead color-dark m-b-5">Quais fatores impactam no meu bem estar?</h3>
                           <p><%= "#{@my_csf.health_factors}" %></p>
-                          <p>
-                            Criado em: <%= @my_csf.created_at.strftime("%d/%m/%Y") %>
-                          </p>
+                          <p class="p-l-15 p-b-5 p-r-5 align-right"><%= @my_csf.created_at.strftime("%d/%m/%Y") %></p>
+
                         </div>
                       </div>
                     </div>
