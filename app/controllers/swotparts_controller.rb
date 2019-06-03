@@ -26,7 +26,10 @@ class SwotpartsController < ApplicationController
   # POST /swotparts
   # POST /swotparts.json
   def create
-    @swotpart = Swotpart.new(plan_id: current_plan.id, name: params[:name], partname: params[:partname])
+    @swotpart = Swotpart.new(create_params)
+    @swotpart.plan_id = current_plan.id
+    @swotpart.name = params[:name]
+    @swotpart.partname = params[:partname]
 
     if @swotpart.save
       flash[:notice] = "Força adicionada"
@@ -42,7 +45,7 @@ class SwotpartsController < ApplicationController
   # PATCH/PUT /swotparts/1.json
   def update
     respond_to do |format|
-      if @swotpart.update(swotpart_params)
+      if @swotpart.update(update_params)
         format.html {redirect_to plans_swotedit_path, notice: "Característica da SWOT atualizada com sucesso"}
         format.json {render :show, status: :ok, location: @swotpart}
       else
@@ -71,7 +74,11 @@ class SwotpartsController < ApplicationController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def swotpart_params
-    params.require(:swotpart).permit(:plan_id, :name, :partname)
+  def create_params
+    params.permit(:plan_id, :name, :partname)
+  end
+
+  def update_params
+    params.require(:swotpart).permit(:name)
   end
 end
