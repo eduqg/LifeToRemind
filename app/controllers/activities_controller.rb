@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities

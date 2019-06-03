@@ -1,4 +1,5 @@
 class ValuesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_value, only: [:edit, :update, :destroy]
 
   # GET /values

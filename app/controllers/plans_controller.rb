@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  load_and_authorize_resource
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   # GET /plans

@@ -1,4 +1,5 @@
 class MissionsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_mission, only: [:edit, :update, :destroy]
 
   def index
