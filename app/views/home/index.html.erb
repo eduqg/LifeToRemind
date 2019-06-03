@@ -97,11 +97,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">Funcionalidades do <span>LTR</span></h2>
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">O que o <span>LTR</span> possui</h2>
       </div>
       <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <i class="lnr lnr-layers color-white"></i>
-        <h4>Diferentes planos</h4>
+        <h4>Planos</h4>
 
       </div>
       <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">
@@ -111,7 +111,37 @@
       </div>
       <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <i class="lnr lnr-pushpin color-white"></i>
-        <h4>Objetivos Estratégicos</h4>
+        <h4>Missão</h4>
+
+      </div>
+      <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+        <i class="lnr lnr-layers color-white"></i>
+        <h4>Valores</h4>
+
+      </div>
+      <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">
+        <i class="lnr lnr-file-add color-white"></i>
+        <h4>Papéis</h4>
+
+      </div>
+      <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+        <i class="lnr lnr-pushpin color-white"></i>
+        <h4>Fatores Críticos de Sucesso</h4>
+
+      </div>
+      <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+        <i class="lnr lnr-layers color-white"></i>
+        <h4>Objetivos Estratégicos Pessoais</h4>
+
+      </div>
+      <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">
+        <i class="lnr lnr-file-add color-white"></i>
+        <h4>Metas</h4>
+
+      </div>
+      <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+        <i class="lnr lnr-pushpin color-white"></i>
+        <h4>Atividades</h4>
 
       </div>
     </div>
@@ -124,41 +154,59 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">MEUS <span>PLANOS</span></h2>
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">MEU <span>PLANEJAMENTO</span></h2>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("portfolio-img1.jpg", alt: "portfolio img 1", class: "img-responsive") %>
+          <%= image_tag("plan1.png", alt: "portfolio img 1", class: "img-responsive") %>
           <div class="portfolio-overlay">
-            <h4>Plano Um</h4>
-            <a href="#" class="btn btn-default">Detalhes</a>
+            <h4>Meu plano</h4>
+            <%= link_to "Detalhes", myplan_path, class:"btn btn-default" %>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("portfolio-img2.jpg", alt: "portfolio img 2", class: "img-responsive") %>
+          <%= image_tag("mission1.png", alt: "portfolio img 2", class: "img-responsive") %>
           <div class="portfolio-overlay">
-            <h4>Plano Dois</h4>
-            <a href="#" class="btn btn-default">Detalhes</a>
+            <h4>Minha missão</h4>
+            <%= link_to "Detalhes", new_mission_path, class:"btn btn-default" %>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("portfolio-img3.jpg", alt: "portfolio img 3", class: "img-responsive") %>
+          <%= image_tag("sphere1.png", alt: "portfolio img 3", class: "img-responsive") %>
           <div class="portfolio-overlay">
-            <h4>Plano Três</h4>
-            <a href="#" class="btn btn-default">Detalhes</a>
+            <h4>Âmbitos e Objetivos</h4>
+            <%= link_to "Detalhes", new_objective_path, class:"btn btn-default" %>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("portfolio-img1.jpg", alt: "portfolio img 1", class: "img-responsive") %>
+          <%= image_tag("meta1.png", alt: "portfolio img 4", class: "img-responsive") %>
           <div class="portfolio-overlay">
-            <h4>Plano Quatro</h4>
-            <a href="#" class="btn btn-default">Detalhes</a>
+            <h4>Metas e Atividades</h4>
+            <%= link_to "Detalhes", new_objective_path, class:"btn btn-default" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+        <div class="portfolio-thumb">
+          <%= image_tag("status1.png", alt: "portfolio img 5", class: "img-responsive") %>
+          <div class="portfolio-overlay">
+            <h4>Status</h4>
+            <%= link_to "Detalhes", inicio_path, class:"btn btn-default" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+        <div class="portfolio-thumb">
+          <%= image_tag("status2.png", alt: "portfolio img 6", class: "img-responsive") %>
+          <div class="portfolio-overlay">
+            <h4>Análise Ambiental</h4>
+            <%= link_to "Detalhes", plans_swotedit_path, class:"btn btn-default" %>
           </div>
         </div>
       </div>
