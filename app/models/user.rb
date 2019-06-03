@@ -4,11 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :timeoutable
+
+  after_initialize :set_default_role, if: :new_record?
+
   has_many :plans, dependent: :destroy
   has_many :spheres, dependent: :destroy
   has_many :missions, dependent: :destroy
   has_many :visions, dependent: :destroy
   has_many :csfs, dependent: :destroy
+
+  enum role: [:user, :admin]
 
   validates :name, presence: true
   validates :email, presence: true
@@ -19,5 +24,9 @@ class User < ApplicationRecord
     errors.add "Não foi possível salvar o usuário: ", "a sua senha
      deve ter de 8-70 caracteres e incluir: 1 letra maíscula,
      1 letra minúscula, 1 digito numérico e 1 caractere especial."
+  end
+
+  def set_default_role
+    self.role ||= :user
   end
 end

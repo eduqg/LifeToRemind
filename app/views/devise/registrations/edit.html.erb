@@ -1,5 +1,6 @@
 <div class="container">
-  <h2>Editar usuário</h2>
+  <h2 class="p-b-20">Editar usuário</h2>
+  <p align="center">(<%= current_user.role %>)</p>
   <hr/>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |form| %>
@@ -22,7 +23,7 @@
       <div class="col-sm-6">
         <div class="form-group">
           <%= form.label "Nome" %><br/>
-          <%= form.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+          <%= form.text_field :name, autocomplete: "name", class: "form-control" %>
         </div>
       </div>
     </div>
