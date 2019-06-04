@@ -4,6 +4,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def index
+    @users = User.all
+    authorize! :index, @users
+  end
+
   # GET /resource/sign_up
   def new
     @disable_footer = true
@@ -30,6 +35,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+
+  # DELETE /resource
+  def destroy_another_user
+    user = User.find(params[:id])
+    user.destroy
+    flash[:info] = "Usuário foi excluído"
+    redirect_to users_path
+    authorize! :destroy, user
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

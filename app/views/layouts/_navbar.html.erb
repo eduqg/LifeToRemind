@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.admin? %>
           <li><%= link_to " ", contacts_path, method: "get", class: "lnr lnr-envelope" %></li>
+          <li><%= link_to " ", users_path, method: "get", class: "lnr lnr-users" %></li>
       <% end %>
         <li><%= link_to "STATUS", inicio_path, method: "get" %></li>
 

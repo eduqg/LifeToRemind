@@ -1,0 +1,32 @@
+<div class="container p-t-20">
+  <h3>Gerenciar Usuários</h3>
+
+  <% @users.each_with_index do |user, i| %>
+    <div class="col-xs-10 p-t-10">
+      <div class="offer offer-radius offer-success">
+        <div class="shape">
+          <div class="shape-text">
+            <h5><%= i + 1 %></h5>
+          </div>
+        </div>
+        <div class="offer-content">
+          <h3 class="lead color-dark m-b-0">
+            <h4>Nome: <%= user.name %></h4>
+            <h4>Email: <%= user.email %></h4>
+            <h4>Função: <%= user.role %></h4>
+          </h3>
+        </div>
+        <div class="justify-buttons p-l-20 p-b-5 p-r-15">
+          <a class="color-dark">Id: <%= user.id %></a>
+          <a class="color-dark"><%= user.created_at.strftime("%d/%m/%Y") %></a>
+          <%= link_to "Remover",
+                      users_destroy_another_user_path(id: user.id),
+                      method: :delete,
+                      class:"btn btn-danger",
+                      data: {confirm: "Tem certeza que deseja remover esse usuário? #{user.name}" } %>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

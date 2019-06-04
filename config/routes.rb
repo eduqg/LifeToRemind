@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   resources :objectives
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  devise_scope :user do
+    get 'users', :to => 'users/registrations#index'
+    delete 'users/destroy_another_user', :to => 'users/registrations#destroy_another_user'
+  end
   resources :swotparts
 
   put "missions/update_selected_mission", to: "missions#update_selected_mission"
