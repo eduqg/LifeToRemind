@@ -8,17 +8,20 @@
         <span class="icon icon-bar"></span>
       </button>
       <%= link_to root_path, method: "get" do %>
-        <%= image_tag("ltr2.svg", alt:"logo img 2", class: "image-responsive resize-navbrand p-t-10") %>
+        <%= image_tag("ltr2.svg", alt: "logo img 2", class: "image-responsive resize-navbrand p-t-10") %>
       <% end %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user.admin? %>
+          <li><%= link_to " ", contacts_path, method: "get", class: "lnr lnr-envelope" %></li>
+      <% end %>
         <li><%= link_to "STATUS", inicio_path, method: "get" %></li>
 
         <li><%= link_to "MEU PLANEJAMENTO", myplan_path, method: "get" %></li>
 
         <% if current_user %>
-          <li><%= link_to " Olá #{current_user.name}", edit_user_registration_path, method: "get", class:"lnr lnr-user" %></li>
+          <li><%= link_to " Olá #{current_user.name}", edit_user_registration_path, method: "get", class: "lnr lnr-user" %></li>
           <li><%= link_to "Sair", destroy_user_session_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "ENTRAR", new_user_session_path, method: "get" %></li>

@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :new, :create, :destroy]
+  load_and_authorize_resource
+  skip_before_action :authenticate_user!, only: [:new, :create]
   before_action :set_contact, only: [:destroy]
 
   # GET /contacts
