@@ -1,0 +1,46 @@
+<!-- start contact -->
+
+<% @contact.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">ENTRE EM <span>CONTATO</span></h2>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+        <%= form_for @contact do |form| %>
+
+          <label>NOME</label>
+          <%= form.text_field :name, autocomplete: "off", class: "form-control"%>
+
+          <label>EMAIL</label>
+          <%= form.text_field :email, autocomplete: "off", class: "form-control" %>
+
+          <label>MENSAGEM</label>
+          <%= form.text_area :message, autocomplete: "off", class: "form-control resize-none", rows: 4 %>
+
+          <%= form.submit "Enviar", class: "form-control" %>
+        <% end %>
+
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+        <address>
+          <p class="color-white"><i class="lnr lnr-envelope"></i> lifetoremind@gmail.com</p>
+        </address>
+        <!--
+          <ul class="social-icon">
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-twitter"></a></li>
+            <li><a href="#" class="fa fa-instagram"></a></li>
+          </ul>
+        -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end contact -->

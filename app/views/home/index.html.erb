@@ -21,7 +21,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-offset-2 col-md-8">
-        <h1 class="wow fadeIn color-white" data-wow-offset="50" data-wow-delay="0.9s"><span>Life to Remind</span><span class="home-version"> Alpha</span></h1>
+        <h1 class="wow fadeIn color-white" data-wow-offset="50" data-wow-delay="0.9s">
+          <span>Life to Remind</span><span class="home-version"> Alpha</span></h1>
         <div class="element">
           <div class="sub-element">Life To Remind</div>
           <div class="sub-element">Planeje sua vida</div>
@@ -161,7 +162,7 @@
           <%= image_tag("plan1.png", alt: "portfolio img 1", class: "img-responsive") %>
           <div class="portfolio-overlay">
             <h4>Meu plano</h4>
-            <%= link_to "Detalhes", myplan_path, class:"btn btn-default" %>
+            <%= link_to "Detalhes", myplan_path, class: "btn btn-default" %>
           </div>
         </div>
       </div>
@@ -170,7 +171,7 @@
           <%= image_tag("mission1.png", alt: "portfolio img 2", class: "img-responsive") %>
           <div class="portfolio-overlay">
             <h4>Minha missão</h4>
-            <%= link_to "Detalhes", new_mission_path, class:"btn btn-default" %>
+            <%= link_to "Detalhes", new_mission_path, class: "btn btn-default" %>
           </div>
         </div>
       </div>
@@ -179,7 +180,7 @@
           <%= image_tag("sphere1.png", alt: "portfolio img 3", class: "img-responsive") %>
           <div class="portfolio-overlay">
             <h4>Âmbitos e Objetivos</h4>
-            <%= link_to "Detalhes", new_objective_path, class:"btn btn-default" %>
+            <%= link_to "Detalhes", new_objective_path, class: "btn btn-default" %>
           </div>
         </div>
       </div>
@@ -188,7 +189,7 @@
           <%= image_tag("meta1.png", alt: "portfolio img 4", class: "img-responsive") %>
           <div class="portfolio-overlay">
             <h4>Metas e Atividades</h4>
-            <%= link_to "Detalhes", new_objective_path, class:"btn btn-default" %>
+            <%= link_to "Detalhes", new_objective_path, class: "btn btn-default" %>
           </div>
         </div>
       </div>
@@ -197,7 +198,7 @@
           <%= image_tag("status1.png", alt: "portfolio img 5", class: "img-responsive") %>
           <div class="portfolio-overlay">
             <h4>Status</h4>
-            <%= link_to "Detalhes", inicio_path, class:"btn btn-default" %>
+            <%= link_to "Detalhes", inicio_path, class: "btn btn-default" %>
           </div>
         </div>
       </div>
@@ -206,7 +207,7 @@
           <%= image_tag("status2.png", alt: "portfolio img 6", class: "img-responsive") %>
           <div class="portfolio-overlay">
             <h4>Análise Ambiental</h4>
-            <%= link_to "Detalhes", plans_swotedit_path, class:"btn btn-default" %>
+            <%= link_to "Detalhes", plans_swotedit_path, class: "btn btn-default" %>
           </div>
         </div>
       </div>
@@ -215,49 +216,13 @@
 </section>
 <!-- end portfolio -->
 
-<!-- start contact -->
-<section id="contact">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">ENTRE EM <span>CONTATO</span></h2>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
-        <form action="#" method="post">
-          <label>NAME</label>
-          <input name="fullname" type="text" class="form-control" id="fullname">
-
-          <label>EMAIL</label>
-          <input name="email" type="email" class="form-control" id="email">
-
-          <label>MESSAGE</label>
-          <textarea name="message" rows="4" class="form-control" id="message"></textarea>
-
-          <input type="submit" class="form-control">
-        </form>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
-        <address>
-          <p class="color-white"><i class="fa fa-envelope-o"></i> @gmail.com</p>
-        </address>
-      <!--
-        <ul class="social-icon">
-          <li><a href="#" class="fa fa-facebook"></a></li>
-          <li><a href="#" class="fa fa-twitter"></a></li>
-          <li><a href="#" class="fa fa-instagram"></a></li>
-        </ul>
-      -->
-      </div>
-    </div>
-  </div>
-</section>
-<!-- end contact -->
+<%= render template: "contacts/new" %>
 
 <!-- start copyright -->
 <footer id="copyright">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-md-12 text-center p-b-20">
         <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
           Copyright &copy; 2019 Life to Remind</p>
       </div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :contacts, only: [:index, :show, :new, :create, :destroy]
+
   resources :roles
   put "csfs/update_selected_csf", to: "csfs#update_selected_csf"
   resources :csfs

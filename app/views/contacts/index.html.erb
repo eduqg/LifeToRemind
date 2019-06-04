@@ -1,0 +1,19 @@
+<div class="container p-t-20">
+  <h3>Todas mensagens</h3>
+  <hr/>
+
+  <% @contacts.each_with_index do |contact, i| %>
+    <h4>Mensagem nº <%= i+1 %></h4>
+    <br/>
+    <%= link_to " ",
+                contact,
+                method: :delete,
+                data: {confirm: "Tem certeza que deseja remover a mensagem de #{contact.name}?"},
+                class: "btn btn-danger lnr lnr-circle-minus align-right" %>
+    <p>Nome: <%= contact.name %></p>
+    <p>Email: <%= contact.email %></p>
+    <p>Mensagem: <%= contact.message %></p>
+    <br/>
+    <hr/>
+  <% end %>
+</div>
