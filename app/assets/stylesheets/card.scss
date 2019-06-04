@@ -15,6 +15,25 @@
   margin: 1em;
 }
 
+.card-plan {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.8rem;
+  margin: 1em;
+  border-top: 5px solid #28a7e9;
+  border-bottom: 5px solid #28a7e9;
+}
+
 .card-block {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;

@@ -1,19 +1,19 @@
 <div class="container p-t-40">
   <% if current_user.selected_plan %>
     <div class="p-b-10" align="right">
-      <%= link_to " Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), data: {disable_with: " Gerando arquivo..."}, class: "btn btn-success lnr lnr-file-add" %>
+      <%= link_to " Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), data: {disable_with: " Gerando arquivo..."}, class: "btn btn-warning lnr lnr-file-add" %>
       <%= link_to " Gerenciar Planos", plans_path, method: "get", class: "btn btn-primary lnr lnr-cog" %>
     </div>
     <div class="row">
-      <div class="card">
+      <div class="card-plan">
         <div class="card-body">
           <h5 class="p-b-20 text-align-center">
             <div class="col-md-12 p-t-20 p-b-20">
-              <h3 class="color-ltr-myplan"><span>Planejamento Estratégico Pessoal de <%= current_user.name %></span>
-              </h3>
+              <h4 class="color-ltr-myplan"><span><%= current_user.name %></span></h4>
+              <h4 class="text-ltr">Planejamento Estratégico Pessoal</h4>
+              <h4 class="text-ltr">Nome do Plano: <%= "#{@current_plan.name}" %></h4>
+              <h4 class="text-ltr"><%= @current_plan.created_at.strftime("%d/%m/%Y") %></h4>
             </div>
-            Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %> <br/><br/>
-            Nome do Plano: <%= "#{@current_plan.name}" %>
           </h5>
           <div class="padding-all">
 

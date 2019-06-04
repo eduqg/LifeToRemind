@@ -28,6 +28,14 @@
   line-height: 44px;
 }
 
+.text-ltr {
+  color: #262626;
+  font-family: Raleway-Black;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
 .color-ltr-myplan span{
   color: #28a7e9;
   font-weight: bold;
@@ -171,4 +179,9 @@
 }
 .resize-none {
   resize: none;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(47, 47, 47, 0.27), rgba(0, 0, 0, 0));
 }
