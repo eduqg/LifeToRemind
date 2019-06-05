@@ -93,7 +93,8 @@ class ActivitiesController < ApplicationController
   def update_goal_completion(goal_id)
     all_goals = Activity.where(goal_id: goal_id).count
     checked_goals = Activity.where(goal_id: goal_id).where(checked: true).count
-    Goal.find(goal_id).update_attribute(:progress, ((checked_goals.to_f / all_goals.to_f) * 100))
+    Goal.find(goal_id).update_attribute(:progress,
+                                        checked_goals.zero? || all_goals.zero? ? 0 : ((checked_goals.to_f / all_goals.to_f) * 100))
   end
 
   def update_sphere_completion(goal_id)
@@ -109,7 +110,8 @@ class ActivitiesController < ApplicationController
         total_progress += Activity.where(goal_id: goal.id).where(checked: true).count
       end
     end
-    sphere.update_attribute(:progress, ((total_progress.to_f / total_goals.to_f) * 100).round(2))
+    sphere.update_attribute(:progress,
+                            total_progress.is_a?(Float) || total_goals.zero? ? 0 : ((total_progress.to_f / total_goals.to_f) * 100).round(2))
   end
 
   # Use callbacks to share common setup or constraints between actions.

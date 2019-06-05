@@ -127,7 +127,7 @@
     <% if !current_user.spheres.nil? %>
       <h3>Âmbitos </h3>
       <% @spheres.each do |sphere| %>
-        <p><%= sphere.name %></p>
+        <p><%= sphere.name %>. <%= sphere.progress %> concluído.</p>
       <% end %>
     <% end %>
     <hr/>
