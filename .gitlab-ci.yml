@@ -1,14 +1,10 @@
 image: ruby:2.5.1
 
-cache:
-  paths:
-    - /cache
-
 services:
   - postgres:9.5
 
 before_script:
-  - bundle install --path /cache
+  - bundle install
 
 test:
   script:
