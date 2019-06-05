@@ -11,46 +11,86 @@
       <span class="card-divider"/>
     </div>
 
-    <h4>Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %></h4>
-    <h4>Nome do Plano: <%= "#{@current_plan.name}" %></h4>
-    <div class="p-t-20 p-b-20">
-      <span class="card-divider"/>
-    </div>
+    <p>Data: <%= @current_plan.created_at.strftime("%d/%m/%Y") %></p>
+    <p>Nome do Plano: <%= "#{@current_plan.name}" %></p>
+
+    <hr/>
 
     <!-- Análise Ambiental -->
     <h3>Matriz SWOT</h3>
-    <p class="card-text"><%= render template: "plans/swot" %></p>
+    <table class="table table-borderless table-hover">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col" width="250px">Fatores Positivos</th>
+        <th scope="col" width="250px">Fatores Negativos</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Fatores Internos</th>
+        <td class="background-blue-light" width="250px">
+          <p class="color-white p-b-10" align="center"><i>Forças</i></p>
+          <% @strengths.each do |strength| %>
+            <p align="center"><%= strength.name %></p>
+          <% end %>
+        </td>
+        <td class="background-red-light" width="250px">
+          <p class="color-white p-b-10" align="center"><i>Fraquezas</i></p>
+          <% @weaks.each do |weak| %>
+            <p align="center"><%= weak.name %></p>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Fatores Externos</th>
+        <td class="background-green-light" width="250px">
+          <p class="color-white p-b-10" align="center"><i>Oportunidades</i></p>
+          <% @opportunities.each do |opportunity| %>
+            <p align="center"><%= opportunity.name %></p>
+          <% end %>
+        </td>
+        <td class="background-orange-light" width="250px">
+          <p class="color-white p-b-10" align="center"><i>Ameaças</i></p>
+          <% @threats.each do |threat| %>
+            <p align="center"><%= threat.name %></p>
+          <% end %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <hr/>
 
     <!-- Mission -->
     <% if @my_mission %>
       <h3 class="color-dark">Minha Missão </h3>
+      <p>Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %></p>
       <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
       <p><%= "#{@my_mission.purpose_of_life}" %></p>
       <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
       <p><%= "#{@my_mission.who_am_i}" %></p>
       <h3 class="lead color-dark m-b-5">Porque existo</h3>
       <p><%= "#{@my_mission.why_exist}" %></p>
-      <p>
-        Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
     <% end %>
+    <hr/>
 
     <!-- Vision -->
     <% if @my_vision %>
       <h3 class="color-dark">Minha Visão </h3>
+      <p>Criado em: <%= @my_vision.created_at.strftime("%d/%m/%Y") %></p>
       <h3 class="lead color-dark m-b-5">Para onde vou?</h3>
       <p><%= "#{@my_vision.where_im_going}" %></p>
       <h3 class="lead color-dark m-b-5">Onde quero chegar?</h3>
       <p><%= "#{@my_vision.where_arrive}" %></p>
       <h3 class="lead color-dark m-b-5">Como tornarei concreta a minha missão?</h3>
       <p><%= "#{@my_vision.how_complete_mission}" %></p>
-      <p>
-        Criado em: <%= @my_vision.created_at.strftime("%d/%m/%Y") %>
-      </p>
     <% end %>
+    <hr/>
 
     <!-- Fatores Críticos de Sucesso -->
     <% if @my_csf %>
       <h3 class="color-dark">Meus Fatores Críticos de Sucesso </h3>
+      <p>Criado em: <%= @my_csf.created_at.strftime("%d/%m/%Y") %></p>
       <h3 class="lead color-dark m-b-5">Que características me tornam único?</h3>
       <p><%= "#{@my_csf.what_makes_me_unique}" %></p>
       <h3 class="lead color-dark m-b-5">Quais minhas melhores competências?</h3>
@@ -59,15 +99,15 @@
       <p><%= "#{@my_csf.essential_atributes}" %></p>
       <h3 class="lead color-dark m-b-5">Quais fatores impactam no meu bem estar?</h3>
       <p><%= "#{@my_csf.health_factors}" %></p>
-      <p>
-        Criado em: <%= @my_csf.created_at.strftime("%d/%m/%Y") %>
-      </p>
     <% end %>
+    <hr/>
+
     <!-- Valores -->
     <h3>Meus Valores</h3>
     <% @current_plan.values.each do |values| %>
-      <h3 class="lead color-dark"><%= values.name %></h3>
+      <p class="lead color-dark"><%= values.name %></p>
     <% end %>
+    <hr/>
 
     <!-- Papéis -->
     <h3>Meus Papéis</h3>
@@ -75,41 +115,40 @@
       <h3 class="lead color-dark">
         <% @current_plan.roles.each do |role| %>
           <tbody>
-          <td width="200px">Como <%= role.name %></td>
-          <td width="400px"><%= role.description %></td>
+          <td width="200px">Como <%= role.name %>,</td>
+          <td width="400px">gostaria de no futuro <%= role.description %></td>
           </tbody>
         <% end %>
       </h3>
     </table>
+    <hr/>
 
     <!-- Âmbitos -->
     <% if !current_user.spheres.nil? %>
       <h3>Âmbitos </h3>
       <% @spheres.each do |sphere| %>
-        <h3 class="lead color-dark">
-          <%= sphere.name %>
-        </h3>
+        <p><%= sphere.name %></p>
       <% end %>
     <% end %>
+    <hr/>
 
     <!-- Objetivos Estratégicos -->
     <h3>Objetivos Estratégicos</h3>
     <% if !@current_plan.objectives.nil? %>
       <% @current_plan.objectives.each_with_index do |objective, i| %>
-        <h3 class="lead color-dark">Objetivo: <%= objective.name %></h3>
-        <% objective.goals.each do |goal| %>
-          <h4 class="card-title"><%= goal.name %> </h4>
-          <h5 class="card-body"><%= goal.progress %>% concluído. </h5>
+        <h3 class="lead color-dark">Objetivo <%= i + 1 %>: <%= objective.name %></h3>
+        <p>Data da criação: <%= objective.created_at.strftime("%d/%m/%Y") %></p>
+        <% objective.goals.each_with_index do |goal, j| %>
+          <p>Meta <%= j + 1 %>: <%= goal.name %>. <%= goal.progress %>% concluído.</p>
           Atividades:<br/>
           <% goal.activities.each do |activity| %>
             <% if !activity.checked %>
-              <p><strong><%= activity.title %></strong></p>
+              <p> - <strong><%= activity.title %></strong></p>
             <% else %>
-              <p><%= activity.title %></p>
+              <p> - <%= activity.title %>. Feito!</p>
             <% end %>
           <% end %>
         <% end %>
-        Data da criação: <%= objective.created_at.strftime("%d/%m/%Y") %>
       <% end %>
     <% end %>
   <% end %>

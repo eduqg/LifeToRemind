@@ -159,7 +159,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("plan1.png", alt: "portfolio img 1", class: "img-responsive") %>
+          <%= image_tag("plan1.png", alt: "portfolio img 1", class: "img-responsive border-ltr") %>
           <div class="portfolio-overlay">
             <h4>Meu plano</h4>
             <%= link_to "Detalhes", myplan_path, class: "btn btn-default" %>
@@ -168,7 +168,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("mission1.png", alt: "portfolio img 2", class: "img-responsive") %>
+          <%= image_tag("mission1.png", alt: "portfolio img 2", class: "img-responsive border-ltr") %>
           <div class="portfolio-overlay">
             <h4>Minha missão</h4>
             <%= link_to "Detalhes", new_mission_path, class: "btn btn-default" %>
@@ -177,7 +177,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("sphere1.png", alt: "portfolio img 3", class: "img-responsive") %>
+          <%= image_tag("sphere1.png", alt: "portfolio img 3", class: "img-responsive border-ltr") %>
           <div class="portfolio-overlay">
             <h4>Âmbitos e Objetivos</h4>
             <%= link_to "Detalhes", new_objective_path, class: "btn btn-default" %>
@@ -186,7 +186,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("meta1.png", alt: "portfolio img 4", class: "img-responsive") %>
+          <%= image_tag("meta1.png", alt: "portfolio img 4", class: "img-responsive border-ltr") %>
           <div class="portfolio-overlay">
             <h4>Metas e Atividades</h4>
             <%= link_to "Detalhes", new_objective_path, class: "btn btn-default" %>
@@ -195,7 +195,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("status1.png", alt: "portfolio img 5", class: "img-responsive") %>
+          <%= image_tag("status1.png", alt: "portfolio img 5", class: "img-responsive border-ltr") %>
           <div class="portfolio-overlay">
             <h4>Status</h4>
             <%= link_to "Detalhes", inicio_path, class: "btn btn-default" %>
@@ -204,7 +204,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
         <div class="portfolio-thumb">
-          <%= image_tag("status2.png", alt: "portfolio img 6", class: "img-responsive") %>
+          <%= image_tag("status2.png", alt: "portfolio img 6", class: "img-responsive border-ltr") %>
           <div class="portfolio-overlay">
             <h4>Análise Ambiental</h4>
             <%= link_to "Detalhes", plans_swotedit_path, class: "btn btn-default" %>
@@ -219,11 +219,11 @@
 <%= render template: "contacts/new" %>
 
 <!-- start copyright -->
-<footer id="copyright">
+<footer id="copyright" class="background-blue-dark">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 text-center p-b-20">
-        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+      <div class="col-md-12 text-center p-b-10">
+        <p class="wow bounceIn color-white" data-wow-offset="50" data-wow-delay="0.3s">
           Copyright &copy; 2019 Life to Remind</p>
       </div>
     </div>
