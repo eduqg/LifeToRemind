@@ -1,9 +1,9 @@
 cache:
   paths:
-    - vendor/
+    - vendor/bundle
 
 before_script:
-  - bundle install --path vendor
+  - bundle install --path vendor/bundle
 
 pages:
   script:
