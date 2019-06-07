@@ -1,11 +1,15 @@
-image: ruby:2.5.1
-
-services:
-  - postgres:9.5
+cache:
+  paths:
+    - vendor/
 
 before_script:
-  - bundle install
+  - bundle install --path vendor
 
-test:
+pages:
   script:
-    - rspec
+    - ls
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
