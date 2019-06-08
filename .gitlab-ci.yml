@@ -6,6 +6,7 @@ services:
 cache:
   paths:
     - vendor/bundle/
+    - node_modules/
 
 variables:
   POSTGRES_DB: test_db
@@ -23,8 +24,19 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:create db:schema:load
 
 rspec:
+  stage: test
   script:
     - RAILS_ENV=test bundle exec rspec
   only:
     - master
     - stable
+
+heroku_deploy:
+  stage: deploy
+  script:
+    - apt update -qq
+    - apt install -qq -y ruby
+    - gem install -q dpl
+    - dpl --provider=heroku --app=$APP_NAME --api-key=$AUTH_TOKEN
+  only:
+    - master
