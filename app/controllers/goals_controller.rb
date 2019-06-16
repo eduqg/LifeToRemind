@@ -6,6 +6,7 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = Goal.all
+    authorize! :index, @goals
   end
 
   # GET /goals/1

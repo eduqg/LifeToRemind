@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all
+    authorize! :index, @contacts
   end
 
   def new

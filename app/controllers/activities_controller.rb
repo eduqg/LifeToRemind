@@ -5,13 +5,9 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    if params[:goal_id].present?
-      @activities = Activity.where(goal_id: params[:goal_id]).order(created_at: :asc)
-      @goal_id = params[:goal_id]
-    else
-      flash[:info] = "Selecionar a partir de uma meta para visualizar as atividades"
-    end
-
+    @activities = Activity.where(goal_id: params[:goal_id]).order(created_at: :asc)
+    @goal_id = params[:goal_id]
+    authorize! :index, @activities
   end
 
   # GET /activities/1

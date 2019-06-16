@@ -46,8 +46,8 @@ class Ability
         can [:read, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
         can [:read, :create, :new, :update, :edit, :destroy, :sphereobjectives], Sphere
         can [:read, :create, :new, :update, :edit, :destroy, :editobjective], Objective
-        can [:read, :create, :new, :update, :edit, :destroy], Goal
-        can [:read, :create, :new, :update, :edit, :destroy, :checked], Activity
+        can [:create, :new, :update, :edit, :destroy], Goal
+        can [:create, :new, :update, :edit, :destroy, :checked], Activity
       end
     end
   end
