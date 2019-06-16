@@ -9,7 +9,17 @@
           </div>
         <% end %>
 
-        <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
+        <%= form.label "Nome", class: "label-input" %>
+        <div class="wrap-input100 validate-input m-b-8" data-validate="Name is required">
+          <%= form.text_field :name, autocomplete: "off", placeholder: "Nome", class: "input100" %>
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-user"></span>
+						</span>
+        </div>
+
+        <%= form.label "Email", class: "label-input" %>
+        <div class="wrap-input100 validate-input m-b-8" data-validate="Valid email is required: ex@abc.xyz">
           <%= form.email_field :email, autocomplete: "off", placeholder: "Email", autofocus: true, class: "input100" %>
           <span class="focus-input100"></span>
           <span class="symbol-input100">
@@ -17,16 +27,8 @@
 						</span>
         </div>
 
-        <div class="wrap-input100 validate-input m-b-16" data-validate="Name is required">
-          <%= form.text_field :name, autocomplete: "off", placeholder: "Nome Completo", class: "input100" %>
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-							<span class="lnr lnr-user"></span>
-						</span>
-        </div>
-
-
-        <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+        <%= form.label "Senha", class: "label-input" %>
+        <div class="wrap-input100 validate-input m-b-8" data-validate="Password is required">
           <%= form.password_field :password, placeholder: "Senha (mínimo 8 caracteres)", autocomplete: "new-password", class: "input100" %>
           <span class="focus-input100"></span>
           <span class="symbol-input100">
@@ -34,7 +36,8 @@
 						</span>
         </div>
 
-        <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+        <%= form.label "Repetir senha", class: "label-input" %>
+        <div class="wrap-input100 validate-input m-b-8" data-validate="Password is required">
           <%= form.password_field :password_confirmation, placeholder: "Insira novamente a senha", autocomplete: "new-password", class: "input100" %>
           <span class="focus-input100"></span>
           <span class="symbol-input100">
@@ -49,14 +52,16 @@
         </div>
 
       <% end %>
-      <span class="txt1">
-        Ao se cadastrar, você concorda com nossos <button type="button" class="" data-toggle="modal" data-target="#myModal">Termos de Uso</button> e <button type="button" class="" data-toggle="modal" data-target="#myModal">Política de Privacidade</button>.
-      </span>
+      <div class="p-t-8">
+        <span class="txt1">
+          Ao se cadastrar, você concorda com nossos <button type="button" class="" data-toggle="modal" data-target="#myModal">Termos de Uso</button>.
+        </span>
+      </div>
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document"  style="z-index: 10000;">
+        <div class="modal-dialog" role="document" style="z-index: 10000;">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
               <h4 class="modal-title" id="myModalLabel">Termos de Uso</h4>
