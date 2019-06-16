@@ -11,7 +11,7 @@
 
         <%= form.label "Nome", class: "label-input" %>
         <div class="wrap-input100 validate-input m-b-8" data-validate="Name is required">
-          <%= form.text_field :name, autocomplete: "off", placeholder: "Nome", class: "input100" %>
+          <%= form.text_field :name, autocomplete: "off", placeholder: "Nome", autofocus: true, class: "input100" %>
           <span class="focus-input100"></span>
           <span class="symbol-input100">
 							<span class="lnr lnr-user"></span>
@@ -20,7 +20,7 @@
 
         <%= form.label "Email", class: "label-input" %>
         <div class="wrap-input100 validate-input m-b-8" data-validate="Valid email is required: ex@abc.xyz">
-          <%= form.email_field :email, autocomplete: "off", placeholder: "Email", autofocus: true, class: "input100" %>
+          <%= form.email_field :email, autocomplete: "off", placeholder: "Email", class: "input100" %>
           <span class="focus-input100"></span>
           <span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>
@@ -71,7 +71,7 @@
                 <%= render 'terms' %>
               </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="border-top:0px;">
             </div>
           </div>
         </div>
