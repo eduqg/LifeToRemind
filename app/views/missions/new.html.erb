@@ -22,12 +22,58 @@
       </div>
     </div>
   </div>
-
+  <% if @my_mission %>
+    <%= link_to missions_path do %>
+      <div class="col-xs-5  p-t-10">
+        <div class="offer offer-radius offer-warning">
+          <div class="shape">
+            <div class="shape-text">
+            </div>
+          </div>
+          <div class="offer-content">
+            <h3 class="color-dark">Minha Missão </h3>
+            <hr/>
+            <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
+            <p><%= "#{@my_mission.purpose_of_life}" %></p>
+            <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
+            <p><%= "#{@my_mission.who_am_i}" %></p>
+            <h3 class="lead color-dark m-b-5">Porque existo</h3>
+            <p><%= "#{@my_mission.why_exist}" %></p>
+            <p>
+              Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-xs-5  p-t-10">
+      <div class="offer-without-hover offer-radius offer-warning">
+        <div class="shape">
+          <div class="shape-text">
+          </div>
+        </div>
+        <div class="offer-content">
+          <h3 class="color-dark">Minha Missão </h3>
+          <hr/>
+          <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
+          <p>-----------------</p>
+          <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
+          <p>-----------------</p>
+          <h3 class="lead color-dark m-b-5">Porque existo</h3>
+          <p>-----------------</p>
+          <p>
+            Criado em: --/--/--
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <%= render partial: "form", locals: {texto_da_acao: "Criar"} %>
   <br/>
   <div class="justify-buttons">
     <%= link_to " Voltar para Análise Ambiental", plans_swotedit_path, class: "btn btn-default lnr lnr-arrow-left" %>
-    <%= link_to " Continuar para Visão", new_vision_path, class:"btn btn-primary lnr lnr-arrow-right align-right" %>
+    <%= link_to " Continuar para Visão", new_vision_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
   </div>
 </div>

@@ -10,6 +10,7 @@ class CsfsController < ApplicationController
 
   # GET /csfs/new
   def new
+    @my_csf = Csf.find(current_plan.selected_csf) rescue nil
     @csf = Csf.new
   end
 

@@ -22,6 +22,8 @@ class ObjectivesController < ApplicationController
   def new
     @spheres = current_user.spheres
     @objective = Objective.new
+    @current_plan = current_plan
+    @objectives = current_plan.objectives
   end
 
   # GET /objectives/1/edit

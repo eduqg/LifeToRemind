@@ -7,6 +7,7 @@ class MissionsController < ApplicationController
   end
 
   def new
+    @my_mission = Mission.find(current_plan.selected_mission) rescue nil
     @mission = Mission.new
   end
 

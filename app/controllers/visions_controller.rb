@@ -10,6 +10,7 @@ class VisionsController < ApplicationController
 
   # GET /visions/new
   def new
+    @my_vision = Vision.find(current_plan.selected_vision) rescue nil
     @vision = Vision.new
   end
 

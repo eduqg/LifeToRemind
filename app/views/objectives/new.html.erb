@@ -24,10 +24,16 @@
   <h3>Novo Objetivo Estratégico</h3>
   <br/>
 
+  <% if !@current_plan.objectives.nil? %>
+    <div class="row">
+      <%= render template: "objectives/index" %>
+    </div>
+  <% end %>
+
   <%= render partial: 'form', locals: {action_text: "Criar"}, objective: @objective %>
   <br/>
   <div class="justify-buttons">
     <%= link_to " Voltar para Âmbitos", new_sphere_path, class: "btn btn-default lnr lnr-arrow-left" %>
-    <%= link_to " Ir para Meu Planejamento", myplan_path, class:"btn btn-primary lnr lnr-arrow-right align-right" %>
+    <%= link_to " Ir para Meu Planejamento", myplan_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
   </div>
 </div>

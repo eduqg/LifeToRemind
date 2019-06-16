@@ -16,9 +16,9 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-6">
       <div class="form-group">
-        <%= form.label "Âmbito" %>
+        <%= form.label "Âmbito" %> (Ainda não tem um âmbito? <%= link_to "Clique aqui para criar", new_sphere_path, style: "color: black" %>)
         <%= form.collection_select :sphere_id, @spheres  || [], :id, :name, {}, class: "form-control" %>
       </div>
     </div>
