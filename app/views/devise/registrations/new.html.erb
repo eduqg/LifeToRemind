@@ -26,8 +26,9 @@
 							<span class="lnr lnr-envelope"></span>
 						</span>
         </div>
-
         <%= form.label "Senha", class: "label-input" %>
+
+        <%= form.label "Deve conter: 1 letra maiúscula, 1 minúscula, 1 dígito numérico e 1 caractere especial", class: "label-input", style: "font-size: 12px;" %>
         <div class="wrap-input100 validate-input m-b-8" data-validate="Password is required">
           <%= form.password_field :password, placeholder: "Senha (mínimo 8 caracteres)", autocomplete: "new-password", class: "input100" %>
           <span class="focus-input100"></span>
