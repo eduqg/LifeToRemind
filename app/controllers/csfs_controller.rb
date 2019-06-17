@@ -27,7 +27,7 @@ class CsfsController < ApplicationController
     respond_to do |format|
       if @csf.save
         current_plan.update_attribute(:selected_csf, @csf.id)
-        format.html { redirect_to new_sphere_path, notice: "O Fator Crítico de Sucesso criado foi adicionada ao seu planejamento" }
+        format.html { redirect_to new_csf_path, notice: "O Fator Crítico de Sucesso criado foi adicionada ao seu planejamento" }
       else
         format.html { render :new }
         format.json { render json: @csf.errors, status: :unprocessable_entity }

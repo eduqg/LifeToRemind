@@ -66,7 +66,7 @@ RSpec.describe VisionsController, type: :controller do
 
     it "redirects to index after create vision" do
       post :create, params: {vision: valid_attributes}
-      expect(response).to redirect_to(new_value_path)
+      expect(response).to redirect_to(new_vision_path)
     end
   end
 

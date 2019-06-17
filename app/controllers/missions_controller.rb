@@ -41,7 +41,7 @@ class MissionsController < ApplicationController
     if @mission.save
       current_plan.update_attribute(:selected_mission, @mission.id)
       flash[:notice] = "A Missão criada foi adicionada ao seu planejamento"
-      redirect_to new_vision_path
+      redirect_to new_mission_path
     else
       render :new
     end

@@ -13,55 +13,36 @@
       </div>
     </div>
   </div>
-  <% if @my_csf %>
-    <%= link_to csfs_path do %>
-      <div class="col-xs-12 p-t-10">
-        <div class="offer offer-radius offer-default">
-          <div class="shape">
-            <div class="shape-text">
+
+  <div class="row">
+    <% if @my_csf %>
+      <%= link_to csfs_path do %>
+        <div class="col-xs-12 p-t-10">
+          <div class="offer offer-radius offer-default">
+            <div class="shape">
+              <div class="shape-text">
+              </div>
+            </div>
+            <div class="offer-content">
+              <h3 class="color-dark">Meus Fatores Críticos de Sucesso </h3>
+              <hr/>
+              <h3 class="lead color-dark m-b-5">Que características me tornam único?</h3>
+              <p><%= "#{@my_csf.what_makes_me_unique}" %></p>
+              <h3 class="lead color-dark m-b-5">Quais minhas melhores competências?</h3>
+              <p><%= "#{@my_csf.best_attributes}" %></p>
+              <h3 class="lead color-dark m-b-5">Quais delas são essenciais para meus objetivos?</h3>
+              <p><%= "#{@my_csf.essential_atributes}" %></p>
+              <h3 class="lead color-dark m-b-5">Quais fatores impactam no meu bem estar?</h3>
+              <p><%= "#{@my_csf.health_factors}" %></p>
+              <p class="p-l-15 p-b-5 p-r-5 align-right"><%= @my_csf.created_at.strftime("%d/%m/%Y") %></p>
+
             </div>
           </div>
-          <div class="offer-content">
-            <h3 class="color-dark">Meus Fatores Críticos de Sucesso </h3>
-            <hr/>
-            <h3 class="lead color-dark m-b-5">Que características me tornam único?</h3>
-            <p><%= "#{@my_csf.what_makes_me_unique}" %></p>
-            <h3 class="lead color-dark m-b-5">Quais minhas melhores competências?</h3>
-            <p><%= "#{@my_csf.best_attributes}" %></p>
-            <h3 class="lead color-dark m-b-5">Quais delas são essenciais para meus objetivos?</h3>
-            <p><%= "#{@my_csf.essential_atributes}" %></p>
-            <h3 class="lead color-dark m-b-5">Quais fatores impactam no meu bem estar?</h3>
-            <p><%= "#{@my_csf.health_factors}" %></p>
-            <p class="p-l-15 p-b-5 p-r-5 align-right"><%= @my_csf.created_at.strftime("%d/%m/%Y") %></p>
-
-          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% else %>
-    <div class="col-xs-12 p-t-10">
-      <div class="offer-without-hover offer-radius offer-default">
-        <div class="shape">
-          <div class="shape-text">
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="color-dark">Meus Fatores Críticos de Sucesso </h3>
-          <hr/>
-          <h3 class="lead color-dark m-b-5">Que características me tornam único?</h3>
-          <p>--------------------------</p>
-          <h3 class="lead color-dark m-b-5">Quais minhas melhores competências?</h3>
-          <p>--------------------------</p>
-          <h3 class="lead color-dark m-b-5">Quais delas são essenciais para meus objetivos?</h3>
-          <p>--------------------------</p>
-          <h3 class="lead color-dark m-b-5">Quais fatores impactam no meu bem estar?</h3>
-          <p>--------------------------</p>
-          <p class="p-l-15 p-b-5 p-r-5 align-right">--/--/--</p>
+  </div>
 
-        </div>
-      </div>
-    </div>
-  <% end %>
   <%= render partial: "form", locals: {action_text: "Criar"} %>
   <br/>
   <div class="justify-buttons">

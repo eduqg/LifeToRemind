@@ -66,7 +66,7 @@ RSpec.describe MissionsController, type: :controller do
 
     it "redirects to index after create mission" do
       post :create, params: {mission: valid_attributes}
-      expect(response).to redirect_to(new_vision_path)
+      expect(response).to redirect_to(new_mission_path)
     end
   end
 

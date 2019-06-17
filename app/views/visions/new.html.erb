@@ -24,53 +24,33 @@
     </div>
   </div>
 
-  <% if @my_vision %>
-    <%= link_to visions_path do %>
-      <div class="col-xs-7  p-t-10">
-        <div class="offer offer-radius offer-danger">
-          <div class="shape">
-            <div class="shape-text">
+  <div class="row">
+    <% if @my_vision %>
+      <%= link_to visions_path do %>
+        <div class="col-xs-7  p-t-10">
+          <div class="offer offer-radius offer-danger">
+            <div class="shape">
+              <div class="shape-text">
+              </div>
+            </div>
+            <div class="offer-content">
+              <h3 class="color-dark">Minha Visão </h3>
+              <hr/>
+              <h3 class="lead color-dark m-b-5">Para onde vou?</h3>
+              <p><%= "#{@my_vision.where_im_going}" %></p>
+              <h3 class="lead color-dark m-b-5">Onde quero chegar?</h3>
+              <p><%= "#{@my_vision.where_arrive}" %></p>
+              <h3 class="lead color-dark m-b-5">Como tornarei concreta a minha missão?</h3>
+              <p><%= "#{@my_vision.how_complete_mission}" %></p>
+              <p>
+                Criado em: <%= @my_vision.created_at.strftime("%d/%m/%Y") %>
+              </p>
             </div>
           </div>
-          <div class="offer-content">
-            <h3 class="color-dark">Minha Visão </h3>
-            <hr/>
-            <h3 class="lead color-dark m-b-5">Para onde vou?</h3>
-            <p><%= "#{@my_vision.where_im_going}" %></p>
-            <h3 class="lead color-dark m-b-5">Onde quero chegar?</h3>
-            <p><%= "#{@my_vision.where_arrive}" %></p>
-            <h3 class="lead color-dark m-b-5">Como tornarei concreta a minha missão?</h3>
-            <p><%= "#{@my_vision.how_complete_mission}" %></p>
-            <p>
-              Criado em: <%= @my_vision.created_at.strftime("%d/%m/%Y") %>
-            </p>
-          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% else %>
-    <div class="col-xs-7  p-t-10">
-      <div class="offer-without-hover offer-radius offer-danger">
-        <div class="shape">
-          <div class="shape-text">
-          </div>
-        </div>
-        <div class="offer-content">
-          <h3 class="color-dark">Minha Visão </h3>
-          <hr/>
-          <h3 class="lead color-dark m-b-5">Para onde vou?</h3>
-          <p>-----------------------</p>
-          <h3 class="lead color-dark m-b-5">Onde quero chegar?</h3>
-          <p>-----------------------</p>
-          <h3 class="lead color-dark m-b-5">Como tornarei concreta a minha missão?</h3>
-          <p>-----------------------</p>
-          <p>
-            Criado em: --/--/--
-          </p>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  </div>
 
   <%= render partial: "form", locals: {texto_da_acao: "Criar"} %>
   <br/>
