@@ -42,7 +42,7 @@ heroku_deploy:
     - master
 
 heroku_deploy_test:
-  stage: deploy_test
+  stage: deploy
   script:
     - apt update -qq
     - apt install -qq -y ruby
