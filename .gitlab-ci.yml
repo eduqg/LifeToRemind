@@ -40,3 +40,13 @@ heroku_deploy:
     - dpl --provider=heroku --app=$APP_NAME --api-key=$AUTH_TOKEN
   only:
     - master
+
+heroku_deploy_test:
+  stage: deploy_test
+  script:
+    - apt update -qq
+    - apt install -qq -y ruby
+    - gem install -q dpl
+    - dpl --provider=heroku --app=$APP_NAME_TEST --api-key=$AUTH_TOKEN_TEST
+  only:
+    - test
