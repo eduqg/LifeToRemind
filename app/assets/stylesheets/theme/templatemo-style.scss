@@ -46,7 +46,6 @@ h2 {
 
 h2 span {
   color: #28a7e9;
-  font-weight: bold;
 }
 
 /* end h2 */
@@ -187,7 +186,7 @@ header .social-icon li a {
 
 /* start nagivation */
 .navbar-default {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   box-shadow: none;
   margin: 0 !important;
