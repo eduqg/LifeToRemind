@@ -30,6 +30,7 @@ rspec:
   only:
     - master
     - stable
+    - test
 
 heroku_deploy:
   stage: deploy
