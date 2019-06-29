@@ -35,12 +35,12 @@
             <div class="offer-content">
               <h3 class="color-dark">Minha Missão </h3>
               <hr/>
-              <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
-              <p><%= "#{@my_mission.purpose_of_life}" %></p>
               <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
               <p><%= "#{@my_mission.who_am_i}" %></p>
               <h3 class="lead color-dark m-b-5">Porque existo</h3>
               <p><%= "#{@my_mission.why_exist}" %></p>
+              <h3 class="lead color-dark m-b-5">Propósito de Vida</h3>
+              <p><%= "#{@my_mission.purpose_of_life}" %></p>
               <p>
                 Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
               </p>
@@ -51,6 +51,11 @@
     <% end %>
   </div>
 
-  <%= render partial: "form_new", locals: {texto_da_acao: "Criar"} %>
+  <%= render partial: "form", locals: {texto_da_acao: "Criar"} %>
+  <br/>
+  <div class="justify-buttons">
+    <%= link_to " Voltar para Análise Ambiental", plans_swotedit_path, class: "btn btn-default lnr lnr-arrow-left" %>
+    <%= button_tag " Continuar para Visão", type: 'button', onclick: "checkMissionAttributes()", name: "mission_to_vision", id: "mission_to_vision", class: 'btn btn-primary lnr lnr-arrow-right align-right', remote: true %>
+  </div>
 
 </div>
