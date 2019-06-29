@@ -22,4 +22,5 @@
 //= require login/mainlogin.js
 //= require Chart.bundle
 //= require chartkick
+//= require steps/step_check
 //= require_tree .
