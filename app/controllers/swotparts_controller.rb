@@ -55,8 +55,7 @@ class SwotpartsController < ApplicationController
   # PATCH/PUT /swotparts/1.json
   def update
     respond_to do |format|
-      res = @swotpart.update(update_params) if @swotpart.plan_id == current_plan.id
-      if res
+      if (@swotpart.update(update_params) if @swotpart.plan_id == current_plan.id)
         format.html {redirect_to plans_swotedit_path, notice: "Característica da SWOT atualizada com sucesso"}
         format.json {render :show, status: :ok, location: @swotpart}
       else

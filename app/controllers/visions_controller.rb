@@ -16,6 +16,13 @@ class VisionsController < ApplicationController
 
   # GET /visions/1/edit
   def edit
+    vision = Vision.find(params[:id])
+
+    if current_user.id == vision.user_id
+      @vision = vision
+    else
+      raise CanCan::AccessDenied.new('Você não pode editar essa Visão')
+    end
   end
 
   # POST /visions
@@ -39,7 +46,7 @@ class VisionsController < ApplicationController
   # PATCH/PUT /visions/1.json
   def update
     respond_to do |format|
-      if @vision.update(vision_params)
+      if (@vision.update(vision_params) if current_user.id == @vision.user_id)
         format.html {redirect_to visions_path, notice: "Visão atualizada com sucesso!"}
       else
         format.html {render :edit}
@@ -65,7 +72,7 @@ class VisionsController < ApplicationController
       # Unset selected vision
       current_plan.update_attribute(:selected_vision, nil)
     end
-    @vision.destroy
+    @vision.destroy if current_user.id == @vision.user_id
     flash[:info] = "Visão foi excluída"
     redirect_to visions_path
   end

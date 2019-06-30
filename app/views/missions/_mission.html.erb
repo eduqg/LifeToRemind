@@ -3,12 +3,12 @@
     <div class="card-body">
       <h5 class="card-header">Missão de <%=current_user.name %></h5>
       <div class="padding-all">
-        <h5 class="card-title">Propósito de Vida</h5>
-        <p class="card-text"><%= mission.purpose_of_life %></p>
         <h5 class="card-title">Quem eu sou</h5>
         <p class="card-text"><%= mission.who_am_i %></p>
         <h5 class="card-title">Porque existo</h5>
         <p class="card-text"><%= mission.why_exist %></p>
+        <h5 class="card-title">Propósito de Vida</h5>
+        <p class="card-text"><%= mission.purpose_of_life %></p>
         <%= link_to "Selecionar",
                     missions_update_selected_mission_path(mission_id: mission.id), method: :put,
                     class:"btn btn-primary" %>

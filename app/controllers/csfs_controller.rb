@@ -16,6 +16,13 @@ class CsfsController < ApplicationController
 
   # GET /csfs/1/edit
   def edit
+    csf = Csf.find(params[:id])
+
+    if current_user.id == csf.user_id
+      @csf = csf
+    else
+      raise CanCan::AccessDenied.new('Você não pode editar esse fator crítico de sucesso')
+    end
   end
 
   # POST /csfs
@@ -39,7 +46,7 @@ class CsfsController < ApplicationController
   # PATCH/PUT /csfs/1.json
   def update
     respond_to do |format|
-      if @csf.update(csf_params)
+      if (@csf.update(csf_params) if current_user.id == @csf.user_id)
         format.html { redirect_to csfs_path, notice: "Fator crítico de sucesso atualizado" }
       else
         format.html { render :edit }
@@ -65,7 +72,7 @@ class CsfsController < ApplicationController
       # Unset selected critical success factor
       current_plan.update_attribute(:selected_csf, nil)
     end
-    @csf.destroy
+    @csf.destroy if current_user.id == @csf.user_id
     flash[:info] = "Fator crítico de sucesso foi excluído"
     redirect_to csfs_path
   end
