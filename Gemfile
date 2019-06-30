@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.1'
 
 gem 'twitter-bootstrap-rails'
 
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-5-x' # For 5.x
+gem 'rails-i18n', '~> 5.1'
 
 gem 'devise', '~>4.5.0'
 

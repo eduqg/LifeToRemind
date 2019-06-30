@@ -17,18 +17,15 @@ RSpec.describe SwotpartsController, type: :controller do
     user.save
   end
 
-
   context "GET #index" do
     it "return index success response" do
-      get :index
-      expect(response).to be_successful
+      expect{ get :index }.to raise_error(CanCan::AccessDenied)
     end
   end
 
   context "GET #show" do
     it "returns show success response" do
-      get :show, params: {id: swotpart.to_param}
-      expect(response).to be_successful
+      expect{ get :show, params: { id: swotpart.id } }.to raise_error(CanCan::AccessDenied)
     end
   end
 
@@ -112,6 +109,4 @@ RSpec.describe SwotpartsController, type: :controller do
       expect(response).to redirect_to(plans_swotedit_path)
     end
   end
-
-
 end

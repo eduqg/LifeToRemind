@@ -38,7 +38,7 @@ class Ability
         can :crud, User, user_id: user.id
         can :current_plan, ApplicationController
         can [:read, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
-        can [:read, :create, :new, :update, :edit, :destroy], Swotpart
+        can [:create, :new, :update, :edit, :destroy], Swotpart
         can [:read, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
         can [:read, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
         can [:read, :create, :new, :update, :edit, :destroy], Value
