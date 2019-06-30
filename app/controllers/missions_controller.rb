@@ -12,7 +12,13 @@ class MissionsController < ApplicationController
   end
 
   def edit
-    render :edit
+    mission = Mission.find(params[:id])
+
+    if current_user.id == mission.user_id
+      @mission = mission
+    else
+      raise CanCan::AccessDenied.new('Você não pode editar essa missão')
+    end
   end
 
   def update
