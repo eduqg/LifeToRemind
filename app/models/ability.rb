@@ -42,7 +42,6 @@ class Ability
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
         can [:index, :show, :create, :new, :update, :edit, :destroy], Value
-        # Roles permissions
         can [:create, :new], Role
         can [:index, :show, :edit, :update, :destroy], Role do |role|
           plan = Plan.find(role.plan_id)
@@ -51,9 +50,14 @@ class Ability
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
         can [:index, :show, :create, :new, :update, :edit, :destroy, :sphereobjectives], Sphere
         can [:index, :show, :create, :new, :update, :edit, :destroy, :editobjective], Objective
-        can [:create, :new, :update, :edit, :destroy], Goal
 
-        # Activities permissions
+        can [:create, :new], Goal
+        can [:update, :edit, :destroy], Goal do |goal|
+          objective = Objective.find(goal.objective_id)
+          plan = Plan.find(objective.plan_id)
+          plan.user_id == user.id
+        end
+
         can [:create, :new], Activity
         can [:destroy, :checked], Activity do |act|
           goal = Goal.find(act.goal_id)
