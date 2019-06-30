@@ -5,6 +5,9 @@ RSpec.describe SwotpartsController, type: :controller do
   let!(:plan) {Plan.find(swotpart.plan_id)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_admin) {User.create!(email: 'admin2@admin2.com', password: 'skdD.sk@#ffew2', name: 'admin2', role: 'admin')}
+  let!(:plan_admin) {Plan.create!(name:"Admin Plan", user_id: user_admin.id)}
+
   let(:valid_attributes) {{name: "My Swotpart", partname: "opportunity", plan_id: plan.id}}
 
   let(:invalid_attributes) {{partname: "strength", plan_id: plan.id}}
@@ -18,14 +21,32 @@ RSpec.describe SwotpartsController, type: :controller do
   end
 
   context "GET #index" do
+    it "return root response" do
+      get :index
+      expect(response).to redirect_to(root_path)
+    end
     it "return index success response" do
-      expect{ get :index }.to raise_error(CanCan::AccessDenied)
+      sign_out user
+      sign_in user_admin
+      user_admin.selected_plan = plan_admin.id
+      user_admin.save
+      get :index
+      expect(response).to be_successful
     end
   end
 
   context "GET #show" do
+    it "returns root response" do
+      get :show, params: { id: swotpart.id }
+      expect(response).to redirect_to(root_path)
+    end
     it "returns show success response" do
-      expect{ get :show, params: { id: swotpart.id } }.to raise_error(CanCan::AccessDenied)
+      sign_out user
+      sign_in user_admin
+      user_admin.selected_plan = plan_admin.id
+      user_admin.save
+      get :show, params: { id: swotpart.id }
+      expect(response).to be_successful
     end
   end
 

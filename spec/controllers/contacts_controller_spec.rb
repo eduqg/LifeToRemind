@@ -17,7 +17,8 @@ RSpec.describe ContactsController, type: :controller do
     end
     it 'not return index with default_user' do
       sign_in user_default
-      expect{ get :index }.to raise_error(CanCan::AccessDenied)
+      get :index
+      expect(response).to redirect_to(root_path)
     end
     it 'return index success response with admin' do
       sign_in user_admin

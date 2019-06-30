@@ -45,13 +45,17 @@ class VisionsController < ApplicationController
   # PATCH/PUT /visions/1
   # PATCH/PUT /visions/1.json
   def update
-    respond_to do |format|
-      if (@vision.update(vision_params) if current_user.id == @vision.user_id)
-        format.html {redirect_to visions_path, notice: "Visão atualizada com sucesso!"}
-      else
-        format.html {render :edit}
-        format.json {render json: @vision.errors, status: :unprocessable_entity}
+    if current_user.id == @vision.user_id
+      respond_to do |format|
+        if @vision.update(vision_params)
+          format.html {redirect_to visions_path, notice: "Visão atualizada com sucesso!"}
+        else
+          format.html {render :edit}
+          format.json {render json: @vision.errors, status: :unprocessable_entity}
+        end
       end
+    else
+      raise CanCan::AccessDenied.new('Você não pode atualizar essa Visão')
     end
   end
 
@@ -72,9 +76,13 @@ class VisionsController < ApplicationController
       # Unset selected vision
       current_plan.update_attribute(:selected_vision, nil)
     end
-    @vision.destroy if current_user.id == @vision.user_id
-    flash[:info] = "Visão foi excluída"
-    redirect_to visions_path
+    if current_user.id == @vision.user_id
+      @vision.destroy
+      flash[:info] = "Visão foi excluída"
+      redirect_to visions_path
+    else
+      raise CanCan::AccessDenied.new('Você não pode atualizar essa Visão')
+    end
   end
 
   private

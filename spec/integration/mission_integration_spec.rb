@@ -22,7 +22,9 @@ RSpec.feature "Mission", :type => :feature do
     end
 
     it 'default user cannot edit another user-s swotpart' do
-      expect{ visit 'missions/'+ (mission_2.id).to_s + '/edit'}.to raise_error(CanCan::AccessDenied)
+      visit 'missions/'+ (mission_2.id).to_s + '/edit'
+      expect(page).to have_content('Você não pode editar essa missão')
+
     end
 
     it 'default user can edit his own mission' do

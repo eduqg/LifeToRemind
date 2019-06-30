@@ -91,6 +91,7 @@ group :test do
   gem 'faker'
   gem 'rspec-rails', '3.8'
   gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '~> 4.1.0'
 end
 
 group :production do

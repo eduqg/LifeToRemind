@@ -22,13 +22,15 @@ RSpec.feature "Csf", :type => :feature do
     end
 
     it 'default user cannot edit another user-s swotpart' do
-      expect{ visit 'csfs/'+ (csf_2.id).to_s + '/edit'}.to raise_error(CanCan::AccessDenied)
+      visit 'csfs/'+ (csf_2.id).to_s + '/edit'
+      expect(page).to have_content('Você não pode editar esse fator crítico de sucesso')
     end
 
     it 'default user can edit his own csf' do
       visit 'csfs/'+ (csf.id).to_s + '/edit'
       expect(page).to have_content 'Edição de Fatores Críticos de Sucesso'
     end
+
   end
 end
 

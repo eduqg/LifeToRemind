@@ -14,11 +14,13 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
   context 'GET #index' do
     it 'not return index whithout login' do
-      expect { get :index }.to raise_error(CanCan::AccessDenied)
+      get :index
+      expect(response).to redirect_to(root_path)
     end
     it 'not return index with default_user' do
       sign_in user_default
-      expect { get :index }.to raise_error(CanCan::AccessDenied)
+      get :index
+      expect(response).to redirect_to(root_path)
     end
     it 'return index success response with admin' do
       sign_in user_admin
@@ -35,15 +37,14 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   end
 
   context 'DELETE #destroy' do
-    it 'destroy the requested user' do
+    it 'do not destroy the requested user' do
       sign_in user_default
       user_to_destroy = User.create! valid_attributes
-      expect {
-        delete :destroy_another_user, params: { id: user_to_destroy.id }
-      }.to raise_error(CanCan::AccessDenied)
+      delete :destroy_another_user, params: { id: user_to_destroy.id }
+      expect(response).to redirect_to(root_path)
     end
 
-    it 'do not destroy the requested user' do
+    it 'destroy the requested user' do
       sign_in user_admin
       user_to_destroy = User.create! valid_attributes
       expect {

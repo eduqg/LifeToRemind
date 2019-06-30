@@ -16,6 +16,13 @@ class ValuesController < ApplicationController
 
   # GET /values/1/edit
   def edit
+    value = Value.find(params[:id])
+
+    if current_plan.id == value.plan_id
+      @value = value
+    else
+      raise CanCan::AccessDenied.new('Você não pode editar esse valor')
+    end
   end
 
   # POST /values
@@ -26,10 +33,10 @@ class ValuesController < ApplicationController
 
     respond_to do |format|
       if @value.save
-        format.html { redirect_to new_value_path, notice: "Valor foi criado com sucesso" }
+        format.html {redirect_to new_value_path, notice: "Valor foi criado com sucesso"}
       else
-        format.html { render :new }
-        format.json { render json: @value.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @value.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -37,34 +44,43 @@ class ValuesController < ApplicationController
   # PATCH/PUT /values/1
   # PATCH/PUT /values/1.json
   def update
-    respond_to do |format|
-      if @value.update(value_params)
-        format.html { redirect_to myplan_path, notice: "Valor foi atualizado com sucesso" }
-      else
-        format.html { render :edit }
-        format.json { render json: @value.errors, status: :unprocessable_entity }
+    if current_plan.id == @value.plan_id
+      respond_to do |format|
+        if @value.update(value_params)
+          format.html {redirect_to myplan_path, notice: "Valor foi atualizado com sucesso"}
+        else
+          format.html {render :edit}
+          format.json {render json: @value.errors, status: :unprocessable_entity}
+        end
       end
+    else
+      raise CanCan::AccessDenied.new('Você não pode atualizar esse valor')
     end
   end
 
   # DELETE /values/1
   # DELETE /values/1.json
   def destroy
-    @value.destroy
-    respond_to do |format|
-      format.html { redirect_to values_path, notice: "Valor foi excluído" }
-      format.json { head :no_content }
+    if current_plan.id == @value.plan_id
+      @value.destroy
+      respond_to do |format|
+        format.html {redirect_to values_path, notice: "Valor foi excluído"}
+        format.json {head :no_content}
+      end
+    else
+      raise CanCan::AccessDenied.new('Você não pode excluir essa missão')
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_value
-      @value = Value.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def value_params
-      params.require(:value).permit(:name, :plan_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_value
+    @value = Value.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def value_params
+    params.require(:value).permit(:name, :plan_id)
+  end
 end

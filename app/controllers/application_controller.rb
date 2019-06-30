@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     @current_plan ||= Plan.find(id = current_user[:selected_plan])
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, :alert => exception.message
+  end
+
   protected
 
   def configure_permitted_parameters

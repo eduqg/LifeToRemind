@@ -5,6 +5,10 @@ RSpec.describe ValuesController, type: :controller do
   let!(:plan) {Plan.find(value.plan_id)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
+  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
+  let!(:value_2) {Value.create!(name: "Really Normal value", plan_id: plan_2.id)}
+
   let(:valid_attributes) {{name: "ReallyNormalName", plan_id: plan.id}}
 
   let(:invalid_attributes) {{plan_id: plan.id}}
@@ -87,6 +91,14 @@ RSpec.describe ValuesController, type: :controller do
       value_to_update = Value.create! valid_attributes
       put :update, params: {id: value_to_update.to_param, value: {name: "Valor atualizado"}}
       expect(response).to redirect_to(myplan_path)
+    end
+
+    it 'expects put update to fail if is not owner of value' do
+      expect(
+          put :update, params: {id: value_2.to_param, value: {name: "Valor atualizado 2", value_id: value_2.id, plan_id_2: plan.id}}
+      ).to redirect_to(root_path)
+      # assert_equal 'Você não pode atualizar esse valor', flash[:danger]
+      # shows 'Você não pode atualizar esse valor'
     end
   end
 

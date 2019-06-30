@@ -41,7 +41,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = User.find(params[:id])
     user.destroy
     flash[:info] = "Usuário foi excluído"
-    redirect_to users_path
     authorize! :destroy, user
   end
 

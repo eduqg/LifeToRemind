@@ -22,7 +22,8 @@ RSpec.feature "Swotpart", :type => :feature do
   context 'integration Privilege Escalation validations' do
 
     it 'default user cannot access all swotparts' do
-      expect{ visit 'swotparts/' }.to raise_error(CanCan::AccessDenied)
+      visit 'swotparts/'
+      expect(page).to have_content('You are not authorized to access this page.')
     end
 
     it 'admin user can access all swotparts' do
@@ -36,7 +37,8 @@ RSpec.feature "Swotpart", :type => :feature do
 
 
     it 'default user cannot edit another user-s swotpart' do
-      expect{ visit 'swotparts/'+ (swotpart_2.id).to_s + '/edit'}.to raise_error(CanCan::AccessDenied)
+      visit 'swotparts/'+ (swotpart_2.id).to_s + '/edit'
+      expect(page).to have_content('Você não pode editar essa característica da SWOT')
     end
 
     it 'default user can edit his own swotpart' do

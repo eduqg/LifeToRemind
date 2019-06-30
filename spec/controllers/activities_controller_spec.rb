@@ -7,6 +7,9 @@ RSpec.describe ActivitiesController, type: :controller do
   let!(:plan) {Plan.find(objective.plan_id)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_admin) {User.create!(email: 'admin2@admin2.com', password: 'skdD.sk@#ffew2', name: 'admin2', role: 'admin')}
+  let!(:plan_admin) {Plan.create!(name:"Admin Plan", user_id: user_admin.id)}
+
   let(:valid_attributes) { { title: "My activity", goal_id: goal.id } }
 
   let(:invalid_attributes) { { goal_id: goal.id } }
@@ -23,15 +26,34 @@ RSpec.describe ActivitiesController, type: :controller do
 
 
   context "GET #index" do
-    it "return index success response" do
-      expect{ get :index }.to raise_error(CanCan::AccessDenied)
+    it "return root response if not admin" do
+      get :index
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "return index success response if admin" do
+      sign_out user
+      sign_in user_admin
+      user_admin.selected_plan = plan_admin.id
+      user_admin.save
+      get :index
+      expect(response).to be_successful
     end
   end
 
   context "GET #show" do
-    it "returns show success response" do
+    it "returns root response" do
+      get :show, params: {id: activity.to_param}
+      expect(response).to redirect_to(root_path)
+    end
 
-      expect{ get :show, params: {id: activity.to_param} }.to raise_error(CanCan::AccessDenied)
+    it "returns show success response" do
+      sign_out user
+      sign_in user_admin
+      user_admin.selected_plan = plan_admin.id
+      user_admin.save
+      get :show, params: {id: activity.to_param}
+      expect(response).to be_successful
     end
   end
 
