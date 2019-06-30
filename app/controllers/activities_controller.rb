@@ -52,7 +52,8 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html {redirect_to activities_path(goal_id: @activity.goal_id), notice: "Atividade atualizada com sucesso"}
+        goal = Goal.find(@activity.goal_id)
+        format.html {redirect_to editobjective_path(objective_id: goal.objective_id), notice: "Atividade atualizada com sucesso"}
         format.json {render :show, status: :ok, location: @activity}
       else
         format.html {render :edit, locals: {goal_id: @activity.goal_id}}

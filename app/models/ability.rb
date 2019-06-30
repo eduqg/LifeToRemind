@@ -37,17 +37,30 @@ class Ability
       else
         can :crud, User, user_id: user.id
         can :current_plan, ApplicationController
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
+        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
         can [:create, :new, :update, :edit, :destroy], Swotpart
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
-        can [:read, :create, :new, :update, :edit, :destroy], Value
-        can [:read, :create, :new, :update, :edit, :destroy], Role
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
-        can [:read, :create, :new, :update, :edit, :destroy, :sphereobjectives], Sphere
-        can [:read, :create, :new, :update, :edit, :destroy, :editobjective], Objective
+        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
+        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
+        can [:index, :show, :create, :new, :update, :edit, :destroy], Value
+        # Roles permissions
+        can [:create, :new], Role
+        can [:index, :show, :edit, :update, :destroy], Role do |role|
+          plan = Plan.find(role.plan_id)
+          plan.user_id == user.id
+        end
+        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
+        can [:index, :show, :create, :new, :update, :edit, :destroy, :sphereobjectives], Sphere
+        can [:index, :show, :create, :new, :update, :edit, :destroy, :editobjective], Objective
         can [:create, :new, :update, :edit, :destroy], Goal
-        can [:create, :new, :update, :edit, :destroy, :checked], Activity
+
+        # Activities permissions
+        can [:create, :new], Activity
+        can [:destroy, :checked], Activity do |act|
+          goal = Goal.find(act.goal_id)
+          objective = Objective.find(goal.objective_id)
+          plan = Plan.find(objective.plan_id)
+          plan.user_id == user.id
+        end
       end
     end
   end
