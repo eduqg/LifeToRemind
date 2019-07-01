@@ -96,7 +96,7 @@ RSpec.describe RolesController, type: :controller do
 
     it 'expects put update to fail if is not owner of role' do
       expect(
-          put :update, params: {id: role_2.to_param, value: {title: "Role 123", plan_id: role.plan_id}}
+          put :update, params: {id: role_2.to_param, role: {title: "Role 123", plan_id: role.plan_id}}
       ).to redirect_to(root_path)
     end
   end

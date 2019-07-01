@@ -23,7 +23,7 @@ RSpec.feature "Csf", :type => :feature do
 
     it 'default user cannot edit another user-s swotpart' do
       visit 'csfs/'+ (csf_2.id).to_s + '/edit'
-      expect(page).to have_content('Você não pode editar esse fator crítico de sucesso')
+      expect(page).to have_content('You are not authorized to access this page.')
     end
 
     it 'default user can edit his own csf' do

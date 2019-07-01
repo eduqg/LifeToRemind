@@ -36,7 +36,7 @@ class Ability
         can :manage, :all
       else
         can :crud, User, user_id: user.id
-        
+
         can :current_plan, ApplicationController
 
         can [:create, :new, :inicio], Plan
@@ -55,6 +55,11 @@ class Ability
           mission.user_id == user.id
         end
 
+        can [:create, :new], Csf
+        can [:index, :update, :edit, :destroy, :update_selected_csf], Csf do |csf|
+          csf.user_id == user.id
+        end
+
         can [:create, :new], Vision
         can [:index, :show, :update, :edit, :destroy, :update_selected_vision], Vision do |vision|
           vision.user_id == user.id
@@ -71,7 +76,6 @@ class Ability
           plan = Plan.find(role.plan_id)
           plan.user_id == user.id
         end
-        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
 
         can [:create, :new], Sphere
         can [:index, :show, :update, :edit, :destroy, :sphereobjectives], Sphere do |sphere|

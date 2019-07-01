@@ -94,7 +94,7 @@ RSpec.describe PlansController, type: :controller do
 
     it 'expects put update to fail if is not owner of goal' do
       expect(
-          put :update, params: {id: plan_2.to_param, value: {name: "plan 123", user_id: user.id }}
+          put :update, params: {id: plan_2.to_param, plan: {name: "plan 123", user_id: user.id }}
       ).to redirect_to(root_path)
     end
   end

@@ -122,7 +122,7 @@ RSpec.describe SwotpartsController, type: :controller do
 
     it 'expects put update to fail if is not owner of swotpart' do
       expect(
-          put :update, params: {id: swotpart_2.to_param, value: {name: "Activity 123", plan_id: plan.id}}
+          put :update, params: {id: swotpart_2.to_param, swotpart: {name: "My S2wotpart", partname: "opportunity", plan_id: plan.id}}
       ).to redirect_to(root_path)
     end
   end

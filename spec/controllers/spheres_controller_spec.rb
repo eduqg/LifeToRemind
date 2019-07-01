@@ -94,7 +94,7 @@ RSpec.describe SpheresController, type: :controller do
     end
     it 'expects put update to fail if is not owner of sphere' do
       expect(
-          put :update, params: {id: sphere_2.to_param, value: {name: "Activity 123", user_id: user.id}}
+          put :update, params: {id: sphere_2.to_param, sphere: {name: "Activity 123", user_id: user.id}}
       ).to redirect_to(root_path)
     end
   end

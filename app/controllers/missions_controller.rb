@@ -12,25 +12,14 @@ class MissionsController < ApplicationController
   end
 
   def edit
-    mission = Mission.find(params[:id])
-
-    if current_user.id == mission.user_id
-      @mission = mission
-    else
-      raise CanCan::AccessDenied.new('Você não pode editar essa missão')
-    end
   end
 
   def update
-    if current_user.id == @mission.user_id
-      if @mission.update(mission_params)
-        flash[:notice] = "Missão atualizada com sucesso!"
-        redirect_to missions_url
-      else
-        render :edit
-      end
+    if @mission.update(mission_params)
+      flash[:notice] = "Missão atualizada com sucesso!"
+      redirect_to missions_url
     else
-      raise CanCan::AccessDenied.new('Você não pode atualiar essa missão')
+      render :edit
     end
   end
 
@@ -62,13 +51,9 @@ class MissionsController < ApplicationController
       # Unset selected mission
       current_plan.update_attribute(:selected_mission, nil)
     end
-    if current_user.id == @mission.user_id
-      @mission.destroy
-      flash[:info] = "Missão foi excluída"
-      redirect_to missions_url
-    else
-      raise CanCan::AccessDenied.new('Você não pode excluir essa missão')
-    end
+    @mission.destroy
+    flash[:info] = "Missão foi excluída"
+    redirect_to missions_url
   end
 
   private

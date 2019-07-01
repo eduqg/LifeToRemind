@@ -131,7 +131,7 @@ RSpec.describe ActivitiesController, type: :controller do
 
     it 'expects put update to fail if is not owner of activity' do
       expect(
-          put :update, params: {id: activity_2.to_param, value: {title: "Activity 123", goal_id: goal.id}}
+          put :update, params: {id: activity_2.to_param, activity: {title: "Activity 123", goal_id: goal.id}}
       ).to redirect_to(root_path)
     end
   end

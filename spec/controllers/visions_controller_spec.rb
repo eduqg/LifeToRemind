@@ -103,7 +103,7 @@ RSpec.describe VisionsController, type: :controller do
 
     it 'expects put update to fail if is not owner of vision' do
       expect(
-          put :update, params: {id: vision_2.to_param, value: {title: "vision 123", user_id: user.id}}
+          put :update, params: {id: vision_2.to_param, vision: {where_im_going:"where1", where_arrive:"where", how_complete_mission: "how", user_id: user.id}}
       ).to redirect_to(root_path)
     end
   end

@@ -103,7 +103,7 @@ RSpec.describe MissionsController, type: :controller do
 
     it 'expects put update to fail if is not owner of mission' do
       expect(
-          put :update, params: {id: mission_2.to_param, value: {title: "mission 123", user_id: user.id}}
+          put :update, params: {id: mission_2.to_param, mission: {why_exist: "why", purpose_of_life:"purpose", who_am_i:"who", user_id: user.id}}
       ).to redirect_to(root_path)
     end
   end
