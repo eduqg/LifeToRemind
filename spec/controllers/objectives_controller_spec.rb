@@ -6,6 +6,16 @@ RSpec.describe ObjectivesController, type: :controller do
   let!(:plan) {Plan.find(objective.plan_id)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_admin) {User.create!(email: 'admin2@admin2.com', password: 'skdD.sk@#ffew2', name: 'admin2', role: 'admin')}
+  let!(:plan_admin) {Plan.create!(name:"Admin Plan", user_id: user_admin.id)}
+  let!(:sphere_admin) {Sphere.create!(name: "ReallyNormalName", user_id: user_admin.id)}
+  let!(:objective_admin) {Objective.create!(name: "My Objective", plan_id: plan_admin.id, sphere_id: sphere_admin.id)}
+
+  let!(:user_2) {User.create!(email: '22@22.com', password: 'skdD.sk@#ffew2', name: 'user 2')}
+  let!(:plan_2) {Plan.create!(name:"2 Plan", user_id: user_2.id)}
+  let!(:sphere_2) {Sphere.create!(name: "ReallyNormalName", user_id: user_2.id)}
+  let!(:objective_2) {Objective.create!(name: "My Objective", plan_id: plan_2.id, sphere_id: sphere_2.id)}
+
   let(:valid_attributes) {{name: "My Objective", plan_id: plan.id, sphere_id: sphere.id}}
 
   let(:invalid_attributes) {{ plan_id: plan.id, sphere_id: sphere.id}}
@@ -22,14 +32,32 @@ RSpec.describe ObjectivesController, type: :controller do
 
 
   context "GET #index" do
-    it "return index success response" do
+    it "return index not success response" do
+      get :index
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "return index success response if admin" do
+      sign_out user
+      sign_in user_admin
+      user_admin.selected_plan = plan_admin.id
+      user_admin.save
       get :index
       expect(response).to be_successful
     end
   end
 
   context "GET #show" do
+    it "returns not show success response" do
+      get :show, params: {id: objective.to_param}
+      expect(response).to redirect_to(root_path)
+    end
+
     it "returns show success response" do
+      sign_out user
+      sign_in user_admin
+      user_admin.selected_plan = plan_admin.id
+      user_admin.save
       get :show, params: {id: objective.to_param}
       expect(response).to be_successful
     end
@@ -100,6 +128,12 @@ RSpec.describe ObjectivesController, type: :controller do
       # "/editobjective?objective_id=#{objective.id}"
       expect(response).to redirect_to(myplan_path)
     end
+
+    it 'expects put update to fail if is not owner of activity' do
+      expect(
+          put :update, params: {id: objective_2.to_param, value: {name: "Obj 123", plan_id: plan.id, sphere_id: sphere.id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -114,8 +148,12 @@ RSpec.describe ObjectivesController, type: :controller do
       delete :destroy, params: {id: objective_to_destroy.to_param}
       expect(response).to redirect_to(myplan_path)
     end
+    it "expects delete to fail if is not owner of objective" do
+      expect {
+        delete :destroy, params: {id: objective_2.id}
+      }.to change(Objective, :count).by(0)
+    end
   end
-
 end
 
 

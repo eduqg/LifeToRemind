@@ -1,4 +1,5 @@
 <div class="col-xs-12  p-t-10">
+  <h3>Meus objetivos</h3>
   <% if !@objectives.nil? %>
     <% @objectives.each_with_index do |objective, i| %>
       <%= link_to editobjective_path(objective_id: objective.id) do %>

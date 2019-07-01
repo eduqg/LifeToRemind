@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :spheres
 
   get "editobjective", to: "objectives#editobjective"
-  get "editobjectives", to: "objectives#editobjectives"
   resources :objectives
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }

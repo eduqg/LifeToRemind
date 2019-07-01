@@ -69,10 +69,6 @@ class ObjectivesController < ApplicationController
     end
   end
 
-  def editobjectives
-    @objectives = current_plan.objectives
-  end
-
   # DELETE /objectives/1
   # DELETE /objectives/1.json
   def destroy
