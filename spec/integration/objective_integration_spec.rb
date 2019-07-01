@@ -51,6 +51,16 @@ RSpec.feature "Objective", :type => :feature do
       visit 'objectives/'+ (objective.id).to_s
       expect(page).to have_content('You are not authorized to access this page.')
     end
+
+    it 'default user cannot access other-s objective' do
+      visit 'editobjective?objective_id='+ (objective_2.id).to_s
+      expect(page).to have_content('Você não pode acessar esse objetivo')
+    end
+
+    it 'default user can access own objective' do
+      visit 'editobjective?objective_id='+ (objective.id).to_s
+      expect(page).to have_content('As atividades servem para acompanhar o progresso de uma meta')
+    end
   end
 end
 

@@ -32,7 +32,11 @@ class ObjectivesController < ApplicationController
   end
 
   def editobjective
+    if Objective.find(params[:objective_id]).plan_id == current_plan.id
     @objective = Objective.find(params[:objective_id])
+    else
+      raise CanCan::AccessDenied.new('Você não pode acessar esse objetivo')
+    end
   end
 
   # POST /objectives
