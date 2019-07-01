@@ -114,7 +114,10 @@ RSpec.describe ValuesController, type: :controller do
       delete :destroy, params: {id: value_to_destroy.to_param}
       expect(response).to redirect_to(values_path)
     end
+    it "expects delete to fail if is not owner of value" do
+      expect {
+        delete :destroy, params: { id: value_2.id }
+      }.to change(Value, :count).by(0)
+    end
   end
-
-
 end

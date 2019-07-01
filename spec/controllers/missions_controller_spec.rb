@@ -5,6 +5,10 @@ RSpec.describe MissionsController, type: :controller do
   let!(:user) {User.find(mission.user_id)}
   let!(:plan) {Plan.create!(name:"My incredible plan", user_id: user.id)}
 
+  let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
+  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
+  let!(:mission_2) {Mission.create!(why_exist: "why", purpose_of_life:"purpose", who_am_i:"who", user_id: user_2.id)}
+
   let(:valid_attributes) {{ why_exist: "why", purpose_of_life:"purpose", who_am_i:"who", user_id: user.id}}
 
   let(:invalid_attributes) {{ purpose_of_life:"purpose", who_am_i:"who", user_id: user.id }}
@@ -96,6 +100,12 @@ RSpec.describe MissionsController, type: :controller do
       put :update, params: {id: mission_to_update.to_param, mission: {why_exist: "Porque existo atualizado",}}
       expect(response).to redirect_to(missions_path)
     end
+
+    it 'expects put update to fail if is not owner of mission' do
+      expect(
+          put :update, params: {id: mission_2.to_param, value: {title: "mission 123", user_id: user.id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -117,6 +127,11 @@ RSpec.describe MissionsController, type: :controller do
       delete :destroy, params: {id: mission_to_destroy.to_param}
       plan.reload
       expect(plan.selected_mission).to eq(nil)
+    end
+    it "expects delete to fail if is not owner of mission" do
+      expect {
+        delete :destroy, params: { id: mission_2.id }
+      }.to change(Mission, :count).by(0)
     end
   end
 

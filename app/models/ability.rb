@@ -39,8 +39,16 @@ class Ability
         can :current_plan, ApplicationController
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
         can [:create, :new, :update, :edit, :destroy], Swotpart
-        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
-        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
+
+        can [:create, :new], Mission
+        can [:index, :show, :update, :edit, :destroy, :update_selected_mission], Mission do |mission|
+          mission.user_id == user.id
+        end
+
+        can [:create, :new], Vision
+        can [:index, :show, :update, :edit, :destroy, :update_selected_vision], Vision do |vision|
+          vision.user_id == user.id
+        end
 
         can [:create, :new], Value
         can [:index, :show, :update, :edit, :destroy], Value do |value|
