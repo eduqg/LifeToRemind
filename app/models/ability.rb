@@ -42,6 +42,7 @@ class Ability
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
         can [:index, :show, :create, :new, :update, :edit, :destroy], Value
+        
         can [:create, :new], Role
         can [:index, :show, :edit, :update, :destroy], Role do |role|
           plan = Plan.find(role.plan_id)
