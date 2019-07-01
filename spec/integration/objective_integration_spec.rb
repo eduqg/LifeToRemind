@@ -62,5 +62,50 @@ RSpec.feature "Objective", :type => :feature do
       expect(page).to have_content('As atividades servem para acompanhar o progresso de uma meta')
     end
   end
+
+  context 'Crud integration' do
+    it 'user can create objective' do
+      visit 'spheres/new'
+      fill_in 'sphere_name', with: 'ambito 1'
+      click_button 'Criar'
+      visit '/myplan'
+      click_link 'button-create-objective'
+      fill_in 'objective_name', with: 'objective 222'
+      select 'ambito 1', from: 'objective_sphere_id'
+      click_button 'Criar'
+      expect(page).to have_content('Objetivo foi adicionado ao seu planejamento, adicone Metas e Atividades em Meu Planejamento')
+    end
+
+    it 'user can edit objective' do
+      visit '/spheres/new'
+      fill_in 'sphere_name', with: 'ambito 2'
+      click_button 'Criar'
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-edit-objective'
+      fill_in 'objective_name', with: 'hello objective'
+      select 'ambito 2', from: 'objective_sphere_id'
+      click_button 'Editar'
+      expect(page).to have_content('Objetivo foi atualizado com sucesso')
+    end
+
+    it 'user can view his objective on editobjective page' do
+      visit 'spheres/new'
+      fill_in 'sphere_name', with: 'ambito 1'
+      click_button 'Criar'
+      visit '/myplan'
+      click_link 'button-create-objective'
+      fill_in 'objective_name', with: 'objective 2212'
+      select 'ambito 1', from: 'objective_sphere_id'
+      click_button 'Criar'
+      visit '/myplan'
+      expect(page).to have_content('objective 2212')
+    end
+
+    it 'user can delete his objective' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-delete-objective'
+      expect(page).to have_content('Objetivo Estratégico foi excluído')
+    end
+  end
 end
 

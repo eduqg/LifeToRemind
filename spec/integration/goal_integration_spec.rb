@@ -55,5 +55,37 @@ RSpec.feature "Goal", :type => :feature do
       expect(page).to have_content('You are not authorized to access this page.')
     end
   end
+
+  context 'Crud integration' do
+    it 'user can create goal' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-create-goal'
+      fill_in 'field-goal-name', with: 'goal 222'
+      click_button 'Salvar'
+      expect(page).to have_content('Meta criada com sucesso')
+    end
+
+    it 'user can edit goal' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-edit-goal'
+      fill_in 'field-goal-name', with: 'hello goal'
+      click_button 'Salvar'
+      expect(page).to have_content('Meta atualizada com sucesso')
+    end
+
+    it 'user can view his goal on editobjective page' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-create-goal'
+      fill_in 'field-goal-name', with: 'g2oal 222123'
+      click_button 'Salvar'
+      expect(page).to have_content('g2oal 222123')
+    end
+
+    it 'user can delete his goal' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-delete-goal'
+      expect(page).to have_content('Meta excluída com sucesso')
+    end
+  end
 end
 

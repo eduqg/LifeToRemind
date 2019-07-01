@@ -58,5 +58,29 @@ RSpec.feature "Activity", :type => :feature do
       expect(page).to have_content('You are not authorized to access this page.')
     end
   end
+
+  context 'Crd integration' do
+    it 'user can create activity' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-create-activity'
+      fill_in 'activity_title', with: 'activity 222'
+      click_button 'Criar'
+      expect(page).to have_content('Atividade criada com sucesso')
+    end
+
+    it 'user can view his activity on editobjective page' do
+      visit '/activities/new?goal_id=' + (goal.id).to_s
+      fill_in 'activity_title', with: 'activity 222'
+      click_button 'Criar'
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      expect(page).to have_content('activity 222')
+    end
+
+    it 'user can delete his activity' do
+      visit '/editobjective?objective_id=' + (objective.id).to_s
+      click_link 'button-delete-activity'
+      expect(page).to have_content('Atividade foi excluída')
+    end
+  end
 end
 
