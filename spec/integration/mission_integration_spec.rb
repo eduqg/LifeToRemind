@@ -31,6 +31,41 @@ RSpec.feature "Mission", :type => :feature do
       visit 'missions/'+ (mission.id).to_s + '/edit'
       expect(page).to have_content 'Edição de Missão'
     end
+
+    it 'user can create mission' do
+      visit 'missions/new'
+      fill_in 'mission_who_am_i', with: 'who222'
+      fill_in 'mission_why_exist', with: 'why22'
+      fill_in 'mission_purpose_of_life', with: 'purpose'
+      click_button 'Criar'
+      expect(page).to have_content('A Missão criada foi adicionada ao seu planejamento')
+    end
+
+    it 'user can edit mission' do
+      visit 'missions/' + (mission.id).to_s + '/edit'
+      fill_in 'mission_who_am_i', with: 'who222aaa'
+      fill_in 'mission_why_exist', with: 'why22aa'
+      fill_in 'mission_purpose_of_life', with: 'purposea'
+      click_button 'Atualizar'
+      expect(page).to have_content('Missão atualizada com sucesso!')
+    end
+
+    it 'user can view his mission on myplan' do
+      visit 'missions/new'
+      fill_in 'mission_who_am_i', with: 'who222'
+      fill_in 'mission_why_exist', with: 'why22'
+      fill_in 'mission_purpose_of_life', with: 'purpose'
+      click_button 'Criar'
+      visit '/myplan'
+      expect(page).to have_content('who222')
+    end
+
+    it 'user can delete his mission' do
+      visit '/missions'
+      click_link 'Remover'
+      expect(page).to have_content('Missão foi excluída')
+    end
+
   end
 end
 

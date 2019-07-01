@@ -30,6 +30,43 @@ RSpec.feature "Csf", :type => :feature do
       visit 'csfs/'+ (csf.id).to_s + '/edit'
       expect(page).to have_content 'Edição de Fatores Críticos de Sucesso'
     end
+    
+    it 'user can create csf' do
+      visit 'csfs/new'
+      fill_in 'csf_what_makes_me_unique', with: 'unique'
+      fill_in 'csf_best_attributes', with: 'best'
+      fill_in 'csf_essential_atributes', with: 'essential'
+      fill_in 'csf_health_factors', with: 'health'
+      click_button 'Criar'
+      expect(page).to have_content('O Fator Crítico de Sucesso criado foi adicionada ao seu planejamento')
+    end
+
+    it 'user can edit csf' do
+      visit 'csfs/' + (csf.id).to_s + '/edit'
+      fill_in 'csf_what_makes_me_unique', with: 'unique'
+      fill_in 'csf_best_attributes', with: 'best'
+      fill_in 'csf_essential_atributes', with: 'essential'
+      fill_in 'csf_health_factors', with: 'health'
+      click_button 'Atualizar'
+      expect(page).to have_content('Fator crítico de sucesso atualizado')
+    end
+
+    it 'user can view his csf on myplan' do
+      visit 'csfs/new'
+      fill_in 'csf_what_makes_me_unique', with: 'unique'
+      fill_in 'csf_best_attributes', with: 'best'
+      fill_in 'csf_essential_atributes', with: 'essential'
+      fill_in 'csf_health_factors', with: 'health'
+      click_button 'Criar'
+      visit '/myplan'
+      expect(page).to have_content('unique')
+    end
+
+    it 'user can delete his csf' do
+      visit '/csfs'
+      click_link 'Remover'
+      expect(page).to have_content('Fator crítico de sucesso foi excluído')
+    end
 
   end
 end

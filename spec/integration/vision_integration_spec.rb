@@ -30,6 +30,40 @@ RSpec.feature "Vision", :type => :feature do
       visit 'visions/'+ (vision.id).to_s + '/edit'
       expect(page).to have_content 'Edição de Visão'
     end
+
+    it 'user can create vision' do
+      visit 'visions/new'
+      fill_in 'vision_where_im_going', with: 'where222'
+      fill_in 'vision_where_arrive', with: 'arrive22'
+      fill_in 'vision_how_complete_mission', with: 'how'
+      click_button 'Criar'
+      expect(page).to have_content('A Visão criada foi adicionada ao seu planejamento')
+    end
+
+    it 'user can edit vision' do
+      visit 'visions/' + (vision.id).to_s + '/edit'
+      fill_in 'vision_where_im_going', with: 'where222'
+      fill_in 'vision_where_arrive', with: 'arrive22'
+      fill_in 'vision_how_complete_mission', with: 'how'
+      click_button 'Atualizar'
+      expect(page).to have_content('Visão atualizada com sucesso!')
+    end
+
+    it 'user can view his vision on myplan' do
+      visit 'visions/new'
+      fill_in 'vision_where_im_going', with: 'where222'
+      fill_in 'vision_where_arrive', with: 'arrive22'
+      fill_in 'vision_how_complete_mission', with: 'how'
+      click_button 'Criar'
+      visit '/myplan'
+      expect(page).to have_content('where222')
+    end
+
+    it 'user can delete his vision' do
+      visit '/visions'
+      click_link 'Remover'
+      expect(page).to have_content('Visão foi excluída')
+    end
   end
 end
 
