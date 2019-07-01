@@ -57,7 +57,11 @@ class SpheresController < ApplicationController
   end
 
   def sphereobjectives
-    @objectives = Objective.where(sphere_id: params[:sphere_id]).where(plan_id: current_plan.id)
+    if Sphere.find(params[:sphere_id]).user_id == current_user.id
+      @objectives = current_plan.objectives.where(sphere_id: params[:sphere_id]).where(plan_id: current_plan.id)
+    else
+      raise CanCan::AccessDenied.new('Você não pode acessar esse âmbito')
+    end
   end
 
   private

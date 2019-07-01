@@ -1,5 +1,6 @@
 <div class="container">
   <div class="col-xs-12  p-t-10">
+    <h3>Objetivos do Âmbito</h3>
     <% if !@objectives.empty? %>
       <% @objectives.each_with_index do |objective, i| %>
         <%= link_to editobjective_path(objective_id: objective.id) do %>

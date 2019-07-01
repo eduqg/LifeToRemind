@@ -36,6 +36,15 @@ RSpec.feature "Sphere", :type => :feature do
       expect(page).to have_content('Editar Âmbito')
     end
 
+    it 'default user can acess other-s sphere' do
+      visit 'sphereobjectives?sphere_id='+ (sphere_2.id).to_s
+      expect(page).to have_content('Você não pode acessar esse âmbito')
+    end
+
+    it 'default user can acess own sphere' do
+      visit 'sphereobjectives?sphere_id='+ (sphere.id).to_s
+      expect(page).to have_content('Objetivos do Âmbito')
+    end
   end
 end
 
