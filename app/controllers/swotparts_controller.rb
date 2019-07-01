@@ -73,9 +73,10 @@ class SwotpartsController < ApplicationController
   # DELETE /swotparts/1.json
   def destroy
     if @swotpart.plan_id == current_plan.id
+      type_swot = @swotpart.partname
       @swotpart.destroy
       respond_to do |format|
-        format.html {redirect_to plans_swotedit_path, notice: "Força removida"}
+        format.html {redirect_to plans_swotedit_path, notice: "#{type_swot} removida"}
         format.json {head :no_content}
       end
     else

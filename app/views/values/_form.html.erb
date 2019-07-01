@@ -7,7 +7,7 @@
 <%= form_for @value do |form| %>
   <div class="search-group-1 m-t-33">
     <%= form.text_field :name,  autocomplete: "off", placeholder: "Insira um valor", class: "search-field-1" %>
-    <%= button_tag class: "icon-1" do %>
+    <%= button_tag class: "icon-1", id: "button-create-value" do %>
       <i class="lnr lnr-arrow-right"></i>
     <% end %>
   </div>

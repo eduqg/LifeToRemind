@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.feature "Mission", :type => :feature do
   let!(:mission) {FactoryBot.create(:mission)}
   let!(:user) {User.find(mission.user_id)}
-  let!(:plan) {Plan.create!(name:"My incredible plan", user_id: user.id)}
+  let!(:plan) {Plan.create!(name: "My incredible plan", user_id: user.id)}
 
   let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
-  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
-  let!(:mission_2) {Mission.create!(why_exist: "why", purpose_of_life:"purpose", who_am_i:"who", user_id: user_2.id)}
+  let!(:plan_2) {Plan.create!(name: "User 2 Plan", user_id: user_2.id)}
+  let!(:mission_2) {Mission.create!(why_exist: "why", purpose_of_life: "purpose", who_am_i: "who", user_id: user_2.id)}
 
   before :each do
     login_as(user, scope: :user)
@@ -22,16 +22,18 @@ RSpec.feature "Mission", :type => :feature do
     end
 
     it 'default user cannot edit another user-s swotpart' do
-      visit 'missions/'+ (mission_2.id).to_s + '/edit'
+      visit 'missions/' + (mission_2.id).to_s + '/edit'
       expect(page).to have_content('You are not authorized to access this page.')
 
     end
 
     it 'default user can edit his own mission' do
-      visit 'missions/'+ (mission.id).to_s + '/edit'
+      visit 'missions/' + (mission.id).to_s + '/edit'
       expect(page).to have_content 'Edição de Missão'
     end
+  end
 
+  context 'Crud integration' do
     it 'user can create mission' do
       visit 'missions/new'
       fill_in 'mission_who_am_i', with: 'who222'

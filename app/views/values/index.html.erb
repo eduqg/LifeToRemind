@@ -12,8 +12,8 @@
           <h3 class="lead color-dark">
             <%= value.name %>
           </h3>
-          <%= link_to "", edit_value_path(value), class: "btn btn-default lnr lnr-pencil" %>
-          <%= link_to "", value, method: :delete, class: "btn btn-danger lnr lnr-circle-minus" %>
+          <%= link_to "", edit_value_path(value), class: "btn btn-default lnr lnr-pencil", id: "edit-value"%>
+          <%= link_to "", value, method: :delete, class: "btn btn-danger lnr lnr-circle-minus", id: "delete-value" %>
         </div>
       </div>
     <% end %>
