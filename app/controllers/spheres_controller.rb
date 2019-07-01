@@ -1,16 +1,11 @@
 class SpheresController < ApplicationController
   load_and_authorize_resource
-  before_action :set_sphere, only: [:show, :edit, :update, :destroy]
+  before_action :set_sphere, only: [:edit, :update, :destroy]
 
   # GET /spheres
   # GET /spheres.json
   def index
     @spheres = current_user.spheres
-  end
-
-  # GET /spheres/1
-  # GET /spheres/1.json
-  def show
   end
 
   # GET /spheres/new
@@ -31,7 +26,6 @@ class SpheresController < ApplicationController
     respond_to do |format|
       if @sphere.save
         format.html {redirect_to new_sphere_path, notice: "Âmbito foi criado com sucesso"}
-        format.json {render :show, status: :created, location: @sphere}
       else
         format.html {render :new}
         format.json {render json: @sphere.errors, status: :unprocessable_entity}
@@ -45,7 +39,6 @@ class SpheresController < ApplicationController
     respond_to do |format|
       if @sphere.update(sphere_params)
         format.html {redirect_to myplan_path, notice: "Âmbito foi atualizado com sucesso"}
-        format.json {render :show, status: :ok, location: @sphere}
       else
         format.html {render :edit}
         format.json {render json: @sphere.errors, status: :unprocessable_entity}

@@ -24,13 +24,6 @@ RSpec.describe SpheresController, type: :controller do
     end
   end
 
-  context "GET #show" do
-    it "returns show success response" do
-      get :show, params: {id: sphere.to_param}
-      expect(response).to be_successful
-    end
-  end
-
   context "GET #new" do
     it "assigns a new" do
       get :new, valid_session

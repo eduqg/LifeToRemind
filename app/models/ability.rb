@@ -48,7 +48,11 @@ class Ability
           plan.user_id == user.id
         end
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
-        can [:index, :show, :create, :new, :update, :edit, :destroy, :sphereobjectives], Sphere
+
+        can [:create, :new], Sphere
+        can [:index, :show, :update, :edit, :destroy, :sphereobjectives], Sphere do |sphere|
+          sphere.user_id == user.id
+        end
 
         can [:create, :new], Objective
         can [:update, :edit, :destroy, :editobjective], Objective do |objective|
