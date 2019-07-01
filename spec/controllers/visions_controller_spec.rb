@@ -8,7 +8,7 @@ RSpec.describe VisionsController, type: :controller do
   let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
   let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
   let!(:vision_2) {Vision.create!(where_im_going:"where1", where_arrive:"where", how_complete_mission: "how", user_id: user_2.id)}
-  
+
   let(:valid_attributes) {{ where_im_going:"where1", where_arrive:"where", how_complete_mission: "how", user_id: user.id}}
 
   let(:invalid_attributes) {{ where_arrive:"where", how_complete_mission: "how", user_id: user.id}}

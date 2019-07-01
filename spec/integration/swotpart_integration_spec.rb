@@ -26,6 +26,11 @@ RSpec.feature "Swotpart", :type => :feature do
       expect(page).to have_content('You are not authorized to access this page.')
     end
 
+    it 'default user can acess swotedit' do
+      visit 'plans/swotedit'
+      expect(page).to have_content('O primeiro passo para ajudar na criação do seu planejamento estratégico pessoal')
+    end
+
     it 'admin user can access all swotparts' do
       logout(:user)
       login_as(user_admin, scope: :user)
@@ -35,10 +40,9 @@ RSpec.feature "Swotpart", :type => :feature do
       expect(page).to have_content 'Page Swotparts'
     end
 
-
     it 'default user cannot edit another user-s swotpart' do
       visit 'swotparts/'+ (swotpart_2.id).to_s + '/edit'
-      expect(page).to have_content('Você não pode editar essa característica da SWOT')
+      expect(page).to have_content('You are not authorized to access this page.')
     end
 
     it 'default user can edit his own swotpart' do

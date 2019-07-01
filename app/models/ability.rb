@@ -38,7 +38,12 @@ class Ability
         can :crud, User, user_id: user.id
         can :current_plan, ApplicationController
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
-        can [:create, :new, :update, :edit, :destroy], Swotpart
+
+        can [:create, :new], Swotpart
+        can [:update, :edit, :destroy], Swotpart do |swotpart|
+          plan = Plan.find(swotpart.plan_id)
+          plan.user_id == user.id
+        end
 
         can [:create, :new], Mission
         can [:index, :show, :update, :edit, :destroy, :update_selected_mission], Mission do |mission|

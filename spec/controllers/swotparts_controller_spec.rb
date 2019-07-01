@@ -5,6 +5,10 @@ RSpec.describe SwotpartsController, type: :controller do
   let!(:plan) {Plan.find(swotpart.plan_id)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
+  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
+  let!(:swotpart_2) {Swotpart.create!(name: "Força do User 2", partname: "strength", plan_id: plan_2.id)}
+
   let!(:user_admin) {User.create!(email: 'admin2@admin2.com', password: 'skdD.sk@#ffew2', name: 'admin2', role: 'admin')}
   let!(:plan_admin) {Plan.create!(name:"Admin Plan", user_id: user_admin.id)}
 
@@ -115,6 +119,12 @@ RSpec.describe SwotpartsController, type: :controller do
       put :update, params: {id: swotpart_to_update.to_param, swotpart: {partname: "weak",name: "Swotpart atualizada"}}
       expect(response).to redirect_to(plans_swotedit_path)
     end
+
+    it 'expects put update to fail if is not owner of swotpart' do
+      expect(
+          put :update, params: {id: swotpart_2.to_param, value: {name: "Activity 123", plan_id: plan.id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -128,6 +138,11 @@ RSpec.describe SwotpartsController, type: :controller do
       swotpart_to_destroy = Swotpart.create! valid_attributes
       delete :destroy, params: {id: swotpart_to_destroy.to_param}
       expect(response).to redirect_to(plans_swotedit_path)
+    end
+    it "expects delete to fail if is not owner of swotpart" do
+      expect {
+        delete :destroy, params: { id: swotpart_2.id }
+      }.to change(Swotpart, :count).by(0)
     end
   end
 end
