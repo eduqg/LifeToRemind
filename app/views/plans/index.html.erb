@@ -23,7 +23,7 @@
     <% @plans.each_with_index do |plan, i| %>
 
       <% if (i % 2 == 0) %>
-        <div class="blog-card">
+        <div class="blog-card" id="card_plan">
           <div class="meta">
             <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
             <ul class="details">
@@ -58,7 +58,7 @@
           </div>
         </div>
       <% else %>
-        <div class="blog-card alt">
+        <div class="blog-card alt" id="card_plan">
           <div class="meta">
             <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div>
             <ul class="details">

@@ -36,8 +36,13 @@ class Ability
         can :manage, :all
       else
         can :crud, User, user_id: user.id
+        
         can :current_plan, ApplicationController
-        can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
+
+        can [:create, :new, :inicio], Plan
+        can [:index, :show, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan], Plan do |plan|
+          plan.user_id == user.id
+        end
 
         can [:create, :new], Swotpart
         can [:update, :edit, :destroy], Swotpart do |swotpart|

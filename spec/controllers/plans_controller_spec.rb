@@ -4,6 +4,9 @@ RSpec.describe PlansController, type: :controller do
   let!(:plan) {FactoryBot.create(:plan)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_2) {User.create!(email: '22@22.com', password: 'skdD.sk@#ffew2', name: 'user 2')}
+  let!(:plan_2) {Plan.create!(name:"2 Plan", user_id: user_2.id)}
+
   let(:valid_attributes) { { name: "Meu plano", user_id: user.id } }
 
   let(:invalid_attributes) { { name: "Me", user_id: user.id } }
@@ -19,13 +22,6 @@ RSpec.describe PlansController, type: :controller do
   context "GET #index" do
     it "return index success response" do
       get :index
-      expect(response).to be_successful
-    end
-  end
-
-  context "GET #show" do
-    it "returns show success response" do
-      get :show, params: {id: plan.to_param}
       expect(response).to be_successful
     end
   end
@@ -95,6 +91,12 @@ RSpec.describe PlansController, type: :controller do
       put :update, params: { id: plan_to_update.to_param, plan:  { name: "Plano atualizado"}}
       expect(response).to redirect_to(plans_path)
     end
+
+    it 'expects put update to fail if is not owner of goal' do
+      expect(
+          put :update, params: {id: plan_2.to_param, value: {name: "plan 123", user_id: user.id }}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -118,5 +120,10 @@ RSpec.describe PlansController, type: :controller do
       user.reload
       expect(user.selected_plan).to eq(plan.id)
     end
+  end
+  it "expects delete to fail if is not owner of plan" do
+    expect {
+      delete :destroy, params: {id: plan_2.id}
+    }.to change(Plan, :count).by(0)
   end
 end
