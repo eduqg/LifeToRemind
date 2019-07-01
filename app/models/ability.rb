@@ -41,8 +41,13 @@ class Ability
         can [:create, :new, :update, :edit, :destroy], Swotpart
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
         can [:index, :show, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
-        can [:index, :show, :create, :new, :update, :edit, :destroy], Value
-        
+
+        can [:create, :new], Value
+        can [:index, :show, :update, :edit, :destroy], Value do |value|
+          plan = Plan.find(value.plan_id)
+          plan.user_id == user.id
+        end
+
         can [:create, :new], Role
         can [:index, :show, :edit, :update, :destroy], Role do |role|
           plan = Plan.find(role.plan_id)

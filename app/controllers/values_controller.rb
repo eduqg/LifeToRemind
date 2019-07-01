@@ -16,13 +16,6 @@ class ValuesController < ApplicationController
 
   # GET /values/1/edit
   def edit
-    value = Value.find(params[:id])
-
-    if current_plan.id == value.plan_id
-      @value = value
-    else
-      raise CanCan::AccessDenied.new('Você não pode editar esse valor')
-    end
   end
 
   # POST /values
@@ -44,31 +37,23 @@ class ValuesController < ApplicationController
   # PATCH/PUT /values/1
   # PATCH/PUT /values/1.json
   def update
-    if current_plan.id == @value.plan_id
-      respond_to do |format|
-        if @value.update(value_params)
-          format.html {redirect_to myplan_path, notice: "Valor foi atualizado com sucesso"}
-        else
-          format.html {render :edit}
-          format.json {render json: @value.errors, status: :unprocessable_entity}
-        end
+    respond_to do |format|
+      if @value.update(value_params)
+        format.html {redirect_to myplan_path, notice: "Valor foi atualizado com sucesso"}
+      else
+        format.html {render :edit}
+        format.json {render json: @value.errors, status: :unprocessable_entity}
       end
-    else
-      raise CanCan::AccessDenied.new('Você não pode atualizar esse valor')
     end
   end
 
   # DELETE /values/1
   # DELETE /values/1.json
   def destroy
-    if current_plan.id == @value.plan_id
-      @value.destroy
-      respond_to do |format|
-        format.html {redirect_to values_path, notice: "Valor foi excluído"}
-        format.json {head :no_content}
-      end
-    else
-      raise CanCan::AccessDenied.new('Você não pode excluir essa missão')
+    @value.destroy
+    respond_to do |format|
+      format.html {redirect_to values_path, notice: "Valor foi excluído"}
+      format.json {head :no_content}
     end
   end
 
