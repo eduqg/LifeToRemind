@@ -32,5 +32,42 @@ RSpec.feature "Role", :type => :feature do
       expect(page).to have_content 'Edição de papel'
     end
   end
+
+  context 'Crud integration' do
+    it 'user can create role' do
+      visit 'roles/new'
+      fill_in 'role_name', with: 'role222'
+      fill_in 'role_description', with: 'desc'
+      click_button 'button-create-role'
+      expect(page).to have_content('Papel foi criado com sucesso')
+    end
+
+    it 'user can edit role' do
+      visit '/roles/' + (role_2.id).to_s + '/edit'
+      fill_in 'role_name', with: 'role222'
+      fill_in 'role_description', with: 'desc'
+      click_button 'button-create-role'
+      expect(page).to have_content('Papel foi atualizado com sucesso')
+    end
+
+    it 'user can view his role on myplan' do
+      visit 'roles/new'
+      fill_in 'role_name', with: 'role222'
+      fill_in 'role_description', with: 'desc'
+      click_button 'button-create-role'
+      visit '/myplan'
+      expect(page).to have_content('role222')
+    end
+
+    it 'user can delete his role' do
+      visit 'roles/new'
+      fill_in 'role_name', with: 'role222'
+      fill_in 'role_description', with: 'desc'
+      click_button 'button-create-role'
+      visit '/roles/' + (role_2  .id).to_s + '/edit'
+      click_link 'delete-role'
+      expect(page).to have_content('Papel foi excluído')
+    end
+  end
 end
 

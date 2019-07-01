@@ -46,5 +46,35 @@ RSpec.feature "Sphere", :type => :feature do
       expect(page).to have_content('Objetivos do Âmbito')
     end
   end
+
+  context 'Crud integration' do
+    it 'user can create sphere' do
+      visit 'spheres/new'
+      fill_in 'sphere_name', with: 'sphere222'
+      click_button 'Criar'
+      expect(page).to have_content('Âmbito foi criado com sucesso')
+    end
+
+    it 'user can edit sphere' do
+      visit '/spheres/' + (sphere.id).to_s + '/edit'
+      fill_in 'sphere_name', with: 'sphere222'
+      click_button 'Criar'
+      expect(page).to have_content('Âmbito foi atualizado com sucesso')
+    end
+
+    it 'user can view his sphere on myplan' do
+      visit 'spheres/new'
+      fill_in 'sphere_name', with: 'sphere222'
+      click_button 'Criar'
+      visit '/myplan'
+      expect(page).to have_content('sphere222')
+    end
+
+    it 'user can delete his sphere' do
+      visit '/spheres/'
+      click_link 'button-delete-sphere'
+      expect(page).to have_content('Âmbito foi excluído')
+    end
+  end
 end
 
