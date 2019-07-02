@@ -21,6 +21,51 @@ class PlansController < ApplicationController
       @spheres = current_user.spheres
       @value = Value.new
       @role = Role.new
+=begin
+      # Colocar em export
+      @user = current_user
+      @spheres = current_user.spheres
+      @plans = current_user.plans
+      @missions = current_user.missions
+      @visions = current_user.visions
+      @csfs = current_user.csfs
+      @swotparts = current_plan.swotparts
+      @values = current_plan.values
+      @roles = current_plan.roles
+
+      respond_to do |format|
+        format.html
+        format.json do
+        data = render_to_string(template: "plans/export.json.jbuilder")
+        send_data data, type: 'application/json; header=present', disposition: "attachment; filename=users.json"
+        end
+      end
+=end
+
+    else
+      redirect_to plans_path
+    end
+  end
+  
+  def export
+    if current_plan
+      @user = current_user
+      @spheres = current_user.spheres
+      @plans = current_user.plans
+      @objectives = current_plan.objectives
+      @missions = current_user.missions
+      @visions = current_user.visions
+      @csfs = current_user.csfs
+      @swotparts = current_plan.swotparts
+      @values = current_plan.values
+      @roles = current_plan.roles
+
+      respond_to do |format|
+        format.json do
+          data = render_to_string(template: "plans/export.json.jbuilder", formats: 'json')
+          send_data data, type: 'application/json; header=present', disposition: "attachment; filename=#{current_user.email}_plans.json"
+        end
+      end
     else
       redirect_to plans_path
     end
@@ -50,16 +95,16 @@ class PlansController < ApplicationController
                  title: "Planejamento de #{current_user.name}",
                  plans: "pdf.html.erb",
                  lowquality: true,
-                 grayscale:                      true,
+                 grayscale: true,
                  zoom: 1,
                  dpi: 75,
-                 margin:  {   top:               10,
-                              bottom:            10,
-                              left:              10,
-                              right:             10 },
-                 disable_links:     true,
+                 margin: {top: 10,
+                          bottom: 10,
+                          left: 10,
+                          right: 10},
+                 disable_links: true,
                  disable_toc_links: true,
-                 disable_back_links:true,
+                 disable_back_links: true,
                  javascript_delay: 3000
         end
       end

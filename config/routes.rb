@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   put "missions/update_selected_mission", to: "missions#update_selected_mission"
   resources :missions, only: [:index, :new, :create, :destroy, :edit, :update]
 
+  get "plans/export", to: "plans#export"
   get "plans/pdf", to: "plans#pdf"
   put "plans/update_selected_plan", to: "plans#update_selected_plan"
   get "swot", to:"plans#swot"
