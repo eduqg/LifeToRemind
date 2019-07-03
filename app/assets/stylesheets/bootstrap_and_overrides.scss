@@ -238,3 +238,50 @@ fieldset[disabled] .btn-default.active {
   color: #E8E8E8;
   background-color: #303030;
 }
+
+.btn-outline {
+  background-color: transparent;
+  color: inherit;
+  transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+  color: #428bca;
+  border: 1px solid #428bca;
+}
+
+.btn-success.btn-outline {
+  color: #5cb85c;
+  border: 1px solid #5cb85c;
+
+}
+
+.btn-dark.btn-outline {
+  color: #1c2324;
+  border: 1px solid #1c2324;
+
+}
+
+.btn-info.btn-outline {
+  color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+  color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+  color: #d9534f;
+}
+
+.btn-dark.btn-outline:hover {
+  color: #fff;
+  background-color: #1c2324;
+}
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+  color: #fff;
+}

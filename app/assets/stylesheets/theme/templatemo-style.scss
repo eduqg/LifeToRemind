@@ -448,14 +448,27 @@ header .social-icon li a {
 }
 
 #contact input[type="submit"] {
-  background: #28a7e9;
+  background: #28b9ff;
   font-weight: bold;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+  border: 0px;
+
 }
 
 #contact input[type="submit"]:hover {
-  background: transparent;
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#contact input:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#contact textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
 }
 
 #contact address {

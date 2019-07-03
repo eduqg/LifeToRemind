@@ -31,13 +31,17 @@ Rails.application.routes.draw do
   put "missions/update_selected_mission", to: "missions#update_selected_mission"
   resources :missions, only: [:index, :new, :create, :destroy, :edit, :update]
 
+  get "plans/import_page", to: "plans#import_page"
+  get "plans/export", to: "plans#export"
   get "plans/pdf", to: "plans#pdf"
   put "plans/update_selected_plan", to: "plans#update_selected_plan"
   get "swot", to:"plans#swot"
   get "myplan", to: "plans#myplan"
   get "plans/swotedit", to: "plans#swotedit"
   get "inicio", to:"plans#inicio"
-  resources :plans
+  resources :plans do
+    collection { post :import }
+  end
 
   root to: "home#index"
 end
