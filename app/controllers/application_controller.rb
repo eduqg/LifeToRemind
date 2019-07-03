@@ -1,3 +1,5 @@
+
+
 class ApplicationController < ActionController::Base
   # Forces to be logged in
   protect_from_forgery with: :exception

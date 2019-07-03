@@ -1,6 +1,10 @@
+require 'json'
+require 'uri'
+
 class PlansController < ApplicationController
   load_and_authorize_resource
   before_action :set_plan, only: [:edit, :update, :destroy]
+
 
   # GET /plans
   # GET /plans.json
@@ -46,7 +50,22 @@ class PlansController < ApplicationController
       redirect_to plans_path
     end
   end
-  
+
+  def import_page
+  end
+
+  def import
+    begin
+      import_plan(params[:file])
+      redirect_to plans_import_page_path, notice: "Planos importados"
+    rescue StandardError => bang
+      flash[:info] = "Erro na importação de planos: #{bang}"
+      redirect_to plans_import_page_path
+      return
+    end
+
+  end
+
   def export
     if current_plan
       @user = current_user
@@ -205,6 +224,316 @@ class PlansController < ApplicationController
   end
 
   private
+
+  def create_sphere(hash_sphere)
+    new_sphere = Sphere.new
+    new_sphere.user_id = current_user.id
+    new_sphere.name = hash_sphere[:name]
+    new_sphere.progress = hash_sphere[:progress]
+    new_sphere.save ? new_sphere : current_user.spheres.where(name: "#{hash_sphere[:name]}").first
+  end
+
+  def create_plan(hash_plan, user_id)
+    new_plan = Plan.new
+    new_plan.user_id = user_id
+    new_plan.name = hash_plan[:name]
+    new_plan.selected_mission = hash_plan[:selected_mission]
+    new_plan.selected_vision = hash_plan[:selected_vision]
+    new_plan.selected_csf = hash_plan[:selected_csf]
+    new_plan.save ? new_plan.id : nil
+  end
+
+  def create_swotpart(hash_swotpart, plan_id)
+    new_swotpart = Swotpart.new
+    new_swotpart.plan_id = plan_id
+    new_swotpart.name = hash_swotpart[:name]
+    new_swotpart.partname = hash_swotpart[:partname]
+    new_swotpart.save
+  end
+
+  def create_value(hash_value, plan_id)
+    new_value = Value.new
+    new_value.plan_id = plan_id
+    new_value.name = hash_value[:name]
+    new_value.save
+  end
+
+  def create_role(hash_role, plan_id)
+    new_role = Role.new
+    new_role.plan_id = plan_id
+    new_role.name = hash_role[:name]
+    new_role.description = hash_role[:description]
+    new_role.name = hash_role[:name]
+    new_role.save
+  end
+
+  def create_objective(hash_objective, plan_id, sphere_id)
+    puts "Sphere id"
+    puts sphere_id
+    new_objective = Objective.new
+    new_objective.plan_id = plan_id
+    new_objective.sphere_id = sphere_id
+    new_objective.name = hash_objective[:name]
+    new_objective.concluded = hash_objective[:concluded]
+    new_objective.save ? new_objective.id : nil
+  end
+
+  def create_goal(hash_goal, objective_id)
+    new_goal = Goal.new
+    new_goal.objective_id = objective_id
+    new_goal.name = hash_goal[:name]
+    new_goal.progress = hash_goal[:progress]
+    new_goal.save ? new_goal.id : nil
+  end
+
+  def create_activity(hash_activity, goal_id)
+    new_activity = Activity.new
+    new_activity.goal_id = goal_id
+    new_activity.title = hash_activity[:title]
+    new_activity.checked = hash_activity[:checked]
+    new_activity.save
+  end
+
+  def create_mission(hash_mission, user_id)
+    new_mission = Mission.new
+    new_mission.user_id = user_id
+    new_mission.purpose_of_life = hash_mission[:purpose_of_life]
+    new_mission.who_am_i = hash_mission[:who_am_i]
+    new_mission.why_exist = hash_mission[:why_exist]
+    new_mission.save
+  end
+
+  def create_vision(hash_vision, user_id)
+    new_vision = Vision.new
+    new_vision.user_id = user_id
+    new_vision.where_im_going = hash_vision[:where_im_going]
+    new_vision.where_arrive = hash_vision[:where_arrive]
+    new_vision.how_complete_mission = hash_vision[:how_complete_mission]
+    new_vision.save
+  end
+
+  def create_csf(hash_csf, user_id)
+    new_csf = Csf.new
+    new_csf.user_id = user_id
+    new_csf.what_makes_me_unique = hash_csf[:what_makes_me_unique]
+    new_csf.best_attributes = hash_csf[:best_attributes]
+    new_csf.essential_atributes = hash_csf[:essential_atributes]
+    new_csf.health_factors = hash_csf[:health_factors]
+    new_csf.save
+  end
+
+  def import_plan(file)
+    puts file
+    IO.foreach(Rails.root.join(file.path)) do |plan_json_line|
+      plans_hash = JSON.parse(plan_json_line)
+      #logger.debug plans_hash.to_yaml
+      create_all_plans(plans_hash)
+    end
+    # Rake::Task[params["import:plan_file[#{file.tempfile.path}]"]].invoke
+    #
+  end
+
+  def create_all_plans(plans_hash)
+    user = {
+        id: plans_hash.fetch('id'),
+        email: plans_hash.fetch('email'),
+        name: plans_hash.fetch('name'),
+        selected_plan: plans_hash.fetch('selected_plan'),
+        created_at: plans_hash.fetch('created_at')}
+
+    if plans_hash.has_key?("spheres")
+      puts "----- SPHERE -------"
+      new_spheres_hash = {}
+      plans_hash["spheres"].each do |sphere|
+        hash_sphere = {
+            id: sphere.fetch('id'),
+            user_id: sphere.fetch('user_id'),
+            name: sphere.fetch('name'),
+            progress: sphere.fetch('progress'),
+        }
+        if (new_sphere = create_sphere(hash_sphere))
+          new_spheres_hash["#{new_sphere.name}"] = new_sphere.id
+          puts "Sphere criada"
+        end
+      end
+    end
+
+    if plans_hash.has_key?("missions")
+      plans_hash["missions"].each do |mission|
+        puts "----- MISSION -------"
+        hash_mission = {
+            id: mission.fetch('id'),
+            user_id: mission.fetch('user_id'),
+            purpose_of_life: mission.fetch('purpose_of_life'),
+            who_am_i: mission.fetch('who_am_i'),
+            why_exist: mission.fetch('why_exist'),
+        }
+
+        if create_mission(hash_mission, current_user.id)
+          puts "Missão criada"
+        end
+
+      end
+    end
+
+    if plans_hash.has_key?("visions")
+      plans_hash["visions"].each do |vision|
+        puts "----- VISION -------"
+        hash_vision = {
+            id: vision.fetch('id'),
+            user_id: vision.fetch('user_id'),
+            where_im_going: vision.fetch('where_im_going'),
+            where_arrive: vision.fetch('where_arrive'),
+            how_complete_mission: vision.fetch('how_complete_mission'),
+        }
+
+        if create_vision(hash_vision, current_user.id)
+          puts "Visão criado"
+        end
+
+      end
+    end
+
+    if plans_hash.has_key?("csfs")
+      plans_hash["csfs"].each do |csf|
+        puts "----- CSF -------"
+        hash_csf = {
+            id: csf.fetch('id'),
+            user_id: csf.fetch('user_id'),
+            what_makes_me_unique: csf.fetch('what_makes_me_unique'),
+            best_attributes: csf.fetch('best_attributes'),
+            essential_atributes: csf.fetch('essential_atributes'),
+            health_factors: csf.fetch('health_factors'),
+        }
+
+        if create_csf(hash_csf, current_user.id)
+          puts "Fator Crítido de Sucesso criado"
+        end
+      end
+    end
+
+    if plans_hash.has_key?("plans")
+      plans_hash["plans"].each do |plan|
+        puts "----- PLAN -------"
+        puts plan.keys
+
+        hash_plan = {
+            id: plan.fetch('id'),
+            user_id: plan.fetch('user_id'),
+            name: plan.fetch('name'),
+            selected_mission: plan.fetch('selected_mission'),
+            selected_vision: plan.fetch('selected_vision'),
+            selected_csf: plan.fetch('selected_csf'),
+        }
+
+        if (new_plan_id = create_plan(hash_plan, current_user.id))
+          puts "Plano criado"
+        end
+
+        if plan.has_key?("swotparts")
+          plan["swotparts"].each do |swotpart|
+            puts "----- SWOTPART -------"
+            hash_swotpart = {
+                id: swotpart.fetch('id'),
+                plan_id: swotpart.fetch('plan_id'),
+                name: swotpart.fetch('name'),
+                partname: swotpart.fetch('partname'),
+            }
+
+            if create_swotpart(hash_swotpart, new_plan_id)
+              puts "Swotpart criada"
+            end
+          end
+        end
+
+        if plan.has_key?("values")
+          plan["values"].each do |value|
+            puts "----- VALUE -------"
+            hash_value = {
+                id: value.fetch('id'),
+                plan_id: value.fetch('plan_id'),
+                name: value.fetch('name'),
+            }
+
+            if create_value(hash_value, new_plan_id)
+              puts "Valor criado"
+            end
+          end
+        end
+
+        if plan.has_key?("roles")
+          plan["roles"].each do |role|
+            puts "----- ROLE -------"
+            hash_role = {
+                id: role.fetch('id'),
+                plan_id: role.fetch('plan_id'),
+                name: role.fetch('name'),
+                description: role.fetch('description')
+            }
+
+            if create_role(hash_role, new_plan_id)
+              puts "Papel criado"
+            end
+
+          end
+        end
+
+        if plan.has_key?("objectives")
+          plan["objectives"].each do |objective|
+            puts "----- OBJECTIVE -------"
+            puts new_spheres_hash
+
+            hash_objective = {
+                id: objective.fetch('id'),
+                plan_id: objective.fetch('plan_id'),
+                sphere_name: objective.fetch('sphere_name'),
+                name: objective.fetch('name'),
+                concluded: objective.fetch('concluded'),
+            }
+
+            if (new_objective_id = create_objective(hash_objective, new_plan_id, new_spheres_hash["#{hash_objective[:sphere_name]}"]))
+              puts "Objetivo criado"
+            end
+            if objective.has_key?("goals")
+              objective["goals"].each do |goal|
+                puts "----- GOAL -------"
+                hash_goal = {
+                    id: goal.fetch('id'),
+                    objective_id: goal.fetch('objective_id'),
+                    name: goal.fetch('name'),
+                    progress: goal.fetch('progress')
+                }
+
+                if (new_goal_id = create_goal(hash_goal, new_objective_id))
+                  puts "Meta criada"
+                end
+
+                if goal.has_key?("activities")
+                  goal["activities"].each do |activity|
+                    puts "----- ATIVIDADE -------"
+                    hash_activity = {
+                        id: activity.fetch('id'),
+                        goal_id: activity.fetch('goal_id'),
+                        title: activity.fetch('title'),
+                        checked: activity.fetch('checked')
+                    }
+
+                    if create_activity(hash_activity, new_goal_id)
+                      puts "Atividade criada"
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+
+
+    puts "---- FIM ------"
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_plan

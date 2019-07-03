@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="wrap-collabsible p-t-60 p-b-20">
+    <input id="collapsible" class="toggle" type="checkbox" style="display: none" checked>
+    <label for="collapsible" class="lbl-toggle">Importar Planos</label>
+    <div class="collapsible-content">
+      <div class="content-inner">
+        <div class="content-text p-b-10">
+          Faça upload dos seus planos a partir de um arquivo gerado no Life to Remind previamente.
+
+          <br/>
+          <br/>
+          Seu arquivo deve:
+
+          <br/>
+          <br/>
+          - Ter no máximo X kbytes
+          <br/>
+          - Não ter sido alterado pelo usuário
+          <br/>
+          -
+
+          <br/>
+          <br/>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= form_tag import_plans_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Importar", class: "btn btn-primary" %>
+  <% end %>
+
+  <br/>
+  <%= link_to " Gerenciar Planos", plans_path, class: "btn btn-default lnr lnr-cog align-right" %>
+</div>
+

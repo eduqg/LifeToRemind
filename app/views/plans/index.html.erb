@@ -92,7 +92,10 @@
     <% end %>
   </div>
   <br>
-
+  <span class="align-right">
+    <%= link_to " Carregar Planos", plans_import_page_path, class: "btn btn-success btn-outline lnr lnr-upload" %>
+    <%= link_to " Exportar Planos", plans_export_path(format: "json"), data: {disable_with: " Arquivo Gerado"}, class: "btn btn-dark btn-outline lnr lnr-download" %>
+  </span>
   <%= link_to "Novo plano", new_plan_path, class: "btn btn-primary", id: "button-create-plan" %>
 </div>
 
