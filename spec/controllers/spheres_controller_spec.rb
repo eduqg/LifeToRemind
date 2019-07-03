@@ -4,6 +4,10 @@ RSpec.describe SpheresController, type: :controller do
   let!(:sphere) {FactoryBot.create(:sphere)}
   let!(:user) {User.find(sphere.user_id)}
 
+  let!(:user_2) {User.create!(email: '22@22.com', password: 'skdD.sk@#ffew2', name: 'user 2')}
+  let!(:plan_2) {Plan.create!(name:"2 Plan", user_id: user_2.id)}
+  let!(:sphere_2) {Sphere.create!(name: "ReallyNormalName", user_id: user_2.id)}
+
   let(:valid_attributes) {{name: "ReallyNormalName", user_id: user.id}}
 
   let(:invalid_attributes) {{name: "Re", user_id: user.id}}
@@ -20,13 +24,6 @@ RSpec.describe SpheresController, type: :controller do
   context "GET #index" do
     it "return index success response" do
       get :index
-      expect(response).to be_successful
-    end
-  end
-
-  context "GET #show" do
-    it "returns show success response" do
-      get :show, params: {id: sphere.to_param}
       expect(response).to be_successful
     end
   end
@@ -95,6 +92,11 @@ RSpec.describe SpheresController, type: :controller do
       put :update, params: {id: sphere_to_update.to_param, sphere: {name: "Âmbito atualizado"}}
       expect(response).to redirect_to(myplan_path)
     end
+    it 'expects put update to fail if is not owner of sphere' do
+      expect(
+          put :update, params: {id: sphere_2.to_param, sphere: {name: "Activity 123", user_id: user.id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -108,6 +110,11 @@ RSpec.describe SpheresController, type: :controller do
       sphere_to_destroy = Sphere.create! valid_attributes
       delete :destroy, params: {id: sphere_to_destroy.to_param}
       expect(response).to redirect_to(myplan_path)
+    end
+    it "expects delete to fail if is not owner of sphere" do
+      expect {
+        delete :destroy, params: { id: sphere_2.id }
+      }.to change(Sphere, :count).by(0)
     end
   end
 

@@ -12,11 +12,10 @@ class MissionsController < ApplicationController
   end
 
   def edit
-    render :edit
   end
 
   def update
-    if @mission.update mission_params
+    if @mission.update(mission_params)
       flash[:notice] = "Missão atualizada com sucesso!"
       redirect_to missions_url
     else
@@ -52,7 +51,6 @@ class MissionsController < ApplicationController
       # Unset selected mission
       current_plan.update_attribute(:selected_mission, nil)
     end
-
     @mission.destroy
     flash[:info] = "Missão foi excluída"
     redirect_to missions_url

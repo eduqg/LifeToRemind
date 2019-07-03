@@ -6,6 +6,12 @@ RSpec.describe GoalsController, type: :controller do
     let!(:plan) {Plan.find(objective.plan_id)}
     let!(:user) {User.find(plan.user_id)}
 
+    let!(:user_2) {User.create!(email: '22@22.com', password: 'skdD.sk@#ffew2', name: 'user 2')}
+    let!(:plan_2) {Plan.create!(name:"2 Plan", user_id: user_2.id)}
+    let!(:sphere_2) {Sphere.create!(name: "ReallyNormalName", user_id: user_2.id)}
+    let!(:objective_2) {Objective.create!(name: "My Objective", plan_id: plan_2.id, sphere_id: sphere_2.id)}
+    let!(:goal_2) {Goal.create!(name: "My goal", objective_id: objective_2.id )}
+
     let(:valid_attributes) { { name: "My goal", objective_id: objective.id } }
 
     let(:invalid_attributes) { { objective_id: objective.id } }
@@ -21,13 +27,15 @@ RSpec.describe GoalsController, type: :controller do
 
     context "GET #index" do
       it "return index success response" do
-        expect{ get :index }.to raise_error(CanCan::AccessDenied)
+        get :index
+        expect(response).to redirect_to(root_path)
       end
     end
 
     context "GET #show" do
       it "returns show success response" do
-        expect{ get :show, params: {id: goal.to_param} }.to raise_error(CanCan::AccessDenied)
+        get :show, params: {id: goal.to_param}
+        expect(response).to redirect_to(root_path)
       end
     end
 
@@ -95,6 +103,12 @@ RSpec.describe GoalsController, type: :controller do
         put :update, params: { id: goal_to_update.to_param, goal:  { name: "Meta atualizada", objective_id: objective.id}}
         expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
       end
+
+      it 'expects put update to fail if is not owner of goal' do
+        expect(
+            put :update, params: {id: goal_2.to_param, goal: {name: "My goa2l", objective_id: objective.id}}
+        ).to redirect_to(root_path)
+      end
     end
 
     context "DELETE #destroy" do
@@ -108,6 +122,11 @@ RSpec.describe GoalsController, type: :controller do
         goal_to_destroy = Goal.create! valid_attributes
         delete :destroy, params: { id: goal_to_destroy.to_param }
         expect(response).to redirect_to("/editobjective?objective_id=#{objective.id}")
+      end
+      it "expects delete to fail if is not owner of goal" do
+        expect {
+          delete :destroy, params: {id: goal_2.id}
+        }.to change(Goal, :count).by(0)
       end
     end
 

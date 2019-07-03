@@ -40,8 +40,8 @@
             <div class="p-b-15">
               <strong><%= strength.name %></strong>
               <span class="align-right">
-              <%= link_to " ", edit_swotpart_path(strength), class: "btn btn-white lnr lnr-pencil" %>
-                <%= link_to " ", strength, method: :delete, class: "btn btn-danger lnr lnr-circle-minus" %>
+              <%= link_to " ", edit_swotpart_path(strength), class: "btn btn-white lnr lnr-pencil", id: "edit-strength" %>
+                <%= link_to " ", strength, method: :delete, class: "btn btn-danger lnr lnr-circle-minus", id: "delete-strength" %>
             </span>
             </div>
           </div>
@@ -54,8 +54,8 @@
             <div class="p-b-15">
               <strong><%= weak.name %></strong>
               <span class="align-right">
-              <%= link_to " ", edit_swotpart_path(weak), class: "btn btn-white lnr lnr-pencil" %>
-                <%= link_to " ", weak, method: :delete, class: "btn btn-danger lnr lnr-circle-minus" %>
+              <%= link_to " ", edit_swotpart_path(weak), class: "btn btn-white lnr lnr-pencil", id: "edit-weakness" %>
+                <%= link_to " ", weak, method: :delete, class: "btn btn-danger lnr lnr-circle-minus", id: "delete-weakness" %>
                </span>
             </div>
           </div>
@@ -72,8 +72,8 @@
 
               <strong><%= opportunity.name %></strong>
               <span class="align-right">
-              <%= link_to " ", edit_swotpart_path(opportunity), class: "btn btn-white lnr lnr-pencil" %>
-                <%= link_to " ", opportunity, method: :delete, class: "btn btn-danger lnr lnr-circle-minus" %>
+              <%= link_to " ", edit_swotpart_path(opportunity), class: "btn btn-white lnr lnr-pencil", id: "edit-opportunity"  %>
+                <%= link_to " ", opportunity, method: :delete, class: "btn btn-danger lnr lnr-circle-minus", id: "delete-opportunity"  %>
             </span>
             </div>
           </div>
@@ -86,8 +86,8 @@
             <div class="p-b-15">
               <strong><%= threat.name %></strong>
               <span class="align-right">
-              <%= link_to " ", edit_swotpart_path(threat), class: "btn btn-white lnr lnr-pencil" %>
-                <%= link_to " ", threat, method: :delete, class: "btn btn-danger lnr lnr-circle-minus" %>
+              <%= link_to " ", edit_swotpart_path(threat), class: "btn btn-white lnr lnr-pencil", id: "edit-threat"  %>
+                <%= link_to " ", threat, method: :delete, class: "btn btn-danger lnr lnr-circle-minus", id: "delete-threat"  %>
                </span>
             </div>
           </div>
@@ -101,10 +101,8 @@
 
     <div class="justify-buttons">
       <%= link_to " Voltar para Planos", new_plan_path, class: "btn btn-default lnr lnr-arrow-left" %>
-      <%= link_to " Continuar para Missão", new_mission_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
+      <%= button_tag " Continuar para Missão", type: 'button', onclick: "checkSwotAttributes()", name: "swot_to_mission", id: "swot_to_mission", class: 'btn btn-primary lnr lnr-arrow-right align-right', remote: true %>
     </div>
-
-
   </div>
 </div>
 

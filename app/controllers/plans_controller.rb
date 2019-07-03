@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   load_and_authorize_resource
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  before_action :set_plan, only: [:edit, :update, :destroy]
 
   # GET /plans
   # GET /plans.json
@@ -101,26 +101,6 @@ class PlansController < ApplicationController
 
   end
 
-  # GET /plans/1
-  # GET /plans/1.json
-  def show
-    @plan = current_plan
-
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "Invoice No. #{@plan.id}",
-               page_size: 'A4',
-               template: "plans/show.html.erb",
-               layout: "pdf.html",
-               orientation: "Landscape",
-               lowquality: true,
-               zoom: 1,
-               dpi: 75
-      end
-    end
-  end
-
   # GET /plans/new
   def new
     @plan = Plan.new
@@ -140,7 +120,6 @@ class PlansController < ApplicationController
       if @plan.save
         current_user.update_attribute(:selected_plan, @plan.id)
         format.html {redirect_to plans_swotedit_path, notice: "Plano criado com sucesso"}
-        format.json {render :show, status: :created, location: @plan}
       else
         format.html {render :new}
         format.json {render json: @plan.errors, status: :unprocessable_entity}
@@ -154,7 +133,6 @@ class PlansController < ApplicationController
     respond_to do |format|
       if @plan.update(plan_params)
         format.html {redirect_to plans_path, notice: "Plano atualizado com sucesso"}
-        format.json {render :show, status: :ok, location: @plan}
       else
         format.html {render :edit}
         format.json {render json: @plan.errors, status: :unprocessable_entity}

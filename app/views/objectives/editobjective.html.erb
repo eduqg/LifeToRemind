@@ -32,14 +32,19 @@
           Objetivo: <%= @objective.name %>
           <%= link_to " ",
                       edit_objective_path(@objective),
-                      class: "lnr lnr-pencil" %>
+                      class: "lnr lnr-pencil",
+                      id:"button-edit-objective"%>
           <%= link_to " ", @objective,
                       method: :delete,
                       class: "lnr lnr-circle-minus",
-                      data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{@objective.name}"} %>
+                      data: {confirm: "Tem certeza que deseja remover esse Objetivo Estratégico? #{@objective.name}"},
+                      id:"button-delete-objective"
+          %>
         </h3>
         <h6>Âmbito: <%= @objective.sphere.name %></h6>
         <h6>Data: <%= @objective.created_at.strftime("%d/%m/%Y") %></h6>
+        <h6>Plano: <%= @current_plan.name %></h6>
+
         <br/>
         <span class="card-divider"></span>
         <br/>
@@ -49,6 +54,7 @@
         <div class="padding-all">
           <%= link_to "Adicionar Meta",
                       new_goal_path(objective_id: @objective.id),
+                      id:"button-create-goal",
                       class: "btn btn-primary" %>
         </div>
       </div>

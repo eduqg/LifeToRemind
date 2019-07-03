@@ -27,10 +27,10 @@ class CsfsController < ApplicationController
     respond_to do |format|
       if @csf.save
         current_plan.update_attribute(:selected_csf, @csf.id)
-        format.html { redirect_to new_csf_path, notice: "O Fator Crítico de Sucesso criado foi adicionada ao seu planejamento" }
+        format.html {redirect_to new_csf_path, notice: "O Fator Crítico de Sucesso criado foi adicionada ao seu planejamento"}
       else
-        format.html { render :new }
-        format.json { render json: @csf.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @csf.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -40,10 +40,10 @@ class CsfsController < ApplicationController
   def update
     respond_to do |format|
       if @csf.update(csf_params)
-        format.html { redirect_to csfs_path, notice: "Fator crítico de sucesso atualizado" }
+        format.html {redirect_to csfs_path, notice: "Fator crítico de sucesso atualizado"}
       else
-        format.html { render :edit }
-        format.json { render json: @csf.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @csf.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -71,13 +71,14 @@ class CsfsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_csf
-      @csf = Csf.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def csf_params
-      params.require(:csf).permit(:what_makes_me_unique, :best_attributes, :essential_atributes, :health_factors, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_csf
+    @csf = Csf.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def csf_params
+    params.require(:csf).permit(:what_makes_me_unique, :best_attributes, :essential_atributes, :health_factors, :user_id)
+  end
 end

@@ -5,6 +5,10 @@ RSpec.describe VisionsController, type: :controller do
   let!(:user) {User.find(vision.user_id)}
   let!(:plan) {Plan.create!(name:"My incredible plan", user_id: user.id)}
 
+  let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
+  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
+  let!(:vision_2) {Vision.create!(where_im_going:"where1", where_arrive:"where", how_complete_mission: "how", user_id: user_2.id)}
+
   let(:valid_attributes) {{ where_im_going:"where1", where_arrive:"where", how_complete_mission: "how", user_id: user.id}}
 
   let(:invalid_attributes) {{ where_arrive:"where", how_complete_mission: "how", user_id: user.id}}
@@ -96,6 +100,12 @@ RSpec.describe VisionsController, type: :controller do
       put :update, params: {id: vision_to_update.to_param, vision: {how_complete_mission: "Como completar missao atualizado",}}
       expect(response).to redirect_to(visions_path)
     end
+
+    it 'expects put update to fail if is not owner of vision' do
+      expect(
+          put :update, params: {id: vision_2.to_param, vision: {where_im_going:"where1", where_arrive:"where", how_complete_mission: "how", user_id: user.id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -117,6 +127,11 @@ RSpec.describe VisionsController, type: :controller do
       delete :destroy, params: {id: vision_to_destroy.to_param}
       plan.reload
       expect(plan.selected_vision).to eq(nil)
+    end
+    it "expects delete to fail if is not owner of vision" do
+      expect {
+        delete :destroy, params: { id: vision_2.id }
+      }.to change(Vision, :count).by(0)
     end
   end
 

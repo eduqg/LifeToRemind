@@ -23,7 +23,7 @@
     <% @plans.each_with_index do |plan, i| %>
 
       <% if (i % 2 == 0) %>
-        <div class="blog-card">
+        <div class="blog-card" id="card_plan">
           <div class="meta">
             <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
             <ul class="details">
@@ -58,7 +58,7 @@
           </div>
         </div>
       <% else %>
-        <div class="blog-card alt">
+        <div class="blog-card alt" id="card_plan">
           <div class="meta">
             <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div>
             <ul class="details">
@@ -72,15 +72,18 @@
             <p>
               <%= link_to "Selecionar",
                           plans_update_selected_plan_path(plan_id: plan.id), method: :put,
-                          class: "btn btn-primary" %>
+                          class: "btn btn-primary",
+                          id: "button-select-plan" %>
               <%= link_to "",
                           edit_plan_path(plan),
-                          class: "lnr lnr-pencil btn btn-default" %>
+                          class: "lnr lnr-pencil btn btn-default",
+                          id: "button-edit-plan" %>
               <%= link_to "",
                           plan,
                           method: :delete,
                           class: "lnr lnr-circle-minus btn btn-danger",
-                          data: {confirm: "Tem certeza que deseja remover o plano #{plan.name}?"} %>
+                          data: {confirm: "Tem certeza que deseja remover o plano #{plan.name}?"},
+                          id: "button-delete-plan" %>
             </p>
           </div>
         </div>
@@ -90,6 +93,6 @@
   </div>
   <br>
 
-  <%= link_to "Novo plano", new_plan_path, class: "btn btn-primary" %>
+  <%= link_to "Novo plano", new_plan_path, class: "btn btn-primary", id: "button-create-plan" %>
 </div>
 

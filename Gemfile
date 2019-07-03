@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.1'
 
 gem 'twitter-bootstrap-rails'
 
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-5-x' # For 5.x
+gem 'rails-i18n', '~> 5.1'
 
 gem 'devise', '~>4.5.0'
 
@@ -85,12 +85,13 @@ group :test do
   gem 'capybara', '~>3.8'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '3.8'
   gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '~> 4.1.0'
 end
 
 group :production do

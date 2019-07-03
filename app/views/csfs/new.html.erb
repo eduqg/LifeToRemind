@@ -47,6 +47,7 @@
   <br/>
   <div class="justify-buttons">
     <%= link_to " Voltar para Papéis", new_role_path, class: "btn btn-default lnr lnr-arrow-left" %>
-    <%= link_to " Continuar para Âmbitos", new_sphere_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>
+    <%= button_tag " Continuar para Âmbitos", type: 'button', onclick: "checkCsfAttributes()", name: "csf_to_sphere", id: "csf_to_sphere", class: 'btn btn-primary lnr lnr-arrow-right align-right', remote: true %>
+
   </div>
 </div>

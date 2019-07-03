@@ -6,11 +6,14 @@ class SwotpartsController < ApplicationController
   # GET /swotparts.json
   def index
     @swotparts = current_plan.swotparts
+    authorize! :index, @swotparts
   end
 
   # GET /swotparts/1
   # GET /swotparts/1.json
   def show
+    @swotpart = Swotpart.find(params[:id])
+    authorize! :show, @swotpart
   end
 
   # GET /swotparts/new
@@ -20,7 +23,14 @@ class SwotpartsController < ApplicationController
 
   # GET /swotparts/1/edit
   def edit
-    @plan_id = current_plan.id
+    swotpart = Swotpart.find(params[:id])
+
+    if current_plan.id == swotpart.plan_id
+      @swotpart = swotpart
+      @plan_id = current_plan.id
+    else
+      raise CanCan::AccessDenied.new('Você não pode editar essa característica da SWOT')
+    end
   end
 
   # POST /swotparts
@@ -40,29 +50,37 @@ class SwotpartsController < ApplicationController
     redirect_to plans_swotedit_path
   end
 
-
   # PATCH/PUT /swotparts/1
   # PATCH/PUT /swotparts/1.json
   def update
-    respond_to do |format|
-      if @swotpart.update(update_params)
-        format.html {redirect_to plans_swotedit_path, notice: "Característica da SWOT atualizada com sucesso"}
-        format.json {render :show, status: :ok, location: @swotpart}
-      else
-        @plan_id = current_plan.id
-        format.html {render :edit}
-        format.json {render json: @swotpart.errors, status: :unprocessable_entity}
+    if @swotpart.plan_id == current_plan.id
+      respond_to do |format|
+        if @swotpart.update(update_params)
+          format.html {redirect_to plans_swotedit_path, notice: "Característica da SWOT atualizada com sucesso"}
+          format.json {render :show, status: :ok, location: @swotpart}
+        else
+          @plan_id = current_plan.id
+          format.html {render :edit}
+          format.json {render json: @swotpart.errors, status: :unprocessable_entity}
+        end
       end
+    else
+      raise CanCan::AccessDenied.new('Você não pode atualizar essa característica da SWOT')
     end
   end
 
   # DELETE /swotparts/1
   # DELETE /swotparts/1.json
   def destroy
-    @swotpart.destroy
-    respond_to do |format|
-      format.html {redirect_to plans_swotedit_path, notice: "Força removida"}
-      format.json {head :no_content}
+    if @swotpart.plan_id == current_plan.id
+      type_swot = @swotpart.partname
+      @swotpart.destroy
+      respond_to do |format|
+        format.html {redirect_to plans_swotedit_path, notice: "#{type_swot} removida"}
+        format.json {head :no_content}
+      end
+    else
+      raise CanCan::AccessDenied.new('Você não pode excluir essa característica da SWOT')
     end
   end
 

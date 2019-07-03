@@ -5,6 +5,11 @@ RSpec.describe RolesController, type: :controller do
   let!(:plan) {Plan.find(role.plan_id)}
   let!(:user) {User.find(plan.user_id)}
 
+  let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
+  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
+  let!(:role_2) {Role.create!(name: "Irmão", description: "Ser um irmão melhor", plan_id: plan_2.id)}
+  let!(:role_3) {Role.create!(name: "Irmão 2", description: "Ser um irmão melhor", plan_id: plan_2.id)}
+
   let(:valid_attributes) {{name: "Irmão", description: "Ser um irmão melhor", plan_id: plan.id}}
 
   let(:invalid_attributes) {{name: "Irmão", plan_id: plan.id}}
@@ -88,6 +93,12 @@ RSpec.describe RolesController, type: :controller do
       put :update, params: {id: role_to_update.to_param, role: {name: "Valor atualizado"}}
       expect(response).to redirect_to(myplan_path)
     end
+
+    it 'expects put update to fail if is not owner of role' do
+      expect(
+          put :update, params: {id: role_2.to_param, role: {title: "Role 123", plan_id: role.plan_id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -101,6 +112,11 @@ RSpec.describe RolesController, type: :controller do
       role_to_destroy = Role.create! valid_attributes
       delete :destroy, params: {id: role_to_destroy.to_param}
       expect(response).to redirect_to(myplan_path)
+    end
+    it "expects delete to fail if is not owner of role" do
+      expect {
+        delete :destroy, params: { id: role_2.id }
+      }.to change(Role, :count).by(0)
     end
   end
 

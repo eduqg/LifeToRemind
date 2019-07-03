@@ -36,18 +36,72 @@ class Ability
         can :manage, :all
       else
         can :crud, User, user_id: user.id
+
         can :current_plan, ApplicationController
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan, :inicio], Plan
-        can [:read, :create, :new, :update, :edit, :destroy], Swotpart
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_mission], Mission
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_vision], Vision
-        can [:read, :create, :new, :update, :edit, :destroy], Value
-        can [:read, :create, :new, :update, :edit, :destroy], Role
-        can [:read, :create, :new, :update, :edit, :destroy, :update_selected_csf], Csf
-        can [:read, :create, :new, :update, :edit, :destroy, :sphereobjectives], Sphere
-        can [:read, :create, :new, :update, :edit, :destroy, :editobjective], Objective
-        can [:create, :new, :update, :edit, :destroy], Goal
-        can [:create, :new, :update, :edit, :destroy, :checked], Activity
+
+        can [:create, :new, :inicio], Plan
+        can [:index, :show, :update, :edit, :destroy, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan], Plan do |plan|
+          plan.user_id == user.id
+        end
+
+        can [:create, :new], Swotpart
+        can [:update, :edit, :destroy], Swotpart do |swotpart|
+          plan = Plan.find(swotpart.plan_id)
+          plan.user_id == user.id
+        end
+
+        can [:create, :new], Mission
+        can [:index, :show, :update, :edit, :destroy, :update_selected_mission], Mission do |mission|
+          mission.user_id == user.id
+        end
+
+        can [:create, :new], Csf
+        can [:index, :update, :edit, :destroy, :update_selected_csf], Csf do |csf|
+          csf.user_id == user.id
+        end
+
+        can [:create, :new], Vision
+        can [:index, :show, :update, :edit, :destroy, :update_selected_vision], Vision do |vision|
+          vision.user_id == user.id
+        end
+
+        can [:create, :new], Value
+        can [:index, :show, :update, :edit, :destroy], Value do |value|
+          plan = Plan.find(value.plan_id)
+          plan.user_id == user.id
+        end
+
+        can [:create, :new], Role
+        can [:index, :show, :edit, :update, :destroy], Role do |role|
+          plan = Plan.find(role.plan_id)
+          plan.user_id == user.id
+        end
+
+        can [:create, :new], Sphere
+        can [:index, :show, :update, :edit, :destroy, :sphereobjectives], Sphere do |sphere|
+          sphere.user_id == user.id
+        end
+
+        can [:create, :new], Objective
+        can [:update, :edit, :destroy, :editobjective], Objective do |objective|
+          plan = Plan.find(objective.plan_id)
+          plan.user_id == user.id
+        end
+
+        can [:create, :new], Goal
+        can [:update, :edit, :destroy], Goal do |goal|
+          objective = Objective.find(goal.objective_id)
+          plan = Plan.find(objective.plan_id)
+          plan.user_id == user.id
+        end
+
+        can [:create, :new], Activity
+        can [:destroy, :checked], Activity do |act|
+          goal = Goal.find(act.goal_id)
+          objective = Objective.find(goal.objective_id)
+          plan = Plan.find(objective.plan_id)
+          plan.user_id == user.id
+        end
       end
     end
   end

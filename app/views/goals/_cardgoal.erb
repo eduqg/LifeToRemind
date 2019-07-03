@@ -6,14 +6,14 @@
           <div class="goal-description">
             <div class="goal-activities">
               <h4 class="card-title">Nome da meta: <%= cardgoal.name %>
-                <%= link_to " ", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), class: "lnr lnr-pencil" %>
-                <%= link_to " ", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, class: "lnr lnr-circle-minus" %>
+                <%= link_to " ", edit_goal_path(cardgoal, :objective_id => cardgoal.objective), id:"button-edit-goal", class: "lnr lnr-pencil" %>
+                <%= link_to " ", cardgoal, method: :delete, data: {confirm: 'Tem certeza que quer remover essa meta?'}, id:"button-delete-goal", class: "lnr lnr-circle-minus" %>
               </h4>
               <span class="card-divider"></span>
               <br/>
               <h5 class="card-title">
                 Atividades
-                <%= link_to " ", new_activity_path(goal_id: cardgoal.id), class: "lnr lnr-plus-circle btn btn-primary" %>
+                <%= link_to " ", new_activity_path(goal_id: cardgoal.id), id:"button-create-activity",class: "lnr lnr-plus-circle btn btn-primary" %>
               </h5>
               <%= form_tag checked_activities_path(goal_id: cardgoal.id), method: :put do %>
                 <table>
@@ -22,13 +22,13 @@
                     <tr>
                       <td><%= check_box_tag "activity_ids[]", activity.id, activity.checked %></td>
                       <td><%= activity.title %></td>
-                      <td><%= link_to " ", activity, method: :delete, class:"lnr lnr-circle-minus" %></td>
+                      <td><%= link_to " ", activity, method: :delete, id:"button-delete-activity", class:"lnr lnr-circle-minus" %></td>
                     </tr>
                   <% end %>
                   </tbody>
                 </table>
                 <br/>
-                <%= submit_tag "Atualizar progresso", class:"btn btn-success" %>
+                <%= submit_tag "Atualizar progresso", id:"button-update-goal-progress", class:"btn btn-success" %>
               <% end %>
             </div>
             <div class="goal-progress">

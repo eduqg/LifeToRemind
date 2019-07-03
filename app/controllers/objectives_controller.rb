@@ -32,7 +32,11 @@ class ObjectivesController < ApplicationController
   end
 
   def editobjective
+    if Objective.find(params[:objective_id]).plan_id == current_plan.id
     @objective = Objective.find(params[:objective_id])
+    else
+      raise CanCan::AccessDenied.new('Você não pode acessar esse objetivo')
+    end
   end
 
   # POST /objectives
@@ -67,10 +71,6 @@ class ObjectivesController < ApplicationController
         format.json { render json: @objective.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def editobjectives
-    @objectives = current_plan.objectives
   end
 
   # DELETE /objectives/1

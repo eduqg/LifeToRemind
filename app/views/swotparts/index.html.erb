@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>swotparts</h1>
+<h1>Page Swotparts</h1>
 
 <table>
   <thead>
@@ -14,7 +14,7 @@
   <tbody>
   <% @swotparts.each do |swotpart| %>
     <tr>
-      <td><%= swotpart.plan %></td>
+      <td><%= current_user.id %></td>
       <td><%= swotpart.name %></td>
       <td><%= link_to 'Show', swotpart %></td>
       <td><%= link_to 'Edit', edit_swotpart_path(swotpart) %></td>

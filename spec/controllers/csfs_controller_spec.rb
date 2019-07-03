@@ -5,6 +5,10 @@ RSpec.describe CsfsController, type: :controller do
   let!(:user) {User.find(csf.user_id)}
   let!(:plan) {Plan.create!(name: "My incredible plan", user_id: user.id)}
 
+  let!(:user_2) {User.create!(email: 'user2@user2.com', password: 'skdD.sk@#ffe2w2', name: 'user2')}
+  let!(:plan_2) {Plan.create!(name:"User 2 Plan", user_id: user_2.id)}
+  let!(:csf_2) {Csf.create!(what_makes_me_unique: "where", best_attributes: "how", essential_atributes: "sdlkmsdkfm", health_factors:"slkmsdfk", user_id: user_2.id)}
+
   let(:valid_attributes) {{what_makes_me_unique: "where", best_attributes: "how", essential_atributes: "sdlkmsdkfm", health_factors:"slkmsdfk", user_id: user.id}}
 
   let(:invalid_attributes) {{best_attributes: "how", essential_atributes: "sdlkmsdkfm", health_factors:"slkmsdfk", user_id: user.id}}
@@ -96,6 +100,12 @@ RSpec.describe CsfsController, type: :controller do
       put :update, params: {id: csf_to_update.to_param, csf: {what_makes_me_unique: "Como completar missao atualizado", }}
       expect(response).to redirect_to(csfs_path)
     end
+
+    it 'expects put update to fail if is not owner of csf' do
+      expect(
+          put :update, params: {id: csf_2.to_param, csf: {what_makes_me_unique: "where", best_attributes: "how", essential_atributes: "sdlkms2dkfm", health_factors:"slkmsdfk", user_id: user.id}}
+      ).to redirect_to(root_path)
+    end
   end
 
   context "DELETE #destroy" do
@@ -117,6 +127,11 @@ RSpec.describe CsfsController, type: :controller do
       delete :destroy, params: {id: csf_to_destroy.to_param}
       plan.reload
       expect(plan.selected_csf).to eq(nil)
+    end
+    it "expects delete to fail if is not owner of csf" do
+      expect {
+        delete :destroy, params: { id: csf_2.id }
+      }.to change(Csf, :count).by(0)
     end
   end
 
