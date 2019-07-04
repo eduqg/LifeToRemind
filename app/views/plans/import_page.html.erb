@@ -28,10 +28,15 @@
     </div>
   </div>
 
-  <%= form_tag import_plans_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Importar", class: "btn btn-primary" %>
-  <% end %>
+  <!--
+  %= form_tag import_plans_path, multipart: true do %
+    %= file_field_tag :file %
+    %= submit_tag "Importar", class: "btn btn-primary" %
+  % end %
+  -->
+  <%= link_to " Importar", plans_import_page_path, class: "btn btn-primary" %>
+  <br/>
+  <h5>* Funcionalidade em desenvolvimento</h5>
 
   <br/>
   <%= link_to " Gerenciar Planos", plans_path, class: "btn btn-default lnr lnr-cog align-right" %>

@@ -40,7 +40,7 @@ class Ability
         can :current_plan, ApplicationController
 
         can [:create, :new, :inicio], Plan
-        can [:index, :show, :update, :edit, :destroy, :export, :import_page, :import, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan], Plan do |plan|
+        can [:index, :show, :update, :edit, :destroy, :import_page, :update_selected_plan, :pdf, :swotedit, :destroy, :myplan], Plan do |plan|
           plan.user_id == user.id
         end
 
