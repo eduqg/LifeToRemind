@@ -59,6 +59,7 @@
                         <div class="dashed-content ">
                           <h3 class="lead box-gray-dashed">
                             <span class="lnr lnr-cog"> Missão</span>
+                            <h6 class="color-gray" align="center" id="myplan-user-missions">Missões disponíveis de <%= current_user.name %>: <%= current_user.missions.count %></h6>
                           </h3>
                         </div>
                       </div>
@@ -98,6 +99,7 @@
                         <div class="dashed-content ">
                           <h3 class="lead box-gray-dashed">
                             <span class="lnr lnr-cog"> Visão</span>
+                            <h6 class="color-gray" align="center" id="myplan-user-visions">Visões disponíveis de <%= current_user.name %>: <%= current_user.visions.count %></h6>
                           </h3>
                         </div>
                       </div>
@@ -177,6 +179,7 @@
                         <div class="dashed-content ">
                           <h3 class="lead box-gray-dashed">
                             <span class="lnr lnr-cog"> Fator Crítico de Sucesso</span>
+                            <h6 class="color-gray" align="center" id="myplan-user-csfs">Fatores críticos de sucesso disponíveis de <%= current_user.name %>: <%= current_user.csfs.count %></h6>
                           </h3>
                         </div>
                       </div>

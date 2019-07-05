@@ -206,6 +206,7 @@ class PlansController < ApplicationController
     new_sphere.user_id = current_user.id
     new_sphere.name = hash_sphere[:name]
     new_sphere.progress = hash_sphere[:progress]
+    # Spheres validates name duplications
     new_sphere.save ? new_sphere : current_user.spheres.where(name: "#{hash_sphere[:name]}").first
   end
 
