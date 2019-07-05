@@ -25,27 +25,6 @@ class PlansController < ApplicationController
       @spheres = current_user.spheres
       @value = Value.new
       @role = Role.new
-=begin
-      # Colocar em export
-      @user = current_user
-      @spheres = current_user.spheres
-      @plans = current_user.plans
-      @missions = current_user.missions
-      @visions = current_user.visions
-      @csfs = current_user.csfs
-      @swotparts = current_plan.swotparts
-      @values = current_plan.values
-      @roles = current_plan.roles
-
-      respond_to do |format|
-        format.html
-        format.json do
-        data = render_to_string(template: "plans/export.json.jbuilder")
-        send_data data, type: 'application/json; header=present', disposition: "attachment; filename=users.json"
-        end
-      end
-=end
-
     else
       redirect_to plans_path
     end
@@ -57,13 +36,10 @@ class PlansController < ApplicationController
   def import
     begin
       import_plan(params[:file])
-      redirect_to plans_import_page_path, notice: "Planos importados"
     rescue StandardError => bang
       flash[:info] = "Erro na importação de planos: #{bang}"
       redirect_to plans_import_page_path
-      return
     end
-
   end
 
   def export
@@ -268,8 +244,6 @@ class PlansController < ApplicationController
   end
 
   def create_objective(hash_objective, plan_id, sphere_id)
-    puts "Sphere id"
-    puts sphere_id
     new_objective = Objective.new
     new_objective.plan_id = plan_id
     new_objective.sphere_id = sphere_id
@@ -323,14 +297,33 @@ class PlansController < ApplicationController
   end
 
   def import_plan(file)
-    puts file
-    IO.foreach(Rails.root.join(file.path)) do |plan_json_line|
-      plans_hash = JSON.parse(plan_json_line)
-      #logger.debug plans_hash.to_yaml
-      create_all_plans(plans_hash)
+    puts "----------"
+    puts file.path
+    puts file.size
+    puts file.content_type
+    puts "----------"
+
+    # 20000 bytes = 20 kilobyte = 0.02 Megabytes
+    if file.size > 20000
+      raise StandardError.new('Erro de tamanho de arquivo')
     end
-    # Rake::Task[params["import:plan_file[#{file.tempfile.path}]"]].invoke
-    #
+
+    file_string = file.path.to_s
+
+    if (file_string[-5, 5]).eql? '.json'
+      IO.foreach(Rails.root.join(file.path)) do |plan_json_line|
+        begin
+          plans_hash = JSON.parse(plan_json_line)
+          create_all_plans(plans_hash)
+        rescue JSON::ParserError, TypeError => e
+          raise StandardError.new('Arquivo importado não é um JSON válido.')
+        end
+      end
+      redirect_to plans_import_page_path, notice: "Planos importados"
+    else
+      raise StandardError.new('Formato de arquivo inválido')
+    end
+
   end
 
   def create_all_plans(plans_hash)
@@ -529,7 +522,6 @@ class PlansController < ApplicationController
         end
       end
     end
-
 
 
     puts "---- FIM ------"
