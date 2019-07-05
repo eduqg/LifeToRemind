@@ -298,11 +298,10 @@ class PlansController < ApplicationController
   end
 
   def import_plan(file)
-    puts "----------"
+    puts "---- Inicio da importação------"
     puts file.path
     puts file.size
     puts file.content_type
-    puts "----------"
 
     # 20000 bytes = 20 kilobyte = 0.02 Megabytes
     if file.size > 20000
@@ -336,7 +335,6 @@ class PlansController < ApplicationController
         created_at: plans_hash.fetch('created_at')}
 
     if plans_hash.has_key?("spheres")
-      puts "----- SPHERE -------"
       new_spheres_hash = {}
       plans_hash["spheres"].each do |sphere|
         hash_sphere = {
@@ -347,7 +345,9 @@ class PlansController < ApplicationController
         }
         if (new_sphere = create_sphere(hash_sphere))
           new_spheres_hash["#{new_sphere.name}"] = new_sphere.id
-          puts "Sphere criada"
+          puts "Âmbito criado"
+        else
+          puts "Âmbito não criado"
         end
       end
     end
@@ -363,10 +363,7 @@ class PlansController < ApplicationController
             why_exist: mission.fetch('why_exist'),
         }
 
-        if create_mission(hash_mission, current_user.id)
-          puts "Missão criada"
-        end
-
+        create_mission(hash_mission, current_user.id) ? (puts "Missão criada") : (puts "Missão não criada")
       end
     end
 
@@ -381,16 +378,12 @@ class PlansController < ApplicationController
             how_complete_mission: vision.fetch('how_complete_mission'),
         }
 
-        if create_vision(hash_vision, current_user.id)
-          puts "Visão criado"
-        end
-
+        create_vision(hash_vision, current_user.id) ? (puts "Visão criada") : (puts "Visão não criado")
       end
     end
 
     if plans_hash.has_key?("csfs")
       plans_hash["csfs"].each do |csf|
-        puts "----- CSF -------"
         hash_csf = {
             id: csf.fetch('id'),
             user_id: csf.fetch('user_id'),
@@ -400,17 +393,12 @@ class PlansController < ApplicationController
             health_factors: csf.fetch('health_factors'),
         }
 
-        if create_csf(hash_csf, current_user.id)
-          puts "Fator Crítido de Sucesso criado"
-        end
+        create_csf(hash_csf, current_user.id) ? (puts "Fator Crítido de Sucesso criado") : (puts "Fator Crítido de Sucesso não criado")
       end
     end
 
     if plans_hash.has_key?("plans")
       plans_hash["plans"].each do |plan|
-        puts "----- PLAN -------"
-        puts plan.keys
-
         hash_plan = {
             id: plan.fetch('id'),
             user_id: plan.fetch('user_id'),
@@ -422,11 +410,13 @@ class PlansController < ApplicationController
 
         if (new_plan_id = create_plan(hash_plan, current_user.id))
           puts "Plano criado"
+        else
+          puts "Plano não criado"
         end
+
 
         if plan.has_key?("swotparts")
           plan["swotparts"].each do |swotpart|
-            puts "----- SWOTPART -------"
             hash_swotpart = {
                 id: swotpart.fetch('id'),
                 plan_id: swotpart.fetch('plan_id'),
@@ -434,30 +424,24 @@ class PlansController < ApplicationController
                 partname: swotpart.fetch('partname'),
             }
 
-            if create_swotpart(hash_swotpart, new_plan_id)
-              puts "Swotpart criada"
-            end
+            create_swotpart(hash_swotpart, new_plan_id) ? (puts "Swotpart criada") : (puts "Valor não criado")
           end
         end
 
         if plan.has_key?("values")
           plan["values"].each do |value|
-            puts "----- VALUE -------"
             hash_value = {
                 id: value.fetch('id'),
                 plan_id: value.fetch('plan_id'),
                 name: value.fetch('name'),
             }
 
-            if create_value(hash_value, new_plan_id)
-              puts "Valor criado"
-            end
+            create_value(hash_value, new_plan_id) ? (puts "Valor criado") : (puts "Valor não criado")
           end
         end
 
         if plan.has_key?("roles")
           plan["roles"].each do |role|
-            puts "----- ROLE -------"
             hash_role = {
                 id: role.fetch('id'),
                 plan_id: role.fetch('plan_id'),
@@ -465,16 +449,12 @@ class PlansController < ApplicationController
                 description: role.fetch('description')
             }
 
-            if create_role(hash_role, new_plan_id)
-              puts "Papel criado"
-            end
-
+            create_role(hash_role, new_plan_id) ? (puts "Papel criado") : (puts "Papel não criado")
           end
         end
 
         if plan.has_key?("objectives")
           plan["objectives"].each do |objective|
-            puts "----- OBJECTIVE -------"
             puts new_spheres_hash
 
             hash_objective = {
@@ -487,10 +467,12 @@ class PlansController < ApplicationController
 
             if (new_objective_id = create_objective(hash_objective, new_plan_id, new_spheres_hash["#{hash_objective[:sphere_name]}"]))
               puts "Objetivo criado"
+            else
+              puts "Objetivo não criado"
             end
+
             if objective.has_key?("goals")
               objective["goals"].each do |goal|
-                puts "----- GOAL -------"
                 hash_goal = {
                     id: goal.fetch('id'),
                     objective_id: goal.fetch('objective_id'),
@@ -500,11 +482,12 @@ class PlansController < ApplicationController
 
                 if (new_goal_id = create_goal(hash_goal, new_objective_id))
                   puts "Meta criada"
+                else
+                  puts "Meta não criada"
                 end
 
                 if goal.has_key?("activities")
                   goal["activities"].each do |activity|
-                    puts "----- ATIVIDADE -------"
                     hash_activity = {
                         id: activity.fetch('id'),
                         goal_id: activity.fetch('goal_id'),
@@ -514,6 +497,8 @@ class PlansController < ApplicationController
 
                     if create_activity(hash_activity, new_goal_id)
                       puts "Atividade criada"
+                    else
+                      puts "Atividade não criada"
                     end
                   end
                 end
@@ -523,9 +508,7 @@ class PlansController < ApplicationController
         end
       end
     end
-
-
-    puts "---- FIM ------"
+    puts "---- Fim da importação ------"
   end
 
   # Use callbacks to share common setup or constraints between actions.

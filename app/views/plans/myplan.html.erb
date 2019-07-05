@@ -29,7 +29,7 @@
               <div class="padding-all">
                 <!-- Mission -->
                 <% if @my_mission %>
-                  <%= link_to missions_path do %>
+                  <%= link_to missions_path, id: "button-missions" do %>
                     <div class="col-xs-5  p-t-10">
                       <div class="offer offer-radius offer-warning">
                         <div class="shape">
@@ -53,7 +53,7 @@
                     </div>
                   <% end %>
                 <% else %>
-                  <%= link_to missions_path do %>
+                  <%= link_to missions_path, id: "button-missions-cog" do %>
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-t-10">
                       <div class="dashed dashed-border">
                         <div class="dashed-content ">
@@ -69,7 +69,7 @@
 
                 <!-- Vision -->
                 <% if @my_vision %>
-                  <%= link_to visions_path do %>
+                  <%= link_to visions_path, id: "button-visions" do %>
                     <div class="col-xs-7  p-t-10">
                       <div class="offer offer-radius offer-danger">
                         <div class="shape">
@@ -93,7 +93,7 @@
                     </div>
                   <% end %>
                 <% else %>
-                  <%= link_to visions_path do %>
+                  <%= link_to visions_path, id: "button-visions-cog" do %>
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-t-10">
                       <div class="dashed dashed-border">
                         <div class="dashed-content ">
@@ -148,7 +148,7 @@
             <div class="row">
               <div class="padding-all">
                 <% if @my_csf %>
-                  <%= link_to csfs_path do %>
+                  <%= link_to csfs_path, id: "button-csfs" do %>
                     <div class="col-xs-12 p-t-10">
                       <div class="offer offer-radius offer-default">
                         <div class="shape">
@@ -173,7 +173,7 @@
                     </div>
                   <% end %>
                 <% else %>
-                  <%= link_to csfs_path do %>
+                  <%= link_to csfs_path, id: "button-csfs-cog" do %>
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-t-10">
                       <div class="dashed dashed-border">
                         <div class="dashed-content ">

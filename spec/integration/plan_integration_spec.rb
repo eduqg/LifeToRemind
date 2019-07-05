@@ -50,10 +50,6 @@ RSpec.feature "Plan", :type => :feature do
 
     it 'user can edit plan' do
       visit '/plans'
-      click_link 'button-create-plan'
-      fill_in 'plan_name', with: 'plan 1'
-      click_button 'Criar'
-      visit '/plans'
       click_link 'button-edit-plan'
       fill_in 'plan_name', with: 'planao atualizadao 2'
       click_button 'Criar'
@@ -71,12 +67,42 @@ RSpec.feature "Plan", :type => :feature do
 
     it 'user can delete his plan' do
       visit '/plans'
-      click_link 'button-create-plan'
-      fill_in 'plan_name', with: 'plan 112'
-      click_button 'Criar'
-      visit '/plans'
       click_link 'button-delete-plan'
       expect(page).to have_content('Plano foi excluído')
+    end
+  end
+
+  context "File import integration" do
+    it 'shouldn-t import not json file' do
+      visit '/plans'
+      click_link 'load-plans'
+      attach_file("file", "#{Rails.root}/spec/fixtures/invalid_not_json_file_test.txt")
+      click_button 'file-plans-submit'
+      expect(page).to have_content('Erro na importação de planos: Formato de arquivo inválido')
+    end
+
+    it 'shouldn-t import file with more than 20 kbytes' do
+      visit '/plans'
+      click_link 'load-plans'
+      attach_file("file", "#{Rails.root}/spec/fixtures/invalid_big_file_test.json")
+      click_button 'file-plans-submit'
+      expect(page).to have_content('Erro na importação de planos: Erro de tamanho de arquivo')
+    end
+
+    it 'shouldn-t import file without valid json' do
+      visit '/plans'
+      click_link 'load-plans'
+      attach_file("file", "#{Rails.root}/spec/fixtures/invalid_simple_file_test.json")
+      click_button 'file-plans-submit'
+      expect(page).to have_content('Erro na importação de planos: Arquivo importado não é um JSON válido.')
+    end
+
+    it 'should import file' do
+      visit '/plans'
+      click_link 'load-plans'
+      attach_file("file", "#{Rails.root}/spec/fixtures/valid_simple_file_test.json")
+      click_button 'file-plans-submit'
+      expect(page).to have_content('Planos importados')
     end
   end
 end
