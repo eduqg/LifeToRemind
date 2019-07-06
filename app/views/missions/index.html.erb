@@ -1,8 +1,14 @@
 <div class="container">
-  <div class="row">
-    <%= render @missions %>
+  <div class="col-xs-12  p-t-10">
+    <h3>Missões</h3>
+    <% if !@missions.empty? %>
+      <div class="row">
+        <%= render @missions %>
+      </div>
+    <% else %>
+      <h3>Você ainda não criou uma missão.</h3>
+      <br/>
+      <%= link_to "Nova Missão", new_mission_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <%= link_to "Nova Missão", new_mission_path, class: "btn btn-primary" %>
-
 </div>
-

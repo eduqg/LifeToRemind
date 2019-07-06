@@ -1,7 +1,14 @@
 <div class="container">
-  <div class="row">
-    <%= render @csfs %>
+  <div class="col-xs-12  p-t-10">
+    <h3>Fatores Críticos de Sucesso</h3>
+    <% if !@csfs.empty? %>
+      <div class="row">
+        <%= render @csfs %>
+      </div>
+    <% else %>
+      <h3>Você ainda não criou um fator crítico de sucesso.</h3>
+      <br/>
+      <%= link_to "Novo Fator Crítico de Sucesso", new_csf_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <%= link_to "Novo Fator Crítico de Sucesso", new_csf_path, class: "btn btn-primary" %>
 </div>
-

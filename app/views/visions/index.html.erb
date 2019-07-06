@@ -1,7 +1,14 @@
 <div class="container">
-  <div class="row">
-    <%= render @visions %>
+  <div class="col-xs-12  p-t-10">
+    <h3>Visões</h3>
+    <% if !@visions.empty? %>
+      <div class="row">
+        <%= render @visions %>
+      </div>
+    <% else %>
+      <h3>Você ainda não criou uma visão.</h3>
+      <br/>
+      <%= link_to "Nova Visão", new_vision_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <%= link_to "Nova Visão", new_vision_path, class: "btn btn-primary" %>
 </div>
-

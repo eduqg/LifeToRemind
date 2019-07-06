@@ -25,17 +25,17 @@
   <h3>Meus Valores</h3>
   <br/>
 
-  <div class="row">
+  <div class="row p-l-10">
     <p>Quais valores irão me acompanhar por toda a minha carreira?</p>
     <div class="row">
       <%= render partial: "values/values", collection: @current_plan.values %>
     </div>
-    <div class="row">
+    <div class="row p-l-10">
       <%= render "form", value: @value %>
     </div>
     <br/>
   </div>
-  <div class="row">
+  <div class="row p-l-5">
     <div class="justify-buttons">
       <%= link_to " Voltar para Visão", new_vision_path, class: "btn btn-default lnr lnr-arrow-left" %>
       <%= link_to " Continuar para Papéis", new_role_path, class: "btn btn-primary lnr lnr-arrow-right align-right" %>

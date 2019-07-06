@@ -1,32 +1,34 @@
 <div class="container">
-  <h3>Âmbitos</h3>
-
-  <% @spheres.each do |sphere| %>
-
-    <div class="col-sm-6">
-      <div class="card" id="card_sphere">
-        <div class="card-body">
-          <h5 class="card-header">Âmbito</h5>
-          <div class="padding-all">
-            <h5 class="card-title"><%= sphere.name %></h5>
-            <%= link_to " ",
-                        edit_sphere_path(sphere),
-                        class: "btn btn-default lnr lnr-pencil",
-                        id: "button-edit-sphere"
-            %>
-            <%= link_to " ",
-                        sphere,
-                        method: :delete,
-                        data: {confirm: "Tem certeza que deseja remover o âmbito #{sphere.name}? Ao remover, tambem serão excluidos todos os objetivos estratégicos relacionados ao mesmo."},
-                        class: "btn btn-danger lnr lnr-circle-minus",
-                        id: "button-delete-sphere"
-            %>
+  <h3 class="p-t-50 p-b-20">Âmbitos</h3>
+  <% if !@spheres.empty? %>
+    <% @spheres.each do |sphere| %>
+      <div class="col-sm-6">
+        <div class="card" id="card_sphere">
+          <div class="card-body">
+            <h5 class="card-header">Âmbito</h5>
+            <div class="padding-all">
+              <h5 class="card-title"><%= sphere.name %></h5>
+              <%= link_to " ",
+                          edit_sphere_path(sphere),
+                          class: "btn btn-default lnr lnr-pencil",
+                          id: "button-edit-sphere"
+              %>
+              <%= link_to " ",
+                          sphere,
+                          method: :delete,
+                          data: {confirm: "Tem certeza que deseja remover o âmbito #{sphere.name}? Ao remover, tambem serão excluidos todos os objetivos estratégicos relacionados ao mesmo."},
+                          class: "btn btn-danger lnr lnr-circle-minus",
+                          id: "button-delete-sphere"
+              %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <h3>Você ainda não criou um âmbito.</h3>
+    <br/>
   <% end %>
-
   <%= link_to "Novo Âmbito", new_sphere_path, class: "btn btn-primary" %>
 
 </div>

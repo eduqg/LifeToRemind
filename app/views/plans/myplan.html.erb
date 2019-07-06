@@ -2,7 +2,7 @@
   <% if current_user.selected_plan %>
     <div class="p-b-10" align="right">
       <%= link_to " Gerar PDF", plans_pdf_path(id: @current_plan, format: :pdf), data: {disable_with: " Gerando arquivo..."}, class: "btn btn-warning lnr lnr-file-add" %>
-      <%= link_to " Revisar Plano", plans_swotedit_path, class: "btn btn-success lnr lnr-sync" %>
+      <%= link_to " Passo a passo", plans_swotedit_path, class: "btn btn-success lnr lnr-sync" %>
       <%= link_to " Gerenciar Planos", plans_path, method: "get", class: "btn btn-primary lnr lnr-cog" %>
     </div>
     <div class="row">
