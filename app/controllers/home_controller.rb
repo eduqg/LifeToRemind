@@ -6,4 +6,7 @@ class HomeController < ApplicationController
     @disable_nav = true
     @disable_footer = true
   end
+
+  def contribution
+  end
 end

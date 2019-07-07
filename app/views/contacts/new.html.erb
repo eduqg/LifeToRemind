@@ -14,9 +14,12 @@
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
         <%= form_for @contact do |form| %>
-
+          <h5 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+            <span class="color-white">Fale conosco, gostariamos de saber sua opinião, críticas e sugestões para continuar melhorando o Life to Remind.</span>
+          </h5>
+          <br/>
           <label>NOME</label>
-          <%= form.text_field :name, autocomplete: "off", class: "form-control"%>
+          <%= form.text_field :name, autocomplete: "off", class: "form-control" %>
 
           <label>EMAIL</label>
           <%= form.text_field :email, autocomplete: "off", class: "form-control" %>

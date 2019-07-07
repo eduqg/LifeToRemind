@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="p-b-20">Editar usuário</h2>
+  <h2 class="p-b-20">Ed<%= link_to "i", destroy_user_session_path, method: "delete", class: "h2", style: "font-size: 40px; color: black;"%>tar usuário</h2>
   <p align="center">(<%= current_user.role %>)</p>
   <hr/>
 
@@ -73,5 +73,10 @@
     Remind? <%= button_to "Cancelar minha conta", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: "btn btn-danger btn-margin-bottom" %></p>
 
   <%= link_to "Voltar", :back, class: "btn btn-default btn-margin-bottom" %>
+
+  <br/>
+  <br/>
+  <br/>
+
 
 </div>

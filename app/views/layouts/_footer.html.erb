@@ -1,38 +1,45 @@
+<footer id="footer" class="footer">
+  <div class="contain">
+    <div class="col">
+      <h1>Nossa Missão</h1>
+      <ul>
+        <h1-mission>O Life to Remind tem como missão estimular o auto-conhecimento, auxiliar no direcionamento de
+          carreiras e possibilitar <i>insights</i> pessoais para os estudantes de engenharias da Faculdade UnB Gama.
+        </h1-mission>
+      </ul>
+    </div>
+    <div class="col">
+      <h1>O projeto</h1>
+      <ul>
+        <li><%= link_to "Contato", new_contact_path %></li>
+        <li><%= link_to "Contribua para o projeto", home_contribution_path %></li>
+        <li><a href="http://fga.unb.br/">Faculdade UnB Gama</a></li>
+        <li><a href="https://www.unb.br/">Universidade de Brasília</a></li>
+      </ul>
+    </div>
+    <div class="col" style="width: 360px">
+      <h1>Criadores</h1>
+      <ul>
+        <h1-mission>Orientando</h1-mission>
+        <br/>
+        <h1-mission>
+          <img src="http://www.freelogovectors.net/wp-content/uploads/2019/02/uunb-logo-universidade-de-brasilia.png" width="32" style="width: 32px; padding-right: 5px; padding-top: 16px">
+          <%= image_tag("fga_thumb.png", alt: "img fga", style: "width: 32px; padding-right: 5px; padding-top: 10px") %>
+          Eduardo Quintino Gomes
+        </h1-mission>
 
-    <footer id="footer" class="footer">
-      <div class="contain">
-        <div class="col">
-          <h1>O projeto</h1>
-          <ul>
-            <li>Sobre</li>
-            <li>Nossa missão</li>
-            <li>Serviços</li>
-            <li>Mapa do site</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h1>Quem somos</h1>
-          <ul>
-            <li></li>
-            <li>Criadores</li>
-            <li>A Universidade</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h1>Suporte</h1>
-          <ul>
-            <li><%= link_to "Entre em contato", destroy_user_session_path, method: "delete", style: "color: #999999; font-size: 13px;" %></li>
-            <li>Deixe uma sugestão</li>
-          </ul>
-        </div>
-        <div class="col social">
-          <h1>Social</h1>
-          <ul>
-            <li><img src="https://svgshare.com/i/5fq.svg" width="32" style="width: 32px;"></li>
-            <li><img src="https://svgshare.com/i/Cri.svg" width="32" style="width: 32px;"></li>
-            <li><img src="https://svgshare.com/i/5f_.svg" width="32" style="width: 32px;"></li>
-          </ul>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </footer>
+        <hr style="margin-bottom: 10px; margin-top: 10px;"/>
+        <h1-mission>Orientador</h1-mission>
+        <br/>
+        <h1-mission>
+          <img src="http://www.freelogovectors.net/wp-content/uploads/2019/02/uunb-logo-universidade-de-brasilia.png" width="32" style="width: 32px; padding-right: 5px; padding-top: 16px">
+          <%= image_tag("fga_thumb.png", alt: "img fga", style: "width: 32px; padding-right: 5px; padding-top: 10px") %>
+          Prof. Dr. Wander C. M. Pereira da Silva
+        </h1-mission>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</footer>
+
+<!-- https://image.flaticon.com/icons/svg/25/25231.svg github icon -->

@@ -43,5 +43,6 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  get "home/contribution", to: "home#contribution"
   root to: "home#index"
 end
