@@ -98,6 +98,10 @@
   <span class="align-right">
     <%= link_to " Carregar Planos", plans_import_page_path, class: "btn btn-success btn-outline lnr lnr-upload", id:"load-plans" %>
     <%= link_to " Exportar Planos", plans_export_path(format: "json"), data: {disable_with: " Arquivo Gerado"}, class: "btn btn-dark btn-outline lnr lnr-download", id: "export-plans" %>
+    <br/>
+    * Ao exportar planos pode ser perguntado se o
+    <br/>
+    usuário deseja manter o arquivo.
   </span>
   <%= link_to "Novo plano", new_plan_path, class: "btn btn-primary", id: "button-create-plan" %>
 </div>
