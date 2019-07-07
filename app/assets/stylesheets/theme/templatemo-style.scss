@@ -215,6 +215,9 @@ header .social-icon li a {
   border-radius: 0;
   width: 100%;
   z-index: 1000;
+  -webkit-box-shadow: 0 8px 6px -6px #797979;
+  -moz-box-shadow: 0 8px 6px -6px #797979;
+  box-shadow: 0 8px 6px -6px #797979;
 }
 
 .sticky {

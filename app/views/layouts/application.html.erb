@@ -17,7 +17,11 @@
 
 <%= render "layouts/notice" %>
 
-<%= yield %>
+<div id="page-container">
+  <div id="content-wrap">
+    <%= yield %>
+  </div>
+</div>
 
 <%= render "layouts/footer" unless @disable_footer %>
 
