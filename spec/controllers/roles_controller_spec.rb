@@ -70,16 +70,25 @@ RSpec.describe RolesController, type: :controller do
   context "GET #update" do
     it "updates an role" do
       role_to_update = Role.create! valid_attributes
-      put :update, params: {id: role_to_update.to_param, role: {name: "Valor atualizado", role_id: role.id}}
+      put :update, params: {
+        id: role_to_update.to_param, 
+        role: {
+          name: "Filho",
+          description: "dedicar mais para orgulhar meus pais",
+          role_id: role.id
+        }
+      }
       role_to_update.reload
-      expect(role_to_update.name).to match("Valor atualizado")
+      expect(role_to_update.name).to match("Filho")
     end
 
     it "fails to update a role" do
       role_to_update = Role.create! valid_attributes
-      put :update, params: {id: role_to_update.to_param, role: {name: nil, role_id: role.id}}
+      put :update, params: {
+        id: role_to_update.to_param, role: {name: "", role_id: role.id}
+      }
       role_to_update.reload
-      expect(role_to_update.name).not_to match("A")
+      expect(role_to_update.name).not_to eql("")
     end
 
     it "redirects to edit update if invalid attributes" do
@@ -88,15 +97,17 @@ RSpec.describe RolesController, type: :controller do
       assert_template :edit
     end
 
-    it "redirects to roles after update role" do
+    it "redirects to myplan after update role" do
       role_to_update = Role.create! valid_attributes
       put :update, params: {id: role_to_update.to_param, role: {name: "Valor atualizado"}}
       expect(response).to redirect_to(myplan_path)
     end
 
     it 'expects put update to fail if is not owner of role' do
+      # "user" logged
+      # role_2 belongs to "user_2"
       expect(
-          put :update, params: {id: role_2.to_param, role: {title: "Role 123", plan_id: role.plan_id}}
+          put :update, params: {id: role_2.to_param, role: {name: "Role 123", plan_id: role.plan_id}}
       ).to redirect_to(root_path)
     end
   end

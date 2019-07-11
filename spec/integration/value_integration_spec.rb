@@ -35,14 +35,14 @@ RSpec.feature "Value", :type => :feature do
   context 'Crud integration' do
     it 'user can create value' do
       visit 'values/new'
-      fill_in 'value_name', with: 'value 1'
+      fill_in 'value_name', with: 'Perseverança'
       click_button 'button-create-value'
       expect(page).to have_content('Valor foi criado com sucesso')
     end
 
     it 'user can edit value' do
       visit 'values/' + (value_2.id).to_s + '/edit'
-      fill_in 'value_name', with: 'edit value 222aaa'
+      fill_in 'value_name', with: 'Obstinação'
       click_button 'button-create-value'
       expect(page).to have_content('Valor foi atualizado com sucesso')
     end

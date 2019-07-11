@@ -83,10 +83,10 @@ RSpec.describe MissionsController, type: :controller do
     end
 
     it "fails to update a mission" do
-      mission_to_update = Mission.create! valid_attributes
-      put :update, params: {id: mission_to_update.to_param, mission: {user_id: user.id}}
+      mission_to_update = Mission.create! valid_attributes # why_exist: "why", purpose_of_life:"purpose", who_am_i:"who", user_id: user.id
+      put :update, params: {id: mission_to_update.to_param, mission: { why_exist: "hello", purpose_of_life:"", who_am_i:"", user_id: user.id}}
       mission_to_update.reload
-      expect(mission_to_update.why_exist).not_to match("A")
+      expect(mission_to_update.why_exist).not_to match("hello")
     end
 
     it "redirects to edit update if invalid attributes" do
