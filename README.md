@@ -1,21 +1,21 @@
 # LifeToRemind
 
-Projeto LifeToRemind.
+Este repositório contém a demonstração do site Life to Remind feita para a disciplina de Trabalho de Conclusão de Curso 2 da Universidade de Brasília campus Gama (UnB - FGA).
 
 ## Ferramentas e Ambiente
 
 * Ubuntu 16.04.5 LTS 64-bit
-* RVM 1.29.4
-* Ruby 2.5.1p57
-* Rails 5.2.1
-* MySQL 5.7.23-0ubuntu0.16.04.1
+* RVM 1.29.8
+* Ruby 2.5.5p157
+* Rails 5.2.3
+* PostgreSQL 9.5.17
 
 ## Instalação e Execução
 
 Em um terminal, clone o repositório.
 
 ```console
-$ git clone https://github.com/eduqg/ltr
+$ git clone https://github.com/edu_qg/ltr
 ```
 
 Abra a pasta do projeto.
@@ -28,8 +28,8 @@ $ cd ltr
 Execute os comandos para configurar a versão correta para o projeto.
 
 ```console
-$ rvm install 2.5
-$ gem install rails -v 5.2.0
+$ rvm install 2.5.5
+$ gem install rails -v 5.2.3
 $ bundle install
 ```
 
@@ -40,7 +40,6 @@ Faça as migrações necessárias.
 ```console
 $ rake db:create
 $ rake db:migrate
-$ rake db:seed
 ```
 
 Execute o projeto.
@@ -53,5 +52,5 @@ Abra o navegador em [localhost:3000](http://localhost:3000)
 
 Para executar os testes da aplicação.
 ```console
-$ rake spec
+$ rspec
 ```
