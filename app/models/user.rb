@@ -17,14 +17,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
-  validate :password_complexity
-
-  def password_complexity
-    return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
-    errors.add "Não foi possível salvar o usuário: ", "a sua senha
-     deve ter de 8-70 caracteres e incluir: 1 letra maíscula,
-     1 letra minúscula, 1 digito numérico e 1 caractere especial."
-  end
 
   def set_default_role
     self.role ||= :user

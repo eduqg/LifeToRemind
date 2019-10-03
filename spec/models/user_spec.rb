@@ -14,6 +14,18 @@ RSpec.describe User, type: :model do
       user = User.new(name:"Rogerio", email: "rogerio@ltr.com").save
       expect(user).to eq(false)
     end
+    it "ensures invalid user with less than of 8 characters password" do
+      user = User.new(name:"Rogerio", email: "123@ltr.com", password: "1a3b5C7").save
+      expect(user).to eq(false)
+    end
+    it "ensures valid user with 8 characters length password" do
+      user = User.new(name:"Rogerio", email: "123@ltr.com", password: "1a3b5C78").save
+      expect(user).to eq(true)
+    end
+    it "ensures valid user with more than 8 characters length password" do
+      user = User.new(name:"Rogerio", email: "123@ltr.com", password: "1a3b5C72l3kmr2sD8").save
+      expect(user).to eq(true)
+    end
     it "checks default user to be :user" do
       user = User.new(name:"Rogerio", email: "rogerio@ltr.com")
       user.save
