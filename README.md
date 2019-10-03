@@ -1,6 +1,8 @@
 # LifeToRemind
 
-Este repositório contém a demonstração do site Life to Remind feita para a disciplina de Trabalho de Conclusão de Curso 2 da Universidade de Brasília campus Gama (UnB - FGA).
+O LifeToRemind é um site para criação de Planejamentos Estratégicos Pessoais voltado para a carreiras.
+
+Este repositório contém a demonstração do site feita para a disciplina de Trabalho de Conclusão de Curso 2 da Universidade de Brasília campus Gama (UnB - FGA).
 
 ## Ferramentas e Ambiente
 
@@ -15,12 +17,12 @@ Este repositório contém a demonstração do site Life to Remind feita para a d
 Em um terminal, clone o repositório.
 
 ```console
-$ git clone https://github.com/edu_qg/ltr
+git clone https://github.com/eduqg/ltr
 ```
 
 Abra a pasta do projeto.
 ```console
-$ cd ltr
+cd ltr
 ```
 
 [Instale o Ruby Version Manager (RVM)](https://github.com/rvm/ubuntu_rvm) para a configuração da aplicação.
@@ -28,9 +30,9 @@ $ cd ltr
 Execute os comandos para configurar a versão correta para o projeto.
 
 ```console
-$ rvm install 2.5.5
-$ gem install rails -v 5.2.3
-$ bundle install
+rvm install 2.5.5
+gem install rails -v 5.2.3
+bundle install
 ```
 
 [Instale o Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres) para o banco de dados da aplicação.
@@ -38,19 +40,76 @@ $ bundle install
 Faça as migrações necessárias.
 
 ```console
-$ rake db:create
-$ rake db:migrate
+rake db:create
+rake db:migrate
 ```
 
 Execute o projeto.
 
 ```console
-$ rails s
+rails s
 ```
 
 Abra o navegador em [localhost:3000](http://localhost:3000)
 
 Para executar os testes da aplicação.
 ```console
-$ rspec
+rspec
 ```
+
+## Seja um desenvolvedor do Life to Remind
+
+Passo 1 - Faça um cópia do repositório clicando na aba Fork.
+
+<img src="./app/assets/images/readme/fork.png" alt="fork"/>
+
+Passo 2 - Faça download do projeto Life to Remind criado na sua conta.
+```console
+git clone https://github.com/SEU_USUARIO/lifetoremind.git
+```
+
+Passo 3 - Troque para uma nova branch.
+```console
+git checkout -b test
+```
+
+Passo 4 - Realize as alterações no código e envie para o seu repositório. Os commits deverão ser em inglês.
+
+```console
+git add new_file.txt
+```
+```console
+git commit -m"Adding new file"
+```
+```console
+git push origin test
+```
+
+Passo 5 - Entre no seu repositório com as mudanças realizadas e clique para fazer o Pull Request para a branch test.
+
+<img src="./app/assets/images/readme/pull.png" alt="pull"/>
+
+Passo 6 - Aguarde seu Pull Request ser aprovado e parabéns por se tornar um desenvolvedor do Life to Remind!
+
+## Imagens da Aplicação
+
+<table>
+  <tr class="row">
+    <th class="column"">
+      <img src="./app/assets/images/home.png" alt="mainpage" style="width:420px;height:285px;"/>
+    </th>
+    <th class="column">
+      <img src="./app/assets/images/analiseambientalltr.png" alt="swot" style="width:420px;height:285px;"/>
+    </th>
+  </tr>
+
+  <tr class="row">
+    <th class="column">
+      <img src="./app/assets/images/statusltr.png" alt="status" style="width:420px;height:285px;"/>
+    </th>
+    <th class="column">
+      <img src="./app/assets/images/meuplanejamentoltr.png" alt="plan" style="width:420px;height:285px;"/>
+    </th>
+  </tr>
+</table>
+
