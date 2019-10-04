@@ -65,7 +65,7 @@ Passo 1 - Faça um cópia do repositório clicando na aba Fork.
 
 Passo 2 - Faça download do projeto Life to Remind criado na sua conta.
 ```console
-git clone https://github.com/SEU_USUARIO/lifetoremind.git
+git clone https://github.com/SEU_USUARIO/LifeToRemind.git
 ```
 
 Passo 3 - Troque para uma nova branch.
