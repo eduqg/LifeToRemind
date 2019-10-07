@@ -10,7 +10,7 @@ gem 'twitter-bootstrap-rails'
 
 gem 'rails-i18n', '~> 5.1'
 
-gem 'devise', '~>4.5.0'
+gem 'devise', '~>4.7.1'
 
 gem 'jquery-rails'
 
@@ -27,7 +27,6 @@ gem 'puma_worker_killer'
 gem 'cancancan', '~> 3.0.1'
 
 gem 'therubyracer', :platform => :ruby
-
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
