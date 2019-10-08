@@ -6,6 +6,7 @@ addons:
 
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database test_db;' -U postgres
 
 language: ruby
 
@@ -13,7 +14,6 @@ rvm:
   - 2.5.5
 
 script:
-  - psql -c 'create database test_db;' -U postgres
   - bundle install — jobs=3 — retry=3
   - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - bundle exec rspec
