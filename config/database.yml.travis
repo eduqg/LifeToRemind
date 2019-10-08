@@ -3,7 +3,8 @@ test:
   encoding: unicode
   pool: 5
   timeout: 5000
-  host: postgres
+  host: localhost
   username: postgres
   password: postgres
   database: test_db
+  port: 5432
