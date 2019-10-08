@@ -90,7 +90,7 @@ class PlansController < ApplicationController
                  title: "Planejamento de #{current_user.name}",
                  plans: "pdf.html.erb",
                  lowquality: true,
-                 grayscale: true,
+                 grayscale: false,
                  zoom: 1,
                  dpi: 75,
                  margin: {top: 10,
