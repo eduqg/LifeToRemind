@@ -2,7 +2,7 @@ services:
   - postgresql
 
 addons:
-  postgresql: '9.6'
+  postgresql: '9.5'
 
 before_script:
   - cp config/database.yml.travis config/database.yml
@@ -14,6 +14,6 @@ rvm:
   - 2.5.5
 
 script:
-  - bundle install — jobs=3 — retry=3
+  - bundle install --jobs=3 --retry=3
   - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - bundle exec rspec
