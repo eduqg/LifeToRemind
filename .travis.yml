@@ -1,0 +1,23 @@
+services:
+- postgresql
+addons:
+  postgresql: '9.5'
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database test_db;' -U postgres
+language: ruby
+rvm:
+- 2.5.5
+script:
+- bundle install --jobs=3 --retry=3
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: JsqngKb4yvlf9QP9U8hmt3yvvu8SWxH+F/7ENJWpe90L6/Qoh/wktwixmQO/3OZt/szv+Hq9lI6BbNf6M47LEotUxURnjgcmuORnnNlkHjvRbOxMRdKPXz8lmFNZIQ5PsPdedi9M7bE5uELqBz12X5l8ZzbQssbi+M1Y0K2eicLMw8Mh35uXoq0IucxrEZzQ0UUeEH8XFBncEh143XK3S0frmAogm/5zgOrK2Imfbo7FVeJuiv+laQMkk39bfV6H34bKXv1X1lIRnlawAQaGDWofuBR+sPrPcvKOpDSAL1G4Dqsf5mmHrXYLpMDcq5V3vglmqnDpur7hlx434bmFCPoDWVJrWi/k1+YreXk3T0puZCnV1SHBSaMfnRhAQGCZ5CiU8E6GKfBbSrESTokKyPOprDaOxoE/qtRMWgbQWDfF1M+oYAldmPfIlD+Bg4YFqNmISEYSMBsXeeyir53svkdZm9z0Pzx6cPJ5OpRrOcRYRzEnehnSdY0EVGYA4wetaS9AO8lPn1yuFrZeIXMFN3zvRlPeCTY5L2v906v9uvtQqigr38fSu4CQgK499Y51TwsxtU/enMk1GssJ8gbJNd6POQ+kTRCd15RefMNDGnVr+hLCxizM47XrCZHQlNvvnO/VZXnhli0Iq8FAyNegsN0TCt3jHmE8cFnXFrAjr/4=
+  app:
+    master: lifetoremindhub
+    devel: lifetoremindhubdevel
+  on:
+    repo: eduqg/LifeToRemind
