@@ -19,8 +19,8 @@ module HashImporters
       failure = self::MESSAGES[:failure]
 
       puts "----- #{header} -------" if header.present?
-      new_model = self::MODEL.find_or_create_by(attributes)
-      new_model&.new_record? ? (puts success) : (puts failure)
+      new_model = self::MODEL.new(attributes)
+      new_model.save ? (puts success) : (puts failure)
       new_model
     end
   end
