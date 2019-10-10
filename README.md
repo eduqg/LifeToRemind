@@ -61,7 +61,7 @@ rspec
 
 ## Seja um desenvolvedor do Life to Remind
 
-Para contribuir com o projeto verifique as issues abertas. Caso o que quer melhorar ou o problema encontrado ainda não estiver listado, crie uma nova issue com uma descrição do problema. Para contribuir para o projeto envie um Pull Request para a branch **devel**, ele será avaliado posteriomente.
+Para contribuir com o projeto verifique as issues abertas. Caso o que quer melhorar ou o problema encontrado ainda não estiver listado, crie uma nova issue com uma descrição do problema. Para contribuir para o projeto envie um Pull Request para o repositório, ele será avaliado posteriomente.
 
 Passo 1 - Faça um cópia do repositório clicando na aba Fork.
 
@@ -72,12 +72,7 @@ Passo 2 - Faça download do projeto Life to Remind criado na sua conta.
 git clone https://github.com/SEU_USUARIO/LifeToRemind.git
 ```
 
-Passo 3 - Troque para uma nova branch.
-```console
-git checkout -b devel
-```
-
-Passo 4 - Realize as alterações no código e envie para o seu repositório. Os commits deverão ser em inglês.
+Passo 3 - Realize as alterações no código e envie para o seu repositório. Os commits deverão ser em inglês.
 
 ```console
 git add new_file.txt
@@ -86,14 +81,14 @@ git add new_file.txt
 git commit -m"Adding new file"
 ```
 ```console
-git push origin devel
+git push origin master
 ```
 
-Passo 5 - Entre no seu repositório com as mudanças realizadas e clique para fazer o Pull Request para a branch devel.
+Passo 4 - Entre no seu repositório com as mudanças realizadas e clique para fazer o Pull Request.
 
 <img src="./app/assets/images/readme/pull.png" alt="pull"/>
 
-Passo 6 - Aguarde seu Pull Request ser aprovado e **parabéns por se tornar um contribuidor do projeto Life to Remind!**
+Passo 5 - Aguarde seu Pull Request ser aprovado e **parabéns por se tornar um contribuidor do projeto Life to Remind!**
 
 ## Imagens da Aplicação
 
