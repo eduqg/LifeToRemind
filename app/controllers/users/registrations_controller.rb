@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # POST /resource
+  # POST /resource/sign_up
   # def create
   #   super
   # end
