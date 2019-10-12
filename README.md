@@ -1,6 +1,6 @@
 # LifeToRemind
 
-O **LifeToRemind** is a website for career-oriented Personal Strategic Planning.
+**LifeToRemind** is a website for career-oriented Personal Strategic Planning.
 
 This repository contains the site demonstration made for the Course Completion Work 2 discipline of the University of Brasilia campus Gama (UnB - FGA).
 
