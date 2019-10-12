@@ -4,7 +4,7 @@ O **LifeToRemind** is a website for career-oriented Personal Strategic Planning.
 
 This repository contains the site demonstration made for the Course Completion Work 2 discipline of the University of Brasilia campus Gama (UnB - FGA).
 
-Enjoy ** Hacktoberfest ** to do four Pull Requests and win your event t-shirt! : v:: tada:: raised_hands:
+Enjoy **Hacktoberfest** to do four Pull Requests and win your event t-shirt! :v::tada::raised_hands:
 
 ## Tools and Environment
 
@@ -27,7 +27,7 @@ Open the project folder.
 cd LifeToRemind
 ```
 
-[Install o Ruby Version Manager (RVM)](https://github.com/rvm/ubuntu_rvm) for application configuration.
+[Install Ruby Version Manager (RVM)](https://github.com/rvm/ubuntu_rvm) for application configuration.
 
 Run the commands to set the correct version for the project.
 
@@ -37,7 +37,7 @@ gem install rails -v 5.2.3
 bundle install
 ```
 
-[Install o Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres) to the application database.
+[Install Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres) to the application database.
 
 Make the necessary migrations.
 
@@ -78,7 +78,7 @@ Step 3 - Make changes to the code and upload it to your repository. Commits must
 git add new_file.txt
 ```
 ```console
-git commit -m"Adding new file"
+git commit -m "Adding new file"
 ```
 ```console
 git push origin master
@@ -88,7 +88,7 @@ Step 4 - Enter your repository with the changes made and click to make the Pull 
 
 <img src="./app/assets/images/readme/pull.png" alt="pull"/>
 
-Step 5 - Wait for your Pull Request to be approved and ** congratulations on becoming a contributor to the Life to Remind! Project! **
+Step 5 - Wait for your Pull Request to be approved and **congratulations on becoming a contributor to the Life to Remind! Project!**
 
 ## Application Images
 
@@ -111,4 +111,3 @@ Step 5 - Wait for your Pull Request to be approved and ** congratulations on bec
     </th>
   </tr>
 </table>
-
