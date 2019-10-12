@@ -2,8 +2,6 @@
 
 **LifeToRemind** is a website for career-oriented Personal Strategic Planning.
 
-This repository contains the site demonstration made for the Course Completion Work 2 discipline of the University of Brasilia campus Gama (UnB - FGA).
-
 Enjoy **Hacktoberfest** to do four Pull Requests and win your event t-shirt! :v::tada::raised_hands:
 
 ## Tools and Environment
@@ -61,7 +59,7 @@ rspec
 
 ## Become a Life to Remind Developer
 
-To contribute to the project check the open issues. If what you want to improve or the problem you encounter is not already listed, create a new issue with a description of the problem. To contribute to the project send a Pull Request to the repository, it will be evaluated later.
+To contribute to the project check the open issues. If what you want to improve or the problem you found is not already listed, create a new issue with a description of the problem. To contribute to the project send a Pull Request to the repository, it will be evaluated later.
 
 Step 1 - Make a copy of the repository by clicking on the Fork tab.
 
@@ -72,7 +70,7 @@ Step 2 - Download the Life to Remind project created in your account.
 git clone https://github.com/SEU_USUARIO/LifeToRemind.git
 ```
 
-Step 3 - Make changes to the code and upload it to your repository. Commits must be in English.
+Step 3 - Make changes to the code and upload it to your repository.
 
 ```console
 git add new_file.txt
@@ -88,7 +86,7 @@ Step 4 - Enter your repository with the changes made and click to make the Pull 
 
 <img src="./app/assets/images/readme/pull.png" alt="pull"/>
 
-Step 5 - Wait for your Pull Request to be approved and **congratulations on becoming a contributor to the Life to Remind! Project!**
+Step 5 - Wait for your Pull Request to be approved and **congratulations on becoming a contributor to the Life to Remind Project!**
 
 ## Application Images
 
