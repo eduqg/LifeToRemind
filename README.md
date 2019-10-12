@@ -1,12 +1,12 @@
 # LifeToRemind
 
-O **LifeToRemind** é um site para criação de Planejamentos Estratégicos Pessoais voltado para a carreiras.
+**LifeToRemind** is a website for career-oriented Personal Strategic Planning.
 
-Este repositório contém a demonstração do site feita para a disciplina de Trabalho de Conclusão de Curso 2 da Universidade de Brasília campus Gama (UnB - FGA).
+This repository contains the site demonstration made for the Course Completion Work 2 discipline of the University of Brasilia campus Gama (UnB - FGA).
 
-Aproveite o **Hacktoberfest** para fazer quatro Pull Requests e ganhar a sua camiseta do evento! :v: :tada: :raised_hands:
+Enjoy **Hacktoberfest** to do four Pull Requests and win your event t-shirt! :v::tada::raised_hands:
 
-## Ferramentas e Ambiente
+## Tools and Environment
 
 * Ubuntu 16.04.5 LTS 64-bit
 * RVM 1.29.8
@@ -14,22 +14,22 @@ Aproveite o **Hacktoberfest** para fazer quatro Pull Requests e ganhar a sua cam
 * Rails 5.2.3
 * PostgreSQL 9.5.17
 
-## Instalação e Execução
+## Installation and Execution
 
-Em um terminal, clone o repositório.
+In one terminal, clone the repository.
 
 ```console
 git clone https://github.com/eduqg/LifeToRemind
 ```
 
-Abra a pasta do projeto.
+Open the project folder.
 ```console
 cd LifeToRemind
 ```
 
-[Instale o Ruby Version Manager (RVM)](https://github.com/rvm/ubuntu_rvm) para a configuração da aplicação.
+[Install Ruby Version Manager (RVM)](https://github.com/rvm/ubuntu_rvm) for application configuration.
 
-Execute os comandos para configurar a versão correta para o projeto.
+Run the commands to set the correct version for the project.
 
 ```console
 rvm install 2.5.5
@@ -37,60 +37,60 @@ gem install rails -v 5.2.3
 bundle install
 ```
 
-[Instale o Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres) para o banco de dados da aplicação.
+[Install Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres) to the application database.
 
-Faça as migrações necessárias.
+Make the necessary migrations.
 
 ```console
 rake db:create
 rake db:migrate
 ```
 
-Execute o projeto.
+Run the project.
 
 ```console
 rails s
 ```
 
-Abra o navegador em [localhost:3000](http://localhost:3000)
+Open the browser at [localhost:3000](http://localhost:3000)
 
-Para executar os testes da aplicação.
+To run the application tests.
 ```console
 rspec
 ```
 
-## Seja um desenvolvedor do Life to Remind
+## Become a Life to Remind Developer
 
-Para contribuir com o projeto verifique as issues abertas. Caso o que quer melhorar ou o problema encontrado ainda não estiver listado, crie uma nova issue com uma descrição do problema. Para contribuir para o projeto envie um Pull Request para o repositório, ele será avaliado posteriomente.
+To contribute to the project check the open issues. If what you want to improve or the problem you encounter is not already listed, create a new issue with a description of the problem. To contribute to the project send a Pull Request to the repository, it will be evaluated later.
 
-Passo 1 - Faça um cópia do repositório clicando na aba Fork.
+Step 1 - Make a copy of the repository by clicking on the Fork tab.
 
 <img src="./app/assets/images/readme/fork.png" alt="fork"/>
 
-Passo 2 - Faça download do projeto Life to Remind criado na sua conta.
+Step 2 - Download the Life to Remind project created in your account.
 ```console
 git clone https://github.com/SEU_USUARIO/LifeToRemind.git
 ```
 
-Passo 3 - Realize as alterações no código e envie para o seu repositório. Os commits deverão ser em inglês.
+Step 3 - Make changes to the code and upload it to your repository. Commits must be in English.
 
 ```console
 git add new_file.txt
 ```
 ```console
-git commit -m"Adding new file"
+git commit -m "Adding new file"
 ```
 ```console
 git push origin master
 ```
 
-Passo 4 - Entre no seu repositório com as mudanças realizadas e clique para fazer o Pull Request.
+Step 4 - Enter your repository with the changes made and click to make the Pull Request.
 
 <img src="./app/assets/images/readme/pull.png" alt="pull"/>
 
-Passo 5 - Aguarde seu Pull Request ser aprovado e **parabéns por se tornar um contribuidor do projeto Life to Remind!**
+Step 5 - Wait for your Pull Request to be approved and **congratulations on becoming a contributor to the Life to Remind! Project!**
 
-## Imagens da Aplicação
+## Application Images
 
 <table>
   <tr class="row">
@@ -111,4 +111,3 @@ Passo 5 - Aguarde seu Pull Request ser aprovado e **parabéns por se tornar um c
     </th>
   </tr>
 </table>
-
