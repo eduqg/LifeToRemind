@@ -9,4 +9,8 @@ module ApplicationHelper
     end
     bar_color
   end
+
+  def devise_controller?
+    %w[registrations sessions].include?(controller_name)
+  end
 end

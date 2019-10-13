@@ -1,11 +1,13 @@
 <div class="container">
-  <% if flash[:notice] %>
-    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
-  <% end %>
-  <% if flash[:info] %>
-    <div class="alert alert-info" role="alert"><%= flash[:info] %></div>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+  <div class="<%= "col position-relative" if devise_controller? %>">
+    <% if flash[:notice] %>
+      <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:info] %>
+      <div class="alert alert-info" role="alert"><%= flash[:info] %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger" role="alert"><%= alert %></div>
+    <% end %>
+  </div>
 </div>

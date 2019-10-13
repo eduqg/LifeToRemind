@@ -57,11 +57,9 @@
       </a>
       -->
       <div class="text-center w-full p-t-115">
-						<span class="txt1">
-							Não tem uma conta?
-						</span>
-        <%= link_to "Cadastrar", new_user_registration_path, method: "get", class:"txt1 bo1 hov1" %>
+				<%= render "devise/shared/links" %>
       </div>
+
     </div>
   </div>
 </div>
