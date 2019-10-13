@@ -41,7 +41,9 @@
                       id:"button-delete-objective"
           %>
         </h3>
-        <h6>Âmbito: <%= @objective.sphere.name %></h6>
+        <div class="align-right">
+          <h3 class="label-objective"><%= @objective.sphere.name %></h3>
+        </div>
         <h6>Data: <%= @objective.created_at.strftime("%d/%m/%Y") %></h6>
         <h6>Plano: <%= @current_plan.name %></h6>
 
