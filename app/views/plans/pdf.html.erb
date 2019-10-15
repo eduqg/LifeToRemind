@@ -22,6 +22,31 @@
     body, input, button {
       font-family: Arial, Helvetica, sans-serif;
     }
+    
+    td {
+      width: 42%;
+      color: white;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    th{
+      color: black;
+      border-top: 1px solid #ddd;
+    }
+
+    .f-bg{
+      background: -webkit-linear-gradient(#49a09d, #567a9b);
+    }
+    .fr-bg{
+      background: -webkit-linear-gradient(#ffa47c, #c77f67);
+    }
+    .o-bg{
+      background: -webkit-linear-gradient(90deg, #9bd2b0, #6ea080);
+    }
+    .a-bg{
+      background: -webkit-linear-gradient(90deg, #ffec76, #a5994c);
+    }
 
     .ltrlogo {
       height: 80px;
@@ -64,21 +89,21 @@
         <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col" width="250px">Fatores Positivos</th>
-          <th scope="col" width="250px">Fatores Negativos</th>
+          <th scope="col">Fatores Positivos</th>
+          <th scope="col">Fatores Negativos</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <th scope="row">Fatores Internos</th>
-          <td class="background-blue-light" width="250px">
-            <p class="color-white p-b-10" align="center"><i>Forças</i></p>
+          <td class="f-bg">
+            <p align="center"><i>Forças</i></p>
             <% @strengths.each do |strength| %>
               <p align="center"><%= strength.name %></p>
             <% end %>
           </td>
-          <td class="background-red-light" width="250px">
-            <p class="color-white p-b-10" align="center"><i>Fraquezas</i></p>
+          <td class="fr-bg">
+            <p class="" align="center"><i>Fraquezas</i></p>
             <% @weaks.each do |weak| %>
               <p align="center"><%= weak.name %></p>
             <% end %>
@@ -86,14 +111,14 @@
         </tr>
         <tr>
           <th scope="row">Fatores Externos</th>
-          <td class="background-green-light" width="250px">
-            <p class="color-white p-b-10" align="center"><i>Oportunidades</i></p>
+          <td class="o-bg">
+            <p align="center"><i>Oportunidades</i></p>
             <% @opportunities.each do |opportunity| %>
               <p align="center"><%= opportunity.name %></p>
             <% end %>
           </td>
-          <td class="background-orange-light" width="250px">
-            <p class="color-white p-b-10" align="center"><i>Ameaças</i></p>
+          <td class="a-bg" width="250px">
+            <p align="center"><i>Ameaças</i></p>
             <% @threats.each do |threat| %>
               <p align="center"><%= threat.name %></p>
             <% end %>
