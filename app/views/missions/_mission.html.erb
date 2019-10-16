@@ -1,26 +1,30 @@
-<div class="col-sm-6">
+<div class="col-sm-12">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-header">Missão de <%=current_user.name %></h5>
-      <div class="padding-all">
+      <h3 class="card-header">
+        Missão de <%=current_user.name %>
+        <p><%= mission.created_at.strftime("%d/%m/%Y") %></p>
+      </h3>
+      <div class="padding-side">
         <h5 class="card-title">Quem eu sou</h5>
         <p class="card-text"><%= mission.who_am_i %></p>
         <h5 class="card-title">Porque existo</h5>
         <p class="card-text"><%= mission.why_exist %></p>
         <h5 class="card-title">Propósito de Vida</h5>
         <p class="card-text"><%= mission.purpose_of_life %></p>
-        <%= link_to "Selecionar",
-                    missions_update_selected_mission_path(mission_id: mission.id), method: :put,
-                    class:"btn btn-primary" %>
-        <%= link_to "Editar",
-                    edit_mission_path(mission),
-                    class:"btn btn-default" %>
-        <%= link_to "Remover", mission,
-                    method: :delete,
-                    class:"btn btn-danger",
-                    data: {confirm: "Tem certeza que deseja remover essa missão? #{mission.purpose_of_life}" } %>
       </div>
     </div>
-    <div class="card-footer bg-transparent border-success"><%= mission.created_at.strftime("%d/%m/%Y") %></div>
+    <div class="card-footer bg-transparent border-success">
+      <%= link_to "Selecionar",
+                  missions_update_selected_mission_path(mission_id: mission.id), method: :put,
+                  class:"btn-outline btn-outline-primary" %>
+      <%= link_to "Editar",
+                  edit_mission_path(mission),
+                  class:"btn-outline btn-outline-default" %>
+      <%= link_to "Remover", mission,
+                  method: :delete,
+                  class:"btn-outline btn-outline-danger",
+                  data: {confirm: "Tem certeza que deseja remover essa missão? #{mission.purpose_of_life}" } %>
+    </div>
   </div>
 </div>
