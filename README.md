@@ -65,6 +65,11 @@ To run the application tests.
 rspec
 ```
 
+## Execution with **DOCKER**
+```console
+docker-compose up -d
+```
+
 ## Become a Life to Remind Developer
 
 To contribute to the project check the open issues. If what you want to improve or the problem you found is not already listed, create a new issue with a description of the problem. To contribute to the project send a Pull Request to the repository, it will be evaluated later.
