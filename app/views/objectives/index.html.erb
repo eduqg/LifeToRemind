@@ -17,6 +17,9 @@
             <p>
               <%= render partial: "goals/goal", :collection => objective.goals %>
             </p>
+            <div class="align-right">
+              <h3 class="label-objective"><%= objective.sphere.name %></h3>
+            </div>
           </div>
         </div>
       <% end %>

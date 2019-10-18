@@ -1,8 +1,16 @@
 # LifeToRemind
 
+[![Build Status](https://travis-ci.org/eduqg/LifeToRemind.svg?branch=master)](https://travis-ci.org/eduqg/LifeToRemind)
+
 **LifeToRemind** is a website for career-oriented Personal Strategic Planning.
 
 Enjoy **Hacktoberfest** to do four Pull Requests and win your event t-shirt! :v::tada::raised_hands:
+
+## Deploys
+
+[LifeToRemind stable](http://lifetoremindhub.herokuapp.com/)
+
+[LifeToRemind master](http://lifetoremindhubdevel.herokuapp.com/)
 
 ## Tools and Environment
 
@@ -52,7 +60,7 @@ rails s
 
 Open the browser at [localhost:3000](http://localhost:3000)
 
-To run the application tests.
+To run the application tests:
 ```console
 rspec
 ```
@@ -109,3 +117,11 @@ Step 5 - Wait for your Pull Request to be approved and **congratulations on beco
     </th>
   </tr>
 </table>
+
+## Donations
+
+No sponsors yet! Get in touch to be the first!
+
+If you want to support [@eduqg](https://github.com/eduqg), please consider buying a coffee. Thank you for your donation!
+
+<a href="https://www.buymeacoffee.com/4GkjyuEN3" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>

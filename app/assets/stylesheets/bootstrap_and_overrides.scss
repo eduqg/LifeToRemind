@@ -75,6 +75,43 @@
   -webkit-text-fill-color: black;
 }
 
+.btn-outline {
+  border: 1px solid #6e6e6e;
+  display: inline-block;
+  padding: 0 15px;
+  margin-bottom: 0;
+  margin-right: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #6e6e6e;
+  cursor: pointer;
+}
+
+.btn-outline-primary {
+  color: #1600bf !important;
+  border-color: #1600bf;
+  &:hover {
+    background-color: #1600bf;
+    color: #fafafa !important;
+  }
+}
+.btn-outline-default {
+  color: #333333 !important;
+  border-color: #333333;
+  &:hover {
+    background-color: #333333;
+    color: #fafafa !important;
+  }
+}
+.btn-outline-danger {
+  color: #d9534f !important;
+  border-color: #d9534f;
+  &:hover {
+    background-color: #d9534f;
+    color: #fafafa !important;
+  }
+}
+
 .btn-link, .btn-link:active, .btn-link[disabled], fieldset[disabled] .btn-link {
   background-color: transparent;
   -webkit-box-shadow: none;
