@@ -66,7 +66,29 @@ rspec
 ```
 
 ## Execution with **DOCKER**
+
+Define variables values on: ./env_file.env
+
 ```console
+DB_USER=postgres
+
+# Note: "The value must be defined on ./docker-compose.yml"
+DB_HOST=db_ltr
+DB_PORT=5432
+RAILS_MAX_THREADS=5
+
+# Note: "The value must be defined on ./config/database.yml"
+RAILS_ENV=development
+
+# Note: "if RAILS_ENV == production then define SECRET_KEY_BASE!!!"
+# SECRET_KEY_BASE= ?????
+```
+
+```console
+# build
+docker-compose build
+
+# run
 docker-compose up -d
 ```
 
