@@ -1,26 +1,30 @@
-<div class="col-sm-6">
+<div class="col-sm-12">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-header">Visão de <%=current_user.name %></h5>
-      <div class="padding-all">
+      <h3 class="card-header">
+        Visão de <%=current_user.name %>
+        <p><%= vision.created_at.strftime("%d/%m/%Y") %></p>
+      </h3>
+      <div class="padding-side">
         <h5 class="card-title">Para onde vou?</h5>
         <p class="card-text"><%= vision.where_im_going %></p>
         <h5 class="card-title">Onde quero chegar?</h5>
         <p class="card-text"><%= vision.where_arrive %></p>
         <h5 class="card-title">Como tornarei concreta a minha missão?</h5>
         <p class="card-text"><%= vision.how_complete_mission %></p>
-        <%= link_to "Selecionar",
-                    visions_update_selected_vision_path(vision_id: vision.id), method: :put,
-                    class:"btn btn-primary" %>
-        <%= link_to "Editar",
-                    edit_vision_path(vision),
-                    class:"btn btn-default" %>
-        <%= link_to "Remover", vision,
-                    method: :delete,
-                    class:"btn btn-danger",
-                    data: {confirm: "Tem certeza que deseja remover essa visão? #{vision.where_im_going}" } %>
       </div>
     </div>
-    <div class="card-footer bg-transparent border-success"><%= vision.created_at.strftime("%d/%m/%Y") %></div>
+    <div class="card-footer bg-transparent border-success">
+      <%= link_to "Selecionar",
+                  visions_update_selected_vision_path(vision_id: vision.id), method: :put,
+                  class:"btn-outline btn-outline-primary" %>
+      <%= link_to "Editar",
+                  edit_vision_path(vision),
+                  class:"btn-outline btn-outline-default" %>
+      <%= link_to "Remover", vision,
+                  method: :delete,
+                  class:"btn-outline btn-outline-danger",
+                  data: {confirm: "Tem certeza que deseja remover essa visão? #{vision.where_im_going}" } %>
+    </div>
   </div>
 </div>
