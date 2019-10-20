@@ -1,7 +1,7 @@
 <%= form_tag swotparts_path do %>
   <%= hidden_field_tag :partname, tipo_do_swotpart %>
 
-  <div class="field-group-swot m-t-20">
+  <div class="field-group-swot m-b-20 top-auto">
     <%= text_field_tag :name,
                        nil,
                        autocomplete: "off",
@@ -14,4 +14,3 @@
     <% end %>
   </div>
 <% end %>
-
