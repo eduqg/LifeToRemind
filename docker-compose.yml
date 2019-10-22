@@ -25,6 +25,8 @@ services:
       - .:/LifeToRemind
     ports:
       - '3000:3000'
+    links:
+      - db_ltr
     depends_on:
       db_ltr:
         condition: service_healthy

@@ -67,29 +67,58 @@ rspec
 
 ## Execution with **DOCKER**
 
-Define variables values on: ./env_file.env
+### Install Docker
 
-```console
+- [Docker CE](https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/)
+
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Define variables
+
+Define on: ./env_file.env
+
+```env
 DB_USER=postgres
-
-# Note: "The value must be defined on ./docker-compose.yml"
+## The same name defined on docker-compose.yml
 DB_HOST=db_ltr
+## If you change default port 5432 you need to change in database.yml as well as execute a "docker-compose --build".
 DB_PORT=5432
 RAILS_MAX_THREADS=5
-
-# Note: "The value must be defined on ./config/database.yml"
 RAILS_ENV=development
-
-# Note: "if RAILS_ENV == production then define SECRET_KEY_BASE!!!"
-# SECRET_KEY_BASE= ?????
 ```
 
-```console
-# build
+### Usefull Commands
+
+```bash
+## build docker-compose.yml
 docker-compose build
 
-# run
+## run deatached
 docker-compose up -d
+
+## list containers
+docker ps -a
+
+## join in the bash container
+docker exec -it <container> bash
+
+## stop container
+docker stop <container>
+
+## remove container
+docker rm -f <container>
+
+## stop all containers from docker-compose
+docker-compose down
+
+## inspect container
+docker inspect <container>
+
+## show container logs
+docker logs <container>
+
+## follow container logs
+docker logs -f <container>
 ```
 
 ## Become a Life to Remind Developer
