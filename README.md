@@ -121,6 +121,34 @@ docker logs <container>
 docker logs -f <container>
 ```
 
+## Execution Tests with **DOCKER**
+
+### Change enviroments
+
+Change de value of key RAILS_ENV to test in ./env_file.env
+
+```env
+RAILS_ENV=test
+```
+
+### Run compose
+
+```bash
+docker-compose up -d
+```
+
+### List containers and get "web" containerid
+
+```bash
+docker ps -a
+```
+
+### Run tests
+
+```bash
+docker exec -it <container> bash -c "bundle exec rspec"
+```
+
 ## Become a Life to Remind Developer
 
 To contribute to the project check the open issues. If what you want to improve or the problem you found is not already listed, create a new issue with a description of the problem. To contribute to the project send a Pull Request to the repository, it will be evaluated later.
