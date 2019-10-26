@@ -65,7 +65,7 @@ To run the application tests:
 rspec
 ```
 
-## Execution with **DOCKER**
+## Execution with **DOCKER** (Open issue)
 
 ### Install Docker
 
@@ -121,7 +121,7 @@ docker logs <container>
 docker logs -f <container>
 ```
 
-## Execution Tests with **DOCKER**
+### Execution Tests with **Docker**
 
 ### Change enviroments
 

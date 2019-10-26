@@ -1,12 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  timeout: 5000
-  port: 5432
-  host: <%= ENV.fetch("DB_HOST") || localhost %>
-  username: postgres
-  password: <%= ENV.fetch("DB_PASSWORD") || postgres %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") || 5 %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -19,3 +14,5 @@ test:
 production:
   <<: *default
   database: ltr_production
+  username: ltr
+  password: <%= ENV['LTR_DATABASE_PASSWORD'] %>
