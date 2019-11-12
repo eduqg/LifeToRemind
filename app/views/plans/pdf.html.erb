@@ -32,7 +32,6 @@
 
     th{
       color: black;
-      border-top: 1px solid #ddd;
     }
 
     .f-bg{
@@ -67,6 +66,10 @@
       clear: both;
       color: gray;
     }
+
+    hr {
+      color: rgba(0, 0, 0, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -82,70 +85,72 @@
     <p>Criado em: <%= Time.now.strftime("%d/%m/%Y às %H:%M")%></p>
     <br/>
     <!-- Análise Ambiental -->
-    <div class="offer-content">
-      <h3>Matriz SWOT</h3>
-      <hr/>
-      <table class="table table-borderless table-hover">
-        <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Fatores Positivos</th>
-          <th scope="col">Fatores Negativos</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">Fatores Internos</th>
-          <td class="f-bg">
-            <p align="center"><i>Forças</i></p>
-            <% @strengths.each do |strength| %>
-              <p align="center"><%= strength.name %></p>
-            <% end %>
-          </td>
-          <td class="fr-bg">
-            <p class="" align="center"><i>Fraquezas</i></p>
-            <% @weaks.each do |weak| %>
-              <p align="center"><%= weak.name %></p>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Fatores Externos</th>
-          <td class="o-bg">
-            <p align="center"><i>Oportunidades</i></p>
-            <% @opportunities.each do |opportunity| %>
-              <p align="center"><%= opportunity.name %></p>
-            <% end %>
-          </td>
-          <td class="a-bg" width="250px">
-            <p align="center"><i>Ameaças</i></p>
-            <% @threats.each do |threat| %>
-              <p align="center"><%= threat.name %></p>
-            <% end %>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <br/>
+    <% if @strengths.first || @weaks.first || @opportunities.first || @threats.first  %>
+      <div class="offer-content">
+        <h3>Matriz SWOT</h3>
+        <hr/>
+        <table class="table table-borderless table-hover">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Fatores Positivos</th>
+            <th scope="col">Fatores Negativos</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">Fatores Internos</th>
+            <td class="f-bg">
+              <p align="center"><i>Forças</i></p>
+              <% @strengths.each do |strength| %>
+                <p align="center"><%= strength.name %></p>
+              <% end %>
+            </td>
+            <td class="fr-bg">
+              <p class="" align="center"><i>Fraquezas</i></p>
+              <% @weaks.each do |weak| %>
+                <p align="center"><%= weak.name %></p>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Fatores Externos</th>
+            <td class="o-bg">
+              <p align="center"><i>Oportunidades</i></p>
+              <% @opportunities.each do |opportunity| %>
+                <p align="center"><%= opportunity.name %></p>
+              <% end %>
+            </td>
+            <td class="a-bg" width="250px">
+              <p align="center"><i>Ameaças</i></p>
+              <% @threats.each do |threat| %>
+                <p align="center"><%= threat.name %></p>
+              <% end %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <br/>
+    <% end %>
 
     <!-- Mission -->
     <% if @my_mission %>
       <div class="offer-content">
         <h3>Minha Missão </h3>
         <hr/>
-        <h3 class="lead m-b-5">Propósito de Vida</h3>
-        <p><%= "#{@my_mission.purpose_of_life}" %></p>
-        <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
-        <p><%= "#{@my_mission.who_am_i}" %></p>
-        <h3 class="lead color-dark m-b-5">Porque existo</h3>
-        <p><%= "#{@my_mission.why_exist}" %></p>
-        <p>
-          Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
-        </p>
+          <h3 class="lead m-b-5">Propósito de Vida</h3>
+          <p><%= "#{@my_mission.purpose_of_life}" %></p>
+          <h3 class="lead color-dark m-b-5">Quem sou eu</h3>
+          <p><%= "#{@my_mission.who_am_i}" %></p>
+          <h3 class="lead color-dark m-b-5">Porque existo</h3>
+          <p><%= "#{@my_mission.why_exist}" %></p>
+          <p>
+            Criado em: <%= @my_mission.created_at.strftime("%d/%m/%Y") %>
+          </p>
       </div>
+      <br/>
     <% end %>
-    <br/>
 
     <!-- Vision -->
     <% if @my_vision %>
@@ -160,13 +165,14 @@
         <h3 class="lead color-dark m-b-5">Como tornarei concreta a minha missão?</h3>
         <p><%= "#{@my_vision.how_complete_mission}" %></p>
       </div>
+      <br/>
     <% end %>
-    <br/>
 
     <!-- Fatores Críticos de Sucesso -->
     <% if @my_csf %>
       <div class="offer-content">
         <h3 class="color-dark">Meus Fatores Críticos de Sucesso </h3>
+        <hr />
         <p>Criado em: <%= @my_csf.created_at.strftime("%d/%m/%Y") %></p>
         <h3 class="lead color-dark m-b-5">Que características me tornam único?</h3>
         <p><%= "#{@my_csf.what_makes_me_unique}" %></p>
@@ -178,36 +184,36 @@
         <p><%= "#{@my_csf.health_factors}" %></p>
       </div>
     <% end %>
+    <br/>
 
     <!-- Valores -->
-    <div class="offer-content">
-      <h3>Meus Valores</h3>
-      <hr/>
-      <% @current_plan.values.each do |values| %>
-        <p class="lead color-dark"><%= values.name %></p>
-      <% end %>
-    </div>
-    <br/>
+    <% if @values.first %>
+      <div class="offer-content">
+        <h3>Meus Valores</h3>
+        <hr/>
+          <% @values.each do |values| %>
+            <p class="lead color-dark"><%= values.name %></p>
+          <% end %>
+      </div>
+      <br/>
+    <% end %>
 
     <!-- Papéis -->
-    <div class="offer-content">
-      <h3>Meus Papéis</h3>
-      <hr/>
-      <table>
-        <h3 class="lead color-dark">
-          <% @current_plan.roles.each do |role| %>
-            <tbody>
-            <td width="200px">Como <%= role.name %>,</td>
-            <td width="400px">gostaria de no futuro <%= role.description %></td>
-            </tbody>
-          <% end %>
-        </h3>
-      </table>
-    </div>
-    <br/>
+    <% if @roles.first %>
+      <div class="offer-content">
+        <h3>Meus Papéis</h3>
+        <hr/>
+        <% @roles.each do |role| %>
+          <p>
+            Como <%= role.name %>, gostaria de no futuro <%= role.description %>
+          </p>
+        <% end %>
+      </div>
+      <br/>
+    <% end %>
 
     <!-- Âmbitos -->
-    <% if !current_user.spheres.nil? %>
+    <% if @spheres.first %>
       <div class="offer-content">
         <h3>Âmbitos </h3>
         <hr/>
@@ -215,31 +221,34 @@
           <p><%= sphere.name %>. <%= sphere.progress %> concluído.</p>
         <% end %>
       </div>
+      <br/>
     <% end %>
-    <br/>
 
     <!-- Objetivos Estratégicos -->
-    <div class="offer-content">
+    <% if @objectives.first %>
+      <div class="offer-content">
       <h3>Objetivos Estratégicos</h3>
       <hr/>
-      <% if !@current_plan.objectives.nil? %>
-        <% @current_plan.objectives.each_with_index do |objective, i| %>
+        <% @objectives.each_with_index do |objective, i| %>
           <h3 class="lead color-dark">Objetivo <%= i + 1 %>: <%= objective.name %></h3>
+          <p>Âmbito: <%= objective.sphere.name %></p>
           <p>Data da criação: <%= objective.created_at.strftime("%d/%m/%Y") %></p>
-          <% objective.goals.each_with_index do |goal, j| %>
-            <p>Meta <%= j + 1 %>: <%= goal.name %>. <%= goal.progress %>% concluído.</p>
-            Atividades:<br/>
-            <% goal.activities.each do |activity| %>
-              <% if !activity.checked %>
-                <p> - <strong><%= activity.title %></strong></p>
-              <% else %>
-                <p> - <%= activity.title %>. Feito!</p>
+          <div class="offer-content"> 
+            <% objective.goals.each_with_index do |goal, j| %>
+              <p>Meta <%= j + 1 %>: <%= goal.name %>. <%= goal.progress %>% concluído.</p>
+              Atividades:<br/>
+              <% goal.activities.each do |activity| %>
+                <% if !activity.checked %>
+                  <p> - <strong><%= activity.title %></strong></p>
+                <% else %>
+                  <p> - <%= activity.title %>. Feito!</p>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
+          </div>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
