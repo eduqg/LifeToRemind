@@ -17,9 +17,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @disable_footer = true
+    @disable_nav = true
+    super
+  end
 
   # GET /resource/edit
   # def edit

@@ -65,6 +65,90 @@ To run the application tests:
 rspec
 ```
 
+## Execution with **DOCKER** (Open issue)
+
+### Install Docker
+
+- [Docker CE](https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/)
+
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Define variables
+
+Define on: ./env_file.env
+
+```env
+DB_USER=postgres
+## The same name defined on docker-compose.yml
+DB_HOST=db_ltr
+## If you change default port 5432 you need to change in database.yml as well as execute a "docker-compose --build".
+DB_PORT=5432
+RAILS_MAX_THREADS=5
+RAILS_ENV=development
+```
+
+### Usefull Commands
+
+```bash
+## build docker-compose.yml
+docker-compose build
+
+## run deatached
+docker-compose up -d
+
+## list containers
+docker ps -a
+
+## join in the bash container
+docker exec -it <container> bash
+
+## stop container
+docker stop <container>
+
+## remove container
+docker rm -f <container>
+
+## stop all containers from docker-compose
+docker-compose down
+
+## inspect container
+docker inspect <container>
+
+## show container logs
+docker logs <container>
+
+## follow container logs
+docker logs -f <container>
+```
+
+### Execution Tests with **Docker**
+
+### Change enviroments
+
+Change de value of key RAILS_ENV to test in ./env_file.env
+
+```env
+RAILS_ENV=test
+```
+
+### Run compose
+
+```bash
+docker-compose up -d
+```
+
+### List containers and get "web" containerid
+
+```bash
+docker ps -a
+```
+
+### Run tests
+
+```bash
+docker exec -it <container> bash -c "bundle exec rspec"
+```
+
 ## Become a Life to Remind Developer
 
 To contribute to the project check the open issues. If what you want to improve or the problem you found is not already listed, create a new issue with a description of the problem. To contribute to the project send a Pull Request to the repository, it will be evaluated later.

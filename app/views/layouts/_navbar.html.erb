@@ -16,16 +16,20 @@
         <% if current_user&.admin? %>
           <li><%= link_to " ", contacts_path, method: "get", class: "lnr lnr-envelope" %></li>
           <li><%= link_to " ", users_path, method: "get", class: "lnr lnr-users" %></li>
-      <% end %>
-        <li><%= link_to " STATUS", inicio_path, method: "get", class: "lnr lnr-pie-chart" %></li>
+        <% end %>
+
+        <% if current_page?(root_path) %>
+          <li><a href="#top">HOME</a></li>
+          <li><a href="#about">SOBRE</a></li>
+        <% end %>
 
         <li><%= link_to "MEU PLANEJAMENTO", myplan_path, method: "get" %></li>
 
         <% if current_user %>
+          <li><%= link_to " Gráficos", inicio_path, method: "get", class: "lnr lnr-pie-chart" %></li>
           <li><%= link_to " Olá #{current_user.name}", edit_user_registration_path, method: "get", class: "lnr lnr-user" %></li>
           <li><%= link_to "Finalizar Demonstração", user_registration_path, data: {confirm: "Tem certeza que deseja sair? Por ser uma versão de demonstração, seu usuário será apagado."}, method: :delete %></li>
-          <li><%= link_to "Sair", destroy_user_session_path, method: :delete %>
-      <% else %>
+        <% else %>
           <li><%= link_to "ENTRAR", new_user_session_path, method: "get" %></li>
           <li><%= link_to "CADASTRAR", new_user_registration_path, method: "get" %></a></li>
         <% end %>

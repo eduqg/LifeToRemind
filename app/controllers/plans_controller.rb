@@ -77,8 +77,8 @@ class PlansController < ApplicationController
       @threats = current_plan.swotparts.where(plan_id: current_plan.id).where(partname: :threat)
       @objectives = current_plan.objectives
       @spheres = current_user.spheres
-      @value = Value.new
-      @role = Role.new
+      @values = current_plan.values
+      @roles = current_plan.roles
 
       respond_to do |format|
         format.html
