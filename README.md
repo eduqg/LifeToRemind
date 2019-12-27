@@ -4,8 +4,6 @@
 
 **LifeToRemind** is a website for career-oriented Personal Strategic Planning.
 
-Enjoy **Hacktoberfest** to do four Pull Requests and win your event t-shirt! :v::tada::raised_hands:
-
 ## Deploys
 
 [LifeToRemind stable](http://lifetoremindhub.herokuapp.com/)
