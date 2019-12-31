@@ -189,7 +189,7 @@ GEM
       thor
       toml
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
@@ -387,7 +387,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   popper (~> 0.5.0)
-  puma (~> 3.11)
+  puma (~> 3.12)
   puma_worker_killer
   rails (~> 5.2.1)
   rails-controller-testing
