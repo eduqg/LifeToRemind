@@ -1,18 +1,24 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
 
 development:
   <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   database: ltr_development
 
 test:
   <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   database: ltr_test
 
 production:
   <<: *default
-  database: ltr_production
-  username: ltr
-  password: <%= ENV['LTR_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  secret_key_base: <%= ENV['SECRET_KEY_BASE'] %>
+
