@@ -69,7 +69,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.68.1', require: false
   gem 'rubocop-performance'
   gem 'rails-erd'
-  gem 'wkhtmltopdf-binary', '~> 0.12.4'
+  gem 'wkhtmltopdf-installer'
 end
 
 group :development do
