@@ -156,7 +156,9 @@ GEM
       mimemagic (~> 0.3.2)
     memory_profiler (0.9.14)
     method_source (0.9.2)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
@@ -183,7 +185,8 @@ GEM
       slack-notifier
       thor
       toml
-    puma (3.12.2)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
@@ -381,7 +384,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   popper (~> 0.5.0)
-  puma (~> 3.12)
+  puma (~> 4.3)
   puma_worker_killer
   rails (~> 5.2.1)
   rails-controller-testing
